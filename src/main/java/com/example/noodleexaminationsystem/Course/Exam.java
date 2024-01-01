@@ -14,4 +14,27 @@ public class Exam {
         this.examTitle = examTitle;
     }
 
+    public String getExamTitle() {
+        return examTitle;
+    }
+
+    public void setExamTitle(String examTitle) {
+        this.examTitle = examTitle;
+    }
+
+    public ArrayList<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(ArrayList<Question> questions) {
+        this.questions = questions;
+    }
+
+    public ArrayList<Result> getResults() {
+        return results;
+    }
+
+    public void setResults(ArrayList<Result> results) {
+        this.results = results;
+    }
 }
