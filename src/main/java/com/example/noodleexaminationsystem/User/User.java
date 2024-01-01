@@ -1,9 +1,13 @@
 package com.example.noodleexaminationsystem.User;
 
+import com.example.noodleexaminationsystem.Course.Course;
 import com.example.noodleexaminationsystem.Course.CoursePlan;
+import com.example.noodleexaminationsystem.Course.Exam;
+import com.example.noodleexaminationsystem.DataBase;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class User {
     private String username;
@@ -25,7 +29,37 @@ public class User {
         this.picturePath = picturePath;
         this.dob = dob;
     }
+    public User SignUp(String username ,String password ,String name ,String lastName ,String email ,String picturePath ,LocalDate dob){
+        User user1 = new User(username, password,name,lastName,email,picturePath,dob);
+        DataBase.getUsers().add(user1);
+        return user1;
+    }
+    public User login(String username , String password){
+        for (User user : DataBase.getUsers()){
+            if (user.getUsername().equals(username) && user.getPassword().equals(password)){
+                return user;
+            }
+        }
+        return null;
+    }
+    public CoursePlan createCoursePlan(String name , Course course , Date start , Date end , User teacher , Exam attendedStudent){
+        CoursePlan coursePlan=new CoursePlan(course,name,teacher,attendedStudent,start,end);
+        return coursePlan;
+    }
 
+    public ArrayList<CoursePlan> coursePlanArrayList(CoursePlan coursePlan){
+        ArrayList<CoursePlan> coursePlans=getTeacherCourses();
+        coursePlans.add(coursePlan);
+        return coursePlans;
+    }
+
+    public int resetpassword(String password,String newpassword){
+        if(this.password.equals(password)){
+            setPassword(newpassword);
+            return 1;
+        }else
+            return 0;
+    }
     public String getUsername() {
         return username;
     }
