@@ -11,14 +11,24 @@ public class CoursePlan {
     private Exam attendedStudent;
     private Date start;
     private Date end;
+    private String name;
     private ArrayList<Exam> exams = new ArrayList<>();
 
-    public CoursePlan(Course course, User teacher, Exam attendedStudent, Date start, Date end) {
+    public CoursePlan(Course course,String name, User teacher, Exam attendedStudent, Date start, Date end) {
+        this.name=name;
         this.course = course;
         this.teacher = teacher;
         this.attendedStudent = attendedStudent;
         this.start = start;
         this.end = end;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Exam getAttendedStudent() {
