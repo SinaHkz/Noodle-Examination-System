@@ -17,7 +17,12 @@ public class Exam {
     public String getExamTitle() {
         return examTitle;
     }
-
+    public void addQuestion(Question question){
+        questions.add(question);
+    }
+    public void addResult(Result result){
+        results.add(result);
+    }
     public void setExamTitle(String examTitle) {
         this.examTitle = examTitle;
     }
