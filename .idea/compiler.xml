@@ -9,8 +9,5 @@
         <module name="Noodle-Examination-System" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Noodle-Examination-System" target="17" />
-    </bytecodeTargetLevel>
   </component>
 </project>
