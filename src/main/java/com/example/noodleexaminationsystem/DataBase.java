@@ -6,27 +6,28 @@ import com.example.noodleexaminationsystem.Question.Question;
 import com.example.noodleexaminationsystem.User.User;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DataBase {
-    static ArrayList<User> users = new ArrayList<>();
-    static ArrayList<CoursePlan> coursePlans = new ArrayList<>();
+    static Map<String , User> users = new HashMap<>();
+    static Map<String , CoursePlan> coursePlans = new HashMap<>();
     static ArrayList<Course> courses = new ArrayList<>();
     static ArrayList<Question> questions = new ArrayList<>();
 
-
-    public static ArrayList<User> getUsers() {
-        return users;
-    }
-
-    public static void setUsers(ArrayList<User> users) {
+    public static void setUsers(Map<String, User> users) {
         DataBase.users = users;
     }
 
-    public static ArrayList<CoursePlan> getCoursePlans() {
+    public static Map<String, User> getUsers() {
+        return users;
+    }
+
+    public static Map<String, CoursePlan> getCoursePlans() {
         return coursePlans;
     }
 
-    public static void setCoursePlans(ArrayList<CoursePlan> coursePlans) {
+    public static void setCoursePlans(Map<String, CoursePlan> coursePlans) {
         DataBase.coursePlans = coursePlans;
     }
 

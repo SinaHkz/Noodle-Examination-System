@@ -5,8 +5,8 @@ import com.example.noodleexaminationsystem.User.User;
 public class SingleAnswer extends MultipleChoice {
     private int answerValue;
 
-    public SingleAnswer(long id, String question, User questionDesigner, Choice countOfChoice, int answerValue) {
-        super(id, question, questionDesigner, countOfChoice);
+    public SingleAnswer( String question, User questionDesigner, Choice countOfChoice, int answerValue) {
+        super( question, questionDesigner, countOfChoice);
         this.answerValue = answerValue;
     }
 
@@ -17,4 +17,5 @@ public class SingleAnswer extends MultipleChoice {
     public void setAnswerValue(int answerValue) {
         this.answerValue = answerValue;
     }
+
 }

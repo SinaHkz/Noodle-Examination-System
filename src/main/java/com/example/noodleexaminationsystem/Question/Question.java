@@ -7,9 +7,17 @@ public abstract class Question {
     private String question;
     private User questionDesigner;
 
-    public Question(long id, String question, User questionDesigner) {
-        this.id = id;
+    public Question( String question, User questionDesigner) {
         this.question = question;
+        this.questionDesigner = questionDesigner;
+    }
+
+
+    public User getQuestionDesigner() {
+        return questionDesigner;
+    }
+
+    public void setQuestionDesigner(User questionDesigner) {
         this.questionDesigner = questionDesigner;
     }
 

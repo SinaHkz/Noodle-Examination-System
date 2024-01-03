@@ -7,12 +7,9 @@ import java.util.ArrayList;
 public class MultipleAnswer extends MultipleChoice {
     private ArrayList<Integer> answerValue = new ArrayList<>();
 
-    public MultipleAnswer(long id, String question, User questionDesigner, Choice countOfChoice) {
-        super(id, question, questionDesigner, countOfChoice);
+    public MultipleAnswer(String question, User questionDesigner, Choice countOfChoice) {
+        super( question, questionDesigner, countOfChoice);
     }
-
-
-
     public ArrayList<Integer> getAnswerValue() {
         return answerValue;
     }
@@ -20,4 +17,6 @@ public class MultipleAnswer extends MultipleChoice {
     public void setAnswerValue(ArrayList<Integer> answerValue) {
         this.answerValue = answerValue;
     }
+
+
 }
