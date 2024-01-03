@@ -1,8 +1,8 @@
 com/example/noodleexaminationsystem/User/Result.class
 com/example/noodleexaminationsystem/Course/CoursePlan.class
+com/example/noodleexaminationsystem/GenderController.class
 com/example/noodleexaminationsystem/User/User.class
 com/example/noodleexaminationsystem/Question/MultipleChoice.class
-com/example/noodleexaminationsystem/controller/GenderController.class
 module-info.class
 com/example/noodleexaminationsystem/Question/MultipleAnswer.class
 com/example/noodleexaminationsystem/Question/Question.class
