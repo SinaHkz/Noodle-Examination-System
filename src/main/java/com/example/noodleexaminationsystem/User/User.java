@@ -4,7 +4,6 @@ import com.example.noodleexaminationsystem.Course.Course;
 import com.example.noodleexaminationsystem.Course.CoursePlan;
 import com.example.noodleexaminationsystem.Course.Exam;
 import com.example.noodleexaminationsystem.DataBase;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,6 +12,7 @@ public class User {
     private String username;
     private String password;
     private String name;
+    private Gender gender;
     private String lastName;
     private String email;
     private String picturePath;
@@ -20,7 +20,7 @@ public class User {
     private ArrayList<Result> results = new ArrayList<>();
     private ArrayList<CoursePlan> teacherCourses = new ArrayList<>();
 
-    public User(String username, String password, String name, String lastName, String email, String picturePath, LocalDate dob) {
+    public User(String username, String password, String name, String lastName, String email, String picturePath, LocalDate dob,Gender gender) {
         this.username = username;
         this.password = password;
         this.name = name;
@@ -28,9 +28,16 @@ public class User {
         this.email = email;
         this.picturePath = picturePath;
         this.dob = dob;
+        this.gender = gender;
     }
-    public User SignUp(String username ,String password ,String name ,String lastName ,String email ,String picturePath ,LocalDate dob){
-        User user1 = new User(username, password,name,lastName,email,picturePath,dob);
+    //
+    public void addStudent(CoursePlan coursePlan){
+        Result result=new Result(this,0.0,coursePlan.getAttendedStudent());
+        coursePlan.getAttendedStudent().getResults().add(result);
+    }
+
+    public User SignUp(String username ,String password ,String name ,String lastName ,String email ,String picturePath ,LocalDate dob , Gender gender){
+        User user1 = new User(username, password,name,lastName,email,picturePath,dob,gender);
         DataBase.getUsers().add(user1);
         return user1;
     }
@@ -47,7 +54,7 @@ public class User {
         return coursePlan;
     }
 
-    public ArrayList<CoursePlan> coursePlanArrayList(CoursePlan coursePlan){
+    public ArrayList<CoursePlan> addCoursePlanArrayList(CoursePlan coursePlan){
         ArrayList<CoursePlan> coursePlans=getTeacherCourses();
         coursePlans.add(coursePlan);
         return coursePlans;
