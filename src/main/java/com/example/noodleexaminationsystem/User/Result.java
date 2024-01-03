@@ -7,9 +7,6 @@ public class Result {
     private double score;
     private Exam exam;
 
-    // calculate exam result
-    //
-
     public Result(User student, double score, Exam exam) {
         this.student = student;
         this.score = score;
