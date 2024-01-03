@@ -2,6 +2,7 @@ package com.example.noodleexaminationsystem.Course;
 
 import com.example.noodleexaminationsystem.Question.Question;
 import com.example.noodleexaminationsystem.User.Result;
+import com.example.noodleexaminationsystem.User.User;
 
 import java.util.ArrayList;
 
@@ -38,7 +39,12 @@ public class Exam {
     public ArrayList<Result> getResults() {
         return results;
     }
-
+    public void removeUser(String user){
+        for (Result result : results){
+            if (result.getStudent().getUsername().equals(user))
+                results.remove(result);
+        }
+    }
     public void setResults(ArrayList<Result> results) {
         this.results = results;
     }
