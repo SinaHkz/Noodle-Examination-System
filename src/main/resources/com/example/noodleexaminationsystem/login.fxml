@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 
 <StackPane fx:controller="com.example.noodleexaminationsystem.GenderController" stylesheets="/style-sheets/login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
-   <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="" visible="false" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
       <left>
          <Pane prefHeight="1080.0" prefWidth="800.0" BorderPane.alignment="CENTER">
             <children>
@@ -43,7 +43,7 @@
                </FontAwesomeIconView>
                <FontAwesomeIconView fill="#59a42e" glyphName="KEY" layoutX="190.0" layoutY="494.0" size="30" />
                <FontAwesomeIconView fill="#59a42e" glyphName="USERS" layoutX="390.0" layoutY="189.0" size="50" />
-               <Label layoutX="294.0" layoutY="303.0" text="usernam or password is incorrect" textAlignment="CENTER" textFill="RED" visible="false">
+               <Label layoutX="294.0" layoutY="303.0" text="username or password is incorrect" textAlignment="CENTER" textFill="RED" visible="false">
                   <font>
                      <Font size="18.0" />
                   </font></Label>
@@ -67,7 +67,7 @@
          </Pane>
       </right>
    </BorderPane>
-   <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="">
+   <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="" visible="false">
       <right>
          <Pane prefHeight="1080.0" prefWidth="1119.0" style="-fx-background-color: #BEE3A9" BorderPane.alignment="CENTER">
             <children>

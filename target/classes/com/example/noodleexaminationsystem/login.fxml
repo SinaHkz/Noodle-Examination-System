@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 
 <StackPane fx:controller="com.example.noodleexaminationsystem.GenderController" stylesheets="/style-sheets/login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
-   <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="" visible="false" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
       <left>
          <Pane prefHeight="1080.0" prefWidth="800.0" BorderPane.alignment="CENTER">
             <children>
@@ -67,7 +67,7 @@
          </Pane>
       </right>
    </BorderPane>
-   <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="">
+   <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="" visible="false">
       <right>
          <Pane prefHeight="1080.0" prefWidth="1119.0" style="-fx-background-color: #BEE3A9" BorderPane.alignment="CENTER">
             <children>
