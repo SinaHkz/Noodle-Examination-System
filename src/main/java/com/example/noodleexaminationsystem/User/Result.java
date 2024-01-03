@@ -1,6 +1,9 @@
 package com.example.noodleexaminationsystem.User;
 
+import com.example.noodleexaminationsystem.Course.CoursePlan;
 import com.example.noodleexaminationsystem.Course.Exam;
+
+import java.util.ArrayList;
 
 public class Result {
     private User student;
