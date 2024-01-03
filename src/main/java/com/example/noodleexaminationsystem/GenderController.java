@@ -1,4 +1,4 @@
-package com.example.noodleexaminationsystem.controller;
+package com.example.noodleexaminationsystem;
 
 import com.example.noodleexaminationsystem.User.Gender;
 import javafx.collections.FXCollections;
@@ -32,7 +32,9 @@ public class GenderController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ObservableList<String> list = FXCollections.observableArrayList ("JavaFX", "SceneBuilder", "Laravel");
+        ObservableList<String> list = FXCollections.observableArrayList();
+        for (Gender gender : Gender.values())
+            list.add(gender.toString());
         comboBox.setItems(list);
     }
 }
