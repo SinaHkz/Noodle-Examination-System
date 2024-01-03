@@ -10,7 +10,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class GenderController implements Initializable {
@@ -20,8 +19,6 @@ public class GenderController implements Initializable {
 
     @FXML
     private Label label;
-
-    private ArrayList<String> genderList;
 
     @FXML
     void Select() {

@@ -13,6 +13,8 @@ public class HelloApplication extends Application {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
             stage.setScene(new Scene(fxmlLoader.load()));
+            stage.setMinWidth(1920);
+            stage.setMinHeight(1080);
             stage.show();
 
         } catch (Exception e) {

@@ -1,3 +1,10 @@
 .border-radius{
     -fx-border-radius: 50px;
 }
+.gradiant-color-background{
+    -fx-background-color: linear-gradient(to bottom, #b4e798, #2a7393);
+}
+
+.gradiant-color-card{
+    -fx-background-color: linear-gradient(to top, #bee3a9, #ffffff);
+}
