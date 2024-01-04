@@ -17,7 +17,7 @@ public class CoursePlan {
     private String picturePath;
     private ArrayList<Exam> exams = new ArrayList<>();
 
-    public CoursePlan(Course course, String name, User teacher, Exam attendedStudent, Date start, Date end, String picturePath) {
+    public CoursePlan(Course course, String name, User teacher, Exam attendedStudent, Date start, String picturePath) {
         this.name = name;
         this.course = course;
         this.teacher = teacher;
@@ -25,6 +25,11 @@ public class CoursePlan {
         this.start = start;
         this.end = end;
         this.picturePath = picturePath;
+    }
+
+    public static CoursePlan createCoursePlan(String name, Course course, Date start, User teacher, Exam attendedStudent, String picturePath) {
+        CoursePlan coursePlan = new CoursePlan(course, name, teacher, attendedStudent, start, picturePath);
+        return coursePlan;
     }
 
     public boolean isAcitve(Date date) {

@@ -79,11 +79,6 @@ public class User {
         return null;
     }
 
-    public CoursePlan createCoursePlan(String name, Course course, Date start, Date end, User teacher, Exam attendedStudent, String picturePath) {
-        CoursePlan coursePlan = new CoursePlan(course, name, teacher, attendedStudent, start, end, picturePath);
-        return coursePlan;
-    }
-
     public ArrayList<CoursePlan> addCoursePlanArrayList(CoursePlan coursePlan) {
         teacherCourses.add(coursePlan);
         return teacherCourses;

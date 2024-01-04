@@ -18,7 +18,7 @@ public class HelloApplication extends Application {
             LocalDate date = LocalDate.parse("2007-12-03");
             User admin = User.signUp("admin","admin","admin","admin","jfeij","jfeeijf",date,"FEMALE");
 
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("homePage.fxml"));
             stage.setScene(new Scene(fxmlLoader.load()));
             stage.setMaxWidth(1600);
             stage.setMaxHeight(900);
