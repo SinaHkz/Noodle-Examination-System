@@ -79,8 +79,8 @@ public class User {
         return null;
     }
 
-    public CoursePlan createCoursePlan(String name, Course course, Date start, Date end, User teacher, Exam attendedStudent) {
-        CoursePlan coursePlan = new CoursePlan(course, name, teacher, attendedStudent, start, end);
+    public CoursePlan createCoursePlan(String name, Course course, Date start, Date end, User teacher, Exam attendedStudent, String picturePath) {
+        CoursePlan coursePlan = new CoursePlan(course, name, teacher, attendedStudent, start, end, picturePath);
         return coursePlan;
     }
 

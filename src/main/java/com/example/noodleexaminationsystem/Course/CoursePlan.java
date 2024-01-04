@@ -14,44 +14,52 @@ public class CoursePlan {
     private Date start;
     private Date end;
     private String name;
+    private String picturePath;
     private ArrayList<Exam> exams = new ArrayList<>();
 
-    public CoursePlan(Course course, String name, User teacher, Exam attendedStudent, Date start, Date end) {
+    public CoursePlan(Course course, String name, User teacher, Exam attendedStudent, Date start, Date end, String picturePath) {
         this.name = name;
         this.course = course;
         this.teacher = teacher;
         this.attendedStudent = attendedStudent;
         this.start = start;
         this.end = end;
+        this.picturePath = picturePath;
     }
+
     public boolean isAcitve(Date date) {
         if (date.after(start) && date.before(end))
             return true;
         else
             return false;
     }
-
+    public  void deleteExam(Exam exam){
+        this.exams.remove(exam);
+    }
     public int addStudent(String username) {
-        for(User user : DataBase.getUsers().values()) {
-            if (user.getUsername().equals(username)){
-                Result result=new Result(user,0.0,attendedStudent); //Dont sure about the attended student which is a exam
+        for (User user : DataBase.getUsers().values()) {
+            if (user.getUsername().equals(username)) {
+                Result result = new Result(user, 0.0, attendedStudent); //Dont sure about the attended student which is a exam
                 attendedStudent.getResults().add(result);
                 return 0;
             }
         }
         return 1;//error find
     }
+
     public void removeStudent(String user) {
         this.getAttendedStudent().removeUser(user);
     }
-    public ArrayList<User> getStudent(){
-        ArrayList<User> students=new ArrayList<>();
-        for (Result result:attendedStudent.getResults()){
-            User user=result.getStudent();
+
+    public ArrayList<User> getStudent() {
+        ArrayList<User> students = new ArrayList<>();
+        for (Result result : attendedStudent.getResults()) {
+            User user = result.getStudent();
             students.add(user);
         }
         return students;
     }
+
     public void createNewExam(String title) {
         Exam exam = new Exam(title);
         exams.add(exam);
@@ -115,5 +123,13 @@ public class CoursePlan {
 
     public void setExams(ArrayList<Exam> exams) {
         this.exams = exams;
+    }
+
+    public String getPicturePath() {
+        return picturePath;
+    }
+
+    public void setPicturePath(String picturePath) {
+        this.picturePath = picturePath;
     }
 }

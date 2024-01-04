@@ -28,6 +28,12 @@ public class Exam {
         this.examTitle = examTitle;
     }
 
+    public void createExam(Question question){
+        questions.add(question);
+        question.addusage();
+    }
+
+
     public ArrayList<Question> getQuestions() {
         return questions;
     }
