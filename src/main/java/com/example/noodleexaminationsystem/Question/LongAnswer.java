@@ -8,7 +8,7 @@ public class LongAnswer extends Question {
     private String answer;
 
     public LongAnswer(Course course, String question, User questionDesigner, String answer) {
-        super(course, question, questionDesigner);
+        super(course, question, questionDesigner );
         this.answer = answer;
     }
 
