@@ -1,10 +1,44 @@
-.border-radius{
+.border-radius {
     -fx-border-radius: 50px;
 }
-.gradiant-color-background{
-    -fx-background-color: linear-gradient(to bottom, #b4e798, #2a7393);
+
+.gradiant-color-background {
+    -fx-background-color: linear-gradient(to top, #6c58e3, #287ad7, #5a97e0);
+    /*-fx-background-color: linear-gradient(to top, #224980, #96bad9);*/
+    /*-fx-background-color: #a9b1bd;*/
 }
 
-.gradiant-color-card{
-    -fx-background-color: linear-gradient(to top, #bee3a9, #ffffff);
+.gradiant-color-card {
+    -fx-background-color: linear-gradient(to top, #9083e0, #5f94d0, #94b3d9);
+    -fx-background-radius: 30px;
+    -fx-border-radius: 30px;
+    -fx-border-color: black;
+    -fx-effect: dropshadow(three-pass-box, rgb(0, 0, 1), 5, 0.5, 1, 5);
+    /*-fx-background-color: linear-gradient(to top, #4d33e5, #287ad7, #5a97e0);*/
 }
+.button-hand{
+    -fx-cursor: hand;
+}
+
+.background-transparent{
+    -fx-background-color: transparent;
+}
+
+.scroll-pane{
+    -fx-background-color: transparent;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+}
+
+/*toggle class for buttons when another clicked         <-------------<-------------<-------------<-------------*/
+.top-selected-buttons{
+    -fx-background-color: linear-gradient(to top, #9083e0, #5f94d0, #94b3d9);
+    -fx-background-radius: 10px 10px 0px 0px;
+    -fx-border-color: black;
+    -fx-border-radius: 10px 10px 0px 0px;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+

@@ -1,0 +1,28 @@
+.button{
+    -fx-background-color: transparent;
+    -fx-background-radius: 20px;
+}
+
+/*.transparent{*/
+/*    -fx-background-color: transparent;*/
+/*}*/
+
+.image{
+    -fx-background-radius: 30px;
+}
+
+.card{
+    -fx-background-color: white;
+}
+
+.hand{
+    -fx-cursor: hand;
+}
+
+.transparent{
+    -fx-background-color: transparent;
+}
+
+.white-background{
+    -fx-background-color: white;
+}

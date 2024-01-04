@@ -11,10 +11,10 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("homePage.fxml"));
             stage.setScene(new Scene(fxmlLoader.load()));
-            stage.setMinWidth(1920);
-            stage.setMinHeight(1080);
+            stage.setMaxWidth(1600);
+            stage.setMaxHeight(900);
             stage.show();
 
         } catch (Exception e) {
