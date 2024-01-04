@@ -4,6 +4,7 @@ import com.example.noodleexaminationsystem.Course.Course;
 import com.example.noodleexaminationsystem.Course.CoursePlan;
 import com.example.noodleexaminationsystem.Course.Exam;
 import com.example.noodleexaminationsystem.DataBase;
+import javafx.scene.chart.PieChart;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ public class User {
     private ArrayList<CoursePlan> teacherCourses = new ArrayList<>();
     private ArrayList<CoursePlan> StudentcoursePlans = new ArrayList<>();
 
-    public User(String username, String password, String name, String lastName, String email, String picturePath, LocalDate dob, Gender gender) {
+    private User(String username, String password, String name, String lastName, String email, String picturePath, LocalDate dob, Gender gender) {
         this.username = username;
         this.password = password;
         this.name = name;
@@ -62,6 +63,8 @@ public class User {
 
     public static User signUp(String username, String password, String name, String lastName, String email, String picturePath, LocalDate dob, String gender) {
         String gender1 = gender.toUpperCase();
+        if (DataBase.getUsers().containsKey(username))
+            return null;
         User user1 = new User(username, password, name, lastName, email, picturePath, dob, Gender.valueOf(gender1));
         DataBase.getUsers().put(username, user1);
         return user1;

@@ -9,7 +9,7 @@
     -fx-cursor: hand; /* Cursor style */
 }
 .login-button:hover{
-    -fx-background-color: #56cb58; /* Darker green on hover */
+    -fx-background-color: #1b2594; /* Darker green on hover */
 }
 
 .signup-button{
@@ -20,7 +20,7 @@
     -fx-cursor: hand; /* Cursor style */
 }
 .signup-button:hover{
-    -fx-background-color: #e1a524; /* Darker green on hover */
+    -fx-background-color: #b78519; /* Darker green on hover */
 }
 
 .border-colored-bottom{
