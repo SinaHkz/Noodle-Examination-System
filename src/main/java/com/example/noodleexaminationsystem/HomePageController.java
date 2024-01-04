@@ -3,7 +3,6 @@ package com.example.noodleexaminationsystem;
 import com.example.noodleexaminationsystem.Course.Course;
 import com.example.noodleexaminationsystem.Course.CoursePlan;
 import com.example.noodleexaminationsystem.Course.Exam;
-import com.example.noodleexaminationsystem.User.Gender;
 import com.example.noodleexaminationsystem.User.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -43,6 +42,7 @@ public class HomePageController implements Initializable {
     }
 
     private void setCards(ArrayList<CoursePlan> coursePlans, VBox cardVbox) {
+
         try {
             HBox eachRowBox = new HBox();
             int counter = 0;
