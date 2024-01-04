@@ -30,7 +30,9 @@ public class CoursePlan {
         else
             return false;
     }
-
+    public  void deleteExam(Exam exam){
+        this.exams.remove(exam);
+    }
     public int addStudent(String username) {
         for(User user : DataBase.getUsers().values()) {
             if (user.getUsername().equals(username)){
