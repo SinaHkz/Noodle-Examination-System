@@ -8,8 +8,8 @@ public abstract class MultipleChoice extends Question {
     private Choice countOfChoice;
     private ArrayList<String> choices = new ArrayList<>();
 
-    public MultipleChoice(long id, String question, User questionDesigner, Choice countOfChoice) {
-        super(id, question, questionDesigner);
+    public MultipleChoice( String question, User questionDesigner, Choice countOfChoice) {
+        super(question, questionDesigner);
         this.countOfChoice = countOfChoice;
     }
 

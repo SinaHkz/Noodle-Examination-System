@@ -4,9 +4,12 @@ import com.example.noodleexaminationsystem.Course.Course;
 import com.example.noodleexaminationsystem.Course.CoursePlan;
 import com.example.noodleexaminationsystem.Course.Exam;
 import com.example.noodleexaminationsystem.DataBase;
+import javafx.scene.chart.PieChart;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 public class User {
     private String username;
@@ -19,8 +22,9 @@ public class User {
     private LocalDate dob;
     private ArrayList<Result> results = new ArrayList<>();
     private ArrayList<CoursePlan> teacherCourses = new ArrayList<>();
+    private ArrayList<CoursePlan> StudentcoursePlans = new ArrayList<>();
 
-    public User(String username, String password, String name, String lastName, String email, String picturePath, LocalDate dob,Gender gender) {
+    private User(String username, String password, String name, String lastName, String email, String picturePath, LocalDate dob, Gender gender) {
         this.username = username;
         this.password = password;
         this.name = name;
@@ -30,43 +34,73 @@ public class User {
         this.dob = dob;
         this.gender = gender;
     }
-    //
-    public void addStudent(CoursePlan coursePlan){
-        Result result=new Result(this,0.0,coursePlan.getAttendedStudent());
-        coursePlan.getAttendedStudent().getResults().add(result);
+    //show the list of courses of a student
+
+
+    public Gender getGender() {
+        return gender;
     }
 
-    public User SignUp(String username ,String password ,String name ,String lastName ,String email ,String picturePath ,LocalDate dob , Gender gender){
-        User user1 = new User(username, password,name,lastName,email,picturePath,dob,gender);
-        DataBase.getUsers().add(user1);
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public ArrayList<CoursePlan> getStudentcoursePlans() {
+        return StudentcoursePlans;
+    }
+
+    public void setStudentcoursePlans(ArrayList<CoursePlan> studentcoursePlans) {
+        this.StudentcoursePlans = studentcoursePlans;
+    }
+
+    public User searchUser(String username) {
+        for (User user : DataBase.getUsers().values()) {
+            if (user.getUsername().equals(username))
+                return user;
+        }
+        return null;
+    }
+
+    public static User signUp(String username, String password, String name, String lastName, String email, String picturePath, LocalDate dob, String gender) {
+        String gender1 = gender.toUpperCase();
+        if (DataBase.getUsers().containsKey(username))
+            return null;
+        User user1 = new User(username, password, name, lastName, email, picturePath, dob, Gender.valueOf(gender1));
+        DataBase.getUsers().put(username, user1);
         return user1;
     }
-    public User login(String username , String password){
-        for (User user : DataBase.getUsers()){
-            if (user.getUsername().equals(username) && user.getPassword().equals(password)){
+
+    public static User login(String username, String password) {
+        for (User user : DataBase.getUsers().values()) {
+            if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
                 return user;
             }
         }
         return null;
     }
-    public CoursePlan createCoursePlan(String name , Course course , Date start , Date end , User teacher , Exam attendedStudent){
-        CoursePlan coursePlan=new CoursePlan(course,name,teacher,attendedStudent,start,end);
+
+    public CoursePlan createCoursePlan(String name, Course course, Date start, Date end, User teacher, Exam attendedStudent) {
+        CoursePlan coursePlan = new CoursePlan(course, name, teacher, attendedStudent, start, end);
         return coursePlan;
     }
 
-    public ArrayList<CoursePlan> addCoursePlanArrayList(CoursePlan coursePlan){
-        ArrayList<CoursePlan> coursePlans=getTeacherCourses();
-        coursePlans.add(coursePlan);
-        return coursePlans;
+    public ArrayList<CoursePlan> addCoursePlanArrayList(CoursePlan coursePlan) {
+        teacherCourses.add(coursePlan);
+        return teacherCourses;
     }
 
-    public int resetpassword(String password,String newpassword){
-        if(this.password.equals(password)){
+    public void deleteCoursePlan(CoursePlan coursePlan) {
+        teacherCourses.remove(coursePlan);
+    }
+
+    public int resetpassword(String password, String newpassword) {
+        if (this.password.equals(password)) {
             setPassword(newpassword);
             return 1;
-        }else
+        } else
             return 0;
     }
+
     public String getUsername() {
         return username;
     }
