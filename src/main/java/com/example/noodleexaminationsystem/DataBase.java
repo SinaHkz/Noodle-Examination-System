@@ -13,7 +13,7 @@ public class DataBase {
     static Map<String , User> users = new HashMap<>();
     static Map<String , CoursePlan> coursePlans = new HashMap<>();
     static ArrayList<Course> courses = new ArrayList<>();
-    static ArrayList<Question> questions = new ArrayList<>();
+    static Map<Course,Question> questions = new HashMap<>();
 
     public static void setUsers(Map<String, User> users) {
         DataBase.users = users;
@@ -39,11 +39,11 @@ public class DataBase {
         DataBase.courses = courses;
     }
 
-    public static ArrayList<Question> getQuestions() {
+    public static Map<Course, Question> getQuestions() {
         return questions;
     }
 
-    public static void setQuestions(ArrayList<Question> questions) {
+    public static void setQuestions(Map<Course, Question> questions) {
         DataBase.questions = questions;
     }
 }
