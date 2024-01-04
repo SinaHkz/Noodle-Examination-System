@@ -4,6 +4,7 @@ import com.example.noodleexaminationsystem.Course.Course;
 import com.example.noodleexaminationsystem.Course.CoursePlan;
 import com.example.noodleexaminationsystem.Course.Exam;
 import com.example.noodleexaminationsystem.DataBase;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,9 +21,9 @@ public class User {
     private LocalDate dob;
     private ArrayList<Result> results = new ArrayList<>();
     private ArrayList<CoursePlan> teacherCourses = new ArrayList<>();
-    private ArrayList<CoursePlan> StudentcoursePlans =new ArrayList<>();
+    private ArrayList<CoursePlan> StudentcoursePlans = new ArrayList<>();
 
-    public User(String username, String password, String name, String lastName, String email, String picturePath, LocalDate dob,Gender gender) {
+    public User(String username, String password, String name, String lastName, String email, String picturePath, LocalDate dob, Gender gender) {
         this.username = username;
         this.password = password;
         this.name = name;
@@ -51,47 +52,52 @@ public class User {
         this.StudentcoursePlans = studentcoursePlans;
     }
 
-    public User searchUser(String username){
-        for (User user : DataBase.getUsers().values()){
-            if(user.getUsername().equals(username))
+    public User searchUser(String username) {
+        for (User user : DataBase.getUsers().values()) {
+            if (user.getUsername().equals(username))
                 return user;
         }
         return null;
     }
-    public static User signUp(String username ,String password ,String name ,String lastName ,String email ,String picturePath ,LocalDate dob , String gender){
-        String gender1=gender.toUpperCase();
-        User user1 = new User(username, password,name,lastName,email,picturePath,dob,Gender.valueOf(gender1));
-        DataBase.getUsers().put(username,user1);
+
+    public static User signUp(String username, String password, String name, String lastName, String email, String picturePath, LocalDate dob, String gender) {
+        String gender1 = gender.toUpperCase();
+        User user1 = new User(username, password, name, lastName, email, picturePath, dob, Gender.valueOf(gender1));
+        DataBase.getUsers().put(username, user1);
         return user1;
     }
-    public static User login(String username , String password){
-        for (User user : DataBase.getUsers().values()){
-            if (user.getUsername().equals(username) && user.getPassword().equals(password)){
+
+    public static User login(String username, String password) {
+        for (User user : DataBase.getUsers().values()) {
+            if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
                 return user;
             }
         }
         return null;
     }
-    public CoursePlan createCoursePlan(String name , Course course , Date start , Date end , User teacher , Exam attendedStudent){
-        CoursePlan coursePlan=new CoursePlan(course,name,teacher,attendedStudent,start,end);
+
+    public CoursePlan createCoursePlan(String name, Course course, Date start, Date end, User teacher, Exam attendedStudent, String picturePath) {
+        CoursePlan coursePlan = new CoursePlan(course, name, teacher, attendedStudent, start, end, picturePath);
         return coursePlan;
     }
 
-    public ArrayList<CoursePlan> addCoursePlanArrayList(CoursePlan coursePlan){
+    public ArrayList<CoursePlan> addCoursePlanArrayList(CoursePlan coursePlan) {
         teacherCourses.add(coursePlan);
         return teacherCourses;
     }
-    public void deleteCoursePlan(CoursePlan coursePlan){
+
+    public void deleteCoursePlan(CoursePlan coursePlan) {
         teacherCourses.remove(coursePlan);
     }
 
-    public int resetpassword(String password,String newpassword){
-        if(this.password.equals(password)){
+    public int resetpassword(String password, String newpassword) {
+        if (this.password.equals(password)) {
             setPassword(newpassword);
             return 1;
-        }else
+        } else
             return 0;
     }
+
     public String getUsername() {
         return username;
     }
