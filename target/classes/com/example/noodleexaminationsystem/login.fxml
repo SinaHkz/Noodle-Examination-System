@@ -14,19 +14,15 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<<<<<<< HEAD
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" stylesheets="/style-sheets/login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.noodleexaminationsystem.GenderController">
-   <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="">
-=======
+
 
 <StackPane fx:controller="com.example.noodleexaminationsystem.loginPageController" prefHeight="480.0" prefWidth="640.0" stylesheets="/style-sheets/login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" >
    <BorderPane fx:id="loginPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="">
->>>>>>> 6217d59e6023cadac6c8315d13c1baf0a0fb7c19
       <left>
          <Pane prefHeight="1080.0" prefWidth="800.0" BorderPane.alignment="CENTER">
             <children>
                <TextField fx:id="loginUsername" layoutX="230.0" layoutY="359.0" prefHeight="50.0" prefWidth="377.0" promptText="username" styleClass="border-colored-bottom" />
-               <TextField fx:id="loginPassword" layoutX="230.0" layoutY="458.0" prefHeight="50.0" prefWidth="377.0" promptText="password" styleClass="border-colored-bottom"  />
+               <PasswordField fx:id="loginPassword" layoutX="230.0" layoutY="458.0" prefHeight="50.0" prefWidth="377.0" promptText="password" styleClass="border-colored-bottom"  />
                <Button onAction="#setLoginButton" layoutX="242.0" layoutY="556.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="350.0" style="-fx-cursor: hand;" styleClass="login-button" stylesheets="@../../../style-sheets/login.css" text="Log in">
                   <font>
                      <Font size="24.0" />

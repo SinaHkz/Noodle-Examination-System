@@ -79,7 +79,7 @@ public class User {
         return null;
     }
 
-    public CoursePlan createCoursePlan(String name, Course course, Date start, Date end, User teacher, Exam attendedStudent, String picturePath) {
+    public CoursePlan createCoursePlan(String name, Course course, LocalDate start, LocalDate end, User teacher, Exam attendedStudent, String picturePath) {
         CoursePlan coursePlan = new CoursePlan(course, name, teacher, attendedStudent, start, end, picturePath);
         return coursePlan;
     }
@@ -99,6 +99,21 @@ public class User {
             return 1;
         } else
             return 0;
+    }
+
+    public ArrayList<CoursePlan> getArchivedCoursePlans(LocalDate date) {
+        ArrayList<CoursePlan> archivedCoursePlans = null;
+        ArrayList<CoursePlan> myCourses = this.getStudentcoursePlans();
+        ArrayList<CoursePlan> teacherCourses = this.getTeacherCourses();
+        for (CoursePlan coursePlan : myCourses) {
+            if (coursePlan.isActive(date))
+                archivedCoursePlans.add(coursePlan);
+        }
+        for (CoursePlan coursePlan : teacherCourses) {
+            if (coursePlan.isActive(date))
+                archivedCoursePlans.add(coursePlan);
+        }
+        return archivedCoursePlans;
     }
 
     public String getUsername() {

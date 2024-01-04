@@ -22,7 +22,7 @@
          <Pane prefHeight="1080.0" prefWidth="800.0" BorderPane.alignment="CENTER">
             <children>
                <TextField fx:id="loginUsername" layoutX="230.0" layoutY="359.0" prefHeight="50.0" prefWidth="377.0" promptText="username" styleClass="border-colored-bottom" />
-               <TextField fx:id="loginPassword" layoutX="230.0" layoutY="458.0" prefHeight="50.0" prefWidth="377.0" promptText="password" styleClass="border-colored-bottom"  />
+               <PasswordField fx:id="loginPassword" layoutX="230.0" layoutY="458.0" prefHeight="50.0" prefWidth="377.0" promptText="password" styleClass="border-colored-bottom"  />
                <Button onAction="#setLoginButton" layoutX="242.0" layoutY="556.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="350.0" style="-fx-cursor: hand;" styleClass="login-button" stylesheets="@../../../style-sheets/login.css" text="Log in">
                   <font>
                      <Font size="24.0" />

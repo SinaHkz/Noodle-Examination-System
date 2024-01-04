@@ -24,8 +24,8 @@ public class CardController implements Initializable {
     @FXML
     private Button courseName;
 
-//    @FXML
-//    private ImageView image;
+    @FXML
+    private ImageView image;
 
 //    @FXML
 //    private Label teacherName;
@@ -40,9 +40,8 @@ public class CardController implements Initializable {
                 -fx-border-radius: 20px;
                 """);
         courseName.setText(coursePlan.getName());
-//        image.setImage(new Image(new FileInputStream(coursePlan.getPicturePath())));
-//        teacherName.setText(coursePlan.getTeacher().getName() + " " + coursePlan.getTeacher().getLastName());
-//        course.setText(coursePlan.getCourse().getCourse());
+        image.setImage(new Image(new FileInputStream(coursePlan.getPicturePath())));
+
     }
 
     @Override
