@@ -1,8 +1,8 @@
-.green-background{
-    -fx-background-color: #BEE3A9;
+.blue-background{
+    -fx-background-color: #07E0D7;
 }
 .login-button{
-    -fx-background-color: #97cc99; /* Green background color */
+    -fx-background-color: #3e88da; /* Green background color */
     -fx-text-fill: white; /* White text color */
     -fx-padding: 10px 20px; /* Padding */
     -fx-border-radius: 5px; /* Border radius */
@@ -21,4 +21,10 @@
 }
 .signup-button:hover{
     -fx-background-color: #e1a524; /* Darker green on hover */
+}
+
+.border-colored-bottom{
+    -fx-border-color: #096dde;
+    -fx-border-width: 0px 0px 2px 0px;
+    -fx-background-color: transparent;
 }
