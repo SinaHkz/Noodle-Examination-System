@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
@@ -13,6 +14,12 @@
          <children>
             <Label prefHeight="144.0" prefWidth="1000.0" text="{Question}" />
             <TextField prefHeight="57.0" prefWidth="1000.0" />
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="50.0" spacing="50.0">
+         <children>
+            <FontAwesomeIconView fill="#8d1212" glyphName="TRASH" size="20" visible="false" />
+            <FontAwesomeIconView fill="#096dde" glyphName="PLUS" size="20" visible="false" />
          </children>
       </VBox>
    </children>

@@ -1,0 +1,16 @@
+.back-ground{
+    -fx-background-color: linear-gradient(to top, #9083e0, #5f94d0, #94b3d9);
+}
+
+.button{
+    -fx-background-color: transparent;
+    -fx-background-radius: 10%;
+    -fx-border-width: 2px;
+    -fx-border-color: black;
+    -fx-border-radius: 10%;
+
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}

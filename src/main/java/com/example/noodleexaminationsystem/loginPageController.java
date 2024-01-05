@@ -80,7 +80,8 @@ public class loginPageController implements Initializable {
             }
             //showing home page
             //HelloApplication.setScene("homePage.fxml");
-            HomePageController.setHomePageScene(user);
+            HelloApplication.mainUser = user;
+            HelloApplication.setScene("homePage.fxml");
             return;
         }
         loginPane.setVisible(true);
@@ -146,7 +147,8 @@ public class loginPageController implements Initializable {
                 return;
             }
             //show home page
-            HomePageController.setHomePageScene(user);
+            HelloApplication.mainUser = user;
+            HelloApplication.setScene("homePage.fxml");
         }
         loginPane.setVisible(false);
         signupPane.setVisible(true);

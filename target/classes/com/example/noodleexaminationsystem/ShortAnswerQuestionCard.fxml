@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.lang.String?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -10,16 +11,22 @@
 
 <HBox fx:id="card" alignment="CENTER" minHeight="180.0" minWidth="1000.0" styleClass="transparent" stylesheets="@../../../style-sheets/card.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.noodleexaminationsystem.CardController">
    <children>
-      <VBox prefHeight="200.0" prefWidth="1000.0">
+      <VBox prefHeight="200.0" prefWidth="1049.0">
          <children>
             <Label prefHeight="89.0" prefWidth="1000.0" text="{Question}" />
-            <Label prefHeight="111.0" prefWidth="1000.0" text="Label" />
+            <Label prefHeight="111.0" prefWidth="1000.0" text="{Choices}" />
             <ComboBox prefHeight="50.0" prefWidth="1000.0" promptText="Answer">
                <styleClass>
                   <String fx:value="button" />
                   <String fx:value="mult-answer-btn" />
                </styleClass>
             </ComboBox>
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="50.0" spacing="50.0">
+         <children>
+            <FontAwesomeIconView fill="#8d1212" glyphName="TRASH" size="20" visible="false" />
+            <FontAwesomeIconView fill="#096dde" glyphName="PLUS" size="20" visible="false" />
          </children>
       </VBox>
    </children>

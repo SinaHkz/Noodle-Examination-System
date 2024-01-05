@@ -43,6 +43,9 @@ public class CardController implements Initializable {
         image.setImage(new Image(new FileInputStream(coursePlan.getPicturePath())));
 
     }
+    public void setCoursePlanButton(){
+        HelloApplication.setScene("CoursePage.fxml");
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

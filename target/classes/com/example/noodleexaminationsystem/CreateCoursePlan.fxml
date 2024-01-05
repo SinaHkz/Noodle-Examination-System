@@ -27,7 +27,6 @@
                      <Font size="48.0" />
                   </font>
                </Label>
-               <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="98.0" styleClass="back-button" text="Back" />
             </children>
          </Pane>
       </center>
@@ -50,6 +49,7 @@
                <Label fx:id="usernameTaken" layoutX="157.0" layoutY="362.0" text="username already taken" textFill="RED" visible="false" />
                <Label fx:id="passwordLessThanEight" layoutX="338.0" layoutY="362.0" text="password must have at least 8 characters" textFill="RED" visible="false" />
                <ComboBox fx:id="comboBox" layoutX="132.0" layoutY="470.0" prefHeight="50.0" prefWidth="400.0" promptText="Course" styleClass="border-colored-bottom" />
+               <Button layoutX="11.0" layoutY="10.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="98.0" styleClass="back-button" text="Back" />
             </children>
          </Pane>
       </right>
