@@ -21,7 +21,7 @@
             <Pane layoutX="-22.0" layoutY="79.0" prefHeight="777.0" prefWidth="340.0" styleClass="gradiant-color-card">
                <children>
                   <ImageView fitHeight="247.0" fitWidth="272.0" layoutX="50.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
+                     <image >
                         <Image url="@../../../images/default-user-image.png" />
                      </image>
                   </ImageView>
@@ -30,14 +30,14 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button layoutX="7.0" layoutY="662.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="352.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Change password">
+                  <Button onAction="#setChangePasswordButton" layoutX="7.0" layoutY="662.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="352.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Change password">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
                   <FontAwesomeIconView glyphName="LOCK" layoutX="91.0" layoutY="691.0" size="18" />
                   <FontAwesomeIconView glyphName="SIGN_OUT" layoutX="114.0" layoutY="739.0" size="24" />
-                  <Button layoutX="62.0" layoutY="626.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Creat a new course">
+                  <Button onAction="#setCreateNewCourseButton" layoutX="62.0" layoutY="626.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Creat a new course">
                      <font>
                         <Font size="21.0" />
                      </font>

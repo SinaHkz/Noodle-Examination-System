@@ -18,33 +18,16 @@ import java.util.Date;
 
 public class HelloApplication extends Application {
     static Stage mainStage;
-    static ArrayList<CoursePlan> myCourses;
-    static ArrayList<CoursePlan> teacherCourses;
-    static ArrayList<CoursePlan> archivedCourses;
+    static User mainUser;
     //______________________________________________________ getter/setter_________________________________________________________
 
-    public static ArrayList<CoursePlan> getMyCourses() {
-        return myCourses;
+
+    public static User getMainUser() {
+        return mainUser;
     }
 
-    public static void setMyCourses(ArrayList<CoursePlan> myCourses) {
-        HelloApplication.myCourses = myCourses;
-    }
-
-    public static ArrayList<CoursePlan> getTeacherCourses() {
-        return teacherCourses;
-    }
-
-    public static void setTeacherCourses(ArrayList<CoursePlan> teacherCourses) {
-        HelloApplication.teacherCourses = teacherCourses;
-    }
-
-    public static ArrayList<CoursePlan> getArchivedCourses() {
-        return archivedCourses;
-    }
-
-    public static void setArchivedCourses(ArrayList<CoursePlan> archivedCourses) {
-        HelloApplication.archivedCourses = archivedCourses;
+    public static void setMainUser(User mainUser) {
+        HelloApplication.mainUser = mainUser;
     }
 
     //______________________________________________________ methods _________________________________________________________

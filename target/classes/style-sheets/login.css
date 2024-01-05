@@ -30,5 +30,9 @@
 }
 
 .back-button{
-    -fx-background-color: #007e7c;
+    -fx-background-color: #3e88da;
+}
+
+.back-button:hover{
+    -fx-background-color: #1b2594;
 }
