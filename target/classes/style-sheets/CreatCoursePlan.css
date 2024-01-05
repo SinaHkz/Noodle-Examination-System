@@ -1,0 +1,23 @@
+.creat-button{
+    -fx-background-color: #3e88da; /* Green background color */
+    -fx-text-fill: white; /* White text color */
+    -fx-padding: 10px 20px; /* Padding */
+    -fx-border-radius: 5px; /* Border radius */
+    -fx-cursor: hand; /* Cursor style */
+}
+
+.border-colored-button{
+    -fx-border-color: #096dde;
+    -fx-border-width: 0px 0px 2px 0px;
+    -fx-background-color: transparent;
+}
+
+.background-color{
+    -fx-background-color: linear-gradient(to top, #9083e0, #5f94d0, #94b3d9);
+}
+
+.text-field{
+    -fx-background-color: transparent;
+    -fx-border-width: 0px 0px 2px 0px;
+    -fx-border-color: #096DDEFF;
+}

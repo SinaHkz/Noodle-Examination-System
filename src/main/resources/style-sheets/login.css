@@ -28,3 +28,11 @@
     -fx-border-width: 0px 0px 2px 0px;
     -fx-background-color: transparent;
 }
+
+.back-button{
+    -fx-background-color: #3e88da;
+}
+
+.back-button:hover{
+    -fx-background-color: #1b2594;
+}

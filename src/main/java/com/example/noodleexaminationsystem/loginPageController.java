@@ -5,17 +5,24 @@ import com.example.noodleexaminationsystem.User.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class loginPageController implements Initializable {
+
     @FXML
     TextField signUpUsername;
     @FXML
@@ -51,99 +58,98 @@ public class loginPageController implements Initializable {
     private Label passwordLessThanEight;
 
 
-    public User setLoginButton(){
-        if (loginPane.isVisible()){
+    public void setLoginButton() throws IOException {
+        if (loginPane.isVisible()) {
 
             boolean flag = false;
-            if(loginUsername.getText().isEmpty()){
+            if (loginUsername.getText().isEmpty()) {
                 loginUsername.setStyle("-fx-prompt-text-fill: red");
                 flag = true;
             }
-            if(loginPassword.getText().isEmpty()){
+            if (loginPassword.getText().isEmpty()) {
                 loginPassword.setStyle("-fx-prompt-text-fill: red");
                 flag = true;
             }
-            if(flag){
-                return null;
+            if (flag) {
+                return;
             }
-            User user = User.login(loginUsername.getText(),loginPassword.getText());
-            if(user==null){
+            User user = User.login(loginUsername.getText(), loginPassword.getText());
+            if (user == null) {
                 incorrectPassLabel.setVisible(true);
-                return null;
+                return;
             }
-//            System.out.println(user.getUsername());
-            return user;
+            //showing home page
+            //HelloApplication.setScene("homePage.fxml");
+            HomePageController.setHomePageScene(user);
+            return;
         }
-
         loginPane.setVisible(true);
         signupPane.setVisible(false);
-        return null;
 
     }
 
-    public User setSignUpButton(){
+    public void setSignUpButton() {
         boolean flag = false;
-        if (signupPane.isVisible()){
+        if (signupPane.isVisible()) {
             comboBox.setStyle("-fx-border-color: #096dde");
             dob.setStyle("-fx-border-color: #096dde");
 
-            if(name.getText().isEmpty()){
+            if (name.getText().isEmpty()) {
                 name.setStyle("-fx-prompt-text-fill: red");
                 flag = true;
             }
-            if(lastname.getText().isEmpty()){
+            if (lastname.getText().isEmpty()) {
                 lastname.setStyle("-fx-prompt-text-fill: red");
                 flag = true;
             }
-            if(signUpUsername.getText().isEmpty()){
+            if (signUpUsername.getText().isEmpty()) {
                 signUpUsername.setStyle("-fx-prompt-text-fill: red");
                 flag = true;
             }
-            if(signUpPassword.getText().isEmpty()){
+            if (signUpPassword.getText().isEmpty()) {
                 signUpPassword.setStyle("-fx-prompt-text-fill: red");
                 flag = true;
             }
-            if(email.getText().isEmpty()){
+            if (email.getText().isEmpty()) {
                 email.setStyle("-fx-prompt-text-fill: red");
                 flag = true;
             }
 
-            if(signUpUsername.getText().isEmpty()){
+            if (signUpUsername.getText().isEmpty()) {
                 signUpUsername.setStyle("-fx-prompt-text-fill: red");
                 flag = true;
             }
-            if(picturePath.getText().isEmpty()){
+            if (picturePath.getText().isEmpty()) {
                 picturePath.setStyle("-fx-prompt-text-fill: red");
                 flag = true;
             }
-            if(dob.getValue()==null){
+            if (dob.getValue() == null) {
                 dob.setStyle("-fx-border-color: red");
                 flag = true;
             }
-            if(comboBox.getSelectionModel().getSelectedItem()==null){
+            if (comboBox.getSelectionModel().getSelectedItem() == null) {
                 comboBox.setStyle("-fx-border-color: red");
                 flag = true;
             }
 
-            if(flag)
-                return null;
+            if (flag) return;
 
-            if(signUpPassword.getText().length()<8){
+            if (signUpPassword.getText().length() < 8) {
                 passwordLessThanEight.setVisible(true);
-                return null;
+                return;
             }
 
             System.out.println(dob.getValue());
-            User user = User.signUp(signUpUsername.getText(),signUpPassword.getText(),name.getText(),lastname.getText() , email.getText(),picturePath.getText(),dob.getValue(),comboBox.getSelectionModel().getSelectedItem().toString());
-            if(user==null){
+            User user = User.signUp(signUpUsername.getText(), signUpPassword.getText(), name.getText(), lastname.getText(), email.getText(), picturePath.getText(), dob.getValue(), comboBox.getSelectionModel().getSelectedItem().toString());
+            if (user == null) {
                 usernameTaken.setVisible(true);
-                return null;
+                return;
             }
-            return user;
+            //show home page
+            HomePageController.setHomePageScene(user);
         }
         loginPane.setVisible(false);
         signupPane.setVisible(true);
-        return null;
     }
 
     @Override

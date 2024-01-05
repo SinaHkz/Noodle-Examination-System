@@ -4,6 +4,7 @@ import com.example.noodleexaminationsystem.DataBase;
 import com.example.noodleexaminationsystem.User.Result;
 import com.example.noodleexaminationsystem.User.User;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -11,13 +12,13 @@ public class CoursePlan {
     private Course course;
     private User teacher;
     private Exam attendedStudent;
-    private Date start;
-    private Date end;
+    private LocalDate start;
+    private LocalDate end;
     private String name;
     private String picturePath;
     private ArrayList<Exam> exams = new ArrayList<>();
 
-    public CoursePlan(Course course, String name, User teacher, Exam attendedStudent, Date start, Date end, String picturePath) {
+    public CoursePlan(Course course, String name, User teacher, Exam attendedStudent, LocalDate start, LocalDate end, String picturePath) {
         this.name = name;
         this.course = course;
         this.teacher = teacher;
@@ -27,8 +28,8 @@ public class CoursePlan {
         this.picturePath = picturePath;
     }
 
-    public boolean isAcitve(Date date) {
-        if (date.after(start) && date.before(end))
+    public boolean isActive(LocalDate date) {
+        if (date.isAfter(this.start) && date.isBefore(this.end))
             return true;
         else
             return false;
@@ -101,19 +102,19 @@ public class CoursePlan {
         this.teacher = teacher;
     }
 
-    public Date getStart() {
+    public LocalDate getStart() {
         return start;
     }
 
-    public void setStart(Date start) {
+    public void setStart(LocalDate start) {
         this.start = start;
     }
 
-    public Date getEnd() {
+    public LocalDate getEnd() {
         return end;
     }
 
-    public void setEnd(Date end) {
+    public void setEnd(LocalDate end) {
         this.end = end;
     }
 
