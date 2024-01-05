@@ -1,11 +1,16 @@
 package com.example.noodleexaminationsystem;
 
+import com.example.noodleexaminationsystem.Course.Course;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class CreateCoursePlanController implements Initializable {
@@ -36,10 +41,11 @@ public class CreateCoursePlanController implements Initializable {
         if(flag) return;
    }
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-//        ObservableList<String> list = FXCollections.observableArrayList();
-//        for (Course course : )
-//            list.add(course.toString());
-//        comboBox.setItems(list);
+    public void initialize(URL location, ResourceBundle resources) {
+        ObservableList<String> list = FXCollections.observableArrayList();
+        ArrayList<Course> courses = DataBase.getCourses();
+        for (Course course : courses )
+            list.add(course.getCourse());
+        comboBox.setItems(list);
     }
 }

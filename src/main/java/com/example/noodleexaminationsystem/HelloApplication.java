@@ -53,6 +53,8 @@ public class HelloApplication extends Application {
             CoursePlan coursePlan1 = new CoursePlan(new Course("OOP"), "Object Oriented", User.signUp("a", "a", "a", "a", "a", "a", date, "FEMALE"), new Exam("a"), date, date, "a");
             CoursePlan coursePlan2 = new CoursePlan(new Course("OOP"), "Object Oriented", User.signUp("a", "a", "a", "a", "a", "a", date, "FEMALE"), new Exam("a"), date, date, "a");
             CoursePlan coursePlan3 = new CoursePlan(new Course("OOP"), "Object Oriented", User.signUp("a", "a", "a", "a", "a", "a", date, "FEMALE"), new Exam("a"), date, date, "a");
+            DataBase.getCourses().add(new Course("OOP"));
+            DataBase.getCourses().add(new Course("DS"));
             admin.getStudentcoursePlans().add(coursePlan1);
             admin.getStudentcoursePlans().add(coursePlan);
             admin.getStudentcoursePlans().add(coursePlan2);
