@@ -34,14 +34,6 @@ public class HomePageController implements Initializable {
     @FXML
     private Button archiveCourseButton;
 
-
-    public static void setHomePageScene(User user) {
-        HelloApplication.setArchivedCourses(user.getArchivedCoursePlans(LocalDate.now()));
-        HelloApplication.setMyCourses(user.getStudentcoursePlans());
-        HelloApplication.setTeacherCourses(user.getTeacherCourses());
-        HelloApplication.setScene("homePage.fxml");
-    }
-
     private void setCards(ArrayList<CoursePlan> coursePlans, VBox cardVbox) {
 
         try {
@@ -60,6 +52,7 @@ public class HomePageController implements Initializable {
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource("coursePlanCard.fxml"));
                 Pane cardBox = loader.load();
+
                 CardController cardController = loader.getController();
                 try {
                     cardController.setCard(coursePlan);
@@ -77,7 +70,7 @@ public class HomePageController implements Initializable {
 
     public void setMyCourseButton() {
         myCoursesButton.getStyleClass().addAll("button-hand", "background-transparent", "top-selected-buttons");
-        teacherCourseButton.getStyleClass().clear();// <<<----------------------------------------------------------------------<   why clear?????
+        teacherCourseButton.getStyleClass().removeAll("top-selected-buttons");
         archiveCourseButton.getStyleClass().clear();
         cardVBox.setVisible(true);
         cardVBoxArchived.setVisible(false);
@@ -101,6 +94,12 @@ public class HomePageController implements Initializable {
         cardVBoxArchived.setVisible(true);
         cardVBoxTeacher.setVisible(false);
     }
+    public void setChangePasswordButton(){
+        HelloApplication.setScene("ChangePassword.fxml");
+    }
+    public void setCreateNewCourseButton(){
+        HelloApplication.setScene("CreateCoursePlan.fxml");
+    }
     public void setLogoutButton(){
         HelloApplication.setScene("login.fxml");
     }
@@ -108,9 +107,9 @@ public class HomePageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        myCourses = HelloApplication.getMyCourses();
-        teacherCourses = HelloApplication.getTeacherCourses();
-        archivedCourses = HelloApplication.getArchivedCourses();
+        myCourses = HelloApplication.mainUser.getStudentcoursePlans();
+        teacherCourses = HelloApplication.mainUser.getTeacherCourses();
+        archivedCourses = HelloApplication.mainUser.getArchivedCoursePlans(LocalDate.now());
 
         //for loop on all courses
         setCards(myCourses, cardVBox);
