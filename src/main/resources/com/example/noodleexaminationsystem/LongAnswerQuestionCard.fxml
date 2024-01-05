@@ -16,6 +16,11 @@
             <TextField prefHeight="57.0" prefWidth="1000.0" />
          </children>
       </VBox>
-      <FontAwesomeIconView fill="#8d1212" glyphName="TRASH" size="20" visible="false" />
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="50.0" spacing="50.0">
+         <children>
+            <FontAwesomeIconView fill="#8d1212" glyphName="TRASH" size="20" visible="false" />
+            <FontAwesomeIconView fill="#096dde" glyphName="PLUS" size="20" visible="false" />
+         </children>
+      </VBox>
    </children>
 </HBox>
