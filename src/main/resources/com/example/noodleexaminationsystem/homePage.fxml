@@ -43,18 +43,24 @@
                      </font>
                   </Button>
                   <FontAwesomeIconView glyphName="BOOK" layoutX="79.0" layoutY="654.0" size="18" text="" />
-                  <Button layoutX="58.0" layoutY="590.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Add User" visible="false">
+                  <Button layoutX="62.0" layoutY="525.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Add User" visible="false">
                      <font>
                         <Font size="21.0" />
                      </font>
                   </Button>
-                  <FontAwesomeIconView glyphName="PLUS" layoutX="121.0" layoutY="618.0" size="20" visible="false" wrappingWidth="22.214285850524902" />
-                  <Button layoutX="58.0" layoutY="549.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Control Site Data" visible="false">
+                  <FontAwesomeIconView glyphName="PLUS" layoutX="125.0" layoutY="553.0" size="20" visible="false" wrappingWidth="22.214285850524902" />
+                  <Button layoutX="60.0" layoutY="557.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Control Site Data" visible="false">
                      <font>
                         <Font size="21.0" />
                      </font>
                   </Button>
-                  <FontAwesomeIconView glyphName="GEAR" layoutX="87.0" layoutY="577.0" size="20" visible="false" wrappingWidth="22.214285850524902" />
+                  <FontAwesomeIconView glyphName="GEAR" layoutX="89.0" layoutY="585.0" size="20" visible="false" wrappingWidth="22.214285850524902" />
+                  <Button layoutX="64.0" layoutY="591.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Add new course title" visible="false">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Button>
+                  <FontAwesomeIconView glyphName="PLUS" layoutX="81.0" layoutY="619.0" size="20" visible="false" wrappingWidth="22.214285850524902" />
                </children>
             </Pane>
          </children>
