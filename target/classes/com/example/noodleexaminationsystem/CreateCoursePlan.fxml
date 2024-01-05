@@ -33,7 +33,7 @@
       <right>
          <Pane prefHeight="900.0" prefWidth="641.0" style="-fx-background-color: white;" stylesheets="@../../../style-sheets/login.css" BorderPane.alignment="CENTER">
             <children>
-               <Button layoutX="162.0" layoutY="572.0" mnemonicParsing="false"  prefHeight="34.0" prefWidth="350.0" style="-fx-cursor: hand;" styleClass="login-button" stylesheets="@../../../style-sheets/login.css" text="Creat Course">
+               <Button onAction="#setCreateCoursePlanButton" layoutX="162.0" layoutY="572.0" mnemonicParsing="false"  prefHeight="34.0" prefWidth="350.0" style="-fx-cursor: hand;" styleClass="login-button" stylesheets="@../../../style-sheets/login.css" text="Creat Course">
                   <font>
                      <Font size="24.0" />
                   </font>
@@ -49,11 +49,7 @@
                <Label  layoutX="157.0" layoutY="362.0" text="username already taken" textFill="RED" visible="false" />
                <Label fx:id="passwordLessThanEight" layoutX="338.0" layoutY="362.0" text="password must have at least 8 characters" textFill="RED" visible="false" />
                <ComboBox fx:id="comboBox" layoutX="132.0" layoutY="470.0" prefHeight="50.0" prefWidth="400.0" promptText="Course" styleClass="border-colored-bottom" />
-<<<<<<< HEAD
-               <Button onAction="#setCreateCoursePlanButton" layoutX="11.0" layoutY="10.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="98.0" styleClass="back-button" text="Back" />
-=======
-               <Button layoutX="11.0" layoutY="10.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="98.0" styleClass="back-button" text="Back" />
->>>>>>> 8a4b917d5e0f2c39ae37d37ac44249d86c43bdda
+               <Button onAction="#setBckButton" layoutX="11.0" layoutY="10.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="98.0" styleClass="back-button" text="Back" />
             </children>
          </Pane>
       </right>

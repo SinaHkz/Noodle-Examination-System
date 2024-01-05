@@ -15,7 +15,9 @@ public class CreateCoursePlanController implements Initializable {
    TextField coursePictureAddress;
    @FXML
     ComboBox comboBox;
-
+   public void setBckButton() {
+       HelloApplication.setScene("homePage.fxml");
+   }
    public void setCreateCoursePlanButton(){
        boolean flag=false;
        comboBox.setStyle("border-colored-bottom:#096dde");
@@ -35,6 +37,9 @@ public class CreateCoursePlanController implements Initializable {
    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+//        ObservableList<String> list = FXCollections.observableArrayList();
+//        for (Course course : )
+//            list.add(course.toString());
+//        comboBox.setItems(list);
     }
 }
