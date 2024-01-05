@@ -40,16 +40,6 @@
                         <Font size="21.0" />
                      </font>
                   </Label>
-                  <Label layoutX="83.0" layoutY="333.0" text="Number of Members">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="109.0" layoutY="293.0" text="{NUMBER}">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
                </children>
             </Pane>
          </children>

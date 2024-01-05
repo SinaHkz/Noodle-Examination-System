@@ -8,7 +8,7 @@
 /*}*/
 
 .image{
-    -fx-background-radius: 30px;
+    -fx-background-radius: 50%;
 }
 
 .card{
@@ -23,6 +23,14 @@
     -fx-background-color: transparent;
 }
 
+.border-radius{
+    -fx-background-radius: 30px;
+}
+
 .white-background{
     -fx-background-color: white;
+}
+
+.mult-answer-btn{
+    -fx-background-color: #9b9b9b;
 }

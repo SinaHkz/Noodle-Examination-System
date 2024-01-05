@@ -4,36 +4,32 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <!--pane act like a button and open course plan-->
 
-<HBox fx:id="card" prefHeight="180.0" prefWidth="300.0" styleClass="transparent" stylesheets="@../../../style-sheets/card.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.noodleexaminationsystem.CardController">
+<Pane prefHeight="180.0" prefWidth="300.0" stylesheets="@../../../style-sheets/card.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane prefHeight="178.0" prefWidth="301.0">
-         <children>
-            <ImageView fitHeight="197.0" fitWidth="324.0" layoutX="-23.0" layoutY="1.0" opacity="0.32" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../images/White.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="85.0" fitWidth="96.0" layoutX="213.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../images/Check.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="examName" layoutX="-14.0" layoutY="46.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="328.0" text="ExamName">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Button>
-         </children>
-         <styleClass>
-            <String fx:value="card" />
-            <String fx:value="transparent" />
-         </styleClass>
-      </Pane>
+      <ImageView fitHeight="197.0" fitWidth="324.0" layoutX="-23.0" layoutY="1.0" opacity="0.32" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/White.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="85.0" fitWidth="96.0" layoutX="204.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/Check.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="examName" layoutX="-14.0" layoutY="46.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="328.0" text="ExamName">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
    </children>
-</HBox>
+   <styleClass>
+      <String fx:value="card" />
+      <String fx:value="transparent" />
+      <String fx:value="exam-card" />
+   </styleClass>
+</Pane>

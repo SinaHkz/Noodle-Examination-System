@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
@@ -58,7 +59,7 @@ public class HomePageController implements Initializable {
                 }
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource("coursePlanCard.fxml"));
-                HBox cardBox = loader.load();
+                Pane cardBox = loader.load();
                 CardController cardController = loader.getController();
                 try {
                     cardController.setCard(coursePlan);
@@ -76,7 +77,7 @@ public class HomePageController implements Initializable {
 
     public void setMyCourseButton() {
         myCoursesButton.getStyleClass().addAll("button-hand", "background-transparent", "top-selected-buttons");
-        teacherCourseButton.getStyleClass().clear();
+        teacherCourseButton.getStyleClass().clear();// <<<----------------------------------------------------------------------<   why clear?????
         archiveCourseButton.getStyleClass().clear();
         cardVBox.setVisible(true);
         cardVBoxArchived.setVisible(false);

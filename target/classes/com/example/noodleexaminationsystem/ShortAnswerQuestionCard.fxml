@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<!--pane act like a button and open course plan-->
+
+<HBox fx:id="card" alignment="CENTER" minHeight="180.0" minWidth="1000.0" styleClass="transparent" stylesheets="@../../../style-sheets/card.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.noodleexaminationsystem.CardController">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="1000.0">
+         <children>
+            <Label prefHeight="89.0" prefWidth="1000.0" text="{Question}" />
+            <Label prefHeight="111.0" prefWidth="1000.0" text="Label" />
+            <ComboBox prefHeight="50.0" prefWidth="1000.0" promptText="Answer">
+               <styleClass>
+                  <String fx:value="button" />
+                  <String fx:value="mult-answer-btn" />
+               </styleClass>
+            </ComboBox>
+         </children>
+      </VBox>
+   </children>
+</HBox>

@@ -27,10 +27,7 @@
                      <Font size="48.0" />
                   </font>
                </Label>
-<<<<<<< HEAD
                <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="98.0" styleClass="back-button" text="Back" />
-=======
->>>>>>> c15ea54b91437b755a82d039679d6fae587a76a0
             </children>
          </Pane>
       </center>
