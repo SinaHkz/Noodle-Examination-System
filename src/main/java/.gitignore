@@ -1,2 +1,5 @@
 .gitignore
 NoodleTest.java
+.DS_Store
+src/test/
+target/test-classes/
