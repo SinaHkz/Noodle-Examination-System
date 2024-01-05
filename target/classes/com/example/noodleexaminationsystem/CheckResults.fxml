@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="900.0" maxWidth="1600.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" styleClass="back-ground" stylesheets="@../../../style-sheets/CheckResults.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="736.0" layoutY="21.0" text="Results">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+      <ScrollPane layoutX="61.0" layoutY="91.0" prefHeight="754.0" prefWidth="1480.0" style="-fx-background-color: transparent;">
+         <content>
+            <VBox prefHeight="751.0" prefWidth="1478.0" />
+         </content>
+      </ScrollPane>
+   </children>
+</Pane>
