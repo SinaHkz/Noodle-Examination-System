@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.lang.String?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -13,7 +14,7 @@
       <VBox prefHeight="200.0" prefWidth="1000.0">
          <children>
             <Label prefHeight="89.0" prefWidth="1000.0" text="{Question}" />
-            <Label prefHeight="111.0" prefWidth="1000.0" text="Label" />
+            <Label prefHeight="111.0" prefWidth="1000.0" text="{Choices}" />
             <ComboBox prefHeight="50.0" prefWidth="1000.0" promptText="Answer">
                <styleClass>
                   <String fx:value="button" />
@@ -22,5 +23,6 @@
             </ComboBox>
          </children>
       </VBox>
+      <FontAwesomeIconView fill="#8d1212" glyphName="TRASH" size="20" visible="false" />
    </children>
 </HBox>

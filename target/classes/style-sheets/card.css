@@ -8,7 +8,7 @@
 /*}*/
 
 .image{
-    -fx-background-radius: 50%;
+    -fx-background-radius: 25%;
 }
 
 .card{
@@ -24,11 +24,18 @@
 }
 
 .border-radius{
-    -fx-background-radius: 30px;
+    -fx-background-radius: 15%;
 }
 
 .white-background{
     -fx-background-color: white;
+}
+
+.exam-card{
+    -fx-border-color: black;
+    -fx-border-width: 3px;
+    -fx-border-radius: 20%;
+    -fx-background-radius: 20%;
 }
 
 .mult-answer-btn{

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="480.0" prefWidth="640.0" stylesheets="/style-sheets/login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.noodleexaminationsystem.loginPageController">
+<StackPane prefHeight="480.0" prefWidth="640.0" stylesheets="/style-sheets/login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.noodleexaminationsystem.CreateCoursePlanController">
    <BorderPane fx:id="signupPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" stylesheets="">
       <center>
          <Pane prefHeight="900.0" prefWidth="925.0" styleClass="blue-background" stylesheets="@../../../style-sheets/login.css" BorderPane.alignment="CENTER">
@@ -27,14 +27,13 @@
                      <Font size="48.0" />
                   </font>
                </Label>
-               <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="98.0" styleClass="back-button" text="Back" />
             </children>
          </Pane>
       </center>
       <right>
          <Pane prefHeight="900.0" prefWidth="641.0" style="-fx-background-color: white;" stylesheets="@../../../style-sheets/login.css" BorderPane.alignment="CENTER">
             <children>
-               <Button layoutX="162.0" layoutY="572.0" mnemonicParsing="false" onAction="#setLoginButton" prefHeight="34.0" prefWidth="350.0" style="-fx-cursor: hand;" styleClass="login-button" stylesheets="@../../../style-sheets/login.css" text="Creat Course">
+               <Button layoutX="162.0" layoutY="572.0" mnemonicParsing="false"  prefHeight="34.0" prefWidth="350.0" style="-fx-cursor: hand;" styleClass="login-button" stylesheets="@../../../style-sheets/login.css" text="Creat Course">
                   <font>
                      <Font size="24.0" />
                   </font>
@@ -45,11 +44,12 @@
                   </font>
                </Label>
                <FontAwesomeIconView fill="#096dde" glyphName="BOOK" layoutX="310.0" layoutY="99.0" size="50" />
-               <TextField fx:id="name" layoutX="130.0" layoutY="286.0" prefHeight="50.0" prefWidth="400.0" promptText="Course Name" styleClass="border-colored-bottom" />
-               <TextField fx:id="picturePath" layoutX="130.0" layoutY="377.0" prefHeight="50.0" prefWidth="400.0" promptText="Course picture address" styleClass="border-colored-bottom" />
-               <Label fx:id="usernameTaken" layoutX="157.0" layoutY="362.0" text="username already taken" textFill="RED" visible="false" />
+               <TextField fx:id="courseName" layoutX="130.0" layoutY="286.0" prefHeight="50.0" prefWidth="400.0" promptText="Course Name" styleClass="border-colored-bottom" />
+               <TextField  fx:id="coursePictureAddress" layoutX="130.0" layoutY="377.0" prefHeight="50.0" prefWidth="400.0" promptText="Course picture address" styleClass="border-colored-bottom" />
+               <Label  layoutX="157.0" layoutY="362.0" text="username already taken" textFill="RED" visible="false" />
                <Label fx:id="passwordLessThanEight" layoutX="338.0" layoutY="362.0" text="password must have at least 8 characters" textFill="RED" visible="false" />
                <ComboBox fx:id="comboBox" layoutX="132.0" layoutY="470.0" prefHeight="50.0" prefWidth="400.0" promptText="Course" styleClass="border-colored-bottom" />
+               <Button onAction="#setCreateCoursePlanButton" layoutX="11.0" layoutY="10.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="98.0" styleClass="back-button" text="Back" />
             </children>
          </Pane>
       </right>
