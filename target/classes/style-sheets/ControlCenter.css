@@ -1,0 +1,46 @@
+.gradiant-color-background {
+    /*-fx-background-color: linear-gradient(to top, #6c58e3, #287ad7, #5a97e0);*/
+    -fx-background-color: linear-gradient(to top, #9083e0, #5f94d0, #94b3d9);
+}
+
+.top-button{
+    -fx-cursor: hand;
+    -fx-background-color: transparent;
+}
+
+.top-selected-buttons{
+    -fx-background-color: linear-gradient(to top, #9083e0, #5f94d0, #94b3d9);
+    -fx-background-radius: 10px 10px 0px 0px;
+    -fx-border-color: black;
+    -fx-border-radius: 10px 10px 0px 0px;
+}
+
+
+.list-view{
+    -fx-border-color: black;
+    -fx-border-radius: 40px;
+    -fx-background-radius: 40px;
+    -fx-background-color: rgb(255,255,255,0.4);
+}
+
+.btn{
+    -fx-background-color: #3e88da; /* Green background color */
+    -fx-text-fill: white; /* White text color */
+    -fx-padding: 10px 20px; /* Padding */
+    -fx-background-radius: 20px; /* Border radius */
+    -fx-cursor: hand; /* Cursor style */
+    -fx-border-width: 5px;
+}
+.btn:hover{
+    -fx-background-color: #1b2594; /* Darker green on hover */
+}
+
+.scroll-pane{
+    -fx-background-color: transparent;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}

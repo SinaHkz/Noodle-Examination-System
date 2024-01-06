@@ -63,8 +63,8 @@ public class HelloApplication extends Application {
             admin.getTeacherCourses().add(coursePlan);
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
             mainStage.setScene(new Scene(fxmlLoader.load()));
-            mainStage.setMaxWidth(1600);
-            mainStage.setMaxHeight(900);
+//            mainStage.setMaxWidth(1600);
+//            mainStage.setMaxHeight(900);
             mainStage.show();
 
         } catch (Exception e) {

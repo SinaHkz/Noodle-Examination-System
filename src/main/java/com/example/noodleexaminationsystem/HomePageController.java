@@ -28,11 +28,16 @@ public class HomePageController implements Initializable {
     @FXML
     private VBox cardVBoxArchived;
     @FXML
+    private Pane optionBox;
+    @FXML
     private Button myCoursesButton;
     @FXML
     private Button teacherCourseButton;
     @FXML
     private Button archiveCourseButton;
+    @FXML
+    private Button option;
+
 
     private void setCards(ArrayList<CoursePlan> coursePlans, VBox cardVbox) {
 
@@ -69,30 +74,47 @@ public class HomePageController implements Initializable {
     }
 
     public void setMyCourseButton() {
-        myCoursesButton.getStyleClass().addAll("button-hand", "background-transparent", "top-selected-buttons");
-        teacherCourseButton.getStyleClass().removeAll("top-selected-buttons");
-        archiveCourseButton.getStyleClass().clear();
+        myCoursesButton.getStyleClass().addAll("button-hand", "background-transparent", "selected-buttons");
+        teacherCourseButton.getStyleClass().removeAll("selected-buttons");
+        archiveCourseButton.getStyleClass().removeAll("selected-buttons");
+        option.getStyleClass().removeAll("selected-buttons");
         cardVBox.setVisible(true);
         cardVBoxArchived.setVisible(false);
         cardVBoxTeacher.setVisible(false);
+        optionBox.setVisible(false);
     }
 
     public void setTeacherCourseButton() {
-        teacherCourseButton.getStyleClass().addAll("button-hand", "background-transparent", "top-selected-buttons");
-        myCoursesButton.getStyleClass().clear();
-        archiveCourseButton.getStyleClass().clear();
+        teacherCourseButton.getStyleClass().addAll("button-hand", "background-transparent", "selected-buttons");
+        myCoursesButton.getStyleClass().removeAll("selected-buttons");
+        archiveCourseButton.getStyleClass().removeAll("selected-buttons");
+        option.getStyleClass().removeAll("selected-buttons");
         cardVBox.setVisible(false);
         cardVBoxArchived.setVisible(false);
         cardVBoxTeacher.setVisible(true);
+        optionBox.setVisible(false);
     }
 
     public void setArchivedCourseButton() {
-        archiveCourseButton.getStyleClass().addAll("button-hand", "background-transparent", "top-selected-buttons");
-        teacherCourseButton.getStyleClass().clear();
-        myCoursesButton.getStyleClass().clear();
+        archiveCourseButton.getStyleClass().addAll("button-hand", "background-transparent", "selected-buttons");
+        teacherCourseButton.getStyleClass().removeAll("selected-buttons");
+        myCoursesButton.getStyleClass().removeAll("selected-buttons");
+        option.getStyleClass().removeAll("selected-buttons");
         cardVBox.setVisible(false);
         cardVBoxArchived.setVisible(true);
         cardVBoxTeacher.setVisible(false);
+        optionBox.setVisible(false);
+    }
+
+    public void setOptionButton(){
+        option.getStyleClass().addAll("button-hand", "background-transparent", "selected-buttons");
+        archiveCourseButton.getStyleClass().removeAll("selected-buttons");
+        teacherCourseButton.getStyleClass().removeAll("selected-buttons");
+        myCoursesButton.getStyleClass().removeAll("selected-buttons");
+        cardVBox.setVisible(false);
+        cardVBoxArchived.setVisible(false);
+        cardVBoxTeacher.setVisible(false);
+        optionBox.setVisible(true);
     }
     public void setChangePasswordButton(){
         HelloApplication.setScene("ChangePassword.fxml");
