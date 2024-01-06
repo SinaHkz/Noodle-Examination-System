@@ -1,8 +1,3 @@
-.gradiant-color-background {
-    /*-fx-background-color: linear-gradient(to top, #6c58e3, #287ad7, #5a97e0);*/
-    -fx-background-color: linear-gradient(to top, #9083e0, #5f94d0, #94b3d9);
-}
-
 .top-button{
     -fx-cursor: hand;
     -fx-background-color: transparent;
@@ -43,4 +38,46 @@
 
 .scroll-pane > .viewport {
     -fx-background-color: transparent;
+}
+
+.selected-buttons{
+    -fx-background-color: rgb(255,255,255,0.5);
+    -fx-background-radius: 5px;
+    -fx-border-radius: 2px;
+}
+.card{
+    -fx-background-color: rgb(47, 77, 178,0.3);
+    -fx-background-radius: 15px;
+}
+
+.gradiant-color-background {
+    -fx-background-color: #e1e1e1;
+}
+
+.gradiant-color-card {
+    -fx-background-color: #9f9f9f;
+    -fx-border-color: black;
+}
+
+.left-pane{
+    -fx-background-color: linear-gradient(to top, #2f4db2, #ececec);
+}
+
+.plus-btn{
+    -fx-background-color: #3e88da;
+    -fx-text-fill: white; /* White text color */
+    -fx-background-radius: 10px; /* Border radius */
+    -fx-cursor: hand; /* Cursor style */
+}
+
+.minus-btn{
+    -fx-background-color: #da3e5b; /* Green background color */
+    -fx-text-fill: white; /* White text color */
+    -fx-background-radius: 10px; /* Border radius */
+    -fx-cursor: hand; /* Cursor style */
+}
+
+.blue-plus-box{
+    -fx-background-color: rgba(62, 136, 218, 0.1);
+    -fx-background-radius: 20px;
 }

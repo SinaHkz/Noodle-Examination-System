@@ -14,6 +14,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.effect.DropShadow?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" styleClass="gradiant-color-background" stylesheets="@../../../style-sheets/homepage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.noodleexaminationsystem.HomePageController">
    <left>
       <Pane prefHeight="800.0" prefWidth="352.0" BorderPane.alignment="CENTER">
@@ -22,7 +25,7 @@
                <children>
                   <Pane prefHeight="362.0" prefWidth="381.0">
                      <children>
-                        <ImageView fitHeight="247.0" fitWidth="272.0" layoutX="73.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="profileImage" fitHeight="247.0" fitWidth="272.0" layoutX="73.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../images/default-user-image.png" />
                            </image>
