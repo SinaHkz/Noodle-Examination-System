@@ -91,7 +91,7 @@
          <children>
             <ScrollPane layoutX="51.0" layoutY="38.0" prefHeight="825.0" prefWidth="1163.0" style="-fx-background-color: transparent;">
                <content>
-                  <StackPane prefHeight="857.0" prefWidth="1241.0">
+                  <StackPane prefHeight="820.0" prefWidth="1160.0">
                      <VBox fx:id="cardVBox" prefHeight="735.0" prefWidth="1241.0" spacing="15.0" />
                      <VBox fx:id="cardVBoxTeacher" prefHeight="735.0" prefWidth="1241.0" spacing="15.0" visible="false" />
                      <VBox fx:id="cardVBoxArchived" prefHeight="735.0" prefWidth="1241.0" spacing="15.0" visible="false" />
@@ -127,7 +127,7 @@
                               </styleClass>
                            </Button>
                            <FontAwesomeIconView glyphName="LOCK" layoutX="965.0" layoutY="121.0" size="25" />
-                           <Button layoutX="65.0" layoutY="337.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="300.0" text="App Control Center">
+                           <Button layoutX="65.0" layoutY="337.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="300.0" text="App Control Center" visible="false">
                               <font>
                                  <Font size="29.0" />
                               </font>
@@ -136,7 +136,7 @@
                                  <String fx:value="card" />
                               </styleClass>
                            </Button>
-                           <FontAwesomeIconView glyphName="GEAR" layoutX="205.0" layoutY="403.0" size="25" text="" wrappingWidth="15.850577354431152" />
+                           <FontAwesomeIconView glyphName="GEAR" layoutX="205.0" layoutY="403.0" size="25" text="" visible="false" wrappingWidth="15.850577354431152" />
                         </children>
                      </Pane>
                   </StackPane>

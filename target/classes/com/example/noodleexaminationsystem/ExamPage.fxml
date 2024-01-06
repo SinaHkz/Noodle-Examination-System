@@ -14,48 +14,84 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" styleClass="gradiant-color-background" stylesheets="@../../../style-sheets/homepage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.noodleexaminationsystem.HomePageController">
    <left>
-      <Pane prefHeight="800.0" prefWidth="352.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="800.0" prefWidth="352.0" styleClass="left-pane" BorderPane.alignment="CENTER">
          <children>
-            <Pane layoutX="-22.0" layoutY="79.0" prefHeight="777.0" prefWidth="340.0" styleClass="gradiant-color-card">
+            <Pane layoutX="-22.0" layoutY="-1.0" prefHeight="900.0" prefWidth="376.0">
                <children>
-                  <Button layoutX="1.0" layoutY="709.0" mnemonicParsing="false" onAction="#setLogoutButton" prefHeight="44.0" prefWidth="352.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Submit &amp; Exit">
+                  <Button layoutX="22.0" layoutY="854.0" mnemonicParsing="false" onAction="#setLogoutButton" prefHeight="44.0" prefWidth="352.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Submit &amp; Exit">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button layoutX="1.0" layoutY="665.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="352.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Delete Exam" visible="false">
+                  <FontAwesomeIconView glyphName="CHECK" layoutX="105.0" layoutY="884.0" size="24" />
+                  <Button layoutX="57.0" layoutY="636.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Delete Exam">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <FontAwesomeIconView glyphName="TRASH" layoutX="94.0" layoutY="694.0" size="18" visible="false" />
-                  <FontAwesomeIconView glyphName="CHECK" layoutX="84.0" layoutY="739.0" size="24" />
-                  <Button layoutX="56.0" layoutY="625.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Finish Exam Now" visible="false">
+                  <Button layoutX="57.0" layoutY="573.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Finish Exam Now">
                      <font>
                         <Font size="21.0" />
                      </font>
                   </Button>
-                  <Button layoutX="27.0" layoutY="82.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="106.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Started: ">
+                  <FontAwesomeIconView glyphName="ARROW_LEFT" layoutX="92.0" layoutY="599.0" size="18" />
+                  <FontAwesomeIconView glyphName="TRASH" layoutX="116.0" layoutY="662.0" size="18" />
+                  <Button layoutX="42.0" layoutY="222.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="106.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Started: ">
                      <font>
                         <Font size="21.0" />
                      </font>
                   </Button>
-                  <Button layoutX="118.0" layoutY="84.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="209.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="{Start date and time}">
+                  <Button layoutX="138.0" layoutY="224.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="209.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="{Start date and time}">
                      <font>
                         <Font size="21.0" />
                      </font>
                   </Button>
-                  <Button layoutX="23.0" layoutY="128.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="106.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="End">
+                  <Button layoutX="25.0" layoutY="268.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="106.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="End:">
                      <font>
                         <Font size="21.0" />
                      </font>
                   </Button>
-                  <Button layoutX="114.0" layoutY="130.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="209.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="{End date and time}">
+                  <Button layoutX="135.0" layoutY="270.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="209.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="{End date and time}">
                      <font>
                         <Font size="21.0" />
                      </font>
                   </Button>
-                  <FontAwesomeIconView glyphName="ARROW_LEFT" layoutX="84.0" layoutY="648.0" size="18" visible="false" />
+                  <Button fx:id="myCoursesButton" layoutX="57.0" layoutY="380.0" mnemonicParsing="false" onAction="#setMyCourseButton" prefHeight="39.0" prefWidth="264.0" text="Exam">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="button-hand" />
+                        <String fx:value="background-transparent" />
+                        <String fx:value="selected-buttons" />
+                     </styleClass>
+                  </Button>
+                  <Label alignment="CENTER" layoutX="20.0" layoutY="21.0" prefHeight="96.0" prefWidth="361.0" style="-fx-label-padding: 30px 0px 0px 0px;" text="{Exam Tilte}">
+                     <font>
+                        <Font size="54.0" />
+                     </font>
+                  </Label>
+                  <Line endX="197.0" layoutX="177.0" layoutY="854.0" opacity="0.56" startX="-154.99998474121094" />
+                  <Button fx:id="teacherCourseButton" layoutX="57.0" layoutY="451.0" mnemonicParsing="false" onAction="#setTeacherCourseButton" prefHeight="39.0" prefWidth="264.0" text="Add Question">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="button-hand" />
+                        <String fx:value="background-transparent" />
+                        <String fx:value="top-buttons" />
+                     </styleClass>
+                  </Button>
+                  <Button fx:id="teacherCourseButton1" layoutX="56.0" layoutY="511.0" mnemonicParsing="false" onAction="#setTeacherCourseButton" prefHeight="39.0" prefWidth="264.0" text="Check Results">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="button-hand" />
+                        <String fx:value="background-transparent" />
+                        <String fx:value="top-buttons" />
+                     </styleClass>
+                  </Button>
                </children>
             </Pane>
          </children>
@@ -64,58 +100,23 @@
    <center>
       <Pane prefHeight="800.0" prefWidth="908.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" layoutX="7.0" layoutY="40.0" prefHeight="96.0" prefWidth="361.0" style="-fx-label-padding: 30px 0px 0px 0px;" text="{Exam Tilte}">
-               <font>
-                  <Font size="54.0" />
-               </font>
-            </Label>
-            <ScrollPane layoutX="7.0" layoutY="165.0" prefHeight="747.0" prefWidth="1252.0" style="-fx-background-color: transparent;">
+            <ScrollPane layoutX="55.0" layoutY="53.0" prefHeight="812.0" prefWidth="1140.0" style="-fx-background-color: transparent;">
                <content>
-                  <StackPane>
-                     <VBox fx:id="cardVBoxExam" prefHeight="735.0" prefWidth="1241.0" spacing="15.0">
+                  <StackPane prefHeight="801.0" prefWidth="1138.0">
+                     <VBox fx:id="cardVBoxExam" prefHeight="735.0" prefWidth="1138.0" spacing="15.0">
                         <children>
-<!--                           visible when there is no question to present-->
+   <!--                           visible when there is no question to present-->
                            <Label text="No Question added yet" textFill="RED" visible="false">
                               <font>
                                  <Font size="48.0" />
                               </font>
                            </Label>
-                        </children></VBox>
+                        </children>
+                     </VBox>
                      <VBox fx:id="cardVBoxAddQuestion" prefHeight="735.0" prefWidth="1241.0" spacing="15.0" visible="false" />
                   </StackPane>
                </content>
             </ScrollPane>
-            <Line endX="1149.0" endY="1.52587890625E-5" layoutX="99.0" layoutY="131.0" startX="-100.0" />
-            <Button fx:id="myCoursesButton" layoutX="400.0" layoutY="82.0" mnemonicParsing="false" onAction="#setMyCourseButton" prefHeight="48.0" prefWidth="203.0" text="Exam">
-               <font>
-                  <Font size="20.0" />
-               </font>
-               <styleClass>
-                  <String fx:value="button-hand" />
-                  <String fx:value="background-transparent" />
-                  <String fx:value="top-selected-buttons" />
-               </styleClass>
-            </Button>
-            <Button fx:id="teacherCourseButton" layoutX="676.0" layoutY="82.0" mnemonicParsing="false" onAction="#setTeacherCourseButton" prefHeight="48.0" prefWidth="203.0" text="Add Question" visible="false">
-               <font>
-                  <Font size="20.0" />
-               </font>
-               <styleClass>
-                  <String fx:value="button-hand" />
-                  <String fx:value="background-transparent" />
-                  <String fx:value="top-buttons" />
-               </styleClass>
-            </Button>
-            <Button fx:id="teacherCourseButton1" layoutX="959.0" layoutY="83.0" mnemonicParsing="false" onAction="#setTeacherCourseButton" prefHeight="48.0" prefWidth="203.0" text="Check Results" visible="false">
-               <font>
-                  <Font size="20.0" />
-               </font>
-               <styleClass>
-                  <String fx:value="button-hand" />
-                  <String fx:value="background-transparent" />
-                  <String fx:value="top-buttons" />
-               </styleClass>
-            </Button>
          </children>
       </Pane>
    </center>
