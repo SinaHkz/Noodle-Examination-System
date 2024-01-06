@@ -89,9 +89,9 @@
    <center>
       <Pane prefHeight="800.0" prefWidth="908.0" BorderPane.alignment="CENTER">
          <children>
-            <ScrollPane layoutX="-3.0" layoutY="38.0" prefHeight="874.0" prefWidth="1262.0" style="-fx-background-color: transparent;">
+            <ScrollPane layoutX="51.0" layoutY="38.0" prefHeight="825.0" prefWidth="1163.0" style="-fx-background-color: transparent;">
                <content>
-                  <StackPane prefHeight="857.0" prefWidth="1241.0">
+                  <StackPane prefHeight="820.0" prefWidth="1160.0">
                      <VBox fx:id="cardVBox" prefHeight="735.0" prefWidth="1241.0" spacing="15.0" />
                      <VBox fx:id="cardVBoxTeacher" prefHeight="735.0" prefWidth="1241.0" spacing="15.0" visible="false" />
                      <VBox fx:id="cardVBoxArchived" prefHeight="735.0" prefWidth="1241.0" spacing="15.0" visible="false" />
