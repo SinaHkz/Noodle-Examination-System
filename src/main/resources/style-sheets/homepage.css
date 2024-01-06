@@ -30,15 +30,15 @@
     -fx-background-radius: 20px;
 }
 
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
 /*toggle class for buttons when another clicked         <-------------<-------------<-------------<-------------*/
+
 .top-selected-buttons{
     -fx-background-color: linear-gradient(to top, #9083e0, #5f94d0, #94b3d9);
     -fx-background-radius: 10px 10px 0px 0px;
     -fx-border-color: black;
     -fx-border-radius: 10px 10px 0px 0px;
-}
-
-.scroll-pane > .viewport {
-    -fx-background-color: transparent;
 }
 
