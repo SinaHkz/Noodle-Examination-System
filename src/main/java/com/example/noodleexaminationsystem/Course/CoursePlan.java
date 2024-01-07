@@ -18,22 +18,35 @@ public class CoursePlan {
     private String picturePath;
     private ArrayList<Exam> exams = new ArrayList<>();
 
-    public CoursePlan(Course course, String name, User teacher, Exam attendedStudent, LocalDate start, LocalDate end, String picturePath) {
+    private CoursePlan(Course course, String name, User teacher, Exam attendedStudent, LocalDate start, String picturePath) {
         this.name = name;
         this.course = course;
         this.teacher = teacher;
         this.attendedStudent = attendedStudent;
         this.start = start;
-        this.end = end;
+        this.end = null;
         this.picturePath = picturePath;
     }
 
     public boolean isActive(LocalDate date) {
+        if(this.end == null){
+            return true;
+        }
         if (date.isAfter(this.start) && date.isBefore(this.end))
             return true;
         else
             return false;
     }
+    public static CoursePlan addCoursePlan(String courseName, String name, User teacher, Exam attendedStudent, LocalDate start, String picturePath){
+        Course course = DataBase.getCourses().get(courseName);
+        if(teacher.getTeacherCourses().get(name)!=null){
+            return null;
+        }
+        CoursePlan coursePlan = new CoursePlan(course,name,teacher,attendedStudent,start,picturePath);
+        teacher.getTeacherCourses().put(name,coursePlan);
+        return coursePlan;
+    }
+
     public  void deleteExam(Exam exam){
         this.exams.remove(exam);
     }

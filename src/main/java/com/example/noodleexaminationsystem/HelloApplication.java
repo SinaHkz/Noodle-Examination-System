@@ -59,23 +59,23 @@ public class HelloApplication extends Application {
         try {
             LocalDate date = LocalDate.parse("2007-12-03");
             User admin = User.signUp("admin","admin","admin","admin","jfeij","src/main/resources/images/test_1_profile.jpg",date,"FEMALE");
-            DataBase.getCourses().put("OOP" , Course.addCourse("OOP"));
-            DataBase.getCourses().put("DS" , Course.addCourse("DS"));
-            CoursePlan coursePlan = new CoursePlan(DataBase.getCourses().get("OOP"), "Object Oriented", User.signUp("a", "a", "a", "a", "a", "a", date, "FEMALE"), new Exam("a"), date, date, "a");
-            CoursePlan coursePlan1 = new CoursePlan(DataBase.getCourses().get("OOP"), "Object Oriented", User.signUp("a", "a", "a", "a", "a", "a", date, "FEMALE"), new Exam("a"), date, date, "a");
-            CoursePlan coursePlan2 = new CoursePlan(DataBase.getCourses().get("OOP"), "Object Oriented", User.signUp("a", "a", "a", "a", "a", "a", date, "FEMALE"), new Exam("a"), date, date, "a");
-            CoursePlan coursePlan3 = new CoursePlan(DataBase.getCourses().get("OOP"), "Object Oriented", User.signUp("a", "a", "a", "a", "a", "a", date, "FEMALE"), new Exam("a"), date, date, "a");
-            admin.getStudentcoursePlans().add(coursePlan1);
+            Course.addCourse("OOP");
+            Course.addCourse("Ds");
+            User teacher = User.signUp("teacher","paoi","ijf","ifje","ejia","fie",date ,"female");
+            CoursePlan coursePlan = CoursePlan.addCoursePlan("OOP","shit",teacher,new Exam("iei"),date,"fj");
+            CoursePlan coursePlan1 = CoursePlan.addCoursePlan("OOP","shit1",teacher,new Exam("iei"),date,"fj");
+            CoursePlan coursePlan2 = CoursePlan.addCoursePlan("OOP","shit2",teacher,new Exam("iei"),date,"fj");
             admin.getStudentcoursePlans().add(coursePlan);
+            admin.getStudentcoursePlans().add(coursePlan1);
             admin.getStudentcoursePlans().add(coursePlan2);
-            admin.getStudentcoursePlans().add(coursePlan3);
-            admin.getTeacherCourses().add(coursePlan);
-            admin.getTeacherCourses().add(coursePlan);
+            admin.getTeacherCourses().put(coursePlan.getName(),coursePlan);
+            admin.getTeacherCourses().put(coursePlan.getName(),coursePlan);
+            admin.getArchivedCoursePlans(date).add(coursePlan);
 
 
 
             //first scene
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CreateCourse.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
             mainStage.setScene(new Scene(fxmlLoader.load()));
 //            mainStage.setMaxWidth(1600);
 //            mainStage.setMaxHeight(900);

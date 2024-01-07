@@ -22,6 +22,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.ResourceBundle;
 
 public class HomePageController implements Initializable {
@@ -154,7 +155,7 @@ public class HomePageController implements Initializable {
         }
 
         myCourses = HelloApplication.mainUser.getStudentcoursePlans();
-        teacherCourses = HelloApplication.mainUser.getTeacherCourses();
+        teacherCourses = new ArrayList<> (HelloApplication.mainUser.getTeacherCourses().values());
         archivedCourses = HelloApplication.mainUser.getArchivedCoursePlans(LocalDate.now());
 
         //for loop on all courses

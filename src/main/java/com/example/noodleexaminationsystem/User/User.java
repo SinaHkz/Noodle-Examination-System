@@ -7,9 +7,7 @@ import com.example.noodleexaminationsystem.DataBase;
 import javafx.scene.chart.PieChart;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
+import java.util.*;
 
 public class User {
     private String username;
@@ -21,7 +19,7 @@ public class User {
     private String picturePath;
     private LocalDate dob;
     private ArrayList<Result> results = new ArrayList<>();
-    private ArrayList<CoursePlan> teacherCourses = new ArrayList<>();
+    private HashMap<String ,CoursePlan> teacherCourses = new HashMap<>();
     private ArrayList<CoursePlan> StudentcoursePlans = new ArrayList<>();
 
     private User(String username, String password, String name, String lastName, String email, String picturePath, LocalDate dob, Gender gender) {
@@ -79,21 +77,16 @@ public class User {
         return null;
     }
 
-    public CoursePlan createCoursePlan(String name, Course course, LocalDate start, LocalDate end, User teacher, Exam attendedStudent, String picturePath) {
-        CoursePlan coursePlan = new CoursePlan(course, name, teacher, attendedStudent, start, end, picturePath);
-        return coursePlan;
-    }
-
-    public ArrayList<CoursePlan> addCoursePlanArrayList(CoursePlan coursePlan) {
-        teacherCourses.add(coursePlan);
-        return teacherCourses;
-    }
 
     public void deleteCoursePlan(CoursePlan coursePlan) {
         teacherCourses.remove(coursePlan);
     }
+    public void archiveCoursePlan(CoursePlan coursePlan){
+        coursePlan.setEnd(LocalDate.now());
+    }
 
-    public int resetpassword(String password, String newpassword) {
+
+    public int resetPassword(String password, String newpassword) {
         if (this.password.equals(password)) {
             setPassword(newpassword);
             return 1;
@@ -102,9 +95,9 @@ public class User {
     }
 
     public ArrayList<CoursePlan> getArchivedCoursePlans(LocalDate date) {
-        ArrayList<CoursePlan> archivedCoursePlans = null;
+        ArrayList<CoursePlan> archivedCoursePlans = new ArrayList<>();
         ArrayList<CoursePlan> myCourses = this.getStudentcoursePlans();
-        ArrayList<CoursePlan> teacherCourses = this.getTeacherCourses();
+        Collection<CoursePlan> teacherCourses = this.getTeacherCourses().values();
         for (CoursePlan coursePlan : myCourses) {
             if (coursePlan.isActive(date))
                 archivedCoursePlans.add(coursePlan);
@@ -180,11 +173,11 @@ public class User {
         this.results = results;
     }
 
-    public ArrayList<CoursePlan> getTeacherCourses() {
+    public HashMap<String, CoursePlan> getTeacherCourses() {
         return teacherCourses;
     }
 
-    public void setTeacherCourses(ArrayList<CoursePlan> teacherCourses) {
+    public void setTeacherCourses(HashMap<String, CoursePlan> teacherCourses) {
         this.teacherCourses = teacherCourses;
     }
 }
