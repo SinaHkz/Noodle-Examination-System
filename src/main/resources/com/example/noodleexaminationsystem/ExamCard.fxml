@@ -10,7 +10,7 @@
 
 <!--pane act like a button and open course plan-->
 
-<Pane prefHeight="180.0" prefWidth="300.0" stylesheets="@../../../style-sheets/card.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<Pane styleClass="hand" prefHeight="180.0" prefWidth="300.0" stylesheets="@../../../style-sheets/card.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="197.0" fitWidth="324.0" layoutX="-23.0" layoutY="1.0" opacity="0.32" pickOnBounds="true" preserveRatio="true">
          <image>
