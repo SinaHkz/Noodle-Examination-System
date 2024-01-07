@@ -29,8 +29,8 @@
             </children>
          </Pane>
       </center>
-      <right>
-         <Pane prefHeight="900.0" prefWidth="641.0" style="-fx-background-color: white;" stylesheets="@../../../style-sheets/login.css" BorderPane.alignment="CENTER">
+      <left>
+         <Pane prefHeight="900.0" prefWidth="622.0" style="-fx-background-color: white;" stylesheets="@../../../style-sheets/login.css" BorderPane.alignment="CENTER">
             <children>
                <Button layoutX="150.0" layoutY="467.0" mnemonicParsing="false" onAction="#setLoginButton" prefHeight="34.0" prefWidth="350.0" style="-fx-cursor: hand;" styleClass="login-button" stylesheets="@../../../style-sheets/login.css" text="Add">
                   <font>
@@ -49,6 +49,6 @@
                <Button layoutX="8.0" layoutY="11.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="98.0" styleClass="back-button" text="Back" />
             </children>
          </Pane>
-      </right>
+      </left>
    </BorderPane>
 </StackPane>
