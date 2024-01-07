@@ -9,9 +9,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class CreateCoursePlanController implements Initializable {
    @FXML
@@ -43,8 +41,8 @@ public class CreateCoursePlanController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ObservableList<String> list = FXCollections.observableArrayList();
-        ArrayList<Course> courses = DataBase.getCourses();
-        for (Course course : courses )
+        Collection<Course> courses = DataBase.getCourses().values();
+        for (Course course : courses)
             list.add(course.getCourse());
         comboBox.setItems(list);
     }

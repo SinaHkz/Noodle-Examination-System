@@ -43,9 +43,9 @@
                   </font>
                </Label>
                <FontAwesomeIconView fill="#096dde" glyphName="BOOK" layoutX="310.0" layoutY="99.0" size="50" />
-               <TextField fx:id="picturePath" layoutX="125.0" layoutY="350.0" prefHeight="50.0" prefWidth="400.0" styleClass="border-colored-bottom" text="Course Tilte" />
-               <Label fx:id="passwordLessThanEight" layoutX="265.0" layoutY="418.0" text="This course title exists" textFill="RED" visible="false" />
-               <Button layoutX="8.0" layoutY="11.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="98.0" styleClass="back-button" text="Back" />
+               <TextField fx:id="courseTitle" layoutX="125.0" layoutY="350.0" prefHeight="50.0" prefWidth="400.0" styleClass="border-colored-bottom" promptText="Course Title" />
+               <Label fx:id="courseTaken" layoutX="265.0" layoutY="418.0" text="This course title exists" textFill="RED" visible="false" />
+               <Button layoutX="8.0" layoutY="11.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="98.0" styleClass="back-button" text="Back" onAction="#setBackToHomePageButton" />
             </children>
          </Pane>
       </left>

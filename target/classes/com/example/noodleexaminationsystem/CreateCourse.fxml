@@ -37,16 +37,15 @@
                      <Font size="24.0" />
                   </font>
                </Button>
-               <Label layoutX="117.0" layoutY="117.0" text="Add New Course Title">
+               <Label layoutX="96.0" layoutY="118.0" text="Add New Course Title">
                   <font>
                      <Font size="50.0" />
                   </font>
                </Label>
                <FontAwesomeIconView fill="#096dde" glyphName="BOOK" layoutX="310.0" layoutY="99.0" size="50" />
-               <TextField fx:id="picturePath" layoutX="125.0" layoutY="350.0" prefHeight="50.0" prefWidth="400.0" styleClass="border-colored-bottom" text="Course Tilte" />
-               <Label fx:id="usernameTaken" layoutX="157.0" layoutY="362.0" text="username already taken" textFill="RED" visible="false" />
-               <Label fx:id="passwordLessThanEight" layoutX="338.0" layoutY="362.0" text="password must have at least 8 characters" textFill="RED" visible="false" />
-               <Button layoutX="8.0" layoutY="11.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="98.0" styleClass="back-button" text="Back" />
+               <TextField fx:id="courseTitle" layoutX="125.0" layoutY="350.0" prefHeight="50.0" prefWidth="400.0" styleClass="border-colored-bottom" promptText="Course Title" />
+               <Label fx:id="courseTaken" layoutX="265.0" layoutY="418.0" text="This course title exists" textFill="RED" visible="false" />
+               <Button layoutX="8.0" layoutY="11.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="98.0" styleClass="back-button" text="Back" onAction="#setBackToHomePageButton" />
             </children>
          </Pane>
       </left>

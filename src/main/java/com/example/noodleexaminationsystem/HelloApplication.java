@@ -59,12 +59,12 @@ public class HelloApplication extends Application {
         try {
             LocalDate date = LocalDate.parse("2007-12-03");
             User admin = User.signUp("admin","admin","admin","admin","jfeij","src/main/resources/images/test_1_profile.jpg",date,"FEMALE");
-            CoursePlan coursePlan = new CoursePlan(new Course("OOP"), "Object Oriented", User.signUp("a", "a", "a", "a", "a", "a", date, "FEMALE"), new Exam("a"), date, date, "a");
-            CoursePlan coursePlan1 = new CoursePlan(new Course("OOP"), "Object Oriented", User.signUp("a", "a", "a", "a", "a", "a", date, "FEMALE"), new Exam("a"), date, date, "a");
-            CoursePlan coursePlan2 = new CoursePlan(new Course("OOP"), "Object Oriented", User.signUp("a", "a", "a", "a", "a", "a", date, "FEMALE"), new Exam("a"), date, date, "a");
-            CoursePlan coursePlan3 = new CoursePlan(new Course("OOP"), "Object Oriented", User.signUp("a", "a", "a", "a", "a", "a", date, "FEMALE"), new Exam("a"), date, date, "a");
-            DataBase.getCourses().add(new Course("OOP"));
-            DataBase.getCourses().add(new Course("DS"));
+            DataBase.getCourses().put("OOP" , Course.addCourse("OOP"));
+            DataBase.getCourses().put("DS" , Course.addCourse("DS"));
+            CoursePlan coursePlan = new CoursePlan(DataBase.getCourses().get("OOP"), "Object Oriented", User.signUp("a", "a", "a", "a", "a", "a", date, "FEMALE"), new Exam("a"), date, date, "a");
+            CoursePlan coursePlan1 = new CoursePlan(DataBase.getCourses().get("OOP"), "Object Oriented", User.signUp("a", "a", "a", "a", "a", "a", date, "FEMALE"), new Exam("a"), date, date, "a");
+            CoursePlan coursePlan2 = new CoursePlan(DataBase.getCourses().get("OOP"), "Object Oriented", User.signUp("a", "a", "a", "a", "a", "a", date, "FEMALE"), new Exam("a"), date, date, "a");
+            CoursePlan coursePlan3 = new CoursePlan(DataBase.getCourses().get("OOP"), "Object Oriented", User.signUp("a", "a", "a", "a", "a", "a", date, "FEMALE"), new Exam("a"), date, date, "a");
             admin.getStudentcoursePlans().add(coursePlan1);
             admin.getStudentcoursePlans().add(coursePlan);
             admin.getStudentcoursePlans().add(coursePlan2);
@@ -75,7 +75,7 @@ public class HelloApplication extends Application {
 
 
             //first scene
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CreateCourse.fxml"));
             mainStage.setScene(new Scene(fxmlLoader.load()));
 //            mainStage.setMaxWidth(1600);
 //            mainStage.setMaxHeight(900);

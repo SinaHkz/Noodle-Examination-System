@@ -1,13 +1,24 @@
 package com.example.noodleexaminationsystem.Course;
 
+import com.example.noodleexaminationsystem.DataBase;
+
 import java.util.ArrayList;
 
 public class Course {
     private String course;
     private ArrayList<CoursePlan> coursePlans = new ArrayList<>();
 
-    public Course(String course) {
+    private Course(String course) {
         this.course = course;
+    }
+
+    public static Course addCourse(String courseName){
+        if(!DataBase.getCourses().containsKey(courseName)){
+            Course course1 = new Course(courseName);
+            DataBase.getCourses().put(courseName , course1);
+            return course1;
+        }
+        return null;
     }
 
     public String getCourse() {

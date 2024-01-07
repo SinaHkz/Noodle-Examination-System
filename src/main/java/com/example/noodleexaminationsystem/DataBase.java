@@ -12,7 +12,7 @@ import java.util.Map;
 public class DataBase {
     static Map<String , User> users = new HashMap<>();
     static Map<String , CoursePlan> coursePlans = new HashMap<>();
-    static ArrayList<Course> courses = new ArrayList<>();
+    static Map<String , Course> courses = new HashMap<>();
     static Map<Course,Question> questions = new HashMap<>();
 
     public static void setUsers(Map<String, User> users) {
@@ -31,11 +31,11 @@ public class DataBase {
         DataBase.coursePlans = coursePlans;
     }
 
-    public static ArrayList<Course> getCourses() {
+    public static Map<String, Course> getCourses() {
         return courses;
     }
 
-    public static void setCourses(ArrayList<Course> courses) {
+    public static void setCourses(Map<String, Course> courses) {
         DataBase.courses = courses;
     }
 
