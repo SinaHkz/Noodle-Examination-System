@@ -75,6 +75,12 @@
                         <String fx:value="background-transparent" />
                      </styleClass>
                   </Button>
+                  <Button layoutX="58.0" layoutY="613.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="End Course">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Button>
+                  <FontAwesomeIconView glyphName="TRASH" layoutX="115.0" layoutY="638.0" size="17" />
                </children>
             </Pane>
          </children>
