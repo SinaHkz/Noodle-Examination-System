@@ -1,6 +1,5 @@
-.back-ground{
-    -fx-background-color: linear-gradient(to top, #9083e0, #5f94d0, #94b3d9);
-}
+<<<<<<< Updated upstream
+
 
 .list > .viewport {
     -fx-background-color: transparent;
@@ -12,13 +11,46 @@
     -fx-background-radius: 10%;
 }
 
-.button{
-    -fx-background-color: #3e88da; /* Green background color */
-    -fx-text-fill: white; /* White text color */
-    -fx-padding: 10px 20px; /* Padding */
-    -fx-background-radius: 20px; /* Border radius */
-    -fx-cursor: hand; /* Cursor style */
-}
 .button:hover{
     -fx-background-color: #1b2594; /* Darker green on hover */
+}
+
+
+.left-pane{
+    -fx-background-color: linear-gradient(to top, #2f4db2, #ececec);
+}
+
+.gradiant-color-background {
+    -fx-background-color: #e1e1e1;
+}
+
+.background-transparent{
+    -fx-background-color: transparent;
+}
+
+.selected-buttons{
+    -fx-background-color: rgb(255,255,255,0.5);
+    -fx-background-radius: 2px;
+    -fx-border-radius: 2px;
+}
+
+.button-hand{
+    -fx-cursor: hand;
+=======
+.back-ground{
+    -fx-background-color: linear-gradient(to top, #9083e0, #5f94d0, #94b3d9);
+}
+
+.button{
+    -fx-background-color: transparent;
+    -fx-background-radius: 10%;
+    -fx-border-width: 2px;
+    -fx-border-color: black;
+    -fx-border-radius: 10%;
+
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+>>>>>>> Stashed changes
 }

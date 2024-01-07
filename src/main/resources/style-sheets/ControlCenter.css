@@ -81,3 +81,8 @@
     -fx-background-color: rgba(62, 136, 218, 0.1);
     -fx-background-radius: 20px;
 }
+
+.back-btn{
+    -fx-background-color: #5997dc;
+    -fx-background-radius: 5px;
+}

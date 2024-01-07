@@ -91,6 +91,16 @@
                   </ScrollPane>
                </children>
             </Group>
+            <Label layoutX="575.0" layoutY="54.0" text="User successfully deleted" textFill="RED" visible="false">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Button layoutX="99.0" layoutY="63.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" styleClass="back-btn" text="Back" visible="false">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </center>

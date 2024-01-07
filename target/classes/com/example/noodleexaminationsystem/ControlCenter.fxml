@@ -18,7 +18,7 @@
    <center>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1300.0" styleClass="gradiant-color-background" BorderPane.alignment="CENTER">
          <children>
-            <Group layoutX="67.0" layoutY="167.0">
+            <Group layoutX="67.0" layoutY="167.0" visible="false">
                <children>
                   <ListView layoutX="-2.0" layoutY="-92.0" prefHeight="780.0" prefWidth="1189.0" />
                   <Button layoutX="1119.0" layoutY="-72.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="43.0" styleClass="plus-btn">
@@ -31,7 +31,7 @@
                      </graphic></Button>
                </children>
             </Group>
-            <Group layoutX="77.0" layoutY="177.0" visible="false">
+            <Group layoutX="77.0" layoutY="177.0">
                <children>
                   <ScrollPane layoutY="-86.0" prefHeight="739.0" prefWidth="1169.0">
                      <content>
@@ -91,6 +91,11 @@
                   </ScrollPane>
                </children>
             </Group>
+            <Label layoutX="575.0" layoutY="54.0" text="User successfully deleted" textFill="RED" visible="false">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </center>

@@ -1,6 +1,10 @@
+<<<<<<< Updated upstream
+
+=======
 .back-ground{
     -fx-background-color: linear-gradient(to top, #9083e0, #5f94d0, #94b3d9);
 }
+>>>>>>> Stashed changes
 
 .list > .viewport {
     -fx-background-color: transparent;
@@ -12,6 +16,33 @@
     -fx-background-radius: 10%;
 }
 
+<<<<<<< Updated upstream
+.button:hover{
+    -fx-background-color: #1b2594; /* Darker green on hover */
+}
+
+
+.left-pane{
+    -fx-background-color: linear-gradient(to top, #2f4db2, #ececec);
+}
+
+.gradiant-color-background {
+    -fx-background-color: #e1e1e1;
+}
+
+.background-transparent{
+    -fx-background-color: transparent;
+}
+
+.selected-buttons{
+    -fx-background-color: rgb(255,255,255,0.5);
+    -fx-background-radius: 2px;
+    -fx-border-radius: 2px;
+}
+
+.button-hand{
+    -fx-cursor: hand;
+=======
 .button{
     -fx-background-color: #3e88da; /* Green background color */
     -fx-text-fill: white; /* White text color */
@@ -21,4 +52,5 @@
 }
 .button:hover{
     -fx-background-color: #1b2594; /* Darker green on hover */
+>>>>>>> Stashed changes
 }
