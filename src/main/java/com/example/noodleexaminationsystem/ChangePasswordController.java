@@ -29,6 +29,19 @@ public class ChangePasswordController implements Initializable {
     }
 
     public void setChangePasswordButton(){
+
+        boolean flag = false;
+        if (oldPassword.getText().isEmpty()) {
+            oldPassword.setStyle("-fx-prompt-text-fill: red");
+            flag = true;
+        }
+        if (newPassword.getText().isEmpty()) {
+            newPassword.setStyle("-fx-prompt-text-fill: red");
+            flag = true;
+        }
+        if (flag) {
+            return;
+        }
         if(HelloApplication.mainUser.getPassword().equals(oldPassword.getText())){
             if(newPassword.getText().length() < 8) {
                 passwordLessThanEight.setVisible(true);
