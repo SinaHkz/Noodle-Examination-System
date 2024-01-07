@@ -1,16 +1,19 @@
 .back-ground{
-    -fx-background-color: linear-gradient(to top, #9083e0, #5f94d0, #94b3d9);
+    /*-fx-background-color: linear-gradient(to top, #9083e0, #5f94d0, #94b3d9);*/
+    -fx-background-color: #e1e1e1;
 }
 
-.button{
-    -fx-background-color: transparent;
-    -fx-background-radius: 10%;
-    -fx-border-width: 2px;
-    -fx-border-color: black;
-    -fx-border-radius: 10%;
-
-}
 
 .scroll-pane > .viewport {
     -fx-background-color: transparent;
+}
+
+.left-pane{
+    -fx-background-color: linear-gradient(to top, #2f4db2, #ececec);
+}
+
+.selected-buttons{
+    -fx-background-color: rgb(255,255,255,0.5);
+    -fx-background-radius: 2px;
+    -fx-border-radius: 2px;
 }
