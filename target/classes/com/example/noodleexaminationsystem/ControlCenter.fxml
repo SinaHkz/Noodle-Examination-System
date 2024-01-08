@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="900.0" prefWidth="1600.0" stylesheets="@../../../style-sheets/ControlCenter.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:controller="com.example.noodleexaminationsystem.ControlCenterController" prefHeight="900.0" prefWidth="1600.0" stylesheets="@../../../style-sheets/ControlCenter.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1300.0" styleClass="gradiant-color-background" BorderPane.alignment="CENTER">
          <children>
@@ -126,7 +126,7 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button layoutX="49.0" layoutY="850.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" styleClass="top-button" text="Back">
+            <Button onAction="#setBackButton" layoutX="49.0" layoutY="850.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" styleClass="top-button" text="Back">
                <font>
                   <Font size="24.0" />
                </font>

@@ -18,11 +18,12 @@ public class User {
     private String email;
     private String picturePath;
     private LocalDate dob;
+    private UserType userType;
     private ArrayList<Result> results = new ArrayList<>();
     private HashMap<String ,CoursePlan> teacherCourses = new HashMap<>();
     private ArrayList<CoursePlan> StudentcoursePlans = new ArrayList<>();
 
-    private User(String username, String password, String name, String lastName, String email, String picturePath, LocalDate dob, Gender gender) {
+    private User(String username, String password, String name, String lastName, String email, String picturePath, LocalDate dob, Gender gender, UserType userType) {
         this.username = username;
         this.password = password;
         this.name = name;
@@ -31,6 +32,7 @@ public class User {
         this.picturePath = picturePath;
         this.dob = dob;
         this.gender = gender;
+        this.userType = userType;
     }
     //show the list of courses of a student
 
@@ -59,11 +61,11 @@ public class User {
         return null;
     }
 
-    public static User signUp(String username, String password, String name, String lastName, String email, String picturePath, LocalDate dob, String gender) {
+    public static User signUp(String username, String password, String name, String lastName, String email, String picturePath, LocalDate dob, String gender,String userType) {
         String gender1 = gender.toUpperCase();
         if (DataBase.getUsers().containsKey(username))
             return null;
-        User user1 = new User(username, password, name, lastName, email, picturePath, dob, Gender.valueOf(gender1));
+        User user1 = new User(username, password, name, lastName, email, picturePath, dob, Gender.valueOf(gender1),UserType.valueOf(userType));
         DataBase.getUsers().put(username, user1);
         return user1;
     }
@@ -179,5 +181,13 @@ public class User {
 
     public void setTeacherCourses(HashMap<String, CoursePlan> teacherCourses) {
         this.teacherCourses = teacherCourses;
+    }
+
+    public UserType getUserType() {
+        return userType;
+    }
+
+    public void setUserType(UserType userType) {
+        this.userType = userType;
     }
 }

@@ -2,6 +2,7 @@ package com.example.noodleexaminationsystem;
 
 import com.example.noodleexaminationsystem.User.Gender;
 import com.example.noodleexaminationsystem.User.User;
+import com.example.noodleexaminationsystem.User.UserType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -38,6 +39,8 @@ public class AddNewUserController implements Initializable {
     private Label passwordLessThanEight;
     @FXML
     private ComboBox comboBox;
+    @FXML
+    private ComboBox TypeComboBox;
 
     public void setAddNewUserController() {
         boolean flag = false;
@@ -79,6 +82,11 @@ public class AddNewUserController implements Initializable {
                 flag = true;
             }
 
+            if (TypeComboBox.getSelectionModel().getSelectedItem() == null) {
+                TypeComboBox.setStyle("-fx-border-color: red");
+                flag = true;
+            }
+
             if (flag) return;
             if (signUpPassword.getText().length() < 8) {
                 passwordLessThanEight.setVisible(true);
@@ -89,7 +97,7 @@ public class AddNewUserController implements Initializable {
             }
 
             System.out.println(dob.getValue());
-            User user = User.signUp(signUpUsername.getText(), signUpPassword.getText(), name.getText(), lastname.getText(), email.getText(), picturePath.getText(), dob.getValue(), comboBox.getSelectionModel().getSelectedItem().toString());
+            User user = User.signUp(signUpUsername.getText(), signUpPassword.getText(), name.getText(), lastname.getText(), email.getText(), picturePath.getText(), dob.getValue(), comboBox.getSelectionModel().getSelectedItem().toString(),TypeComboBox.getSelectionModel().toString());
             if (user == null) {
                 usernameTaken.setVisible(true);
                 return;
@@ -103,8 +111,12 @@ public class AddNewUserController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<String> list = FXCollections.observableArrayList();
+        ObservableList<String> types = FXCollections.observableArrayList();
+        for (UserType type: UserType.values())
+            types.add(type.toString());
         for (Gender gender : Gender.values())
             list.add(gender.toString());
         comboBox.setItems(list);
+        TypeComboBox.setItems(types);
     }
 }

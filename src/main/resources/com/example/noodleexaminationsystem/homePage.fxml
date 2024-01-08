@@ -14,9 +14,6 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.effect.DropShadow?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" styleClass="gradiant-color-background" stylesheets="@../../../style-sheets/homepage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.noodleexaminationsystem.HomePageController">
    <left>
       <Pane prefHeight="800.0" prefWidth="352.0" BorderPane.alignment="CENTER">
@@ -30,7 +27,7 @@
                               <Image url="@../../../images/default-user-image.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="146.0" layoutY="294.0" text="{UserName}">
+                        <Label fx:id="username" alignment="CENTER" contentDisplay="TOP" layoutX="22.0" layoutY="324.0" prefHeight="24.0" prefWidth="355.0" text="{UserName}" textOverrun="CLIP">
                            <font>
                               <Font size="19.0" />
                            </font>
@@ -110,7 +107,7 @@
                               </styleClass>
                            </Button>
                            <FontAwesomeIconView glyphName="BOOK" layoutX="205.0" layoutY="121.0" size="25" text="" />
-                           <Button layoutX="449.0" layoutY="50.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="300.0" text="Question Bank">
+                           <Button onAction="#setQuestionBank" layoutX="449.0" layoutY="50.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="300.0" text="Question Bank">
                               <font>
                                  <Font size="29.0" />
                               </font>
@@ -130,7 +127,7 @@
                               </styleClass>
                            </Button>
                            <FontAwesomeIconView glyphName="LOCK" layoutX="965.0" layoutY="121.0" size="25" />
-                           <Button layoutX="65.0" layoutY="337.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="300.0" text="App Control Center" visible="false">
+                           <Button fx:id="controlCenter" onAction="#setControlCenter" layoutX="65.0" layoutY="337.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="300.0" text="App Control Center" visible="false">
                               <font>
                                  <Font size="29.0" />
                               </font>

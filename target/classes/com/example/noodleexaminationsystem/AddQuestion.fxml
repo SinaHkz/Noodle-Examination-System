@@ -13,19 +13,19 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" styleClass="gradiant-color-background" stylesheets="@../../../style-sheets/homepage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:controller="com.example.noodleexaminationsystem.AddQuestionController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" styleClass="gradiant-color-background" stylesheets="@../../../style-sheets/homepage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <left>
       <Pane prefHeight="800.0" prefWidth="352.0" styleClass="left-pane" BorderPane.alignment="CENTER">
          <children>
             <Pane layoutX="-22.0" layoutY="-1.0" prefHeight="900.0" prefWidth="376.0">
                <children>
-                  <Button layoutX="22.0" layoutY="804.0" mnemonicParsing="false" onAction="#setLogoutButton" prefHeight="44.0" prefWidth="352.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Submit" textFill="#11a135">
+                  <Button layoutX="22.0" layoutY="804.0" mnemonicParsing="false"  prefHeight="44.0" prefWidth="352.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Submit" textFill="#11a135">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Button>
                   <FontAwesomeIconView fill="#11a135" glyphName="CHECK" layoutX="135.0" layoutY="834.0" size="24" />
-                  <Button fx:id="myCoursesButton" layoutX="57.0" layoutY="330.0" mnemonicParsing="false" onAction="#setMyCourseButton" prefHeight="39.0" prefWidth="264.0" text="Long Answer">
+                  <Button fx:id="myCoursesButton" layoutX="57.0" layoutY="330.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" text="Long Answer">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -36,7 +36,7 @@
                      </styleClass>
                   </Button>
                   <Line endX="197.0" layoutX="177.0" layoutY="804.0" opacity="0.56" startX="-154.99998474121094" />
-                  <Button fx:id="teacherCourseButton" layoutX="57.0" layoutY="401.0" mnemonicParsing="false" onAction="#setTeacherCourseButton" prefHeight="39.0" prefWidth="264.0" text="Single Answer">
+                  <Button fx:id="teacherCourseButton" layoutX="57.0" layoutY="401.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" text="Single Answer">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -51,7 +51,7 @@
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <Button fx:id="teacherCourseButton1" layoutX="57.0" layoutY="464.0" mnemonicParsing="false" onAction="#setTeacherCourseButton" prefHeight="39.0" prefWidth="264.0" text="Multiple Answer">
+                  <Button fx:id="teacherCourseButton1" layoutX="57.0" layoutY="464.0" mnemonicParsing="false"  prefHeight="39.0" prefWidth="264.0" text="Multiple Answer">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -61,7 +61,7 @@
                         <String fx:value="top-buttons" />
                      </styleClass>
                   </Button>
-                  <Button layoutX="21.0" layoutY="853.0" mnemonicParsing="false" onAction="#setLogoutButton" prefHeight="44.0" prefWidth="352.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Back">
+                  <Button onAction="#setBackButton" layoutX="21.0" layoutY="853.0" mnemonicParsing="false"  prefHeight="44.0" prefWidth="352.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Back">
                      <font>
                         <Font size="24.0" />
                      </font>

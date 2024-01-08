@@ -4,10 +4,13 @@ import com.example.noodleexaminationsystem.Course.Course;
 import com.example.noodleexaminationsystem.Course.CoursePlan;
 import com.example.noodleexaminationsystem.Course.Exam;
 import com.example.noodleexaminationsystem.User.User;
+import com.example.noodleexaminationsystem.User.UserType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -17,6 +20,7 @@ import javafx.scene.shape.Circle;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -29,6 +33,8 @@ public class HomePageController implements Initializable {
     private ArrayList<CoursePlan> myCourses;
     private ArrayList<CoursePlan> teacherCourses;
     private ArrayList<CoursePlan> archivedCourses;
+    User user;
+
     @FXML
     private VBox cardVBox;
     @FXML
@@ -47,6 +53,10 @@ public class HomePageController implements Initializable {
     private Button option;
     @FXML
     private ImageView profileImage;
+    @FXML
+    private Label username;
+    @FXML
+    private Button controlCenter;
 
     private void setCards(ArrayList<CoursePlan> coursePlans, VBox cardVbox) {
 
@@ -82,16 +92,19 @@ public class HomePageController implements Initializable {
         }
 
     }
-    public void setHomePage(User user){
+
+    public void setHomePage(User user) {
         try {
             File file = new File(user.getPicturePath());
             // Create a FileInputStream from the File
             FileInputStream stream = new FileInputStream(file);
             Image newImage = new Image(stream);
             //making the picture round
-            final Circle clip = new Circle(123.5,136,110);
+            final Circle clip = new Circle(123.5, 136, 110);
             profileImage.setClip(clip);
             profileImage.setImage(newImage);
+            username.setText(user.getUsername());
+
 
         } catch (Exception e) {
             // Handle exception
@@ -100,7 +113,7 @@ public class HomePageController implements Initializable {
         }
 
         myCourses = user.getStudentcoursePlans();
-        teacherCourses = new ArrayList<> (user.getTeacherCourses().values());
+        teacherCourses = new ArrayList<>(user.getTeacherCourses().values());
         archivedCourses = user.getArchivedCoursePlans(LocalDate.now());
 
         //for loop on all courses
@@ -143,7 +156,7 @@ public class HomePageController implements Initializable {
         optionBox.setVisible(false);
     }
 
-    public void setOptionButton(){
+    public void setOptionButton() {
         option.getStyleClass().addAll("button-hand", "background-transparent", "selected-buttons");
         archiveCourseButton.getStyleClass().removeAll("selected-buttons");
         teacherCourseButton.getStyleClass().removeAll("selected-buttons");
@@ -152,15 +165,61 @@ public class HomePageController implements Initializable {
         cardVBoxArchived.setVisible(false);
         cardVBoxTeacher.setVisible(false);
         optionBox.setVisible(true);
+        System.out.println(user.getUserType());
+        if (user.getUserType().compareTo(UserType.ADMIN) == 0)
+            controlCenter.setVisible(true);
     }
-    public void setChangePasswordButton(){
-        HelloApplication.setScene("ChangePassword.fxml");
+
+    public void setChangePasswordButton() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ChangePassword.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        ChangePasswordController changePasswordController = fxmlLoader.getController();
+        changePasswordController.previousUser = this.user;
+        HelloApplication.mainStage.setScene(scene);
+//        HelloApplication.setScene("ChangePassword.fxml");
     }
-    public void setCreateNewCourseButton(){
-        HelloApplication.setScene("CreateCoursePlan.fxml");
+
+    public void setCreateNewCourseButton() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("CreateCoursePlan.fxml"));
+        try {
+            Scene scene = new Scene(loader.load());
+            CreateCoursePlanController createCoursePlanController = loader.getController();
+            createCoursePlanController.user = this.user;
+            HelloApplication.mainStage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+//        HelloApplication.setScene("CreateCoursePlan.fxml");
     }
-    public void setLogoutButton(){
+
+    public void setLogoutButton() {
         HelloApplication.setScene("login.fxml");
+    }
+
+    public void setControlCenter() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ControlCenter.fxml"));
+        try {
+            Scene scene = new Scene(loader.load());
+            ControlCenterController controlCenterController = loader.getController();
+            controlCenterController.previousUser = this.user;
+            HelloApplication.mainStage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+//        HelloApplication.setScene("ControlCenter.fxml");
+    }
+
+    public void setQuestionBank() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("QuestionsBank.fxml"));
+        try {
+            Scene scene = new Scene(loader.load());
+            QuestionBankController questionBankController = loader.getController();
+            questionBankController.previousUser = this.user;
+            HelloApplication.mainStage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

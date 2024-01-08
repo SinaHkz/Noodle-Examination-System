@@ -12,10 +12,10 @@ public class Course {
         this.course = course;
     }
 
-    public static Course addCourse(String courseName){
-        if(!DataBase.getCourses().containsKey(courseName)){
+    public static Course addCourse(String courseName) {
+        if (!DataBase.getCourses().containsKey(courseName)) {
             Course course1 = new Course(courseName);
-            DataBase.getCourses().put(courseName , course1);
+            DataBase.getCourses().put(courseName, course1);
             return course1;
         }
         return null;

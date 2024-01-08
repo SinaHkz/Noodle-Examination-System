@@ -17,3 +17,11 @@
     -fx-background-radius: 2px;
     -fx-border-radius: 2px;
 }
+
+.button-hand{
+    -fx-cursor: hand;
+}
+
+.background-transparent{
+    -fx-background-color: transparent;
+}

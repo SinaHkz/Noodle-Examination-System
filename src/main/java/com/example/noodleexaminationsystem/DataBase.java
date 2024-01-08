@@ -10,10 +10,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DataBase {
-    static Map<String , User> users = new HashMap<>();
-    static Map<String , CoursePlan> coursePlans = new HashMap<>();
-    static Map<String , Course> courses = new HashMap<>();
-    static Map<Course,Question> questions = new HashMap<>();
+    static Map<String, User> users = new HashMap<>();
+    static Map<String, CoursePlan> coursePlans = new HashMap<>();
+    static Map<String, Course> courses = new HashMap<>();
+    static Map<Course, Question> questions = new HashMap<>();
 
     public static void setUsers(Map<String, User> users) {
         DataBase.users = users;

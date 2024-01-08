@@ -3,6 +3,7 @@ package com.example.noodleexaminationsystem;
 import com.example.noodleexaminationsystem.Course.Course;
 import com.example.noodleexaminationsystem.User.Gender;
 import com.example.noodleexaminationsystem.User.User;
+import com.example.noodleexaminationsystem.User.UserType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -88,6 +89,7 @@ public class loginPageController implements Initializable {
                 Scene scene = new Scene(loader.load());
                 // Now that the FXML is loaded, get the controller and set the data
                 HomePageController homePageController = loader.getController();
+                homePageController.user = user;
                 homePageController.setHomePage(user);
                 HelloApplication.mainStage.setScene(scene);
             } catch (Exception e) {
@@ -151,7 +153,7 @@ public class loginPageController implements Initializable {
                 return;
             }
 
-            User user = User.signUp(signUpUsername.getText(), signUpPassword.getText(), name.getText(), lastname.getText(), email.getText(), picturePath.getText(), dob.getValue(), comboBox.getSelectionModel().getSelectedItem().toString());
+            User user = User.signUp(signUpUsername.getText(), signUpPassword.getText(), name.getText(), lastname.getText(), email.getText(), picturePath.getText(), dob.getValue(), comboBox.getSelectionModel().getSelectedItem().toString(), "MEMBER");
             if (user == null) {
                 usernameTaken.setVisible(true);
                 return;

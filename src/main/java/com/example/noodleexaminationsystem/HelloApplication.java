@@ -33,7 +33,7 @@ public class HelloApplication extends Application {
 
 
     //______________________________________________________ methods _________________________________________________________
-    public static void setScene(String fxmlFile){
+    public static void setScene(String fxmlFile) {
         try {
             Parent root = FXMLLoader.load(HelloApplication.class.getResource(fxmlFile));
             Scene scene = new Scene(root);
@@ -49,20 +49,19 @@ public class HelloApplication extends Application {
         mainStage = stage;
         try {
             LocalDate date = LocalDate.parse("2007-12-03");
-            User admin = User.signUp("admin","admin","admin","admin","jfeij","src/main/resources/images/test_1_profile.jpg",date,"FEMALE");
+            User admin = User.signUp("admin", "admin", "admin", "admin", "jfeij", "src/main/resources/images/test_1_profile.jpg", date, "FEMALE", "ADMIN");
             Course.addCourse("OOP");
-            Course.addCourse("Ds");
-            User teacher = User.signUp("teacher","paoi","ijf","ifje","ejia","fie",date ,"female");
-            CoursePlan coursePlan = CoursePlan.addCoursePlan("OOP","shit",teacher,new Exam("iei"),date,"fj");
-            CoursePlan coursePlan1 = CoursePlan.addCoursePlan("OOP","shit1",teacher,new Exam("iei"),date,"fj");
-            CoursePlan coursePlan2 = CoursePlan.addCoursePlan("OOP","shit2",teacher,new Exam("iei"),date,"fj");
+            Course.addCourse("DS");
+            User teacher = User.signUp("teacher", "paoi", "ijf", "ifje", "ejia", "fie", date, "female", "ADMIN");
+            CoursePlan coursePlan = CoursePlan.addCoursePlan("OOP", "shit", teacher, new Exam("iei"), date, "fj");
+            CoursePlan coursePlan1 = CoursePlan.addCoursePlan("OOP", "shit1", teacher, new Exam("iei"), date, "fj");
+            CoursePlan coursePlan2 = CoursePlan.addCoursePlan("OOP", "shit2", teacher, new Exam("iei"), date, "fj");
             admin.getStudentcoursePlans().add(coursePlan);
             admin.getStudentcoursePlans().add(coursePlan1);
             admin.getStudentcoursePlans().add(coursePlan2);
-            admin.getTeacherCourses().put(coursePlan.getName(),coursePlan);
-            admin.getTeacherCourses().put(coursePlan.getName(),coursePlan);
+            admin.getTeacherCourses().put(coursePlan.getName(), coursePlan);
+            admin.getTeacherCourses().put(coursePlan.getName(), coursePlan);
             admin.getArchivedCoursePlans(date).add(coursePlan);
-
 
 
             //first scene
