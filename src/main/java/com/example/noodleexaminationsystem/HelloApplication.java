@@ -24,12 +24,16 @@ import java.io.InputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class HelloApplication extends Application {
     static Stage mainStage;
     static CoursePlan mainCoursePlan;
+    static User mainUser;
+    //______________________________________________________ getter/setter_________________________________________________________
 
 
     //______________________________________________________ methods _________________________________________________________
@@ -53,9 +57,9 @@ public class HelloApplication extends Application {
             Course.addCourse("OOP");
             Course.addCourse("Ds");
             User teacher = User.signUp("teacher","paoi","ijf","ifje","ejia","fie",date ,"female");
-            CoursePlan coursePlan = CoursePlan.addCoursePlan("OOP","shit",teacher,new Exam("iei"),date,"fj");
-            CoursePlan coursePlan1 = CoursePlan.addCoursePlan("OOP","shit1",teacher,new Exam("iei"),date,"fj");
-            CoursePlan coursePlan2 = CoursePlan.addCoursePlan("OOP","shit2",teacher,new Exam("iei"),date,"fj");
+            CoursePlan coursePlan = CoursePlan.addCoursePlan("OOP","shit",teacher,Exam.createExam("iei", LocalDateTime.now(),LocalDateTime.of(2023, Month.JANUARY, 1, 12, 0)),date,"fj");
+            CoursePlan coursePlan1 = CoursePlan.addCoursePlan("OOP","shit1",teacher,Exam.createExam("iei",LocalDateTime.now(),LocalDateTime.of(2023, Month.JANUARY, 1, 12, 0)),date,"fj");
+            CoursePlan coursePlan2 = CoursePlan.addCoursePlan("OOP","shit2",teacher,Exam.createExam("iei",LocalDateTime.now(),LocalDateTime.of(2023, Month.JANUARY, 1, 12, 0)),date,"fj");
             admin.getStudentcoursePlans().add(coursePlan);
             admin.getStudentcoursePlans().add(coursePlan1);
             admin.getStudentcoursePlans().add(coursePlan2);
@@ -63,7 +67,7 @@ public class HelloApplication extends Application {
             admin.getTeacherCourses().put(coursePlan.getName(),coursePlan);
             admin.getArchivedCoursePlans(date).add(coursePlan);
 
-
+            mainCoursePlan=coursePlan;
 
             //first scene
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));

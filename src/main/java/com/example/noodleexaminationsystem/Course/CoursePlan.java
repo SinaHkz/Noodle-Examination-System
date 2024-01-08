@@ -74,11 +74,6 @@ public class CoursePlan {
         return students;
     }
 
-    public void createNewExam(String title) {
-        Exam exam = new Exam(title);
-        exams.add(exam);
-    }
-
     public String getName() {
         return name;
     }
