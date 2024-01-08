@@ -1,11 +1,15 @@
 package com.example.noodleexaminationsystem;
 
+import com.example.noodleexaminationsystem.Course.CoursePlan;
 import com.example.noodleexaminationsystem.Course.Exam;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 
 import java.net.URL;
 import java.time.LocalDateTime;
@@ -13,6 +17,7 @@ import java.time.LocalTime;
 import java.util.ResourceBundle;
 
 public class CreateExamController implements Initializable {
+    CoursePlan coursePlan;
     @FXML
     TextField ExamTitle;
     @FXML
@@ -28,8 +33,20 @@ public class CreateExamController implements Initializable {
     @FXML
     private ComboBox<Integer> MinuteEndCombo;
 
+
+
     public void setBackButton() {
-        HelloApplication.setScene("CoursePage.fxml");
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("CoursePage.fxml"));
+        try {
+            Scene scene = new Scene(loader.load());
+            // Now that the FXML is loaded, get the controller and set the data
+            CoursePageController coursePageController = loader.getController();
+            coursePageController.setCoursePlanPage(this.coursePlan);
+            HelloApplication.mainStage.setScene(scene);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
     public void setCreateExamButton() {
         HourStartCombo.setStyle("-fx-border-color: #096dde");
@@ -97,7 +114,7 @@ public class CreateExamController implements Initializable {
         if (StartDate.getValue() != null && EndDate.getValue() != null) {
             LocalDateTime startDateTime = LocalDateTime.of(StartDate.getValue(), startTime);
             LocalDateTime endDateTime = LocalDateTime.of(EndDate.getValue(), endTime);
-            Exam exam =Exam.createExam(ExamTitle.getText(), startDateTime, endDateTime);
+            Exam exam = Exam.createExam(this.coursePlan,ExamTitle.getText(), startDateTime, endDateTime);
         }
         HelloApplication.setScene("CoursePage.fxml");
     }

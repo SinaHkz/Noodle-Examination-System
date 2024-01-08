@@ -5,6 +5,7 @@ import com.example.noodleexaminationsystem.User.Result;
 import com.example.noodleexaminationsystem.User.User;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -28,22 +29,22 @@ public class CoursePlan {
         this.picturePath = picturePath;
     }
 
-    public boolean isActive(LocalDate date) {
+    public boolean isActive() {
         if(this.end == null){
             return true;
         }
-        if (date.isAfter(this.start) && date.isBefore(this.end))
-            return true;
-        else
-            return false;
+        return false;
     }
-    public static CoursePlan addCoursePlan(String courseName, String name, User teacher, Exam attendedStudent, LocalDate start, String picturePath){
+    public static CoursePlan addCoursePlan(String courseName, String name, User teacher, LocalDate start, String picturePath){
+        LocalDateTime startOfDay = start.atStartOfDay();
+        Exam attendedStudent = Exam.createAttendedExam(startOfDay,null);
         Course course = DataBase.getCourses().get(courseName);
         if(teacher.getTeacherCourses().get(name)!=null){
             return null;
         }
         CoursePlan coursePlan = new CoursePlan(course,name,teacher,attendedStudent,start,picturePath);
         teacher.getTeacherCourses().put(name,coursePlan);
+        coursePlan.setAttendedStudent(attendedStudent);
         return coursePlan;
     }
 
@@ -73,6 +74,25 @@ public class CoursePlan {
         }
         return students;
     }
+    public  ArrayList<Exam> getArchivedExams(){
+        ArrayList<Exam> exams = this.getExams();
+        ArrayList<Exam> archivedExams = new ArrayList<>();
+        for (Exam exam:exams) {
+            if(!exam.isActive())
+                archivedExams.add(exam);
+        }
+        return archivedExams;
+    }
+    public  ArrayList<Exam> getActiveExams(){
+        ArrayList<Exam> exams = this.getExams();
+        ArrayList<Exam> activeExams = new ArrayList<>();
+        for (Exam exam:exams) {
+            if(exam.isActive())
+                activeExams.add(exam);
+        }
+        return activeExams;
+    }
+
 
     public String getName() {
         return name;
@@ -82,9 +102,6 @@ public class CoursePlan {
         this.name = name;
     }
 
-    public void addExam(Exam exam) {
-        exams.add(exam);
-    }
 
     public Exam getAttendedStudent() {
         return attendedStudent;
