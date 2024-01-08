@@ -4,17 +4,29 @@ import com.example.noodleexaminationsystem.Question.Question;
 import com.example.noodleexaminationsystem.User.Result;
 import com.example.noodleexaminationsystem.User.User;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class Exam {
     private String examTitle;
+    private LocalDateTime TimeStart;
+    private LocalDateTime TimeEnd;
     private ArrayList<Question> questions = new ArrayList();
     private ArrayList<Result> results = new ArrayList<>();
 
-    public Exam(String examTitle) {
+    private Exam(String examTitle, LocalDateTime timeStart, LocalDateTime timeEnd) {
         this.examTitle = examTitle;
+        TimeStart = timeStart;
+        TimeEnd = timeEnd;
     }
 
+    public static Exam createExam(String examTitle, LocalDateTime timeStart, LocalDateTime timeEnd) {
+
+        Exam exam=new Exam(examTitle , timeStart , timeEnd);
+        return exam;
+    }
     public String getExamTitle() {
         return examTitle;
     }

@@ -9,10 +9,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-
 import java.net.URL;
-import java.util.*;
+import java.util.ResourceBundle;
 
 public class CreateCoursePlanController implements Initializable {
     public User user;
@@ -23,6 +23,8 @@ public class CreateCoursePlanController implements Initializable {
     TextField coursePictureAddress;
     @FXML
     ComboBox comboBox;
+    @FXML
+    Label courseTaken;
 
     public void setBckButton() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("homePage.fxml"));
@@ -41,6 +43,7 @@ public class CreateCoursePlanController implements Initializable {
     }
 
     public void setCreateCoursePlanButton() {
+
         boolean flag = false;
         comboBox.setStyle("border-colored-bottom:#096dde");
         if (courseName.getText().isEmpty()) {
@@ -56,13 +59,17 @@ public class CreateCoursePlanController implements Initializable {
             flag = true;
         }
         if (flag) return;
+        //error
+//        CoursePlan coursePlan=CoursePlan.addCoursePlan(courseName.getText(),comboBox.getSelectionModel().getSelectedItem().toString(),HelloApplication.mainUser,coursePictureAddress.getText());
+//        if (coursePlan == null ){
+//            courseTaken.setVisible(true);
+//        }
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ObservableList<String> list = FXCollections.observableArrayList();
-        Collection<Course> courses = DataBase.getCourses().values();
-        for (Course course : courses)
+        for (Course course : DataBase.getCourses().values())
             list.add(course.getCourse());
         comboBox.setItems(list);
     }
