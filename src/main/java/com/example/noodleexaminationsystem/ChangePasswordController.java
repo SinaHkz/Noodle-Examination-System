@@ -42,18 +42,18 @@ public class ChangePasswordController implements Initializable {
         if (flag) {
             return;
         }
-        if(HelloApplication.mainUser.getPassword().equals(oldPassword.getText())){
-            if(newPassword.getText().length() < 8) {
-                passwordLessThanEight.setVisible(true);
-            }
-            else {
-                HelloApplication.mainUser.setPassword(newPassword.getText());
-                HelloApplication.setScene("homePage.fxml");
-            }
-        }
-        else {
-            incorrectPassLabel.setVisible(true);
-        }
+//        if(HelloApplication.mainUser.getPassword().equals(oldPassword.getText())){
+//            if(newPassword.getText().length() < 8) {
+//                passwordLessThanEight.setVisible(true);
+//            }
+//            else {
+//                HelloApplication.mainUser.setPassword(newPassword.getText());
+//                HelloApplication.setScene("homePage.fxml");
+//            }
+//        }
+//        else {
+//            incorrectPassLabel.setVisible(true);
+//        }
 
     }
 

@@ -82,9 +82,17 @@ public class loginPageController implements Initializable {
                 return;
             }
             //showing home page
-            //HelloApplication.setScene("homePage.fxml");
-            HelloApplication.mainUser = user;
-            HelloApplication.setScene("homePage.fxml");
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("homePage.fxml"));
+            try {
+                Scene scene = new Scene(loader.load());
+                // Now that the FXML is loaded, get the controller and set the data
+                HomePageController homePageController = loader.getController();
+                homePageController.setHomePage(user);
+                HelloApplication.mainStage.setScene(scene);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             return;
         }
         loginPane.setVisible(true);
@@ -143,15 +151,24 @@ public class loginPageController implements Initializable {
                 return;
             }
 
-            System.out.println(dob.getValue());
             User user = User.signUp(signUpUsername.getText(), signUpPassword.getText(), name.getText(), lastname.getText(), email.getText(), picturePath.getText(), dob.getValue(), comboBox.getSelectionModel().getSelectedItem().toString());
             if (user == null) {
                 usernameTaken.setVisible(true);
                 return;
             }
             //show home page
-            HelloApplication.mainUser = user;
-            HelloApplication.setScene("homePage.fxml");
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("homePage.fxml"));
+            try {
+                Scene scene = new Scene(loader.load());
+                // Now that the FXML is loaded, get the controller and set the data
+                HomePageController homePageController = loader.getController();
+                homePageController.setHomePage(user);
+                HelloApplication.mainStage.setScene(scene);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
         }
         loginPane.setVisible(false);
         signupPane.setVisible(true);

@@ -68,6 +68,7 @@ public class HomePageController implements Initializable {
                 Pane cardBox = loader.load();
 
                 CardController cardController = loader.getController();
+                cardController.coursePlan = coursePlan;
                 try {
                     cardController.setCard(coursePlan);
                 } catch (Exception e) {
@@ -79,6 +80,33 @@ public class HomePageController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+    }
+    public void setHomePage(User user){
+        try {
+            File file = new File(user.getPicturePath());
+            // Create a FileInputStream from the File
+            FileInputStream stream = new FileInputStream(file);
+            Image newImage = new Image(stream);
+            //making the picture round
+            final Circle clip = new Circle(123.5,136,110);
+            profileImage.setClip(clip);
+            profileImage.setImage(newImage);
+
+        } catch (Exception e) {
+            // Handle exception
+            //if the path can not be resolved the default picture will be shown as profile picture
+            System.out.println(e);
+        }
+
+        myCourses = user.getStudentcoursePlans();
+        teacherCourses = new ArrayList<> (user.getTeacherCourses().values());
+        archivedCourses = user.getArchivedCoursePlans(LocalDate.now());
+
+        //for loop on all courses
+        setCards(myCourses, cardVBox);
+        setCards(teacherCourses, cardVBoxTeacher);
+        setCards(archivedCourses, cardVBoxArchived);
 
     }
 
@@ -137,31 +165,6 @@ public class HomePageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //set profile
-        try {
-            File file = new File(HelloApplication.mainUser.getPicturePath());
-            // Create a FileInputStream from the File
-            FileInputStream stream = new FileInputStream(file);
-            Image newImage = new Image(stream);
-            //making the picture round
-            final Circle clip = new Circle(123.5,136,110);
-            profileImage.setClip(clip);
-            profileImage.setImage(newImage);
-
-        } catch (Exception e) {
-            // Handle exception
-            //if the path can not be resolved the default picture will be shown as profile picture
-            System.out.println(e);
-        }
-
-        myCourses = HelloApplication.mainUser.getStudentcoursePlans();
-        teacherCourses = new ArrayList<> (HelloApplication.mainUser.getTeacherCourses().values());
-        archivedCourses = HelloApplication.mainUser.getArchivedCoursePlans(LocalDate.now());
-
-        //for loop on all courses
-        setCards(myCourses, cardVBox);
-        setCards(teacherCourses, cardVBoxTeacher);
-        setCards(archivedCourses, cardVBoxArchived);
 
     }
 }

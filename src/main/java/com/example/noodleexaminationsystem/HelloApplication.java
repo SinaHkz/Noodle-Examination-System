@@ -29,17 +29,8 @@ import java.util.Date;
 
 public class HelloApplication extends Application {
     static Stage mainStage;
-    static User mainUser;
-    //______________________________________________________ getter/setter_________________________________________________________
+    static CoursePlan mainCoursePlan;
 
-
-    public static User getMainUser() {
-        return mainUser;
-    }
-
-    public static void setMainUser(User mainUser) {
-        HelloApplication.mainUser = mainUser;
-    }
 
     //______________________________________________________ methods _________________________________________________________
     public static void setScene(String fxmlFile){
