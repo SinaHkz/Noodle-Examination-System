@@ -4,6 +4,7 @@ import com.example.noodleexaminationsystem.Course.Course;
 import com.example.noodleexaminationsystem.Course.CoursePlan;
 import com.example.noodleexaminationsystem.Course.Exam;
 import com.example.noodleexaminationsystem.User.User;
+import com.example.noodleexaminationsystem.User.UserType;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,9 +18,11 @@ import java.time.Month;
 
 public class HelloApplication extends Application {
     static Stage mainStage;
+
     static CoursePlan mainCoursePlan;
-    static User mainUser;
+
     //______________________________________________________ getter/setter_________________________________________________________
+
 
 
     //______________________________________________________ methods _________________________________________________________
@@ -43,10 +46,20 @@ public class HelloApplication extends Application {
             Course.addCourse("OOP");
 
             Course.addCourse("Ds");
-            User teacher = User.signUp("teacher","paoi","ijf","ifje","ejia","fie",date ,"female","ADMIN");
-            CoursePlan coursePlan = CoursePlan.addCoursePlan("OOP","shit",teacher,Exam.createExam("iei", LocalDateTime.now(),LocalDateTime.of(2023, Month.JANUARY, 1, 12, 0)),date,"fj");
-            CoursePlan coursePlan1 = CoursePlan.addCoursePlan("OOP","shit1",teacher,Exam.createExam("iei",LocalDateTime.now(),LocalDateTime.of(2023, Month.JANUARY, 1, 12, 0)),date,"fj");
-            CoursePlan coursePlan2 = CoursePlan.addCoursePlan("OOP","shit2",teacher,Exam.createExam("iei",LocalDateTime.now(),LocalDateTime.of(2023, Month.JANUARY, 1, 12, 0)),date,"fj");
+            User teacher = User.signUp("teacher","paoi","ijf","ifje","ejia","fie",date ,"female", "member");
+            CoursePlan coursePlan = CoursePlan.addCoursePlan("OOP","shit",teacher,date,"fj");
+
+
+            CoursePlan coursePlan1 = CoursePlan.addCoursePlan("OOP","shit1",teacher, date,"fj");
+            CoursePlan coursePlan2 = CoursePlan.addCoursePlan("OOP","shit2",teacher,date,"fj");
+
+            //adding exams
+            LocalDateTime examStart = date.atTime(12,30,30);
+            LocalDateTime examEnd = date.atTime(12,50,30);
+            Exam sampleExam = Exam.createExam(coursePlan,"OOP",examStart,examEnd);
+            System.out.println(coursePlan.getExams().size());
+
+
             admin.getStudentcoursePlans().add(coursePlan);
             admin.getStudentcoursePlans().add(coursePlan1);
             admin.getStudentcoursePlans().add(coursePlan2);

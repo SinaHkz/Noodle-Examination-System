@@ -17,7 +17,7 @@
             <Image url="@../../../images/course.png" />
          </image>
       </ImageView>
-      <Button fx:id="courseName" layoutX="2.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="299.0" styleClass="white-background" text="CoursePlanName">
+      <Button fx:id="name" layoutX="2.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="299.0" styleClass="white-background" text="CoursePlanName">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

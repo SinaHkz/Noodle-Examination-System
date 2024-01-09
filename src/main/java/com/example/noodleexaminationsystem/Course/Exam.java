@@ -6,7 +6,7 @@ import com.example.noodleexaminationsystem.User.User;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
+
 import java.util.ArrayList;
 
 public class Exam {
@@ -16,15 +16,24 @@ public class Exam {
     private ArrayList<Question> questions = new ArrayList();
     private ArrayList<Result> results = new ArrayList<>();
 
+
+    //______________________________________________________ constructor _________________________________________________________
+
     private Exam(String examTitle, LocalDateTime timeStart, LocalDateTime timeEnd) {
         this.examTitle = examTitle;
-        TimeStart = timeStart;
-        TimeEnd = timeEnd;
+        this.TimeStart = timeStart;
+        this.TimeEnd = timeEnd;
     }
+    //______________________________________________________ getter/setter _________________________________________________________
 
-    public static Exam createExam(String examTitle, LocalDateTime timeStart, LocalDateTime timeEnd) {
 
-        Exam exam=new Exam(examTitle , timeStart , timeEnd);
+    public static Exam createExam(CoursePlan coursePlan,String examTitle, LocalDateTime timeStart, LocalDateTime timeEnd) {
+        Exam exam = new Exam(examTitle , timeStart , timeEnd);
+        coursePlan.getExams().add(exam);
+        return exam;
+    }
+    public static Exam createAttendedExam( LocalDateTime timeStart, LocalDateTime timeEnd){
+        Exam exam = new Exam("attendedExam" , timeStart , timeEnd);
         return exam;
     }
     public String getExamTitle() {
@@ -45,7 +54,6 @@ public class Exam {
         question.addusage();
     }
 
-
     public ArrayList<Question> getQuestions() {
         return questions;
     }
@@ -57,6 +65,29 @@ public class Exam {
     public ArrayList<Result> getResults() {
         return results;
     }
+
+    public LocalDateTime getTimeStart() {
+        return TimeStart;
+    }
+
+    public void setTimeStart(LocalDateTime timeStart) {
+        TimeStart = timeStart;
+    }
+
+    public LocalDateTime getTimeEnd() {
+        return TimeEnd;
+    }
+
+    public void setTimeEnd(LocalDateTime timeEnd) {
+        TimeEnd = timeEnd;
+    }
+
+    //______________________________________________________ methods _________________________________________________________
+//
+    public boolean isActive(){
+        return LocalDateTime.now().isBefore(this.getTimeEnd());
+    }
+
     public void removeUser(String user){
         for (Result result : results){
             if (result.getStudent().getUsername().equals(user))
@@ -66,4 +97,5 @@ public class Exam {
     public void setResults(ArrayList<Result> results) {
         this.results = results;
     }
+
 }

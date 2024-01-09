@@ -79,8 +79,9 @@ public class HomePageController implements Initializable {
 
                 CardController cardController = loader.getController();
                 cardController.coursePlan = coursePlan;
+                cardController.user = this.user;
                 try {
-                    cardController.setCard(coursePlan);
+                    cardController.setCourseCard(coursePlan);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -90,7 +91,6 @@ public class HomePageController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     public void setHomePage(User user) {
@@ -104,6 +104,7 @@ public class HomePageController implements Initializable {
             profileImage.setClip(clip);
             profileImage.setImage(newImage);
             username.setText(user.getUsername());
+
 
 
         } catch (Exception e) {

@@ -166,6 +166,7 @@ public class loginPageController implements Initializable {
                 // Now that the FXML is loaded, get the controller and set the data
                 HomePageController homePageController = loader.getController();
                 homePageController.setHomePage(user);
+                homePageController.user = user;
                 HelloApplication.mainStage.setScene(scene);
             } catch (Exception e) {
                 e.printStackTrace();

@@ -65,9 +65,10 @@ public class User {
 
     public static User signUp(String username, String password, String name, String lastName, String email, String picturePath, LocalDate dob, String gender,String userType) {
         String gender1 = gender.toUpperCase();
+        String userType1 = userType.toUpperCase();
         if (DataBase.getUsers().containsKey(username))
             return null;
-        User user1 = new User(username, password, name, lastName, email, picturePath, dob, Gender.valueOf(gender1),UserType.valueOf(userType));
+        User user1 = new User(username, password, name, lastName, email, picturePath, dob, Gender.valueOf(gender1),UserType.valueOf(userType1));
         DataBase.getUsers().put(username, user1);
         return user1;
     }
@@ -82,7 +83,6 @@ public class User {
     }
 
     public static boolean deleteUser(User user){
-        //not implemented----------------------------------------------------------------------------
         DataBase.getUsers().remove(user.getUsername(),user);
         return true;
     }
@@ -110,11 +110,11 @@ public class User {
         ArrayList<CoursePlan> myCourses = this.getStudentcoursePlans();
         Collection<CoursePlan> teacherCourses = this.getTeacherCourses().values();
         for (CoursePlan coursePlan : myCourses) {
-            if (coursePlan.isActive(date))
+            if (coursePlan.isActive())
                 archivedCoursePlans.add(coursePlan);
         }
         for (CoursePlan coursePlan : teacherCourses) {
-            if (coursePlan.isActive(date))
+            if (coursePlan.isActive())
                 archivedCoursePlans.add(coursePlan);
         }
         return archivedCoursePlans;
