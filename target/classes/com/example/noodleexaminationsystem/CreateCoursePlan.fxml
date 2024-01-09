@@ -38,15 +38,15 @@
                      <Font size="24.0" />
                   </font>
                </Button>
-               <Label layoutX="203.0" layoutY="116.0" text="Creat Course">
+               <Label layoutX="187.0" layoutY="115.0" text="Create Course">
                   <font>
                      <Font size="50.0" />
                   </font>
                </Label>
                <FontAwesomeIconView fill="#096dde" glyphName="BOOK" layoutX="310.0" layoutY="99.0" size="50" />
                <TextField fx:id="courseName" layoutX="130.0" layoutY="286.0" prefHeight="50.0" prefWidth="400.0" promptText="Course Name" styleClass="border-colored-bottom" />
-               <TextField  fx:id="coursePictureAddress" layoutX="130.0" layoutY="377.0" prefHeight="50.0" prefWidth="400.0" promptText="Course picture address" styleClass="border-colored-bottom" />
-               <Label  fx:id="courseTaken" layoutX="157.0" layoutY="362.0" text="Course name taken" textFill="RED" visible="false" />
+               <TextField fx:id="coursePictureAddress" layoutX="130.0" layoutY="377.0" prefHeight="50.0" prefWidth="400.0" promptText="Course picture address" styleClass="border-colored-bottom" />
+               <Label fx:id="courseTaken" layoutX="157.0" layoutY="362.0" text="Course name taken" textFill="RED" visible="false" />
                <Label fx:id="passwordLessThanEight" layoutX="338.0" layoutY="362.0" text="password must have at least 8 characters" textFill="RED" visible="false" />
                <ComboBox fx:id="comboBox" layoutX="132.0" layoutY="470.0" prefHeight="50.0" prefWidth="400.0" promptText="Course" styleClass="border-colored-bottom" />
                <Button layoutX="11.0" layoutY="10.0" mnemonicParsing="false" onAction="#setBckButton" prefHeight="26.0" prefWidth="98.0" styleClass="back-button" text="Back" />

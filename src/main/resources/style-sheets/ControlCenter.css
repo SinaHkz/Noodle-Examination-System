@@ -86,3 +86,8 @@
     -fx-background-color: #5997dc;
     -fx-background-radius: 5px;
 }
+
+.list-view{
+    -fx-background-color: transparent;
+    -fx-border-width: 0px;
+}

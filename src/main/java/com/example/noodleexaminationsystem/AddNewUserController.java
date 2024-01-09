@@ -6,16 +6,17 @@ import com.example.noodleexaminationsystem.User.UserType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AddNewUserController implements Initializable {
+    public User previousUser;
 
     @FXML
     BorderPane signupPane;
@@ -92,12 +93,12 @@ public class AddNewUserController implements Initializable {
                 passwordLessThanEight.setVisible(true);
                 return;
             }
-            if(picturePath.getText().isEmpty()){
+            if (picturePath.getText().isEmpty()) {
                 picturePath.setText("");
             }
 
             System.out.println(dob.getValue());
-            User user = User.signUp(signUpUsername.getText(), signUpPassword.getText(), name.getText(), lastname.getText(), email.getText(), picturePath.getText(), dob.getValue(), comboBox.getSelectionModel().getSelectedItem().toString(),TypeComboBox.getSelectionModel().toString());
+            User user = User.signUp(signUpUsername.getText(), signUpPassword.getText(), name.getText(), lastname.getText(), email.getText(), picturePath.getText(), dob.getValue(), comboBox.getSelectionModel().getSelectedItem().toString(), TypeComboBox.getSelectionModel().toString());
             if (user == null) {
                 usernameTaken.setVisible(true);
                 return;
@@ -108,11 +109,23 @@ public class AddNewUserController implements Initializable {
 
     }
 
+    public void setBackButton(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ControlCenter.fxml"));
+        try {
+            Scene scene = new Scene(loader.load());
+            ControlCenterController controlCenterController = loader.getController();
+            controlCenterController.previousUser = this.previousUser;
+            HelloApplication.mainStage.setScene(scene);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<String> list = FXCollections.observableArrayList();
         ObservableList<String> types = FXCollections.observableArrayList();
-        for (UserType type: UserType.values())
+        for (UserType type : UserType.values())
             types.add(type.toString());
         for (Gender gender : Gender.values())
             list.add(gender.toString());

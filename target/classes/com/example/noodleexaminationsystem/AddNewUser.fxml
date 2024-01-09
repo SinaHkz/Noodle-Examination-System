@@ -57,6 +57,7 @@
                <Label fx:id="passwordLessThanEight" layoutX="418.0" layoutY="452.0" text="password must have at least 8 characters" textFill="RED" visible="false" />
                <ComboBox fx:id="comboBox" layoutX="217.0" layoutY="466.0" prefHeight="50.0" prefWidth="400.0" promptText="Gender" styleClass="border-colored-bottom" />
                <ComboBox fx:id="TypeComboBox" layoutX="217.0" layoutY="560.0" prefHeight="50.0" prefWidth="400.0" promptText="Type" styleClass="border-colored-bottom" />
+               <Button onAction="#setBackButton" layoutX="15.0" layoutY="14.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="87.0" styleClass="back-button" text="back" />
             </children>
          </Pane>
       </center>

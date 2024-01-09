@@ -61,6 +61,8 @@ public class User {
         return null;
     }
 
+//    ----------------------------------------------------------------User static methods------------------------------------------------------------------------
+
     public static User signUp(String username, String password, String name, String lastName, String email, String picturePath, LocalDate dob, String gender,String userType) {
         String gender1 = gender.toUpperCase();
         if (DataBase.getUsers().containsKey(username))
@@ -79,13 +81,20 @@ public class User {
         return null;
     }
 
+    public static boolean deleteUser(User user){
+        //not implemented----------------------------------------------------------------------------
+        DataBase.getUsers().remove(user.getUsername(),user);
+        return true;
+    }
 
+    //move it to course plan.------------------------------------------------------------
     public void deleteCoursePlan(CoursePlan coursePlan) {
         teacherCourses.remove(coursePlan);
     }
     public void archiveCoursePlan(CoursePlan coursePlan){
         coursePlan.setEnd(LocalDate.now());
     }
+
 
 
     public int resetPassword(String password, String newpassword) {
