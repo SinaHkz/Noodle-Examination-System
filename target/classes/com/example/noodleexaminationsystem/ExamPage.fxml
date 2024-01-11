@@ -28,12 +28,17 @@
 <<<<<<< Updated upstream
                      <FontAwesomeIconView glyphName="CHECK" layoutX="105.0" layoutY="884.0" size="24" />
                   </Group>
+<<<<<<< HEAD
                   <Group fx:id="deleteExamButton" visible="true">
                      <Button layoutX="57.0" layoutY="636.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Delete Exam">
 =======
                   <FontAwesomeIconView glyphName="CHECK" layoutX="105.0" layoutY="884.0" size="24" />
                   <Button fx:id="deleteExamButton" layoutX="57.0" layoutY="636.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Delete Exam" onAction="setDeleteExamButton">
 >>>>>>> Stashed changes
+=======
+                  <Group fx:id="deleteExamButton" visible="true" >
+                     <Button onAction="#setDeleteExamButton" layoutX="57.0" layoutY="636.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Delete Exam">
+>>>>>>> aa1220507d0be9937c363b3290aee5bf097dbab2
                      <font>
                         <Font size="20.0" />
                      </font>
