@@ -19,7 +19,7 @@
          <children>
             <Pane layoutX="-22.0" layoutY="-1.0" prefHeight="900.0" prefWidth="376.0">
                <children>
-                  <Group fx:id="submitAndExit">
+                  <Group fx:id="submitAndExit" visible="false" >
                      <Button  layoutX="22.0" layoutY="854.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="352.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Submit &amp; Exit">
                      <font>
                         <Font size="24.0" />
@@ -27,7 +27,7 @@
                   </Button>
                      <FontAwesomeIconView glyphName="CHECK" layoutX="105.0" layoutY="884.0" size="24" />
                   </Group>
-                  <Group fx:id="deleteExamButton">
+                  <Group fx:id="deleteExamButton" visible="true">
                      <Button layoutX="57.0" layoutY="636.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Delete Exam">
                      <font>
                         <Font size="20.0" />
@@ -36,7 +36,7 @@
                      <FontAwesomeIconView glyphName="TRASH" layoutX="116.0" layoutY="662.0" size="18" />
                   </Group>
 
-                  <Group fx:id="finishExamNowButton">
+                  <Group fx:id="finishExamNowButton" visible="false">
                      <Button layoutX="57.0" layoutY="573.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Finish Exam Now">
                      <font>
                         <Font size="21.0" />
@@ -81,7 +81,7 @@
                      </font>
                   </Label>
                   <Line endX="197.0" layoutX="177.0" layoutY="854.0" opacity="0.56" startX="-154.99998474121094" />
-                  <Button  fx:id="addQuestionButton" layoutX="57.0" layoutY="451.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" text="Add Question">
+                  <Button  fx:id="addQuestionButton" visible="false" layoutX="57.0" layoutY="451.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" text="Add Question">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -91,7 +91,7 @@
                         <String fx:value="top-buttons" />
                      </styleClass>
                   </Button>
-                  <Button  fx:id="checkResultsButton" layoutX="56.0" layoutY="511.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" text="Check Results">
+                  <Button  fx:id="checkResultsButton" visible="false" layoutX="56.0" layoutY="511.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" text="Check Results">
                      <font>
                         <Font size="20.0" />
                      </font>

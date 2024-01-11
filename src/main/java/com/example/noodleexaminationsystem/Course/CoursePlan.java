@@ -78,7 +78,7 @@ public class CoursePlan {
         ArrayList<Exam> exams = this.getExams();
         ArrayList<Exam> archivedExams = new ArrayList<>();
         for (Exam exam:exams) {
-            if(!exam.isActive())
+            if(exam.hasEnded())
                 archivedExams.add(exam);
         }
         return archivedExams;
@@ -87,7 +87,8 @@ public class CoursePlan {
         ArrayList<Exam> exams = this.getExams();
         ArrayList<Exam> activeExams = new ArrayList<>();
         for (Exam exam:exams) {
-            if(exam.isActive())
+            //any exam that has not been started or has started but not ended will be shown as an active exam
+            if(!exam.hasEnded())
                 activeExams.add(exam);
         }
         return activeExams;
