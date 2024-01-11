@@ -39,6 +39,8 @@ public class ControlCenterController implements Initializable {
     private Label successfulDeletion;
     @FXML
     private ListView courseList;
+    @FXML
+    private Label successfulDeletionCourse;
 
     public void setBackButton() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("homePage.fxml"));
@@ -65,7 +67,7 @@ public class ControlCenterController implements Initializable {
 
 //        ------------------------------------set course data------------------------------------
         ObservableList<String> courses = FXCollections.observableArrayList();
-        for (Course course: DataBase.courses.values()){
+        for (Course course : DataBase.courses.values()) {
             courses.add(course.getCourse());
         }
         courseList.setItems(courses);//not tested!!!!!!!!
@@ -86,7 +88,7 @@ public class ControlCenterController implements Initializable {
         }
     }
 
-    public void setMinusButton() { //change name to deleteUserButton
+    public void setMinusUserButton() {
         String username = userList.getSelectionModel().getSelectedItem().toString();
         User user = DataBase.users.get(username);
         boolean isDeleted;
@@ -108,30 +110,63 @@ public class ControlCenterController implements Initializable {
             successfulDeletion.setVisible(false);
     }
 
+    public void setPlusCourseButton() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("CreateCourse.fxml"));
+        try {
+            Scene scene = new Scene(loader.load());
+            CreateCourseController createCourseController = loader.getController();
+            createCourseController.previousUser = this.previousUser;
+            HelloApplication.mainStage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setMinusCourseButton() {
+        String courseName = courseList.getSelectionModel().getSelectedItem().toString();
+        Course course = DataBase.getCourses().get(courseName);
+        if (course.deleteCourse()) {
+            successfulDeletionCourse.setVisible(true);
+            ObservableList<String> courses = FXCollections.observableArrayList();
+            for (Course course1 : DataBase.getCourses().values())
+                courses.add(course1.getCourse());
+            courseList.setItems(courses);
+        } else
+            successfulDeletionCourse.setVisible(false);
+
+    }
+
+
     public void setUserButton() {
         userButton.getStyleClass().addAll("selected-buttons");
-        questionBankButton.getStyleClass().removeAll("selected-buttons");
         courseButton.getStyleClass().removeAll("selected-buttons");
         userGroup.setVisible(true);
-        questionBankGroup.setVisible(false);
         courseGroup.setVisible(false);
         //set deletion message invisible.
         successfulDeletion.setVisible(false);
+        successfulDeletionCourse.setVisible(false);
     }
 
     public void setCourseGroup() {
         courseButton.getStyleClass().addAll("selected-buttons");
-        questionBankButton.getStyleClass().removeAll("selected-buttons");
         userButton.getStyleClass().removeAll("selected-buttons");
         userGroup.setVisible(false);
-        questionBankGroup.setVisible(false);
         courseGroup.setVisible(true);
         //set deletion message invisible.
         successfulDeletion.setVisible(false);
+        successfulDeletionCourse.setVisible(false);
     }
 
     public void setQuestionBankButton() {
-        //not implemented------------------------------------------------------------------------------------------------
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("QuestionsBank.fxml"));
+        try {
+            Scene scene = new Scene(loader.load());
+            QuestionBankController questionBankController = loader.getController();
+            questionBankController.previousUser = this.previousUser;
+            HelloApplication.mainStage.setScene(scene);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 }

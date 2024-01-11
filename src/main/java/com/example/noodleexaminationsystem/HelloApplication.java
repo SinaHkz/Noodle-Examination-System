@@ -71,30 +71,30 @@ public class HelloApplication extends Application {
 
             //testing questions
             //__________________________________
-            ArrayList<String> answers = new ArrayList<>();answers.add("shit");answers.add("shit2");answers.add("shit3");answers.add("shit4");
-            SingleAnswer question = new SingleAnswer(DataBase.getCourses().get("OOP"),"this is test",admin, Choice.FOUR,3,answers );
-            LongAnswer question2 = new LongAnswer(DataBase.getCourses().get("OOP"),"this is test",admin,"shit shit shit");
-            FXMLLoader loader = new FXMLLoader();
-
-                loader.setLocation(getClass().getResource("ShortAnswerQuestionCard.fxml"));
-               Scene scene = new Scene(loader.load());
-                CardController cardController = loader.getController();
-                try {
-                    cardController.setShortAnswerQuestionCard(question);
-                } catch (Exception e) {
-                    System.out.println(e);
-                }
-                mainStage.setScene(scene);
-                mainStage.show();
-                //this part should go back to normal after test
+//            ArrayList<String> answers = new ArrayList<>();answers.add("shit");answers.add("shit2");answers.add("shit3");answers.add("shit4");
+//            SingleAnswer question = new SingleAnswer(DataBase.getCourses().get("OOP"),"this is test",admin, Choice.FOUR,3,answers );
+//            LongAnswer question2 = new LongAnswer(DataBase.getCourses().get("OOP"),"this is test",admin,"shit shit shit");
+//            FXMLLoader loader = new FXMLLoader();
 //
-//            mainCoursePlan=coursePlan;
-//            //first scene
-//            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
-//            mainStage.setScene(new Scene(fxmlLoader.load()));
-////            mainStage.setMaxWidth(1600);
-////            mainStage.setMaxHeight(900);
-//            mainStage.show();
+//                loader.setLocation(getClass().getResource("ShortAnswerQuestionCard.fxml"));
+//               Scene scene = new Scene(loader.load());
+//                CardController cardController = loader.getController();
+//                try {
+//                    cardController.setShortAnswerQuestionCard(question);
+//                } catch (Exception e) {
+//                    System.out.println(e);
+//                }
+//                mainStage.setScene(scene);
+//                mainStage.show();
+                //this part should go back to normal after test
+
+            mainCoursePlan=coursePlan;
+            //first scene
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
+            mainStage.setScene(new Scene(fxmlLoader.load()));
+//            mainStage.setMaxWidth(1600);
+//            mainStage.setMaxHeight(900);
+            mainStage.show();
 
         } catch (Exception e) {
             e.printStackTrace();

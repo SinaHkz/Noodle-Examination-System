@@ -21,6 +21,11 @@ public class Course {
         return null;
     }
 
+    public boolean deleteCourse() {
+        DataBase.getCourses().remove(this.course, this);
+        return true;
+    }
+
     public String getCourse() {
         return course;
     }

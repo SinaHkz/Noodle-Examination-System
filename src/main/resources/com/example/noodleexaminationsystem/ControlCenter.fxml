@@ -24,7 +24,7 @@
                               <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="20" wrappingWidth="16.656768798828125" />
                            </graphic>
                         </Button>
-                        <Button layoutX="1060.0" layoutY="16.0" mnemonicParsing="false" onAction="#setMinusButton" prefHeight="43.0" prefWidth="43.0" styleClass="minus-btn">
+                        <Button layoutX="1060.0" layoutY="16.0" mnemonicParsing="false" onAction="#setMinusUserButton" prefHeight="43.0" prefWidth="43.0" styleClass="minus-btn">
                            <graphic>
                               <FontAwesomeIconView fill="WHITE" glyphName="MINUS" size="20" />
                            </graphic>
@@ -39,21 +39,26 @@
                   </Pane>
                </children>
             </Group>
-            <Group fx:id="courseGroup" layoutX="87.0" layoutY="187.0">
+            <Group fx:id="courseGroup" layoutX="67.0" layoutY="167.0" visible="false">
                <children>
-                  <Pane layoutX="-18.0" layoutY="-148.0" prefHeight="823.0" prefWidth="1189.0" visible="false">
+                  <Pane layoutX="-8.0" layoutY="-119.0" prefHeight="823.0" prefWidth="1189.0">
                      <children>
-                        <Button layoutX="1131.0" layoutY="26.0" mnemonicParsing="false" onAction="#setPlusUserButton" prefHeight="43.0" prefWidth="43.0" styleClass="plus-btn">
+                        <Button layoutX="1119.0" layoutY="15.0" mnemonicParsing="false" onAction="#setPlusCourseButton" prefHeight="43.0" prefWidth="43.0" styleClass="plus-btn">
                            <graphic>
                               <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="20" wrappingWidth="16.656768798828125" />
                            </graphic>
                         </Button>
-                        <Button layoutX="1071.0" layoutY="26.0" mnemonicParsing="false" onAction="#setMinusButton" prefHeight="43.0" prefWidth="43.0" styleClass="minus-btn">
+                        <Button layoutX="1060.0" layoutY="16.0" mnemonicParsing="false" onAction="#setMinusCourseButton" prefHeight="43.0" prefWidth="43.0" styleClass="minus-btn">
                            <graphic>
                               <FontAwesomeIconView fill="WHITE" glyphName="MINUS" size="20" />
                            </graphic>
                         </Button>
-                        <ListView fx:id="courseList" layoutX="7.0" layoutY="98.0" prefHeight="720.0" prefWidth="1178.0" />
+                        <ListView fx:id="courseList" layoutY="64.0" prefHeight="720.0" prefWidth="1178.0" />
+                        <Label fx:id="successfulDeletionCourse" layoutX="514.0" layoutY="28.0" text="Course title successfully deleted" textFill="RED" visible="false">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
                      </children>
                   </Pane>
                </children>
