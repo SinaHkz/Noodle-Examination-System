@@ -25,19 +25,33 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
+<<<<<<< Updated upstream
                      <FontAwesomeIconView glyphName="CHECK" layoutX="105.0" layoutY="884.0" size="24" />
                   </Group>
+<<<<<<< HEAD
+                  <Group fx:id="deleteExamButton" visible="true">
+                     <Button layoutX="57.0" layoutY="636.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Delete Exam">
+=======
+                  <FontAwesomeIconView glyphName="CHECK" layoutX="105.0" layoutY="884.0" size="24" />
+                  <Button fx:id="deleteExamButton" layoutX="57.0" layoutY="636.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Delete Exam" onAction="setDeleteExamButton">
+>>>>>>> Stashed changes
+=======
                   <Group fx:id="deleteExamButton" visible="true" >
                      <Button onAction="#setDeleteExamButton" layoutX="57.0" layoutY="636.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Delete Exam">
+>>>>>>> aa1220507d0be9937c363b3290aee5bf097dbab2
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
+<<<<<<< Updated upstream
                      <FontAwesomeIconView glyphName="TRASH" layoutX="116.0" layoutY="662.0" size="18" />
                   </Group>
 
                   <Group fx:id="finishExamNowButton" visible="false">
                      <Button layoutX="57.0" layoutY="573.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Finish Exam Now">
+=======
+                  <Button fx:id="finishExamButton" layoutX="57.0" layoutY="573.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Finish Exam Now">
+>>>>>>> Stashed changes
                      <font>
                         <Font size="21.0" />
                      </font>
@@ -75,13 +89,21 @@
                         <String fx:value="selected-buttons" />
                      </styleClass>
                   </Button>
+<<<<<<< Updated upstream
                   <Label fx:id="examTitleLabel" alignment="CENTER" layoutX="20.0" layoutY="21.0" prefHeight="96.0" prefWidth="361.0" style="-fx-label-padding: 30px 0px 0px 0px;" text="{Exam Title}">
+=======
+                  <Label fx:id="ExamTitle" alignment="CENTER" layoutX="20.0" layoutY="21.0" prefHeight="96.0" prefWidth="361.0" style="-fx-label-padding: 30px 0px 0px 0px;" text="{Exam Tilte}">
+>>>>>>> Stashed changes
                      <font>
                         <Font size="54.0" />
                      </font>
                   </Label>
                   <Line endX="197.0" layoutX="177.0" layoutY="854.0" opacity="0.56" startX="-154.99998474121094" />
+<<<<<<< Updated upstream
                   <Button  fx:id="addQuestionButton" visible="false" layoutX="57.0" layoutY="451.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" text="Add Question">
+=======
+                  <Button fx:id="addQuestionButton" layoutX="57.0" layoutY="451.0" mnemonicParsing="false" onAction="#setTeacherCourseButton" prefHeight="39.0" prefWidth="264.0" text="Add Question">
+>>>>>>> Stashed changes
                      <font>
                         <Font size="20.0" />
                      </font>

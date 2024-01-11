@@ -2,7 +2,11 @@ package com.example.noodleexaminationsystem.Question;
 
 import com.example.noodleexaminationsystem.Course.Course;
 import com.example.noodleexaminationsystem.User.User;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+@JsonSerialize
+@JsonDeserialize
 public abstract class Question {
     private Course course;
     private String question;
