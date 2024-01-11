@@ -89,7 +89,9 @@ public class Exam {
     //______________________________________________________ methods _________________________________________________________
 //
     public boolean isActive(){
-        return LocalDateTime.now().isBefore(this.getTimeEnd());
+        if((LocalDateTime.now().isBefore(this.getTimeEnd())) && (LocalDateTime.now().isAfter(this.getTimeStart())))
+            return true;
+        return false;
     }
 
     public void removeUser(String user){

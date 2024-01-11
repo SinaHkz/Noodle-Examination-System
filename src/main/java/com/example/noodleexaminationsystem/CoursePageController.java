@@ -96,6 +96,7 @@ public class CoursePageController implements Initializable {
                 loader.setLocation(getClass().getResource("ExamCard.fxml"));
                 Pane cardBox = loader.load();
                 CardController cardController = loader.getController();
+                cardController.user = this.user;
                 cardController.exam = exam;
                 cardController.coursePlan = this.coursePlan;
                 try {

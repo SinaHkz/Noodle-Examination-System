@@ -2,8 +2,10 @@ package com.example.noodleexaminationsystem;
 
 import com.example.noodleexaminationsystem.Course.CoursePlan;
 import com.example.noodleexaminationsystem.Course.Exam;
+import com.example.noodleexaminationsystem.Question.LongAnswer;
 import com.example.noodleexaminationsystem.Question.MultipleChoice;
 import com.example.noodleexaminationsystem.Question.Question;
+import com.example.noodleexaminationsystem.Question.SingleAnswer;
 import com.example.noodleexaminationsystem.User.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -47,43 +49,46 @@ public class ExamPageController implements Initializable {
     @FXML
     VBox questionsVbox;
 
-    private void setCards(ArrayList<Question> questions, VBox cardVbox) {
+    private void setCards(ArrayList<Question> questions, VBox cardVbox,Boolean showWithAnswer) {
         try {
             HBox eachQuestionBox;
             for (Question question : questions) {;
-                if(question instanceof MultipleChoice){
+                if(question instanceof SingleAnswer){
                     //short answer card controller initialize and setup
                     FXMLLoader loader = new FXMLLoader();
                     loader.setLocation(getClass().getResource("ShortAnswerQuestionCard.fxml"));
                     eachQuestionBox = loader.load();
                     CardController cardController = loader.getController();
-                    cardController.exam = exam;
-                    cardController.coursePlan = this.coursePlan;
+//                    cardController.exam = exam;
+//                    cardController.coursePlan = this.coursePlan;
                     try {
-                        cardController.setExamCard(exam);
+                        if(showWithAnswer)
+                            cardController.setShortAnswerQuestionCardWithAnswer((SingleAnswer) question);
+                        else
+                            cardController.setShortAnswerQuestionCardWithoutAnswer((SingleAnswer) question);
                     } catch (Exception e) {
                         System.out.println(e);
                     }
-                 //   eachQuestionBox.getChildren().add(cardBox);
-
+                    cardVbox.getChildren().add(eachQuestionBox);
                 }
-                else{
+                else if(question instanceof LongAnswer){
                     //long answer card controller initialize and setup
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("LongAnswerQuestionCard.fxml"));
+                    eachQuestionBox = loader.load();
+                    CardController cardController = loader.getController();
+//                    cardController.exam = exam;
+//                    cardController.coursePlan = this.coursePlan;
+                    try {
+                        if(showWithAnswer)
+                            cardController.setLongAnswerQuestionCardWithAnswer((LongAnswer) question);
+                        else
+                            cardController.setLongAnswerQuestionCardWithoutAnswer((LongAnswer) question);
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
+                    cardVbox.getChildren().add(eachQuestionBox);
                 }
-//
-//                FXMLLoader loader = new FXMLLoader();
-//                loader.setLocation(getClass().getResource("ExamCard.fxml"));
-//                Pane cardBox = loader.load();
-//                CardController cardController = loader.getController();
-//                cardController.exam = exam;
-//                cardController.coursePlan = this.coursePlan;
-//                try {
-//                    cardController.setExamCard(exam);
-//                } catch (Exception e) {
-//                    System.out.println(e);
-//                }
-//                eachRowBox.getChildren().add(cardBox);
-//                counter++;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -93,22 +98,40 @@ public class ExamPageController implements Initializable {
 
 
     public void setExamPage(){
-
-        if(coursePlan.getTeacher()!=user){
-            addQuestionButton.setVisible(false);
-            checkResultsButton.setVisible(false);
-            finishExamNowButton.setVisible(false);
-            deleteExamButton.setVisible(false);
-        }
-        else{
-            submitAndExit.setVisible(false);
-        }
         examTitleLabel.setText(this.exam.getExamTitle());
         startDateButton.setText(this.exam.getTimeStart().toString());
         endDateButton.setText(this.exam.getTimeEnd().toString());
-        //setting question cards here
-    }
 
+        //the user is the teacher
+        if(coursePlan.getTeacher()==this.user){
+            if(!exam.hasStarted()){
+                addQuestionButton.setVisible(true);
+            }
+            else if(exam.hasEnded()){
+                checkResultsButton.setVisible(true);
+
+            } else if (exam.isActive()) {
+                finishExamNowButton.setVisible(true);
+            }
+            //show questions with their answers
+            setCards(exam.getQuestions(),questionsVbox,true);
+        }
+        //the user is a student
+        else{
+            if(exam.isActive()){
+                submitAndExit.setVisible(true);
+                setCards(exam.getQuestions(),questionsVbox,false);
+            }
+            else if(exam.hasEnded()){
+                setCards(exam.getQuestions(),questionsVbox,true);
+            }
+
+        }
+    }
+    public  void setDeleteExamButton(){
+        coursePlan.getExams().remove(this.exam);
+        //call back button when back button is created
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

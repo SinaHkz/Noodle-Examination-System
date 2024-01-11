@@ -90,12 +90,18 @@ public class CardController implements Initializable {
     }
     public void setExamButton() {
         try {
+            if((!this.exam.hasStarted()) && (this.user!=this.coursePlan.getTeacher())){
+                //set a label to show that the exam is yet to be started
+                // <<<<<<<<<<<<<<-------------------------------
+                return;
+            }
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("ExamPage.fxml"));
             Scene scene = new Scene(loader.load());
 
             // Now that the FXML is loaded, get the controller and set the data
             ExamPageController examPageController = loader.getController();
+            //System.out.println(this.user);
             examPageController.user = this.user;
             examPageController.exam = this.exam;
             examPageController.coursePlan = this.coursePlan;
@@ -114,10 +120,10 @@ public class CardController implements Initializable {
 //                """);
         name.setText(exam.getExamTitle());
     }
-    public void setLongAnswerQuestionCard(LongAnswer question){
+    public void setLongAnswerQuestionCardWithoutAnswer(LongAnswer question){
         questionLabel.setText(question.getQuestion());
     }
-    public void setShortAnswerQuestionCard(SingleAnswer question){
+    public void setShortAnswerQuestionCardWithoutAnswer(SingleAnswer question){
         questionLabel.setText(question.getQuestion());
         String answers = "";
         for (String answer: question.getChoices()) {
@@ -130,6 +136,21 @@ public class CardController implements Initializable {
         }
         choiceComboBox.setItems(choiceNumbers);
     }
+    public void setLongAnswerQuestionCardWithAnswer(LongAnswer question){
+        questionLabel.setText(question.getQuestion());
+        longAnswerQuestionTextField.editableProperty().set(false);
+        longAnswerQuestionTextField.setText(question.getAnswer());
+    }
+    public void setShortAnswerQuestionCardWithAnswer(SingleAnswer question){
+        questionLabel.setText(question.getQuestion());
+        String answers = "";
+        for (String answer: question.getChoices()) {
+            answers += answer+ "\n";
+        }
+        shortAnswerChoiceLabel.setText(answers);
+        choiceComboBox.setVisible(false);
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

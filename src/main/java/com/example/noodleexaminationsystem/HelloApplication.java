@@ -59,7 +59,6 @@ public class HelloApplication extends Application {
             LocalDateTime examStart = date.atTime(12,30,30);
             LocalDateTime examEnd = date.atTime(12,50,30);
             Exam sampleExam = Exam.createExam(coursePlan,"OOP",examStart,examEnd);
-            System.out.println(coursePlan.getExams().size());
 
 
             admin.getStudentcoursePlans().add(coursePlan);
@@ -69,24 +68,15 @@ public class HelloApplication extends Application {
             admin.getTeacherCourses().put(coursePlan.getName(), coursePlan);
             admin.getArchivedCoursePlans(date).add(coursePlan);
 
-            //testing questions
-            //__________________________________
-//            ArrayList<String> answers = new ArrayList<>();answers.add("shit");answers.add("shit2");answers.add("shit3");answers.add("shit4");
-//            SingleAnswer question = new SingleAnswer(DataBase.getCourses().get("OOP"),"this is test",admin, Choice.FOUR,3,answers );
-//            LongAnswer question2 = new LongAnswer(DataBase.getCourses().get("OOP"),"this is test",admin,"shit shit shit");
-//            FXMLLoader loader = new FXMLLoader();
-//
-//                loader.setLocation(getClass().getResource("ShortAnswerQuestionCard.fxml"));
-//               Scene scene = new Scene(loader.load());
-//                CardController cardController = loader.getController();
-//                try {
-//                    cardController.setShortAnswerQuestionCard(question);
-//                } catch (Exception e) {
-//                    System.out.println(e);
-//                }
-//                mainStage.setScene(scene);
-//                mainStage.show();
-                //this part should go back to normal after test
+
+            //______________________________________
+//           adding questions to exam for test
+            ArrayList<String> answers = new ArrayList<>();answers.add("shit");answers.add("shit2");answers.add("shit3");answers.add("shit4");
+            SingleAnswer question = new SingleAnswer(DataBase.getCourses().get("OOP"),"this is test",admin, Choice.FOUR,3,answers );
+            LongAnswer question2 = new LongAnswer(DataBase.getCourses().get("OOP"),"this is test",admin,"this is the shity answer");
+            sampleExam.addQuestion(question);
+            sampleExam.addQuestion(question2);
+            //______________________________________
 
             mainCoursePlan=coursePlan;
             //first scene
