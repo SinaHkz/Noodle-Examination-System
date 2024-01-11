@@ -3,6 +3,10 @@ package com.example.noodleexaminationsystem;
 import com.example.noodleexaminationsystem.Course.Course;
 import com.example.noodleexaminationsystem.Course.CoursePlan;
 import com.example.noodleexaminationsystem.Course.Exam;
+import com.example.noodleexaminationsystem.Question.Choice;
+import com.example.noodleexaminationsystem.Question.LongAnswer;
+import com.example.noodleexaminationsystem.Question.Question;
+import com.example.noodleexaminationsystem.Question.SingleAnswer;
 import com.example.noodleexaminationsystem.User.User;
 import com.example.noodleexaminationsystem.User.UserType;
 import javafx.application.Application;
@@ -14,16 +18,14 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class HelloApplication extends Application {
     static Stage mainStage;
 
     static CoursePlan mainCoursePlan;
-
-    //______________________________________________________ getter/setter_________________________________________________________
-
-
 
     //______________________________________________________ methods _________________________________________________________
     public static void setScene(String fxmlFile) {
@@ -46,7 +48,7 @@ public class HelloApplication extends Application {
             Course.addCourse("OOP");
 
             Course.addCourse("Ds");
-            User teacher = User.signUp("teacher","paoi","ijf","ifje","ejia","fie",date ,"female", "member");
+            User teacher = User.signUp("teacher","teacher","ijf","ifje","ejia","fie",date ,"female", "member");
             CoursePlan coursePlan = CoursePlan.addCoursePlan("OOP","shit",teacher,date,"fj");
 
 
@@ -67,13 +69,32 @@ public class HelloApplication extends Application {
             admin.getTeacherCourses().put(coursePlan.getName(), coursePlan);
             admin.getArchivedCoursePlans(date).add(coursePlan);
 
-            mainCoursePlan=coursePlan;
-            //first scene
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
-            mainStage.setScene(new Scene(fxmlLoader.load()));
-//            mainStage.setMaxWidth(1600);
-//            mainStage.setMaxHeight(900);
-            mainStage.show();
+            //testing questions
+            //__________________________________
+            ArrayList<String> answers = new ArrayList<>();answers.add("shit");answers.add("shit2");answers.add("shit3");answers.add("shit4");
+            SingleAnswer question = new SingleAnswer(DataBase.getCourses().get("OOP"),"this is test",admin, Choice.FOUR,3,answers );
+            LongAnswer question2 = new LongAnswer(DataBase.getCourses().get("OOP"),"this is test",admin,"shit shit shit");
+            FXMLLoader loader = new FXMLLoader();
+
+                loader.setLocation(getClass().getResource("ShortAnswerQuestionCard.fxml"));
+               Scene scene = new Scene(loader.load());
+                CardController cardController = loader.getController();
+                try {
+                    cardController.setShortAnswerQuestionCard(question);
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+                mainStage.setScene(scene);
+                mainStage.show();
+                //this part should go back to normal after test
+//
+//            mainCoursePlan=coursePlan;
+//            //first scene
+//            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
+//            mainStage.setScene(new Scene(fxmlLoader.load()));
+////            mainStage.setMaxWidth(1600);
+////            mainStage.setMaxHeight(900);
+//            mainStage.show();
 
         } catch (Exception e) {
             e.printStackTrace();

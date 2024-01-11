@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -83,6 +84,7 @@ public class loginPageController implements Initializable {
                 return;
             }
             //showing home page
+//            System.out.println("issue:   "+user);
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("homePage.fxml"));
             try {
@@ -90,10 +92,14 @@ public class loginPageController implements Initializable {
                 // Now that the FXML is loaded, get the controller and set the data
                 HomePageController homePageController = loader.getController();
                 homePageController.user = user;
+                if(user== DataBase.users.get("teacher")){
+                    System.out.println("yaaay");
+                }
                 homePageController.setHomePage(user);
                 HelloApplication.mainStage.setScene(scene);
             } catch (Exception e) {
-                e.printStackTrace();
+//                System.out.println("aaaaaaaaaaaaahhhhhhhhhhhhhhhhhhhh");
+                System.out.println(e);
             }
             return;
         }
@@ -165,8 +171,8 @@ public class loginPageController implements Initializable {
                 Scene scene = new Scene(loader.load());
                 // Now that the FXML is loaded, get the controller and set the data
                 HomePageController homePageController = loader.getController();
-                homePageController.setHomePage(user);
                 homePageController.user = user;
+                homePageController.setHomePage(user);
                 HelloApplication.mainStage.setScene(scene);
             } catch (Exception e) {
                 e.printStackTrace();

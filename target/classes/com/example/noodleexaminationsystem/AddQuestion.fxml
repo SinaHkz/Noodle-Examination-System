@@ -76,7 +76,7 @@
    <center>
       <Pane prefHeight="800.0" prefWidth="908.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="TOP_CENTER" layoutX="88.0" layoutY="102.0" prefHeight="769.0" prefWidth="1103.0" spacing="20.0">
+            <VBox alignment="TOP_CENTER" layoutX="88.0" layoutY="102.0" prefHeight="769.0" prefWidth="1103.0" spacing="20.0" visible="false">
                <children>
                   <HBox prefHeight="178.0" prefWidth="1103.0">
                      <children>
@@ -95,7 +95,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <VBox alignment="CENTER" layoutX="98.0" layoutY="112.0" prefHeight="769.0" prefWidth="1103.0" spacing="20.0" visible="false">
+            <VBox alignment="CENTER" layoutX="98.0" layoutY="112.0" prefHeight="769.0" prefWidth="1103.0" spacing="20.0" visible="true">
                <children>
                   <HBox prefHeight="178.0" prefWidth="1103.0">
                      <children>

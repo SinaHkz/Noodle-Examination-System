@@ -5,7 +5,6 @@ import com.example.noodleexaminationsystem.User.User;
 
 public abstract class Question {
     private Course course;
-    private long id;
     private String question;
     private User questionDesigner;
     private long usage = 0 ;
@@ -15,20 +14,7 @@ public abstract class Question {
         this.questionDesigner = questionDesigner;
         this.course = course;
     }
-
-    public long getUsage() {
-        return usage;
-    }
-    public void addusage(){
-         usage++;
-    }
-
-    public void setUsage(long usage) {
-        this.usage = usage;
-    }
-
-    public abstract void createQuestion(String question, User questionDesigner, Course course);
-    public abstract void deleteQuestion();
+//    --------------------------------------------------------      getter/setter      -----------------------------------------------------------------
 
     public Course getCourse() {
         return course;
@@ -36,6 +22,14 @@ public abstract class Question {
 
     public void setCourse(Course course) {
         this.course = course;
+    }
+
+    public String getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
     }
 
     public User getQuestionDesigner() {
@@ -46,19 +40,11 @@ public abstract class Question {
         this.questionDesigner = questionDesigner;
     }
 
-    public long getId() {
-        return id;
+    public long getUsage() {
+        return usage;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getQuestion() {
-        return question;
-    }
-
-    public void setQuestion(String question) {
-        this.question = question;
+    public void setUsage(long usage) {
+        this.usage = usage;
     }
 }

@@ -26,7 +26,16 @@ public class Exam {
     }
     //______________________________________________________ getter/setter _________________________________________________________
 
-
+    public boolean hasStarted(){
+        if(LocalDateTime.now().isAfter(this.getTimeStart()))
+            return true;
+        return false;
+    }
+    public boolean hasEnded(){
+        if(LocalDateTime.now().isAfter(this.getTimeEnd()))
+            return true;
+        return false;
+    }
     public static Exam createExam(CoursePlan coursePlan,String examTitle, LocalDateTime timeStart, LocalDateTime timeEnd) {
         Exam exam = new Exam(examTitle , timeStart , timeEnd);
         coursePlan.getExams().add(exam);
@@ -47,11 +56,6 @@ public class Exam {
     }
     public void setExamTitle(String examTitle) {
         this.examTitle = examTitle;
-    }
-
-    public void createExam(Question question){
-        questions.add(question);
-        question.addusage();
     }
 
     public ArrayList<Question> getQuestions() {

@@ -2,6 +2,7 @@ package com.example.noodleexaminationsystem;
 
 import com.example.noodleexaminationsystem.Course.CoursePlan;
 import com.example.noodleexaminationsystem.Course.Exam;
+import com.example.noodleexaminationsystem.User.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,6 +19,7 @@ import java.util.ResourceBundle;
 
 public class CreateExamController implements Initializable {
     CoursePlan coursePlan;
+    User user;
     @FXML
     TextField ExamTitle;
     @FXML
@@ -42,6 +44,8 @@ public class CreateExamController implements Initializable {
             Scene scene = new Scene(loader.load());
             // Now that the FXML is loaded, get the controller and set the data
             CoursePageController coursePageController = loader.getController();
+            coursePageController.coursePlan = this.coursePlan;
+            coursePageController.user = this.user;
             coursePageController.setCoursePlanPage(this.coursePlan);
             HelloApplication.mainStage.setScene(scene);
         } catch (Exception e) {
@@ -116,7 +120,20 @@ public class CreateExamController implements Initializable {
             LocalDateTime endDateTime = LocalDateTime.of(EndDate.getValue(), endTime);
             Exam exam = Exam.createExam(this.coursePlan,ExamTitle.getText(), startDateTime, endDateTime);
         }
-        HelloApplication.setScene("CoursePage.fxml");
+        //going to course page
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("CoursePage.fxml"));
+        try {
+            Scene scene = new Scene(loader.load());
+            // Now that the FXML is loaded, get the controller and set the data
+            CoursePageController coursePageController = loader.getController();
+            coursePageController.coursePlan = this.coursePlan;
+            coursePageController.user = this.user;
+            coursePageController.setCoursePlanPage(this.coursePlan);
+            HelloApplication.mainStage.setScene(scene);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     @Override

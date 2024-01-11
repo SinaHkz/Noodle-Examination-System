@@ -6,15 +6,15 @@ import com.example.noodleexaminationsystem.User.User;
 import java.util.ArrayList;
 
 public abstract class MultipleChoice extends Question {
-    private Course course;
     private Choice countOfChoice;
-    private ArrayList<String> choices = new ArrayList<>();
+    private ArrayList<String> choices;
 
-    public MultipleChoice(Course course, String question, User questionDesigner, Choice countOfChoice ) {
+    public MultipleChoice(Course course, String question, User questionDesigner,ArrayList<String> choices) {
         super(course,question, questionDesigner );
-        this.countOfChoice = countOfChoice;
-        this.course= course;
+        this.countOfChoice = Choice.getByValue(choices.size());
+        this.choices = choices;
     }
+    //    --------------------------------------------------------      getter/setter      -----------------------------------------------------------------
 
     public Choice getCountOfChoice() {
         return countOfChoice;
@@ -24,11 +24,11 @@ public abstract class MultipleChoice extends Question {
         this.countOfChoice = countOfChoice;
     }
 
-    public ArrayList<String> getChoice() {
+    public ArrayList<String> getChoices() {
         return choices;
     }
 
-    public void setChoice(ArrayList<String> choice) {
-        this.choices = choice;
+    public void setChoices(ArrayList<String> choices) {
+        this.choices = choices;
     }
 }

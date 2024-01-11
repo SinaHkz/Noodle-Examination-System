@@ -6,6 +6,7 @@ import com.example.noodleexaminationsystem.User.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -16,6 +17,7 @@ import javafx.scene.layout.VBox;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.ResourceBundle;
 
 
@@ -38,6 +40,10 @@ public class CoursePageController implements Initializable {
     Button archivedExams;
     @FXML
     Button activeExams;
+    @FXML
+    Group archiveCourseGroup;
+    @FXML
+    Group createExamButton;
 
     @FXML
     private void setCreateExamButton(){
@@ -48,6 +54,8 @@ public class CoursePageController implements Initializable {
             // Now that the FXML is loaded, get the controller and set the data
             CreateExamController createExamController = loader.getController();
             createExamController.coursePlan = this.coursePlan;
+            System.out.println(user);
+            createExamController.user = this.user;
             HelloApplication.mainStage.setScene(scene);
         } catch (Exception e) {
             System.out.println(e);
@@ -88,9 +96,10 @@ public class CoursePageController implements Initializable {
                 loader.setLocation(getClass().getResource("ExamCard.fxml"));
                 Pane cardBox = loader.load();
                 CardController cardController = loader.getController();
+                cardController.exam = exam;
+                cardController.coursePlan = this.coursePlan;
                 try {
                     cardController.setExamCard(exam);
-                    cardController.exam = exam;
                 } catch (Exception e) {
                     System.out.println(e);
                 }
@@ -104,6 +113,11 @@ public class CoursePageController implements Initializable {
 
     public void setCoursePlanPage(CoursePlan coursePlan){
         //setting exam cards
+        if((coursePlan.getEnd()!=null) || (coursePlan.getTeacher()!=this.user)){
+            archiveCourseGroup.setVisible(false);
+            createExamButton.setVisible(false);
+
+        }
         ArrayList<Exam> activeExams = coursePlan.getActiveExams();
         ArrayList<Exam> archivedExams = coursePlan.getArchivedExams();
         if(activeExams.isEmpty())
@@ -123,13 +137,21 @@ public class CoursePageController implements Initializable {
         }
     }
     public void setArchiveCourseButton(){
+
         this.coursePlan.setEnd(LocalDate.now());
+        archiveCourseGroup.setVisible(false);
+
+
+    }
+    public void setBackButton(){
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("homePage.fxml"));
         try {
             Scene scene = new Scene(loader.load());
             // Now that the FXML is loaded, get the controller and set the data
             HomePageController homePageController = loader.getController();
+            System.out.println(user);
+            homePageController.user = this.user;
             homePageController.setHomePage(this.user);
             HelloApplication.mainStage.setScene(scene);
         } catch (Exception e) {

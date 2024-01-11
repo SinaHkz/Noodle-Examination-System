@@ -25,7 +25,7 @@
          </font>
       </Button>
       <FontAwesomeIconView fill="#8d1212" glyphName="TRASH" layoutX="36.0" layoutY="153.0" size="20" styleClass="hand" visible="false" />
-      <Button layoutX="1.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="182.0" prefWidth="300.0" styleClass="transparent" />
+      <Button onAction="#setExamButton" layoutX="1.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="182.0" prefWidth="300.0" styleClass="transparent" />
    </children>
    <styleClass>
       <String fx:value="card" />

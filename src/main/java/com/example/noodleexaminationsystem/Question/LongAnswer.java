@@ -12,16 +12,12 @@ public class LongAnswer extends Question {
         this.answer = answer;
     }
 
-    @Override
+
     public void createQuestion(String question, User questionDesigner, Course course) {
         Question question1 = new LongAnswer(course , question , questionDesigner , answer);
         DataBase.getQuestions().put(course , question1);
     }
-
-    @Override
-    public void deleteQuestion() {
-        DataBase.getQuestions().remove(this.getCourse());
-    }
+//    --------------------------------------------------------      getter/setter      -----------------------------------------------------------------
 
     public String getAnswer() {
         return answer;

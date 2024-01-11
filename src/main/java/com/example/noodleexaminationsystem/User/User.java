@@ -74,11 +74,9 @@ public class User {
     }
 
     public static User login(String username, String password) {
-        for (User user : DataBase.getUsers().values()) {
-            if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
-                return user;
-            }
-        }
+        User user = DataBase.getUsers().get(username);
+        if(user.getPassword().equals(password))
+            return user;
         return null;
     }
 
@@ -110,11 +108,11 @@ public class User {
         ArrayList<CoursePlan> myCourses = this.getStudentcoursePlans();
         Collection<CoursePlan> teacherCourses = this.getTeacherCourses().values();
         for (CoursePlan coursePlan : myCourses) {
-            if (coursePlan.isActive())
+            if (!coursePlan.isActive())
                 archivedCoursePlans.add(coursePlan);
         }
         for (CoursePlan coursePlan : teacherCourses) {
-            if (coursePlan.isActive())
+            if (!coursePlan.isActive())
                 archivedCoursePlans.add(coursePlan);
         }
         return archivedCoursePlans;

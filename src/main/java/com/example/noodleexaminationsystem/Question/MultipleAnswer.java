@@ -8,29 +8,25 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class MultipleAnswer extends MultipleChoice {
-    private ArrayList<Integer> answerValue = new ArrayList<>();
+    private ArrayList<Integer> answerValues;
 
-    public MultipleAnswer(Course course,String question, User questionDesigner, Choice countOfChoice) {
-        super( course,question, questionDesigner, countOfChoice);
-    }
-    public ArrayList<Integer> getAnswerValue() {
-        return answerValue;
+    private MultipleAnswer(Course course,String question, User questionDesigner, Choice countOfChoice,ArrayList<String> choices,ArrayList<Integer> answerValues) {
+        super( course,question, questionDesigner,choices);
+        this.answerValues = answerValues;
     }
 
-    @Override
-    public void createQuestion(String question, User questionDesigner, Course course) {
-        Question question1 = new MultipleAnswer(course , question , questionDesigner , getCountOfChoice());
+    public static void createQuestion(String question, User questionDesigner, Course course, Choice countOfChoice,ArrayList<String> choices,ArrayList<Integer> answerValues) {
+        Question question1 = new MultipleAnswer(course , question , questionDesigner , countOfChoice,choices,answerValues);
         DataBase.getQuestions().put(course , question1);
     }
+//    --------------------------------------------------------      getter/setter      -----------------------------------------------------------------
 
-    @Override
-    public void deleteQuestion() {
-        DataBase.getQuestions().remove(this.getCourse());
+
+    public ArrayList<Integer> getAnswerValues() {
+        return answerValues;
     }
 
-    public void setAnswerValue(ArrayList<Integer> answerValue) {
-        this.answerValue = answerValue;
+    public void setAnswerValues(ArrayList<Integer> answerValues) {
+        this.answerValues = answerValues;
     }
-
-
 }

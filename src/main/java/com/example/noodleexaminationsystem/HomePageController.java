@@ -58,12 +58,16 @@ public class HomePageController implements Initializable {
     @FXML
     private Button controlCenter;
 
-    private void setCards(ArrayList<CoursePlan> coursePlans, VBox cardVbox) {
+    private void setCards( String coursePlanType,ArrayList<CoursePlan> coursePlans, VBox cardVbox) {
 
         try {
             HBox eachRowBox = new HBox();
             int counter = 0;
             for (CoursePlan coursePlan : coursePlans) {
+                if(!coursePlanType.equals("archived")){
+                    if (coursePlan.getEnd()!=null)
+                        continue;
+                }
                 if (counter % 3 == 0) {
                     eachRowBox = new HBox();
 
@@ -78,8 +82,8 @@ public class HomePageController implements Initializable {
                 Pane cardBox = loader.load();
 
                 CardController cardController = loader.getController();
-                cardController.coursePlan = coursePlan;
                 cardController.user = this.user;
+                cardController.coursePlan = coursePlan;
                 try {
                     cardController.setCourseCard(coursePlan);
                 } catch (Exception e) {
@@ -95,6 +99,7 @@ public class HomePageController implements Initializable {
 
     public void setHomePage(User user) {
         try {
+            username.setText(user.getUsername());
             File file = new File(user.getPicturePath());
             // Create a FileInputStream from the File
             FileInputStream stream = new FileInputStream(file);
@@ -103,14 +108,11 @@ public class HomePageController implements Initializable {
             final Circle clip = new Circle(123.5, 136, 110);
             profileImage.setClip(clip);
             profileImage.setImage(newImage);
-            username.setText(user.getUsername());
-
-
 
         } catch (Exception e) {
             // Handle exception
             //if the path can not be resolved the default picture will be shown as profile picture
-            System.out.println(e);
+            e.printStackTrace();
         }
 
         myCourses = user.getStudentcoursePlans();
@@ -118,9 +120,9 @@ public class HomePageController implements Initializable {
         archivedCourses = user.getArchivedCoursePlans(LocalDate.now());
 
         //for loop on all courses
-        setCards(myCourses, cardVBox);
-        setCards(teacherCourses, cardVBoxTeacher);
-        setCards(archivedCourses, cardVBoxArchived);
+        setCards("mycourses",myCourses, cardVBox);
+        setCards("teachercourses",teacherCourses, cardVBoxTeacher);
+        setCards("archived",archivedCourses, cardVBoxArchived);
 
     }
 
@@ -177,7 +179,6 @@ public class HomePageController implements Initializable {
         ChangePasswordController changePasswordController = fxmlLoader.getController();
         changePasswordController.previousUser = this.user;
         HelloApplication.mainStage.setScene(scene);
-//        HelloApplication.setScene("ChangePassword.fxml");
     }
 
     public void setCreateNewCourseButton() {

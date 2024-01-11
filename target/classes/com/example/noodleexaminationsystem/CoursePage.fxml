@@ -14,6 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.Group?>
 <BorderPane fx:controller="com.example.noodleexaminationsystem.CoursePageController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" stylesheets="@../../../style-sheets/homepage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <left>
       <Pane prefHeight="800.0" prefWidth="352.0" styleClass="left-pane" BorderPane.alignment="CENTER">
@@ -25,18 +26,21 @@
                         <Image url="@../../../images/course.png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="70.0" layoutY="847.0" mnemonicParsing="false" opacity="0.66" prefHeight="39.0" prefWidth="264.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Back">
+                  <Button onAction="#setBackButton" layoutX="70.0" layoutY="847.0" mnemonicParsing="false" opacity="0.66" prefHeight="39.0" prefWidth="264.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Back">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Button>
                   <FontAwesomeIconView glyphName="SIGN_OUT" layoutX="153.0" layoutY="878.0" opacity="0.66" size="24" />
-                  <Button onAction="#setCreateExamButton" layoutX="58.0" layoutY="563.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Create a new Exam">
+                  <Group fx:id="createExamButton">
+                     <Button  onAction="#setCreateExamButton" layoutX="58.0" layoutY="563.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Create a new Exam">
                      <font>
                         <Font size="21.0" />
                      </font>
                   </Button>
-                  <FontAwesomeIconView glyphName="BOOK" layoutX="89.0" layoutY="589.0" size="18" text="" />
+                     <FontAwesomeIconView glyphName="BOOK" layoutX="89.0" layoutY="589.0" size="18" text="" />
+                  </Group>
+
                   <Label fx:id="teacherName" layoutX="80.0" layoutY="254.0" prefHeight="35.0" prefWidth="147.0" text="{Teacher Name}">
                      <font>
                         <Font size="21.0" />
@@ -67,12 +71,15 @@
                      </styleClass>
                   </Button>
                   <Line endX="185.0" layoutX="189.0" layoutY="844.0" opacity="0.51" startX="-189.0" />
-                  <Button onAction="#setArchiveCourseButton" layoutX="58.0" layoutY="613.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Archive Course">
+                  <Group fx:id="archiveCourseGroup">
+                     <Button  onAction="#setArchiveCourseButton" layoutX="58.0" layoutY="613.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Archive Course">
                      <font>
                         <Font size="21.0" />
                      </font>
                   </Button>
-                  <FontAwesomeIconView glyphName="TRASH" layoutX="115.0" layoutY="638.0" size="17" />
+                     <FontAwesomeIconView glyphName="TRASH" layoutX="115.0" layoutY="638.0" size="17" />
+                  </Group>
+
                </children>
             </Pane>
          </children>
