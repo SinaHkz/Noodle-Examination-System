@@ -1,6 +1,9 @@
 package com.example.noodleexaminationsystem;
 
 import com.example.noodleexaminationsystem.Course.Course;
+import com.example.noodleexaminationsystem.Question.LongAnswer;
+import com.example.noodleexaminationsystem.Question.Question;
+import com.example.noodleexaminationsystem.Question.SingleAnswer;
 import com.example.noodleexaminationsystem.User.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -8,7 +11,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 
 import java.net.URL;
@@ -34,15 +36,31 @@ public class QuestionBankController implements Initializable {
         }
     }
 
-    public void setAddQuestionButton(){
+    public void setAddQuestionButton() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("AddQuestion.fxml"));
         try {
             Scene scene = new Scene(loader.load());
             AddQuestionController addQuestionController = loader.getController();
             addQuestionController.previousUser = this.previousUser;
             HelloApplication.mainStage.setScene(scene);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public void setComboBox() {
+        String courseStr = comboBox.getSelectionModel().toString();
+        Course selectedCourse = DataBase.getCourses().get(courseStr);
+        for (Question question : DataBase.getQuestions().values()) {
+            if (question.getCourse() == selectedCourse) {
+                if (question instanceof LongAnswer) {
+                    ;//not implemented.
+                } else if (question instanceof SingleAnswer) {
+                    ;//not implemented.
+                } else {
+                    ;//not implemented.
+                }
+            }
         }
     }
 

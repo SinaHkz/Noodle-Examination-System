@@ -54,13 +54,17 @@ public class CardController implements Initializable {
 
 
 
-    public void setCourseCard(CoursePlan coursePlan) throws FileNotFoundException {
+    public void setCourseCard(CoursePlan coursePlan) {
         card.setStyle("""
                 -fx-background-color: transparet;
                 -fx-border-radius: 20px;
                 """);
         name.setText(coursePlan.getName());
-        image.setImage(new Image(new FileInputStream(coursePlan.getPicturePath())));
+        try {
+            image.setImage(new Image(new FileInputStream(coursePlan.getPicturePath())));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         //this.test = 5;
 
     }

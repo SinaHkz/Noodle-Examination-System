@@ -1,6 +1,8 @@
 package com.example.noodleexaminationsystem;
 
 import com.example.noodleexaminationsystem.Course.Course;
+import com.example.noodleexaminationsystem.Course.CoursePlan;
+import com.example.noodleexaminationsystem.Course.Exam;
 import com.example.noodleexaminationsystem.User.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,7 +13,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class CreateCoursePlanController implements Initializable {
@@ -32,6 +36,8 @@ public class CreateCoursePlanController implements Initializable {
             Scene scene = new Scene(loader.load());
             HomePageController homePageController = loader.getController();
             homePageController.user = this.user;
+            for (CoursePlan coursePlan:user.getTeacherCourses().values())
+                System.out.println(coursePlan.getName());
             homePageController.setHomePage(user);
             HelloApplication.mainStage.setScene(scene);
 
@@ -59,11 +65,15 @@ public class CreateCoursePlanController implements Initializable {
             flag = true;
         }
         if (flag) return;
+        String course = comboBox.getSelectionModel().toString();
+        CoursePlan.addCoursePlan(course,courseName.getText(),user,LocalDate.now(),coursePictureAddress.getText());
+        setBckButton();
+
         //error
 //        CoursePlan coursePlan=CoursePlan.addCoursePlan(courseName.getText(),comboBox.getSelectionModel().getSelectedItem().toString(),HelloApplication.mainUser,coursePictureAddress.getText());
 //        if (coursePlan == null ){
 //            courseTaken.setVisible(true);
-//        }
+//        }x
     }
 
     @Override

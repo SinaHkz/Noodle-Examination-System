@@ -38,7 +38,7 @@
    <left>
       <Pane prefHeight="900.0" prefWidth="400.0" styleClass="left-pane" BorderPane.alignment="CENTER">
          <children>
-            <ComboBox fx:id="comboBox" layoutX="75.0" layoutY="323.0" prefHeight="46.0" prefWidth="241.0" promptText="Enter a Course " styleClass="selected-buttons" />
+            <ComboBox fx:id="comboBox" onAction="#setComboBox" layoutX="75.0" layoutY="323.0" prefHeight="46.0" prefWidth="241.0" promptText="Enter a Course " styleClass="selected-buttons" />
             <Label layoutX="65.0" layoutY="42.0" prefHeight="60.0" prefWidth="294.0" text="Question Bank">
                <font>
                   <Font size="45.0" />
