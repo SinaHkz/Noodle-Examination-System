@@ -8,11 +8,11 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
-@JsonSerialize
-@JsonDeserialize
+//import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+//import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+//
+//@JsonSerialize
+//@JsonDeserialize
 public class CoursePlan {
     private Course course;
     private User teacher;
@@ -59,14 +59,13 @@ public class CoursePlan {
         this.exams.remove(exam);
     }
     public int addStudent(String username) {
-        for (User user : DataBase.getUsers().values()) {
-            if (user.getUsername().equals(username)) {
-                Result result = new Result(user, 0.0, attendedStudent); //Dont sure about the attended student which is a exam
-                attendedStudent.getResults().add(result);
-                return 0;
-            }
-        }
-        return 1;//error find
+        User user = DataBase.getUsers().get(username);
+        //user with this username does not exist
+        if(user==null)
+            return 1;
+        //user exists
+        Result.addResult(user,this.getAttendedStudent());
+        return 0;
     }
 
     public void removeStudent(String user) {

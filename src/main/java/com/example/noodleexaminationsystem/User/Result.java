@@ -2,18 +2,41 @@ package com.example.noodleexaminationsystem.User;
 
 import com.example.noodleexaminationsystem.Course.CoursePlan;
 import com.example.noodleexaminationsystem.Course.Exam;
+import com.example.noodleexaminationsystem.Question.Question;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Objects;
 
 public class Result {
     private User student;
-    private double score;
+    private double score = 0;
     private Exam exam;
 
-    public Result(User student, double score, Exam exam) {
+    private HashMap<Question, Object> answers = new HashMap<>();
+
+    private Result(User student, Exam exam) {
         this.student = student;
-        this.score = score;
         this.exam = exam;
+        ArrayList<Question> questions = exam.getQuestions();
+        for (Question question:questions) {
+            answers.put(question, null);
+        }
+    }
+    public static Result addResult(User student,Exam exam){
+        Result result = new Result(student,exam);
+        exam.getResults().add(result);
+        student.getResults().add(result);
+        return result;
+    }
+    //    -------------------------------------------------------------  getter/setter  ------------------------------------------------------------
+
+    public HashMap<Question, Object> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(HashMap<Question, Object> answers) {
+        this.answers = answers;
     }
 
     public User getStudent() {
