@@ -87,7 +87,6 @@ public class HelloApplication extends Application {
         LocalDate date = LocalDate.parse("2007-12-03");
         User admin = User.signUp("admin", "admin", "admin", "admin", "jfeij", "src/main/resources/images/test_1_profile.jpg", date, "FEMALE", "ADMIN");
         Course.addCourse("OOP");
-        Course.addCourse("Ds");
         try{
             DataBase.deserializeDataBase();
         }catch (Exception JsonProcessingException){
