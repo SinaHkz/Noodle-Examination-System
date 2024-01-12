@@ -2,10 +2,8 @@ package com.example.noodleexaminationsystem;
 
 import com.example.noodleexaminationsystem.Course.CoursePlan;
 import com.example.noodleexaminationsystem.Course.Exam;
-import com.example.noodleexaminationsystem.Question.LongAnswer;
-import com.example.noodleexaminationsystem.Question.MultipleChoice;
-import com.example.noodleexaminationsystem.Question.Question;
-import com.example.noodleexaminationsystem.Question.SingleAnswer;
+import com.example.noodleexaminationsystem.Question.*;
+import com.example.noodleexaminationsystem.User.Result;
 import com.example.noodleexaminationsystem.User.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -56,8 +54,113 @@ public class CardController implements Initializable {
     private  Label shortAnswerChoiceLabel;
     @FXML
     private ComboBox choiceComboBox;
+    //___________________________________________________ getter/setter________________________________________________________
 
 
+    public CoursePlan getCoursePlan() {
+        return coursePlan;
+    }
+
+    public void setCoursePlan(CoursePlan coursePlan) {
+        this.coursePlan = coursePlan;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Question getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(Question question) {
+        this.question = question;
+    }
+
+    public Exam getExam() {
+        return exam;
+    }
+
+    public void setExam(Exam exam) {
+        this.exam = exam;
+    }
+
+    public ExamPageController getExamPageController() {
+        return examPageController;
+    }
+
+    public void setExamPageController(ExamPageController examPageController) {
+        this.examPageController = examPageController;
+    }
+
+    public Button getName() {
+        return name;
+    }
+
+    public void setName(Button name) {
+        this.name = name;
+    }
+
+    public ImageView getImage() {
+        return image;
+    }
+
+    public void setImage(ImageView image) {
+        this.image = image;
+    }
+
+    public Pane getCard() {
+        return card;
+    }
+
+    public void setCard(Pane card) {
+        this.card = card;
+    }
+
+    public HBox getQuestionHBox() {
+        return questionHBox;
+    }
+
+    public void setQuestionHBox(HBox questionHBox) {
+        this.questionHBox = questionHBox;
+    }
+
+    public Label getQuestionLabel() {
+        return questionLabel;
+    }
+
+    public void setQuestionLabel(Label questionLabel) {
+        this.questionLabel = questionLabel;
+    }
+
+    public TextField getLongAnswerQuestionTextField() {
+        return longAnswerQuestionTextField;
+    }
+
+    public void setLongAnswerQuestionTextField(TextField longAnswerQuestionTextField) {
+        this.longAnswerQuestionTextField = longAnswerQuestionTextField;
+    }
+
+    public Label getShortAnswerChoiceLabel() {
+        return shortAnswerChoiceLabel;
+    }
+
+    public void setShortAnswerChoiceLabel(Label shortAnswerChoiceLabel) {
+        this.shortAnswerChoiceLabel = shortAnswerChoiceLabel;
+    }
+
+    public ComboBox getChoiceComboBox() {
+        return choiceComboBox;
+    }
+
+    public void setChoiceComboBox(ComboBox choiceComboBox) {
+        this.choiceComboBox = choiceComboBox;
+    }
+    //______________________________________________________ methods ____________________________________________________
 
     public void setCourseCard(CoursePlan coursePlan) {
         card.setStyle("""
@@ -100,6 +203,18 @@ public class CardController implements Initializable {
                 // <<<<<<<<<<<<<<-------------------------------
                 return;
             }
+            //check if the exam is active and user already has a result for that exam not to allow enter
+            if(exam.isActive()){
+                ArrayList<Result> results = exam.getResults();
+                for (Result result: results) {
+                    if(result.getStudent()==this.user){
+                        //show a label that the person can not enter the exam again before time is finished
+                        return;
+                    }
+                }
+            }
+
+
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("ExamPage.fxml"));
             Scene scene = new Scene(loader.load());
@@ -136,10 +251,11 @@ public class CardController implements Initializable {
             answers += answer+ "\n";
         }
         shortAnswerChoiceLabel.setText(answers);
-        ObservableList<Integer> choiceNumbers = FXCollections.observableArrayList();
+        ObservableList<String> choiceNumbers = FXCollections.observableArrayList();
         for(int i=1;i<=question.getCountOfChoice().getValue();i++){
-            choiceNumbers.add(i);
+            choiceNumbers.add(Integer.toString(i));
         }
+        choiceNumbers.add("Delete answer");
         choiceComboBox.setItems(choiceNumbers);
         examPageController.questionCards.add(this);
     }
@@ -162,38 +278,51 @@ public class CardController implements Initializable {
         choiceComboBox.setVisible(false);
         examPageController.questionCards.add(this);
     }
+
+    //delete answer option for single answers in a combo box
+    public void setComboBoxDeleteAnswer(){
+        String selectedOption = choiceComboBox.getValue().toString();
+        if(selectedOption.equals("Delete answer")){
+//          this method does not change  the text
+//            choiceComboBox.setValue("Answer");
+        }
+    }
     //_____________________________________________   buttons   ____________________________________________
-    public void setQuestionSubmitButton(){
-        Object answer = null;
-        if(this.question instanceof SingleAnswer){
-            //check what is answers type
-            //make sure that the user wont be able to submit question without a selected item
-            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            answer = choiceComboBox.getSelectionModel().getSelectedItem().toString();
-            card.visibleProperty().set(true);
-            card.setStyle("-fx-background-color: #9bc29b");
-        }
-        else if(this.question instanceof LongAnswer){
-            answer = longAnswerQuestionTextField.getText();
-            //this is awful but put something similar to show that a question has been submitted
-            BackgroundFill backgroundFill = new BackgroundFill(Color.GREEN, null, null);
-
-            // Create a Background with the BackgroundFill
-            Background background = new Background(backgroundFill);
-
-            questionHBox.setBackground(background);
-
-        }
-        //make delete answer button visible
-        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        examPageController.answers.put(this.question,answer);
-    }
+//    public void setQuestionSubmitButton(){
+//        Object answer = null;
+//        if(this.question instanceof SingleAnswer){
+//            //check what is answers type
+//            //make sure that the user wont be able to submit question without a selected item
+//            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//            answer = choiceComboBox.getSelectionModel().getSelectedItem().toString();
+//            card.visibleProperty().set(true);
+//            card.setStyle("-fx-background-color: #9bc29b");
+//        }
+//        else if(this.question instanceof LongAnswer){
+//            String answerString = longAnswerQuestionTextField.getText();
+//            answer = new longAnswerStudentAnswer(answerString,0);
+//
+//            //this is awful but put something similar to show that a question has been submitted
+////            BackgroundFill backgroundFill = new BackgroundFill(Color.GREEN, null, null);
+////
+////            // Create a Background with the BackgroundFill
+////            Background background = new Background(backgroundFill);
+////
+////            questionHBox.setBackground(background);
+//
+//        }
+//        //make delete answer button visible
+//        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//        examPageController.answers.put(this.question,answer);
+//    }
     //add a button to remove answer of a question
+
+
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    public void setDeleteAnswerButton(){
-        examPageController.answers.put(this.question,null);
-        //make the delete button invisible
-    }
+//    public void setDeleteAnswerButton(){
+//        examPageController.answers.put(this.question,null);
+//        //make the delete button invisible
+//    }
 
 
     @Override

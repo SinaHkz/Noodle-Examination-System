@@ -2,30 +2,27 @@ package com.example.noodleexaminationsystem;
 
 import com.example.noodleexaminationsystem.Course.CoursePlan;
 import com.example.noodleexaminationsystem.Course.Exam;
-import com.example.noodleexaminationsystem.Question.LongAnswer;
-import com.example.noodleexaminationsystem.Question.MultipleChoice;
-import com.example.noodleexaminationsystem.Question.Question;
-import com.example.noodleexaminationsystem.Question.SingleAnswer;
+import com.example.noodleexaminationsystem.Question.*;
 import com.example.noodleexaminationsystem.User.Result;
 import com.example.noodleexaminationsystem.User.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class ExamPageController implements Initializable {
     User user;
     Exam exam;
     CoursePlan coursePlan;
-    HashMap<Question,Object> answers = new HashMap<>();
     ArrayList<CardController> questionCards = new ArrayList<>();
 
     @FXML
@@ -98,57 +95,121 @@ public class ExamPageController implements Initializable {
     }
 
 
+    //this method will get question cards from the login page controller instance
+    public void setPreviousQuestionCards(){
+        VBox tempVBox = HelloApplication.getUserPreviousAnswersHashMap().get(this.exam);
+        this.questionsVbox.getChildren().setAll(tempVBox.getChildren());
+    }
+
+
 
     public void setExamPage(){
         examTitleLabel.setText(this.exam.getExamTitle());
         startDateButton.setText(this.exam.getTimeStart().toString());
         endDateButton.setText(this.exam.getTimeEnd().toString());
+            //the user is the teacher
+            if(coursePlan.getTeacher()==this.user){
+                if(!exam.hasStarted()){
+                    addQuestionButton.setVisible(true);
+                }
+                else if(exam.hasEnded()){
+                    checkResultsButton.setVisible(true);
 
-        //the user is the teacher
-        if(coursePlan.getTeacher()==this.user){
-            if(!exam.hasStarted()){
-                addQuestionButton.setVisible(true);
-            }
-            else if(exam.hasEnded()){
-                checkResultsButton.setVisible(true);
-
-            } else if (exam.isActive()) {
-                finishExamNowButton.setVisible(true);
-            }
-            //show questions with their answers
-            setCards(exam.getQuestions(),questionsVbox,true);
-        }
-        //the user is a student
-        else{
-            if(exam.isActive()){
-                submitAndExit.setVisible(true);
-                setCards(exam.getQuestions(),questionsVbox,false);
-            }
-            else if(exam.hasEnded()){
+                } else if (exam.isActive()) {
+                    finishExamNowButton.setVisible(true);
+                }
+                //show questions with their answers
                 setCards(exam.getQuestions(),questionsVbox,true);
             }
+            //the user is a student
+            else{
+                deleteExamButton.setVisible(false);
+                if(exam.isActive()){
+                    submitAndExit.setVisible(true);
+                    if(HelloApplication.getUserPreviousAnswersHashMap().get(this.exam)!=null){
+                        setPreviousQuestionCards();
+                    }
+                    else{
+                        setCards(exam.getQuestions(),questionsVbox,false);
+                    }
 
+                }
+                else if(exam.hasEnded()){
+                    setCards(exam.getQuestions(),questionsVbox,true);
+                    //should also show the answers of that person
+                }
         }
+
+
+
     }
     public void setDeleteExamButton(){
         coursePlan.getExams().remove(this.exam);
         //call back button when back button is created
+        setBackButton();
     }
     public void setSubmitAndExitButton(){
         //it fucking works :)
-        for (CardController questionCard:this.questionCards) {
-            System.out.println(questionCard.question.getQuestion());
+        if(!exam.hasEnded()){
+            Result result = Result.addResult(this.user,this.exam);
+            for (CardController questionCard:this.questionCards) {
+                Object answer = null;
+                if(questionCard.question instanceof SingleAnswer){
+                    if((answer = questionCard.getChoiceComboBox().getSelectionModel().getSelectedItem())!=null)
+                        answer = answer.toString();
+                    else{
+                        answer = "";
+                    }
+                }
+                else if(questionCard.question instanceof LongAnswer){
+                    String answerString = questionCard.getLongAnswerQuestionTextField().getText();
+                    answer = new LongAnswerStudentAnswer(answerString,0);
+                }
+                result.getAnswers().put(questionCard.question,answer);
+            }
         }
-        Result result = Result.addResult(this.user,this.exam);
-        for (Map.Entry<Question,Object> answer : this.answers.entrySet()) {
-            result.getAnswers().put(answer.getKey(), answer.getValue());
-        }
-        //go back to course page
-        //handel that if user has a result (meaning that they have already submitted the exam) it would not have an option
-        //of submitting it again
-        //feature: show the person their own answers after submitting the exam
-        //or maybe better: the person wouldn't be able to enter the exam again
+
+
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //going back to course page
+        setBackButton();
+
     }
+    public void setFinishExamNowButton(){
+        exam.setTimeEnd(LocalDateTime.now());
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("CoursePage.fxml"));
+            Scene scene = new Scene(loader.load());
+            // Now that the FXML is loaded, get the controller and set the data
+            CoursePageController coursePageController = loader.getController();
+            coursePageController.user = this.user;
+            coursePageController.setCoursePlanPage(this.coursePlan);
+            HelloApplication.mainStage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void setBackButton(){
+        //set the map of exam and question card answers in the login page here after checking basic functionality
+        HelloApplication.getUserPreviousAnswersHashMap().put(this.exam,this.questionsVbox);
+        FXMLLoader loader = new FXMLLoader();
+
+        loader.setLocation(getClass().getResource("CoursePage.fxml"));
+        try {
+            Scene scene = new Scene(loader.load());
+            // Now that the FXML is loaded, get the controller and set the data
+            CoursePageController coursePageController = loader.getController();
+            coursePageController.user = this.user;
+            coursePageController.coursePlan = this.coursePlan;
+            coursePageController.setCoursePlanPage(this.coursePlan);
+            HelloApplication.mainStage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

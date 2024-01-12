@@ -19,6 +19,7 @@
          <children>
             <Pane layoutX="-22.0" layoutY="-1.0" prefHeight="900.0" prefWidth="376.0">
                <children>
+                  <Button onAction="#setBackButton" layoutX="22.0" layoutY="804.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="352.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Back"/>
                   <Group fx:id="submitAndExit" visible="false" >
                      <Button onAction="#setSubmitAndExitButton" layoutX="22.0" layoutY="854.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="352.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Submit &amp; Exit">
                      <font>
@@ -37,7 +38,7 @@
                   </Group>
 
                   <Group fx:id="finishExamNowButton" visible="false">
-                     <Button layoutX="57.0" layoutY="573.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Finish Exam Now">
+                     <Button  onAction="#setFinishExamNowButton" layoutX="57.0" layoutY="573.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Finish Exam Now">
                      <font>
                         <Font size="21.0" />
                      </font>
