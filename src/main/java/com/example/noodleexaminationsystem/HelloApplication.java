@@ -9,6 +9,7 @@ import com.example.noodleexaminationsystem.Question.Question;
 import com.example.noodleexaminationsystem.Question.SingleAnswer;
 import com.example.noodleexaminationsystem.User.User;
 import com.example.noodleexaminationsystem.User.UserType;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,7 +20,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
@@ -102,20 +102,22 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) {
-        LocalDate date = LocalDate.parse("2007-12-03");
-        User admin = User.signUp("admin", "admin", "admin", "admin", "jfeij", "src/main/resources/images/test_1_profile.jpg", date, "FEMALE", "ADMIN");
-        Course.addCourse("OOP");
-        Course.addCourse("Ds");
+//        LocalDate date = LocalDate.parse("2007-12-03");
+//        User admin = User.signUp("admin", "admin", "admin", "admin", "jfeij", "src/main/resources/images/test_1_profile.jpg", date, "FEMALE", "ADMIN");
+//        Course.addCourse("OOP");
+//        Course.addCourse("Ds");
+
         try{
             DataBase.deserializeDataBase();
         }catch (Exception JsonProcessingException){
             JsonProcessingException.printStackTrace();
         }
-        launch();
-        try {
-            DataBase.serializeDataBase();
-        }catch (Exception JsonProcessingException){
-            JsonProcessingException.printStackTrace();
-        }
+        System.out.println(DataBase.getUsers());
+        //launch();
+//        try {
+//            DataBase.serializeDataBase();
+//        }catch (Exception JsonProcessingException){
+//            JsonProcessingException.printStackTrace();
+//        }
     }
 }

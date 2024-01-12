@@ -6,14 +6,22 @@ import com.example.noodleexaminationsystem.Question.Question;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+@JsonSerialize
+@JsonDeserialize
 public class Result {
     private User student;
     private double score = 0;
     private Exam exam;
 
-    private HashMap<Question, Object> answers = new HashMap<>();
+    private Map<Question, Object> answers = new HashMap<>();
+    public Result(){
+
+    }
 
     private Result(User student, Exam exam) {
         this.student = student;
@@ -31,7 +39,7 @@ public class Result {
     }
     //    -------------------------------------------------------------  getter/setter  ------------------------------------------------------------
 
-    public HashMap<Question, Object> getAnswers() {
+    public Map<Question, Object> getAnswers() {
         return answers;
     }
 

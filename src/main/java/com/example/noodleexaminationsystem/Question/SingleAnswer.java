@@ -4,7 +4,15 @@ import com.example.noodleexaminationsystem.Course.Course;
 import com.example.noodleexaminationsystem.DataBase;
 import com.example.noodleexaminationsystem.User.User;
 
+import java.io.IOException;
 import java.util.ArrayList;
+
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+@JsonSerialize
+@JsonDeserialize
 
 public class SingleAnswer extends MultipleChoice {
     private int answerValue;
@@ -13,6 +21,10 @@ public class SingleAnswer extends MultipleChoice {
         super(course, question, questionDesigner,choices);
         this.answerValue = answerValue;
     }
+    public SingleAnswer(){
+
+    }
+
 
 
     public static void createQuestion(String question, User questionDesigner, Course course,Choice countOfChoice,int answerValue,ArrayList<String> choices) {

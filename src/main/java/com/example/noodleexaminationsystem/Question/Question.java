@@ -2,11 +2,8 @@ package com.example.noodleexaminationsystem.Question;
 
 import com.example.noodleexaminationsystem.Course.Course;
 import com.example.noodleexaminationsystem.User.User;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.KeyDeserializer;
 
-@JsonSerialize
-@JsonDeserialize
 public abstract class Question {
     private Course course;
     private String question;
@@ -17,11 +14,14 @@ public abstract class Question {
 
     }
 
+
     public Question(Course course, String question, User questionDesigner) {
         this.question = question;
         this.questionDesigner = questionDesigner;
         this.course = course;
     }
+
+
 //    --------------------------------------------------------      getter/setter      -----------------------------------------------------------------
 
     public Course getCourse() {
