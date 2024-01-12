@@ -113,7 +113,7 @@ public class HelloApplication extends Application {
             JsonProcessingException.printStackTrace();
         }
         System.out.println(DataBase.getUsers());
-        //launch();
+        launch();
 //        try {
 //            DataBase.serializeDataBase();
 //        }catch (Exception JsonProcessingException){
