@@ -3,11 +3,11 @@ package com.example.noodleexaminationsystem.Course;
 import com.example.noodleexaminationsystem.DataBase;
 
 import java.util.ArrayList;
-//import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-//import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-//
-//@JsonSerialize
-//@JsonDeserialize
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+@JsonSerialize
+@JsonDeserialize
 public class Course {
     private String course;
     private ArrayList<CoursePlan> coursePlans = new ArrayList<>();

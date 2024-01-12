@@ -2,18 +2,22 @@ package com.example.noodleexaminationsystem.Question;
 
 import com.example.noodleexaminationsystem.Course.Course;
 import com.example.noodleexaminationsystem.User.User;
-//import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-//import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-//
-//@JsonSerialize
-//@JsonDeserialize
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+@JsonSerialize
+@JsonDeserialize
 public abstract class Question {
     private Course course;
     private String question;
     private User questionDesigner;
-    private long usage = 0 ;
+    private long usage = 0;
 
-    public Question( Course course,String question, User questionDesigner ) {
+    public Question() {
+
+    }
+
+    public Question(Course course, String question, User questionDesigner) {
         this.question = question;
         this.questionDesigner = questionDesigner;
         this.course = course;

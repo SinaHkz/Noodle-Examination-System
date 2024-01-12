@@ -29,14 +29,10 @@
          <children>
             <FontAwesomeIconView fill="#096dde" glyphName="PLUS" size="20" visible="false" />
             <FontAwesomeIconView fill="#bf1212" glyphName="MINUS" size="20" visible="false" />
-<<<<<<< HEAD
-            <FontAwesomeIconView fill="#8d1212" glyphName="TRASH" size="20" visible="false" />
-=======
             <Group>
                <FontAwesomeIconView fill="#8d1212" glyphName="TRASH" size="20" visible="false" />
                <Button onAction="#setQuestionSubmitButton">submit</Button>
             </Group>
->>>>>>> 6e60d30563d5cb5b6ab8daa1af2bacd85908d9a3
          </children>
       </VBox>
    </children>
