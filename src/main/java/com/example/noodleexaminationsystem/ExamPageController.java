@@ -6,6 +6,7 @@ import com.example.noodleexaminationsystem.Question.LongAnswer;
 import com.example.noodleexaminationsystem.Question.MultipleChoice;
 import com.example.noodleexaminationsystem.Question.Question;
 import com.example.noodleexaminationsystem.Question.SingleAnswer;
+import com.example.noodleexaminationsystem.User.Result;
 import com.example.noodleexaminationsystem.User.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,13 +19,14 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class ExamPageController implements Initializable {
     User user;
     Exam exam;
     CoursePlan coursePlan;
+    HashMap<Question,Object> answers = new HashMap<>();
+    ArrayList<CardController> questionCards = new ArrayList<>();
 
     @FXML
     Label examTitleLabel;
@@ -59,15 +61,15 @@ public class ExamPageController implements Initializable {
                     loader.setLocation(getClass().getResource("ShortAnswerQuestionCard.fxml"));
                     eachQuestionBox = loader.load();
                     CardController cardController = loader.getController();
-//                    cardController.exam = exam;
-//                    cardController.coursePlan = this.coursePlan;
+                    cardController.question = question;
+                    cardController.examPageController = this;
                     try {
                         if(showWithAnswer)
                             cardController.setShortAnswerQuestionCardWithAnswer((SingleAnswer) question);
                         else
                             cardController.setShortAnswerQuestionCardWithoutAnswer((SingleAnswer) question);
                     } catch (Exception e) {
-                        System.out.println(e);
+                        e.printStackTrace();
                     }
                     cardVbox.getChildren().add(eachQuestionBox);
                 }
@@ -77,15 +79,15 @@ public class ExamPageController implements Initializable {
                     loader.setLocation(getClass().getResource("LongAnswerQuestionCard.fxml"));
                     eachQuestionBox = loader.load();
                     CardController cardController = loader.getController();
-//                    cardController.exam = exam;
-//                    cardController.coursePlan = this.coursePlan;
+                    cardController.question = question;
+                    cardController.examPageController = this;
                     try {
                         if(showWithAnswer)
                             cardController.setLongAnswerQuestionCardWithAnswer((LongAnswer) question);
                         else
                             cardController.setLongAnswerQuestionCardWithoutAnswer((LongAnswer) question);
                     } catch (Exception e) {
-                        System.out.println(e);
+                        e.printStackTrace();
                     }
                     cardVbox.getChildren().add(eachQuestionBox);
                 }
@@ -128,9 +130,24 @@ public class ExamPageController implements Initializable {
 
         }
     }
-    public  void setDeleteExamButton(){
+    public void setDeleteExamButton(){
         coursePlan.getExams().remove(this.exam);
         //call back button when back button is created
+    }
+    public void setSubmitAndExitButton(){
+        //it fucking works :)
+        for (CardController questionCard:this.questionCards) {
+            System.out.println(questionCard.question.getQuestion());
+        }
+        Result result = Result.addResult(this.user,this.exam);
+        for (Map.Entry<Question,Object> answer : this.answers.entrySet()) {
+            result.getAnswers().put(answer.getKey(), answer.getValue());
+        }
+        //go back to course page
+        //handel that if user has a result (meaning that they have already submitted the exam) it would not have an option
+        //of submitting it again
+        //feature: show the person their own answers after submitting the exam
+        //or maybe better: the person wouldn't be able to enter the exam again
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {

@@ -19,9 +19,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 
+import javax.swing.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
@@ -31,8 +35,9 @@ import java.util.ResourceBundle;
 public class CardController implements Initializable {
     public CoursePlan coursePlan;
     public User user;
-    //public int test =0;
-    Exam exam;
+    public Question question;
+    public Exam exam;
+    public ExamPageController examPageController;
     @FXML
     private Button name;
 
@@ -122,6 +127,7 @@ public class CardController implements Initializable {
     }
     public void setLongAnswerQuestionCardWithoutAnswer(LongAnswer question){
         questionLabel.setText(question.getQuestion());
+        examPageController.questionCards.add(this);
     }
     public void setShortAnswerQuestionCardWithoutAnswer(SingleAnswer question){
         questionLabel.setText(question.getQuestion());
@@ -135,25 +141,64 @@ public class CardController implements Initializable {
             choiceNumbers.add(i);
         }
         choiceComboBox.setItems(choiceNumbers);
+        examPageController.questionCards.add(this);
     }
     public void setLongAnswerQuestionCardWithAnswer(LongAnswer question){
         questionLabel.setText(question.getQuestion());
         longAnswerQuestionTextField.editableProperty().set(false);
         longAnswerQuestionTextField.setText(question.getAnswer());
+        examPageController.questionCards.add(this);
     }
     public void setShortAnswerQuestionCardWithAnswer(SingleAnswer question){
         questionLabel.setText(question.getQuestion());
         String answers = "";
+        int i = 1;
         for (String answer: question.getChoices()) {
-            answers += answer+ "\n";
+            answers += i +"      "+answer+ "\n";
+            i++;
         }
+        answers+= "answer:     "+ Integer.toHexString(question.getAnswerValue());
         shortAnswerChoiceLabel.setText(answers);
         choiceComboBox.setVisible(false);
+        examPageController.questionCards.add(this);
+    }
+    //_____________________________________________   buttons   ____________________________________________
+    public void setQuestionSubmitButton(){
+        Object answer = null;
+        if(this.question instanceof SingleAnswer){
+            //check what is answers type
+            //make sure that the user wont be able to submit question without a selected item
+            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            answer = choiceComboBox.getSelectionModel().getSelectedItem().toString();
+            card.visibleProperty().set(true);
+            card.setStyle("-fx-background-color: #9bc29b");
+        }
+        else if(this.question instanceof LongAnswer){
+            answer = longAnswerQuestionTextField.getText();
+            //this is awful but put something similar to show that a question has been submitted
+            BackgroundFill backgroundFill = new BackgroundFill(Color.GREEN, null, null);
+
+            // Create a Background with the BackgroundFill
+            Background background = new Background(backgroundFill);
+
+            questionHBox.setBackground(background);
+
+        }
+        //make delete answer button visible
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        examPageController.answers.put(this.question,answer);
+    }
+    //add a button to remove answer of a question
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    public void setDeleteAnswerButton(){
+        examPageController.answers.put(this.question,null);
+        //make the delete button invisible
     }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
     }
 
 }

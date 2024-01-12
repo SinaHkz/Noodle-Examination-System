@@ -8,11 +8,11 @@ import javafx.scene.chart.PieChart;
 
 import java.time.LocalDate;
 import java.util.*;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
-@JsonSerialize
-@JsonDeserialize
+//import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+//import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+//
+//@JsonSerialize
+//@JsonDeserialize
 public class User {
     private String username;
     private String password;
