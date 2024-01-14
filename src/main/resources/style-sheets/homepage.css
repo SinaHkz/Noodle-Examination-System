@@ -49,3 +49,9 @@
     -fx-background-radius: 15px;
 }
 
+.check-btn{
+    -fx-background-color: #3e88da;
+    -fx-text-fill: white; /* White text color */
+    -fx-background-radius: 10px; /* Border radius */
+    -fx-cursor: hand; /* Cursor style */
+}

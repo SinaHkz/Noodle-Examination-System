@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -62,6 +63,7 @@ public class ExamPageController implements Initializable {
                     eachQuestionBox = loader.load();
                     CardController cardController = loader.getController();
                     cardController.question = question;
+                    cardController.exam =this.exam;
                     cardController.examPageController = this;
                     try {
                         if(showWithAnswer)
@@ -80,6 +82,7 @@ public class ExamPageController implements Initializable {
                     eachQuestionBox = loader.load();
                     CardController cardController = loader.getController();
                     cardController.question = question;
+                    cardController.exam = this.exam;
                     cardController.examPageController = this;
                     try {
                         if(showWithAnswer)
@@ -148,6 +151,24 @@ public class ExamPageController implements Initializable {
         //of submitting it again
         //feature: show the person their own answers after submitting the exam
         //or maybe better: the person wouldn't be able to enter the exam again
+    }
+
+    public void setCheckResultsButton(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("GetResult.fxml"));
+        try {
+            Scene scene = new Scene(loader.load());
+            ResultController resultController = loader.getController();
+            resultController.previousUser = this.user;
+            System.out.println(exam);
+            System.out.println(this.user);
+            System.out.println(this.coursePlan);
+            resultController.exam = this.exam;
+            resultController.coursePlan = this.coursePlan;
+            resultController.setLists();
+            HelloApplication.mainStage.setScene(scene);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {

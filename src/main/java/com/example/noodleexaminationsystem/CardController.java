@@ -2,10 +2,7 @@ package com.example.noodleexaminationsystem;
 
 import com.example.noodleexaminationsystem.Course.CoursePlan;
 import com.example.noodleexaminationsystem.Course.Exam;
-import com.example.noodleexaminationsystem.Question.LongAnswer;
-import com.example.noodleexaminationsystem.Question.MultipleChoice;
-import com.example.noodleexaminationsystem.Question.Question;
-import com.example.noodleexaminationsystem.Question.SingleAnswer;
+import com.example.noodleexaminationsystem.Question.*;
 import com.example.noodleexaminationsystem.User.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,10 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
 import javax.swing.*;
@@ -40,10 +34,8 @@ public class CardController implements Initializable {
     public ExamPageController examPageController;
     @FXML
     private Button name;
-
     @FXML
     private ImageView image;
-
     @FXML
     private Pane card;
     @FXML
@@ -53,10 +45,11 @@ public class CardController implements Initializable {
     @FXML
     private TextField longAnswerQuestionTextField;
     @FXML
-    private  Label shortAnswerChoiceLabel;
+    private Label shortAnswerChoiceLabel;
     @FXML
     private ComboBox choiceComboBox;
-
+    @FXML
+    private VBox cardBox;
 
 
     public void setCourseCard(CoursePlan coursePlan) {
@@ -67,7 +60,7 @@ public class CardController implements Initializable {
         name.setText(coursePlan.getName());
         try {
             image.setImage(new Image(new FileInputStream(coursePlan.getPicturePath())));
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         //this.test = 5;
@@ -93,9 +86,10 @@ public class CardController implements Initializable {
             System.out.println(e);
         }
     }
+
     public void setExamButton() {
         try {
-            if((!this.exam.hasStarted()) && (this.user!=this.coursePlan.getTeacher())){
+            if ((!this.exam.hasStarted()) && (this.user != this.coursePlan.getTeacher())) {
                 //set a label to show that the exam is yet to be started
                 // <<<<<<<<<<<<<<-------------------------------
                 return;
@@ -117,6 +111,7 @@ public class CardController implements Initializable {
             System.out.println(e);
         }
     }
+
     public void setExamCard(Exam exam) {
 //        card.setStyle("""
 //                -fx-background-color: white;
@@ -125,55 +120,87 @@ public class CardController implements Initializable {
 //                """);
         name.setText(exam.getExamTitle());
     }
-    public void setLongAnswerQuestionCardWithoutAnswer(LongAnswer question){
+
+    public void setLongAnswerQuestionCardWithoutAnswer(LongAnswer question) {
         questionLabel.setText(question.getQuestion());
         examPageController.questionCards.add(this);
     }
-    public void setShortAnswerQuestionCardWithoutAnswer(SingleAnswer question){
+
+    public void setShortAnswerQuestionCardWithoutAnswer(SingleAnswer question) {
         questionLabel.setText(question.getQuestion());
         String answers = "";
-        for (String answer: question.getChoices()) {
-            answers += answer+ "\n";
+        for (String answer : question.getChoices()) {
+            answers += answer + "\n";
         }
         shortAnswerChoiceLabel.setText(answers);
         ObservableList<Integer> choiceNumbers = FXCollections.observableArrayList();
-        for(int i=1;i<=question.getCountOfChoice().getValue();i++){
+        for (int i = 1; i <= question.getCountOfChoice().getValue(); i++) {
             choiceNumbers.add(i);
         }
         choiceComboBox.setItems(choiceNumbers);
         examPageController.questionCards.add(this);
     }
-    public void setLongAnswerQuestionCardWithAnswer(LongAnswer question){
+
+    public void setLongAnswerQuestionCardWithAnswer(LongAnswer question) {
         questionLabel.setText(question.getQuestion());
         longAnswerQuestionTextField.editableProperty().set(false);
         longAnswerQuestionTextField.setText(question.getAnswer());
         examPageController.questionCards.add(this);
     }
-    public void setShortAnswerQuestionCardWithAnswer(SingleAnswer question){
+
+    public void setShortAnswerQuestionCardWithAnswer(SingleAnswer question) {
         questionLabel.setText(question.getQuestion());
         String answers = "";
         int i = 1;
-        for (String answer: question.getChoices()) {
-            answers += i +"      "+answer+ "\n";
+        for (String answer : question.getChoices()) {
+            answers += i + "      " + answer + "\n";
             i++;
         }
-        answers+= "answer:     "+ Integer.toHexString(question.getAnswerValue());
+        answers += "answer:     " + Integer.toHexString(question.getAnswerValue());
         shortAnswerChoiceLabel.setText(answers);
         choiceComboBox.setVisible(false);
         examPageController.questionCards.add(this);
     }
+
+    public void setLongAnswerQuestionCardWithUserAnswer(LongAnswer question, String userAnswer) {
+        questionLabel.setText(question.getQuestion());
+        longAnswerQuestionTextField.editableProperty().set(false);
+        StringBuilder answerField = new StringBuilder();
+        answerField.append("Correct answer: ").append(question.getAnswer()).append("\n");
+        longAnswerQuestionTextField.setText(answerField.toString());
+        StringBuilder userAnswerField = new StringBuilder();
+        userAnswerField.append("Your answer: ").append(userAnswer);
+        TextField textField = new TextField();
+        textField.editableProperty().set(false);
+        textField.setText(userAnswerField.toString());
+        cardBox.getChildren().add(textField);
+    }
+
+    public void setShortAnswerQuestionCardWithUserAnswer(SingleAnswer question,String userAnswer) {
+        questionLabel.setText(question.getQuestion());
+        String answers = "";
+        for (String answer : question.getChoices()) {
+            answers += answer + "\n";
+        }
+        shortAnswerChoiceLabel.setText(answers);
+        TextField textField = new TextField();
+        textField.setText(userAnswer);
+        textField.editableProperty().set(false);
+        cardBox.getChildren().get(2).setVisible(false);
+        cardBox.getChildren().add(textField);
+    }
+
     //_____________________________________________   buttons   ____________________________________________
-    public void setQuestionSubmitButton(){
+    public void setQuestionSubmitButton() {
         Object answer = null;
-        if(this.question instanceof SingleAnswer){
+        if (this.question instanceof SingleAnswer) {
             //check what is answers type
             //make sure that the user wont be able to submit question without a selected item
             //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             answer = choiceComboBox.getSelectionModel().getSelectedItem().toString();
             card.visibleProperty().set(true);
             card.setStyle("-fx-background-color: #9bc29b");
-        }
-        else if(this.question instanceof LongAnswer){
+        } else if (this.question instanceof LongAnswer) {
             answer = longAnswerQuestionTextField.getText();
             //this is awful but put something similar to show that a question has been submitted
             BackgroundFill backgroundFill = new BackgroundFill(Color.GREEN, null, null);
@@ -186,12 +213,13 @@ public class CardController implements Initializable {
         }
         //make delete answer button visible
         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        examPageController.answers.put(this.question,answer);
+        examPageController.answers.put(this.question, answer);
     }
+
     //add a button to remove answer of a question
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    public void setDeleteAnswerButton(){
-        examPageController.answers.put(this.question,null);
+    public void setDeleteAnswerButton() {
+        examPageController.answers.put(this.question, null);
         //make the delete button invisible
     }
 

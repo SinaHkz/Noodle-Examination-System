@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
@@ -8,11 +9,9 @@
 
 <!--pane act like a button and open course plan-->
 
-<?import javafx.scene.Group?>
-<?import javafx.scene.control.Button?>
-<HBox fx:id="questionHBox" alignment="CENTER" prefHeight="180.0" prefWidth="1000.0" styleClass="ba" stylesheets="@../../../style-sheets/card.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.noodleexaminationsystem.CardController">
+<HBox fx:id="questionHBox" alignment="CENTER" prefHeight="180.0" prefWidth="1000.0" stylesheets="@../../../style-sheets/card.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.noodleexaminationsystem.CardController">
    <children>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="1000.0">
+      <VBox fx:id="cardBox" alignment="CENTER" prefHeight="200.0" prefWidth="1000.0">
          <children>
             <Label fx:id="questionLabel" prefHeight="144.0" prefWidth="1000.0" text="{Question}" />
             <TextField fx:id="longAnswerQuestionTextField" prefHeight="57.0" prefWidth="1000.0" promptText="Answer" />
@@ -22,11 +21,12 @@
          <children>
             <FontAwesomeIconView fill="#096dde" glyphName="PLUS" size="20" visible="false" />
             <FontAwesomeIconView fill="#bf1212" glyphName="MINUS" size="20" visible="false" />
-            <Group>
                <FontAwesomeIconView fill="#8d1212" glyphName="TRASH" size="20" visible="false" />
-               <Button onAction="#setQuestionSubmitButton">submit</Button>
-            </Group>
          </children>
       </VBox>
    </children>
+   <styleClass>
+      <String fx:value="ba" />
+      <String fx:value="border-bottom" />
+   </styleClass>
 </HBox>

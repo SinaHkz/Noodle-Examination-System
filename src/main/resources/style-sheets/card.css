@@ -41,3 +41,9 @@
 .mult-answer-btn{
     -fx-background-color: #9b9b9b;
 }
+
+.border-bottom{
+    -fx-border-width: 3px;
+    -fx-border-color: black;
+    -fx-padding: 10px;
+}
