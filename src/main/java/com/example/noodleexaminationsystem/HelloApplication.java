@@ -10,24 +10,40 @@ import com.example.noodleexaminationsystem.Question.SingleAnswer;
 import com.example.noodleexaminationsystem.User.Result;
 import com.example.noodleexaminationsystem.User.User;
 import com.example.noodleexaminationsystem.User.UserType;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.ArrayList;
+
 import java.util.Date;
+import java.util.HashMap;
+
 import java.util.List;
 
 
 public class HelloApplication extends Application {
+    private static HashMap<Exam, VBox > userPreviousAnswersHashMap = new HashMap<>();
     static Stage mainStage;
 
     static CoursePlan mainCoursePlan;
+    //______________________________________________________ getter/setter _________________________________________________________
+
+
+    public static HashMap<Exam, VBox> getUserPreviousAnswersHashMap() {
+        return userPreviousAnswersHashMap;
+    }
+
+    public static void setUserPreviousAnswersHashMap(HashMap<Exam, VBox> userPreviousAnswersHashMap) {
+        HelloApplication.userPreviousAnswersHashMap = userPreviousAnswersHashMap;
+    }
 
     //______________________________________________________ methods _________________________________________________________
     public static void setScene(String fxmlFile) {
@@ -58,7 +74,6 @@ public class HelloApplication extends Application {
             User teacher = User.signUp("teacher","teacher","ijf","ifje","ejia","fie",date ,"female", "member");
             CoursePlan coursePlan = CoursePlan.addCoursePlan("OOP","shit",teacher,date,"fj");
 
-
             CoursePlan coursePlan1 = CoursePlan.addCoursePlan("OOP","shit1",teacher, date,"fj");
             CoursePlan coursePlan2 = CoursePlan.addCoursePlan("OOP","shit2",teacher,date,"fj");
 
@@ -73,7 +88,6 @@ public class HelloApplication extends Application {
             LocalDateTime activeExamStart = activeDay.atTime(12,30,30);
             LocalDateTime activeExamEnd = activeDay.atTime(23,59,59);
             Exam activeExam = Exam.createExam(coursePlan,"activeExam",activeExamStart,activeExamEnd);
-
 
 
 
@@ -98,7 +112,6 @@ public class HelloApplication extends Application {
             result.getAnswers().put(result.getExam().getQuestions().get(1),"HORAAAAAAAAAAAAAAAAAAAAA");
 
             //______________________________________
-
 //            mainCoursePlan=coursePlan;
             //first scene
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
@@ -117,11 +130,13 @@ public class HelloApplication extends Application {
 //        User admin = User.signUp("admin", "admin", "admin", "admin", "jfeij", "src/main/resources/images/test_1_profile.jpg", date, "FEMALE", "ADMIN");
 //        Course.addCourse("OOP");
 //        Course.addCourse("Ds");
+
 //        try{
 //            DataBase.deserializeDataBase();
 //        }catch (Exception JsonProcessingException){
 //            JsonProcessingException.printStackTrace();
 //        }
+
         launch();
 //        try {
 //            DataBase.serializeDataBase();

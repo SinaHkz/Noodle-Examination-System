@@ -2,6 +2,7 @@ package com.example.noodleexaminationsystem;
 
 import com.example.noodleexaminationsystem.Course.CoursePlan;
 import com.example.noodleexaminationsystem.Course.Exam;
+import com.example.noodleexaminationsystem.Question.Question;
 import com.example.noodleexaminationsystem.User.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,11 +19,13 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 
 public class CoursePageController implements Initializable {
     User user;
+    //each exam and the card controllers of the questions that have been previously set
     CoursePlan coursePlan;
     @FXML
     Label teacherName;

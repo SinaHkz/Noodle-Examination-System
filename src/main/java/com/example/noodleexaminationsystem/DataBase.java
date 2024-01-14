@@ -3,12 +3,15 @@ package com.example.noodleexaminationsystem;
 import com.example.noodleexaminationsystem.Course.Course;
 import com.example.noodleexaminationsystem.Course.CoursePlan;
 import com.example.noodleexaminationsystem.Question.Question;
+import com.example.noodleexaminationsystem.Question.QuestionKeyDeserializer;
 import com.example.noodleexaminationsystem.User.User;
 import java.util.HashMap;
 import java.util.Map;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import java.io.*;
 import java.nio.charset.Charset;
@@ -115,9 +118,24 @@ public class DataBase {
         String deserializedObject2 = DataBase.readFromFile(filePath2,charset);
         String deserializedObject3 = DataBase.readFromFile(filePath3,charset);
         String deserializedObject4 = DataBase.readFromFile(filePath4,charset);
+        SimpleModule simpleModule = new SimpleModule();
+
+        // Register the custom key deserializer for the Question class
+        simpleModule.addKeyDeserializer(Question.class, new QuestionKeyDeserializer());
+
+        // Register other modules or custom serializers/deserializers as needed
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
-        DataBase.setUsers(objectMapper.readValue(deserializedObject4,new TypeReference<Map<String ,User>>(){}));
+
+        // Finally, register the SimpleModule with the ObjectMapper
+        objectMapper.registerModule(simpleModule);
+        objectMapper.registerModule(new JavaTimeModule());
+
+        try {
+            DataBase.setUsers(objectMapper.readValue(deserializedObject4, new TypeReference<Map<String, User>>() {}));
+        }catch (Exception e){
+            System.out.println(e);
+        }
         DataBase.setCoursePlans(objectMapper.readValue(deserializedObject1,new TypeReference<Map<String ,CoursePlan>>(){}));
         DataBase.setCourses(objectMapper.readValue(deserializedObject2,new TypeReference<Map<String ,Course>>(){}));
         DataBase.setQuestions(objectMapper.readValue(deserializedObject3,new TypeReference<Map<Course ,Question>>(){}));

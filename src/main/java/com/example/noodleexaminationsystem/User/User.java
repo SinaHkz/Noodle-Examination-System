@@ -27,6 +27,10 @@ public class User {
     private HashMap<String ,CoursePlan> teacherCourses = new HashMap<>();
     private ArrayList<CoursePlan> StudentcoursePlans = new ArrayList<>();
 
+    public User(){
+
+    }
+
     private User(String username, String password, String name, String lastName, String email, String picturePath, LocalDate dob, Gender gender, UserType userType) {
         this.username = username;
         this.password = password;
@@ -40,9 +44,6 @@ public class User {
     }
     //show the list of courses of a student
 
-    public User(){
-
-    }
 
     public Gender getGender() {
         return gender;
