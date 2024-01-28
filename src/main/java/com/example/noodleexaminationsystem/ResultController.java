@@ -3,6 +3,7 @@ package com.example.noodleexaminationsystem;
 import com.example.noodleexaminationsystem.Course.CoursePlan;
 import com.example.noodleexaminationsystem.Course.Exam;
 import com.example.noodleexaminationsystem.Question.LongAnswer;
+import com.example.noodleexaminationsystem.Question.LongAnswerStudentAnswer;
 import com.example.noodleexaminationsystem.Question.Question;
 import com.example.noodleexaminationsystem.Question.SingleAnswer;
 import com.example.noodleexaminationsystem.User.Result;
@@ -14,11 +15,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Circle;
 
+import java.awt.*;
+import java.io.FileInputStream;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 
@@ -26,6 +35,9 @@ public class ResultController implements Initializable {
     public User previousUser;
     public Exam exam;
     public CoursePlan coursePlan;
+    public User student = null;
+
+    static HashMap<Question, TextField> cardControllers = new HashMap<>();
 
     @FXML
     private ListView listView;
@@ -35,16 +47,34 @@ public class ResultController implements Initializable {
     private Button checkButton;
     @FXML
     private Button backToList;
+    @FXML
+    private Label usernameLabel;
+    @FXML
+    private ImageView profileImage;
+
 
     public void setShowResultButton() {
         String username = listView.getSelectionModel().getSelectedItem().toString();
-        System.out.println(username);
         Result result = null;
         for (Result tempResult : exam.getResults())
             if (tempResult.getStudent().getUsername().compareTo(username) == 0) {
+                student = tempResult.getStudent();
                 result = tempResult;
                 break;
             }
+
+        usernameLabel.setText(username);
+        try {
+            FileInputStream stream = new FileInputStream(student.getPicturePath());
+            Image newImage = new Image(stream);
+            profileImage.setImage(newImage);
+            final Circle clip = new Circle(123.5, 136, 110);
+            profileImage.setClip(clip);
+            profileImage.setImage(newImage);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
         for (Question question : result.getAnswers().keySet()) {
             if (question instanceof LongAnswer) {
                 try {
@@ -54,7 +84,15 @@ public class ResultController implements Initializable {
 //                    cardController.exam = this.exam;
 //                    cardController.coursePlan = this.coursePlan;
 //                    cardController.user = this.previousUser;
-                    cardController.setLongAnswerQuestionCardWithUserAnswer((LongAnswer) question, (String) result.getAnswers().get(question));
+                    cardController.setLongAnswerQuestionCardWithUserAnswer((LongAnswer) question, ((LongAnswerStudentAnswer) result.getAnswers().get(question)).getStudentAnswer());
+
+//                    create new text field to get score
+                    TextField newTextField = new TextField();
+                    newTextField.setPromptText("Score");
+                    newTextField.setText(Double.toString(((LongAnswerStudentAnswer) result.getAnswers().get(question)).getScore()));
+                    cardControllers.put(question, newTextField);
+                    eachQuestionBox.getChildren().add(newTextField);
+
                     resultBox.getChildren().add(eachQuestionBox);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -64,7 +102,15 @@ public class ResultController implements Initializable {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("ShortAnswerQuestionCard.fxml"));
                     HBox eachQuestionBox = loader.load();
                     CardController cardController = loader.getController();
-                    cardController.setShortAnswerQuestionCardWithUserAnswer((SingleAnswer) question, (String) result.getAnswers().get(question));
+                    TextField newTextField = new TextField();
+                    if (checkMultipleChoiceAnswer(result, (SingleAnswer) question))
+                        newTextField.setText("True");
+                    else
+                        newTextField.setText("False");
+                    newTextField.setEditable(false);
+                    eachQuestionBox.getChildren().add(newTextField);
+                    cardController.setShortAnswerQuestionCardWithUserAnswer((SingleAnswer) question, Integer.toString((Integer) result.getAnswers().get(question)));
+
                     resultBox.getChildren().add(eachQuestionBox);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -75,10 +121,35 @@ public class ResultController implements Initializable {
         checkButton.setVisible(false);
         resultBox.setVisible(true);
         listView.setVisible(false);
-
     }
 
-    public void setBackToList(){
+    private boolean checkMultipleChoiceAnswer(Result result, SingleAnswer question) {
+        if ((Integer) result.getAnswers().get(question) == question.getAnswerValue())
+            return true;
+        return false;
+    }
+
+
+    public void setBackToList() {
+        usernameLabel.setText("");
+        profileImage.setVisible(false);
+        Result result = null;
+        for (Result tempResult : exam.getResults())
+            if (tempResult.getStudent() == student) {
+                result = tempResult;
+                break;
+            }
+        for (Question question : cardControllers.keySet()) {
+            if (!cardControllers.get(question).getText().equals("")) {
+                try {
+                    Double score = Double.parseDouble(cardControllers.get(question).getText());
+                    ((LongAnswerStudentAnswer) result.getAnswers().get(question)).setScore(score);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
         resultBox.setVisible(false);
         resultBox.getChildren().clear();
         listView.setVisible(true);
@@ -87,6 +158,7 @@ public class ResultController implements Initializable {
     }
 
     public void setLists() {
+        usernameLabel.setText("");
         ObservableList<String> users = FXCollections.observableArrayList();
         for (Result result : this.exam.getResults()) {
             users.add(result.getStudent().getUsername());

@@ -150,6 +150,7 @@ public class ExamPageController implements Initializable {
         //call back button when back button is created
         setBackButton();
     }
+
     public void setSubmitAndExitButton(){
         //it fucking works :)
         if(!exam.hasEnded()){
