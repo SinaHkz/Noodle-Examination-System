@@ -130,18 +130,18 @@ public class HelloApplication extends Application {
 //        User admin = User.signUp("admin", "admin", "admin", "admin", "jfeij", "src/main/resources/images/test_1_profile.jpg", date, "FEMALE", "ADMIN");
 //        Course.addCourse("OOP");
 //        Course.addCourse("Ds");
-
-//        try{
-//            DataBase.deserializeDataBase();
-//        }catch (Exception JsonProcessingException){
-//            JsonProcessingException.printStackTrace();
-//        }
-
+        try{
+            DataBase.deserializeDataBase();
+        }catch (Exception JsonProcessingException){
+            JsonProcessingException.printStackTrace();
+        }
         launch();
-//        try {
-//            DataBase.serializeDataBase();
-//        }catch (Exception JsonProcessingException){
-//            JsonProcessingException.printStackTrace();
-//        }
+        //User first = User.signUp("test" , "test" ,"admin", "admin", "jfeij", "src/main/resources/images/test_1_profile.jpg", date, "FEMALE", "MEMBER" );
+        //CoursePlan.addCoursePlan("hello" , "hello" , first , date , "ds");
+        try {
+            DataBase.serializeDataBase();
+        }catch (Exception JsonProcessingException){
+            JsonProcessingException.printStackTrace();
+        }
     }
 }

@@ -6,15 +6,20 @@ import com.example.noodleexaminationsystem.User.User;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 @JsonSerialize
 @JsonDeserialize
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CoursePlan {
     private Course course;
+    @JsonBackReference
     private User teacher;
     private Exam attendedStudent;
     private LocalDate start;
@@ -44,7 +49,10 @@ public class CoursePlan {
     }
     public static CoursePlan addCoursePlan(String courseName, String name, User teacher, LocalDate start, String picturePath){
         LocalDateTime startOfDay = start.atStartOfDay();
-        Exam attendedStudent = Exam.createAttendedExam(startOfDay,null);
+        LocalDate date = LocalDate.parse("2007-12-03");
+        LocalTime time  = LocalTime.now();
+        LocalDateTime date1 = LocalDateTime.of(date , time);
+        Exam attendedStudent = Exam.createAttendedExam(startOfDay,date1);
         Course course = DataBase.getCourses().get(courseName);
         if(teacher.getTeacherCourses().get(name)!=null){
             return null;

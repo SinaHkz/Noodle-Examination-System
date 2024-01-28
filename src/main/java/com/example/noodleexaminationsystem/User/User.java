@@ -1,5 +1,5 @@
 package com.example.noodleexaminationsystem.User;
-
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.example.noodleexaminationsystem.Course.Course;
 import com.example.noodleexaminationsystem.Course.CoursePlan;
 import com.example.noodleexaminationsystem.Course.Exam;
@@ -24,7 +24,8 @@ public class User {
     private LocalDate dob;
     private UserType userType;
     private ArrayList<Result> results = new ArrayList<>();
-    private HashMap<String ,CoursePlan> teacherCourses = new HashMap<>();
+    @JsonManagedReference
+    private Map<String ,CoursePlan> teacherCourses = new HashMap<>();
     private ArrayList<CoursePlan> StudentcoursePlans = new ArrayList<>();
 
     public User(){
@@ -190,11 +191,11 @@ public class User {
         this.results = results;
     }
 
-    public HashMap<String, CoursePlan> getTeacherCourses() {
+    public Map<String, CoursePlan> getTeacherCourses() {
         return teacherCourses;
     }
 
-    public void setTeacherCourses(HashMap<String, CoursePlan> teacherCourses) {
+    public void setTeacherCourses( Map<String, CoursePlan> teacherCourses) {
         this.teacherCourses = teacherCourses;
     }
 

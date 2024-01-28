@@ -1,4 +1,5 @@
 package com.example.noodleexaminationsystem.Course;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import com.example.noodleexaminationsystem.Question.Question;
 import com.example.noodleexaminationsystem.User.Result;
@@ -8,7 +9,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import java.util.ArrayList;
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Exam {
     private String examTitle;
     private LocalDateTime TimeStart;
@@ -16,7 +17,9 @@ public class Exam {
     private ArrayList<Question> questions = new ArrayList();
     private ArrayList<Result> results = new ArrayList<>();
 
+    public Exam(){
 
+    }
     //______________________________________________________ constructor _________________________________________________________
 
     private Exam(String examTitle, LocalDateTime timeStart, LocalDateTime timeEnd) {
