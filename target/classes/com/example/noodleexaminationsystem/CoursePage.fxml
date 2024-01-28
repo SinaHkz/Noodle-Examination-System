@@ -21,7 +21,7 @@
          <children>
             <Pane layoutX="-22.0" layoutY="-1.0" prefHeight="900.0" prefWidth="374.0">
                <children>
-                  <ImageView fitHeight="247.0" fitWidth="272.0" layoutX="50.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="courseImage" fitHeight="247.0" fitWidth="272.0" layoutX="50.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../images/course.png" />
                      </image>

@@ -11,10 +11,15 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Circle;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -47,7 +52,8 @@ public class CoursePageController implements Initializable {
     Group archiveCourseGroup;
     @FXML
     Group createExamButton;
-
+    @FXML
+    ImageView courseImage;
     @FXML
     private void setCreateExamButton(){
         FXMLLoader loader = new FXMLLoader();
@@ -138,6 +144,22 @@ public class CoursePageController implements Initializable {
         }
         catch (Exception e){
             System.out.println(e);
+        }
+        try {
+            courseName.setText(coursePlan.getName());
+            File file = new File(coursePlan.getPicturePath());
+            // Create a FileInputStream from the File
+            FileInputStream stream = new FileInputStream(file);
+            Image newImage = new Image(stream);
+            //making the picture round
+            final Circle clip = new Circle(123.5, 136, 110);
+            courseImage.setClip(clip);
+            courseImage.setImage(newImage);
+
+        } catch (Exception e) {
+            // Handle exception
+            //if the path can not be resolved the default picture will be shown as profile picture
+            e.printStackTrace();
         }
     }
     public void setArchiveCourseButton(){
