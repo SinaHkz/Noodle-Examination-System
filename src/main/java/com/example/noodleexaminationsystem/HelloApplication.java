@@ -116,8 +116,8 @@ public class HelloApplication extends Application {
             //first scene
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
             mainStage.setScene(new Scene(fxmlLoader.load()));
-//            mainStage.setMaxWidth(1600);
-//            mainStage.setMaxHeight(900);
+//            mainStage.setMaxWidth(1560);
+//            mainStage.setMaxHeight(870);
             mainStage.show();
 
         } catch (Exception e) {
@@ -130,18 +130,18 @@ public class HelloApplication extends Application {
 //        User admin = User.signUp("admin", "admin", "admin", "admin", "jfeij", "src/main/resources/images/test_1_profile.jpg", date, "FEMALE", "ADMIN");
 //        Course.addCourse("OOP");
 //        Course.addCourse("Ds");
-        try{
-            DataBase.deserializeDataBase();
-        }catch (Exception JsonProcessingException){
-            JsonProcessingException.printStackTrace();
-        }
+//        try{
+//            DataBase.deserializeDataBase();
+//        }catch (Exception JsonProcessingException){
+//            JsonProcessingException.printStackTrace();
+//        }
         launch();
         //User first = User.signUp("test" , "test" ,"admin", "admin", "jfeij", "src/main/resources/images/test_1_profile.jpg", date, "FEMALE", "MEMBER" );
         //CoursePlan.addCoursePlan("hello" , "hello" , first , date , "ds");
-        try {
-            DataBase.serializeDataBase();
-        }catch (Exception JsonProcessingException){
-            JsonProcessingException.printStackTrace();
-        }
+//        try {
+//            DataBase.serializeDataBase();
+//        }catch (Exception JsonProcessingException){
+//            JsonProcessingException.printStackTrace();
+//        }
     }
 }

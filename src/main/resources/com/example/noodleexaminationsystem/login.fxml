@@ -112,7 +112,7 @@
                <Label fx:id="usernameTaken" layoutX="237.0" layoutY="452.0" text="username already taken" textFill="RED" visible="false" />
                <Label fx:id="passwordLessThanEight" layoutX="418.0" layoutY="452.0" text="password must have at least 8 characters" textFill="RED" visible="false" />
                <ComboBox fx:id="comboBox" layoutX="217.0" layoutY="546.0" prefHeight="50.0" prefWidth="400.0" promptText="Gender" styleClass="border-colored-bottom" />
-               <Button layoutX="555.0" layoutY="761.0" mnemonicParsing="false" text="Button" />
+               <Button fx:id="ChoosePicturePath" onAction="#choosePicture" layoutX="555.0" layoutY="761.0" mnemonicParsing="false" text="PicturePath" />
             </children>
          </Pane>
       </center>
