@@ -28,7 +28,7 @@ public class MultipleAnswer extends MultipleChoice {
 
     public static void createQuestion(String question, User questionDesigner, Course course, Choice countOfChoice,ArrayList<String> choices,ArrayList<Integer> answerValues) {
         Question question1 = new MultipleAnswer(course , question , questionDesigner , countOfChoice,choices,answerValues);
-        DataBase.getQuestions().put(course , question1);
+        DataBase.getQuestions().get(course).add(question1);
     }
 //    --------------------------------------------------------      getter/setter      -----------------------------------------------------------------
 

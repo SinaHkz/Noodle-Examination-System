@@ -1,5 +1,6 @@
 package com.example.noodleexaminationsystem.Course;
 
+import com.example.noodleexaminationsystem.Question.LongAnswer;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import com.example.noodleexaminationsystem.Question.Question;
@@ -10,6 +11,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import java.util.ArrayList;
+
+import static com.example.noodleexaminationsystem.Question.SingleAnswer.createQuestion;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Exam {
@@ -106,6 +109,7 @@ public class Exam {
         return false;
     }
 
+
     public void removeUser(User user) {
         for (Result result : this.results) {
             if (result.getStudent() == user) {
@@ -115,6 +119,16 @@ public class Exam {
             }
         }
     }
+
+    public  void addSingleAnswerQuestionToExam(String question, User questionDesigner, Course course, int answerValue, ArrayList<String> choices){
+        Question question1 = createQuestion(question,questionDesigner,course,answerValue,choices);
+        this.addQuestion(question1);
+    }
+    public void addLongAnswerQuestionToExam(String question, User questionDesigner, Course course,String answer){
+        Question question1 = LongAnswer.createQuestion(question,questionDesigner,course,answer);
+        this.addQuestion(question1);
+    }
+
 
     public void setResults(ArrayList<Result> results) {
         this.results = results;

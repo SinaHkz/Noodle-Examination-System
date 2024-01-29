@@ -1,5 +1,6 @@
 package com.example.noodleexaminationsystem;
 
+import com.example.noodleexaminationsystem.Course.Course;
 import com.example.noodleexaminationsystem.Course.CoursePlan;
 import com.example.noodleexaminationsystem.Course.Exam;
 import com.example.noodleexaminationsystem.Question.*;
@@ -12,6 +13,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -47,8 +49,9 @@ public class ExamPageController implements Initializable {
     Group submitAndExit;
     @FXML
     VBox questionsVbox;
-
-    private void setCards(ArrayList<Question> questions, VBox cardVbox,Boolean showWithAnswer) {
+    @FXML
+    Button questionBank;
+    private void setCards(ArrayList<Question> questions, VBox cardVbox,boolean showWithAnswer) {
         try {
             HBox eachQuestionBox;
             for (Question question : questions) {;
@@ -59,11 +62,39 @@ public class ExamPageController implements Initializable {
                     eachQuestionBox = loader.load();
                     CardController cardController = loader.getController();
                     cardController.question = question;
+                    cardController.user = this.user;
                     cardController.exam =this.exam;
+                    cardController.coursePlan = this.coursePlan;
                     cardController.examPageController = this;
+                    cardController.examPageVbox = cardVbox;
                     try {
-                        if(showWithAnswer)
-                            cardController.setShortAnswerQuestionCardWithAnswer((SingleAnswer) question);
+                        if(showWithAnswer){
+                            Result studentResult = null;
+                            for (Result result:this.exam.getResults()) {
+                                if(result.getStudent()==this.user)
+                                    studentResult = result;
+                            }
+                            //shows users answers
+                            if(studentResult!=null){
+                                TextField textField = new TextField();
+                                if (ResultController.checkMultipleChoiceAnswer(studentResult, (SingleAnswer) question)){
+                                    textField.setText("True");
+                                    eachQuestionBox.setStyle("-fx-background-color: rgba(62,224,62,0.3)");
+                                }
+                                else {
+                                    textField.setText("False");
+                                    eachQuestionBox.setStyle("-fx-background-color: rgba(210,33,33,0.3)");
+                                }
+                                textField.setEditable(false);
+                                eachQuestionBox.getChildren().add(textField);
+                                cardController.setShortAnswerQuestionCardWithUserAnswer((SingleAnswer) question,Integer.toString((Integer) studentResult.getAnswers().get(question)+1));
+                            }
+                            //if user does not have a result shows previous result
+                            else {
+                                cardController.setShortAnswerQuestionCardWithAnswer((SingleAnswer) question);
+                            }
+
+                        }
                         else
                             cardController.setShortAnswerQuestionCardWithoutAnswer((SingleAnswer) question);
                     } catch (Exception e) {
@@ -79,12 +110,31 @@ public class ExamPageController implements Initializable {
                     CardController cardController = loader.getController();
                     cardController.question = question;
                     cardController.exam = this.exam;
+                    cardController.user = this.user;
+                    cardController.coursePlan = this.coursePlan;
                     cardController.examPageController = this;
+                    cardController.examPageVbox = cardVbox;
                     try {
-                        if(showWithAnswer)
-                            cardController.setLongAnswerQuestionCardWithAnswer((LongAnswer) question);
-                        else
+                        if (showWithAnswer) {
+                            Result studentResult = null;
+                            for (Result result:this.exam.getResults()) {
+                                if(result.getStudent()==this.user)
+                                    studentResult = result;
+                            }
+                            if(studentResult!=null){
+                                TextField textField = new TextField();
+                                textField.setPromptText("Score");
+                                textField.setText(Double.toString(((LongAnswerStudentAnswer) studentResult.getAnswers().get(question)).getScore()));
+                                cardController.setLongAnswerQuestionCardWithUserAnswer((LongAnswer) question, ((LongAnswerStudentAnswer) studentResult.getAnswers().get(question)).getStudentAnswer());
+                                eachQuestionBox.getChildren().add(textField);
+                            }
+                            //if user does not have a result shows a
+                            else {
+                                cardController.setLongAnswerQuestionCardWithAnswer((LongAnswer) question);
+                            }
+                        } else {
                             cardController.setLongAnswerQuestionCardWithoutAnswer((LongAnswer) question);
+                        }
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -113,6 +163,7 @@ public class ExamPageController implements Initializable {
             if(coursePlan.getTeacher()==this.user){
                 if(!exam.hasStarted()){
                     addQuestionButton.setVisible(true);
+                    questionBank.setVisible(true);
                 }
                 else if(exam.hasEnded()){
                     checkResultsButton.setVisible(true);
@@ -156,13 +207,16 @@ public class ExamPageController implements Initializable {
         if(!exam.hasEnded()){
             Result result = Result.addResult(this.user,this.exam);
             for (CardController questionCard:this.questionCards) {
-                Object answer = null;
+                Object answer = -1;
                 if(questionCard.question instanceof SingleAnswer){
-                    if((answer = questionCard.getChoiceComboBox().getSelectionModel().getSelectedItem())!=null)
-                        answer = answer.toString();
-                    else{
-                        answer = "";
+                    if((answer = questionCard.getChoiceComboBox().getSelectionModel().getSelectedItem())!=null){
+                        if(!answer.equals("Delete answer")){
+                            answer = Integer.parseInt((String) answer)-1;
+                            System.out.println(answer);
+                        }
+
                     }
+
                 }
                 else if(questionCard.question instanceof LongAnswer){
                     String answerString = questionCard.getLongAnswerQuestionTextField().getText();
@@ -171,9 +225,6 @@ public class ExamPageController implements Initializable {
                 result.getAnswers().put(questionCard.question,answer);
             }
         }
-
-
-        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         //going back to course page
         setBackButton();
 
@@ -185,9 +236,6 @@ public class ExamPageController implements Initializable {
             Scene scene = new Scene(loader.load());
             ResultController resultController = loader.getController();
             resultController.previousUser = this.user;
-            System.out.println(exam);
-            System.out.println(this.user);
-            System.out.println(this.coursePlan);
             resultController.exam = this.exam;
             resultController.coursePlan = this.coursePlan;
             resultController.setLists();
@@ -229,6 +277,38 @@ public class ExamPageController implements Initializable {
             e.printStackTrace();
         }
 
+    }
+    public void setAddQuestionButton(){
+        FXMLLoader loader = new FXMLLoader();
+
+        loader.setLocation(getClass().getResource("AddQuestion.fxml"));
+        try {
+            Scene scene = new Scene(loader.load());
+            // Now that the FXML is loaded, get the controller and set the data
+            AddQuestionController addQuestionController = loader.getController();
+            addQuestionController.previousUser = this.user;
+            addQuestionController.exam = this.exam;
+            addQuestionController.coursePlan = this.coursePlan;
+            HelloApplication.mainStage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void setQuestionBank(){
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("QuestionsBank.fxml"));
+        try {
+            Scene scene = new Scene(loader.load());
+            // Now that the FXML is loaded, get the controller and set the data
+            QuestionBankController questionBankController = loader.getController();
+            questionBankController.previousUser = this.user;
+            questionBankController.exam = this.exam;
+            questionBankController.coursePlan = this.coursePlan;
+            questionBankController.setQuestionBankPage();
+            HelloApplication.mainStage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

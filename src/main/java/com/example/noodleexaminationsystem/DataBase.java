@@ -6,6 +6,8 @@ import com.example.noodleexaminationsystem.Question.Question;
 import com.example.noodleexaminationsystem.Question.QuestionKeyDeserializer;
 import com.example.noodleexaminationsystem.TrieTree.Trie;
 import com.example.noodleexaminationsystem.User.User;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -24,8 +26,9 @@ public class DataBase {
     static Map<String, User> users = new HashMap<>();
     static Map<String, CoursePlan> coursePlans = new HashMap<>();
     static Map<String, Course> courses = new HashMap<>();
-    static Map<Course, Question> questions = new HashMap<>();
     public static Trie usernameTrie = new Trie();
+    static Map<Course, ArrayList<Question>> questions = new HashMap<>();
+
 
 
     public static void setUsers(Map<String, User> users) {
@@ -52,11 +55,11 @@ public class DataBase {
         DataBase.courses = courses;
     }
 
-    public static Map<Course, Question> getQuestions() {
+    public static Map<Course, ArrayList<Question>> getQuestions() {
         return questions;
     }
 
-    public static void setQuestions(Map<Course, Question> questions) {
+    public static void setQuestions(Map<Course, ArrayList<Question>> questions) {
         DataBase.questions = questions;
     }
 
@@ -140,7 +143,7 @@ public class DataBase {
         }
         DataBase.setCoursePlans(objectMapper.readValue(deserializedObject1,new TypeReference<Map<String ,CoursePlan>>(){}));
         DataBase.setCourses(objectMapper.readValue(deserializedObject2,new TypeReference<Map<String ,Course>>(){}));
-        DataBase.setQuestions(objectMapper.readValue(deserializedObject3,new TypeReference<Map<Course ,Question>>(){}));
+        DataBase.setQuestions(objectMapper.readValue(deserializedObject3,new TypeReference<Map<Course ,ArrayList<Question>>>(){}));
 
     }
 }

@@ -14,6 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.Group?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" styleClass="gradiant-color-background" stylesheets="@../../../style-sheets/homepage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.noodleexaminationsystem.AddQuestionController">
    <left>
       <Pane prefHeight="800.0" prefWidth="352.0" styleClass="left-pane" BorderPane.alignment="CENTER">
@@ -26,7 +27,7 @@
                      </font>
                   </Button>
                   <FontAwesomeIconView fill="#11a135" glyphName="CHECK" layoutX="135.0" layoutY="834.0" size="24" />
-                  <Button fx:id="LongAnswer" layoutX="57.0" layoutY="330.0" mnemonicParsing="false" onAction="#setLongAnswer" prefHeight="39.0" prefWidth="264.0" text="Long Answer">
+                  <Button fx:id="longAnswerButton" onAction="#setLongAnswer" layoutX="57.0" layoutY="330.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" text="Long Answer">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -37,7 +38,7 @@
                      </styleClass>
                   </Button>
                   <Line endX="197.0" layoutX="177.0" layoutY="804.0" opacity="0.56" startX="-154.99998474121094" />
-                  <Button fx:id="SingleAnswer" layoutX="57.0" layoutY="401.0" mnemonicParsing="false" onAction="#setSingleAnswer" prefHeight="39.0" prefWidth="264.0" text="Single Answer">
+                  <Button fx:id="singleAnswerButton" onAction="#setSingleAnswer" layoutX="57.0" layoutY="401.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" text="Single Answer">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -52,7 +53,7 @@
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <Button fx:id="MultipleAnswer" layoutX="57.0" layoutY="464.0" mnemonicParsing="false" onAction="#setMultipleAnswer" prefHeight="39.0" prefWidth="264.0" text="Multiple Answer">
+                  <Button visible="flase"  layoutX="57.0" layoutY="464.0" mnemonicParsing="false"  prefHeight="39.0" prefWidth="264.0" text="Question Bank">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -77,12 +78,12 @@
    <center>
       <Pane prefHeight="800.0" prefWidth="908.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox fx:id="LongAnswerVbox" alignment="TOP_CENTER" layoutX="88.0" layoutY="102.0" prefHeight="769.0" prefWidth="1103.0" spacing="20.0" visible="false">
+            <VBox fx:id="LongAnswerVbox" alignment="TOP_CENTER" layoutX="88.0" layoutY="102.0" prefHeight="769.0" prefWidth="1103.0" spacing="20.0" >
                <children>
                   <VBox prefHeight="178.0" prefWidth="1103.0">
                      <children>
                         <HBox alignment="CENTER"> <!-- HBox to center the label -->
-                           <Label fx:id="emptyLabel" style="-fx-text-fill: red" text="Question is empty!" visible="false" />
+                           <Label fx:id="emptyQuestionLabel" style="-fx-text-fill: red" text="Question is empty!" visible="false" />
                         </HBox>
                         <TextArea fx:id="LongAnswerQuestion" prefHeight="100.0" prefWidth="1100.0" promptText="Question" />
                      </children>
@@ -102,58 +103,58 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <VBox fx:id="SingleVbox" alignment="CENTER" layoutX="98.0" layoutY="112.0" prefHeight="769.0" prefWidth="1103.0" spacing="20.0">
+            <VBox visible="false" fx:id="SingleVbox" alignment="CENTER" layoutX="98.0" layoutY="112.0" prefHeight="769.0" prefWidth="1103.0" spacing="20.0">
                <children>
                   <HBox prefHeight="178.0" prefWidth="1103.0">
                      <children>
-                        <TextArea prefHeight="100.0" prefWidth="1100.0" promptText="Question" />
+                        <TextArea fx:id="singleAnswerQuestion" prefHeight="100.0" prefWidth="1100.0" promptText="Question" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <RadioButton mnemonicParsing="false" />
+                        <RadioButton fx:id="option1" mnemonicParsing="false" />
                         <TextArea fx:id="TextArea11" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 1" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <RadioButton mnemonicParsing="false" />
+                        <RadioButton fx:id="option2" mnemonicParsing="false" />
                         <TextArea fx:id="TextArea22" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 2" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <RadioButton mnemonicParsing="false" />
+                        <RadioButton fx:id="option3" mnemonicParsing="false" />
                         <TextArea fx:id="TextArea33" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 3" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <RadioButton mnemonicParsing="false" />
+                        <RadioButton fx:id="option4" mnemonicParsing="false" />
                         <TextArea fx:id="TextArea44" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 4" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <RadioButton mnemonicParsing="false" />
+                        <RadioButton fx:id="option5" mnemonicParsing="false" />
                         <TextArea fx:id="TextArea55" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 5" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <RadioButton mnemonicParsing="false" />
+                        <RadioButton fx:id="option6" mnemonicParsing="false" />
                         <TextArea fx:id="TextArea66" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 6" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <RadioButton mnemonicParsing="false" />
+                        <RadioButton fx:id="option7" mnemonicParsing="false" />
                         <TextArea fx:id="TextArea77" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 7" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <RadioButton mnemonicParsing="false" />
+                        <RadioButton fx:id="option8" mnemonicParsing="false" />
                         <TextArea fx:id="TextArea88" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 8" />
                      </children>
                   </HBox>

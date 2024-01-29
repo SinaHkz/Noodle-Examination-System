@@ -12,23 +12,24 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.Group?>
 <BorderPane fx:controller="com.example.noodleexaminationsystem.QuestionBankController" prefHeight="900.0" prefWidth="1600.0" stylesheets="@../../../style-sheets/addQuestion.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <Pane maxHeight="900.0" maxWidth="1600.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" styleClass="back-ground" stylesheets="@../../../style-sheets/addQuestion.css" BorderPane.alignment="CENTER">
          <children>
             <ScrollPane layoutX="53.0" layoutY="58.0" prefHeight="789.0" prefWidth="1071.0" style="-fx-background-color: transparent;">
                <content>
-                  <VBox prefHeight="785.0" prefWidth="1069.0" spacing="30.0">
+                  <VBox fx:id="mainVBox" prefHeight="785.0" prefWidth="1069.0" spacing="30.0">
                      <children>
-                        <Pane prefHeight="200.0" prefWidth="200.0" visible="false">
-                           <children>
-                              <Label layoutX="411.0" layoutY="86.0" text="there is no question to show" textFill="#e40e0e">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </Pane>
+<!--                        <Pane prefHeight="200.0" prefWidth="200.0" visible="false">-->
+<!--                           <children>-->
+<!--                              <Label layoutX="411.0" layoutY="86.0" text="there is no question to show" textFill="#e40e0e">-->
+<!--                                 <font>-->
+<!--                                    <Font size="24.0" />-->
+<!--                                 </font>-->
+<!--                              </Label>-->
+<!--                           </children>-->
+<!--                        </Pane>-->
                      </children></VBox>
                </content>
             </ScrollPane>
@@ -44,7 +45,7 @@
                   <Font size="45.0" />
                </font>
             </Label>
-            <Button onAction="#setBackButton" layoutX="74.0" layoutY="854.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="241.0" text="Back">
+            <Button fx:id="backButton" onAction="#setBackButton" layoutX="74.0" layoutY="854.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="241.0" text="Back">
                <styleClass>
                   <String fx:value="background-transparent" />
                   <String fx:value="button-hand" />
@@ -55,16 +56,17 @@
             </Button>
             <FontAwesomeIconView glyphName="SIGN_OUT" layoutX="158.0" layoutY="882.0" />
             <Line endX="205.0" layoutX="195.0" layoutY="851.0" opacity="0.57" startX="-195.0" />
-            <Button onAction="#setAddQuestionButton" layoutX="74.0" layoutY="264.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="241.0" text="Add Question">
-               <styleClass>
-                  <String fx:value="background-transparent" />
-                  <String fx:value="button-hand" />
-               </styleClass>
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-            <FontAwesomeIconView glyphName="PLUS" layoutX="135.0" layoutY="293.0" size="15" />
+            <Group fx:id="addQuestion">
+               <Button  onAction="#setAddQuestionButton" layoutX="74.0" layoutY="264.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="241.0" text="Add Question">
+                  <styleClass>
+                     <String fx:value="background-transparent" />
+                     <String fx:value="button-hand" />
+                  </styleClass>
+                  <font>
+                     <Font size="15.0" />
+                  </font>
+               </Button>
+               <FontAwesomeIconView glyphName="PLUS" layoutX="135.0" layoutY="293.0" size="15" /></Group>
          </children>
       </Pane>
    </left>

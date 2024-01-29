@@ -103,8 +103,7 @@ public class loginPageController implements Initializable {
                 homePageController.setHomePage(user);
                 HelloApplication.mainStage.setScene(scene);
             } catch (Exception e) {
-//                System.out.println("aaaaaaaaaaaaahhhhhhhhhhhhhhhhhhhh");
-                System.out.println(e);
+                e.printStackTrace();
             }
             return;
         }

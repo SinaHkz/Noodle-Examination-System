@@ -143,8 +143,9 @@ public class CoursePageController implements Initializable {
         try {
             teacherName.setText(coursePlan.getTeacher().getName());
             courseName.setText(coursePlan.getName());
-        } catch (Exception e) {
-            System.out.println(e);
+        }
+        catch (Exception e){
+            e.printStackTrace();
         }
         try {
             courseName.setText(coursePlan.getName());
@@ -167,8 +168,10 @@ public class CoursePageController implements Initializable {
     public void setArchiveCourseButton() {
 
         this.coursePlan.setEnd(LocalDate.now());
-        archiveCourseGroup.setVisible(false);
-
+        //pop up to ask if user really wants to archive the course
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //going back to home page
+        setBackButton();
 
     }
 
