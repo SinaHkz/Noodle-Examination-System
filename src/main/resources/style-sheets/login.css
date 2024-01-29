@@ -5,7 +5,7 @@
     -fx-background-color: #3e88da; /* Green background color */
     -fx-text-fill: white; /* White text color */
     -fx-padding: 10px 20px; /* Padding */
-    -fx-border-radius: 5px; /* Border radius */
+    -fx-border-radius: 10px; /* Border radius */
     -fx-cursor: hand; /* Cursor style */
 }
 .login-button:hover{
@@ -16,7 +16,7 @@
     -fx-background-color: #e3af3f; /* Green background color */
     -fx-text-fill: white; /* White text color */
     -fx-padding: 10px 20px; /* Padding */
-    -fx-border-radius: 5px; /* Border radius */
+    -fx-border-radius: 10px; /* Border radius */
     -fx-cursor: hand; /* Cursor style */
 }
 .signup-button:hover{
@@ -27,6 +27,12 @@
     -fx-border-color: #096dde;
     -fx-border-width: 0px 0px 2px 0px;
     -fx-background-color: transparent;
+}
+
+.border-colored-button{
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-background-color: #eceaea;
 }
 
 .back-button{

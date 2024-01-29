@@ -2,7 +2,6 @@ package com.example.noodleexaminationsystem;
 
 import com.example.noodleexaminationsystem.Course.CoursePlan;
 import com.example.noodleexaminationsystem.Course.Exam;
-import com.example.noodleexaminationsystem.Question.Question;
 import com.example.noodleexaminationsystem.User.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,16 +10,17 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-
+import javafx.scene.shape.Circle;
+import java.io.File;
+import java.io.FileInputStream;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.ResourceBundle;
 
 
@@ -50,7 +50,8 @@ public class CoursePageController implements Initializable {
     Group createExamButton;
     @FXML
     Button userManagement;
-
+    @FXML
+    ImageView courseImage;
     @FXML
     private void setCreateExamButton() {
         FXMLLoader loader = new FXMLLoader();
@@ -98,7 +99,7 @@ public class CoursePageController implements Initializable {
                     eachRowBox.setSpacing(50);
                     //change spacing!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-                    cardVbox.getChildren().add(eachRowBox);
+                    cardVbox.getChildren().add(counter,eachRowBox);
                 }
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource("ExamCard.fxml"));
@@ -144,6 +145,22 @@ public class CoursePageController implements Initializable {
             courseName.setText(coursePlan.getName());
         } catch (Exception e) {
             System.out.println(e);
+        }
+        try {
+            courseName.setText(coursePlan.getName());
+            File file = new File(coursePlan.getPicturePath());
+            // Create a FileInputStream from the File
+            FileInputStream stream = new FileInputStream(file);
+            Image newImage = new Image(stream);
+            //making the picture round
+            final Circle clip = new Circle(123.5, 136, 110);
+            courseImage.setClip(clip);
+            courseImage.setImage(newImage);
+
+        } catch (Exception e) {
+            // Handle exception
+            //if the path can not be resolved the default picture will be shown as profile picture
+            e.printStackTrace();
         }
     }
 
