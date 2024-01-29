@@ -11,6 +11,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -47,9 +48,11 @@ public class CoursePageController implements Initializable {
     Group archiveCourseGroup;
     @FXML
     Group createExamButton;
+    @FXML
+    Button userManagement;
 
     @FXML
-    private void setCreateExamButton(){
+    private void setCreateExamButton() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("CreateExam.fxml"));
         try {
@@ -65,16 +68,18 @@ public class CoursePageController implements Initializable {
         }
 
     }
+
     @FXML
-    private void setArchivedExamsButton(){
+    private void setArchivedExamsButton() {
 
         activeExamsVbox.setVisible(false);
         archivedExamsVbox.setVisible(true);
         activeExams.getStyleClass().removeAll("selected-buttons");
         archivedExams.getStyleClass().addAll("selected-buttons");
     }
+
     @FXML
-    private void setActiveExamsButton(){
+    private void setActiveExamsButton() {
         activeExamsVbox.setVisible(true);
         archivedExamsVbox.setVisible(false);
         archivedExams.getStyleClass().removeAll("selected-buttons");
@@ -115,39 +120,58 @@ public class CoursePageController implements Initializable {
         }
     }
 
-    public void setCoursePlanPage(CoursePlan coursePlan){
+    public void setCoursePlanPage(CoursePlan coursePlan) {
+        if (user == coursePlan.getTeacher())
+            userManagement.setVisible(true);
         //setting exam cards
-        if((coursePlan.getEnd()!=null) || (coursePlan.getTeacher()!=this.user)){
+        if ((coursePlan.getEnd() != null) || (coursePlan.getTeacher() != this.user)) {
             archiveCourseGroup.setVisible(false);
             createExamButton.setVisible(false);
 
         }
         ArrayList<Exam> activeExams = coursePlan.getActiveExams();
         ArrayList<Exam> archivedExams = coursePlan.getArchivedExams();
-        if(activeExams.isEmpty())
+        if (activeExams.isEmpty())
             noExamPane1.setVisible(true);
-        if(archivedExams.isEmpty())
+        if (archivedExams.isEmpty())
             noExamPane2.setVisible(true);
 
-        setCards(activeExams,activeExamsVbox);
-        setCards(archivedExams,archivedExamsVbox);
+        setCards(activeExams, activeExamsVbox);
+        setCards(archivedExams, archivedExamsVbox);
 
-        try{
+        try {
             teacherName.setText(coursePlan.getTeacher().getName());
             courseName.setText(coursePlan.getName());
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
-    public void setArchiveCourseButton(){
+
+    public void setArchiveCourseButton() {
 
         this.coursePlan.setEnd(LocalDate.now());
         archiveCourseGroup.setVisible(false);
 
 
     }
-    public void setBackButton(){
+
+
+    public void setUserManagementButton() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AddStudentToCoursePlane.fxml"));
+            Scene scene = new Scene(loader.load());
+            AddUserToCourseplaneController addUserToCourseplaneController = loader.getController();
+            addUserToCourseplaneController.previousUser = this.user;
+            addUserToCourseplaneController.coursePlan = this.coursePlan;
+            addUserToCourseplaneController.setScrollPane();
+            HelloApplication.mainStage.setScene(scene);
+            addUserToCourseplaneController.setScrollPane();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setBackButton() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("homePage.fxml"));
         try {

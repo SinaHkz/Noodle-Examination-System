@@ -65,7 +65,7 @@ public class HelloApplication extends Application {
             User admin2 = User.signUp("admin2", "admin", "admin", "admin", "jfeij", "src/main/resources/images/test_1_profile.jpg", date, "FEMALE", "ADMIN");
 
             Course.addCourse("OOP");
-            DataBase.getUsers().put("admin" ,admin );
+            DataBase.getUsers().put("admin" ,admin);
 
             Course.addCourse("Ds");
             User teacher = User.signUp("teacher","teacher","ijf","ifje","ejia","fie",date ,"female", "member");
@@ -87,9 +87,13 @@ public class HelloApplication extends Application {
 
 
 
-            admin.getStudentcoursePlans().add(coursePlan);
-            admin.getStudentcoursePlans().add(coursePlan1);
-            admin.getStudentcoursePlans().add(coursePlan2);
+//            admin.getStudentcoursePlans().add(coursePlan);
+//            admin.getStudentcoursePlans().add(coursePlan1);
+//            admin.getStudentcoursePlans().add(coursePlan2);
+            coursePlan.addStudentToCoursePlane(admin.getUsername());
+            coursePlan1.addStudentToCoursePlane(admin.getUsername());
+            coursePlan2.addStudentToCoursePlane(admin.getUsername());
+            coursePlan.addStudentToCoursePlane(admin1.getUsername());
             admin.getTeacherCourses().put(coursePlan.getName(), coursePlan);
             admin.getTeacherCourses().put(coursePlan.getName(), coursePlan);
             admin.getArchivedCoursePlans(date).add(coursePlan);

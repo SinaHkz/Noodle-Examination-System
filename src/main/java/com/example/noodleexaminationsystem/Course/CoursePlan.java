@@ -14,6 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @JsonSerialize
 @JsonDeserialize
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -37,46 +38,49 @@ public class CoursePlan {
         this.end = null;
         this.picturePath = picturePath;
     }
-    public CoursePlan(){
+
+    public CoursePlan() {
 
     }
 
     public boolean isActive() {
-        if(this.end == null){
+        if (this.end == null) {
             return true;
         }
         return false;
     }
-    public static CoursePlan addCoursePlan(String courseName, String name, User teacher, LocalDate start, String picturePath){
+
+    public static CoursePlan addCoursePlan(String courseName, String name, User teacher, LocalDate start, String picturePath) {
         LocalDateTime startOfDay = start.atStartOfDay();
         LocalDate date = LocalDate.parse("2007-12-03");
-        LocalTime time  = LocalTime.now();
-        LocalDateTime date1 = LocalDateTime.of(date , time);
-        Exam attendedStudent = Exam.createAttendedExam(startOfDay,date1);
+        LocalTime time = LocalTime.now();
+        LocalDateTime date1 = LocalDateTime.of(date, time);
+        Exam attendedStudent = Exam.createAttendedExam(startOfDay, date1);
         Course course = DataBase.getCourses().get(courseName);
-        if(teacher.getTeacherCourses().get(name)!=null){
+        if (teacher.getTeacherCourses().get(name) != null) {
             return null;
         }
-        CoursePlan coursePlan = new CoursePlan(course,name,teacher,attendedStudent,start,picturePath);
-        teacher.getTeacherCourses().put(name,coursePlan);
+        CoursePlan coursePlan = new CoursePlan(course, name, teacher, attendedStudent, start, picturePath);
+        teacher.getTeacherCourses().put(name, coursePlan);
         coursePlan.setAttendedStudent(attendedStudent);
         return coursePlan;
     }
 
-    public  void deleteExam(Exam exam){
+    public void deleteExam(Exam exam) {
         this.exams.remove(exam);
     }
-    public int addStudent(String username) {
+
+    public int addStudentToCoursePlane(String username) {
         User user = DataBase.getUsers().get(username);
         //user with this username does not exist
-        if(user==null)
+        if (user == null)
             return 1;
         //user exists
-        Result.addResult(user,this.getAttendedStudent());
+        Result.addResult(user, this.getAttendedStudent());
         return 0;
     }
 
-    public void removeStudent(String user) {
+    public void removeStudent(User user) {
         this.getAttendedStudent().removeUser(user);
     }
 
@@ -88,21 +92,23 @@ public class CoursePlan {
         }
         return students;
     }
-    public  ArrayList<Exam> getArchivedExams(){
+
+    public ArrayList<Exam> getArchivedExams() {
         ArrayList<Exam> exams = this.getExams();
         ArrayList<Exam> archivedExams = new ArrayList<>();
-        for (Exam exam:exams) {
-            if(exam.hasEnded())
+        for (Exam exam : exams) {
+            if (exam.hasEnded())
                 archivedExams.add(exam);
         }
         return archivedExams;
     }
-    public  ArrayList<Exam> getActiveExams(){
+
+    public ArrayList<Exam> getActiveExams() {
         ArrayList<Exam> exams = this.getExams();
         ArrayList<Exam> activeExams = new ArrayList<>();
-        for (Exam exam:exams) {
+        for (Exam exam : exams) {
             //any exam that has not been started or has started but not ended will be shown as an active exam
-            if(!exam.hasEnded())
+            if (!exam.hasEnded())
                 activeExams.add(exam);
         }
         return activeExams;
