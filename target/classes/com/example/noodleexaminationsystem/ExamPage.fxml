@@ -20,15 +20,15 @@
             <Pane layoutX="-22.0" layoutY="-1.0" prefHeight="900.0" prefWidth="376.0">
                <children>
 
-                  <Group fx:id="submitAndExit" visible="false" >
-                     <Button onAction="#setSubmitAndExitButton" layoutX="22.0" layoutY="854.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="352.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Submit &amp; Exit">
+                  <Group fx:id="submitAndExit" visible="false">
+                     <Button layoutX="22.0" layoutY="854.0" mnemonicParsing="false" onAction="#setSubmitAndExitButton" prefHeight="44.0" prefWidth="352.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Submit &amp; Exit">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Button>
                      <FontAwesomeIconView glyphName="CHECK" layoutX="105.0" layoutY="884.0" size="24" />
                   </Group>
-                  <Group fx:id="deleteExamButton" visible="true">
+                  <Group fx:id="deleteExamButton" layoutX="3.0" layoutY="171.0" visible="true">
                      <Button layoutX="57.0" layoutY="636.0" mnemonicParsing="false" onAction="#setDeleteExamButton" prefHeight="39.0" prefWidth="264.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Delete Exam">
                      <font>
                         <Font size="20.0" />
@@ -43,8 +43,8 @@
                      </Button>
                      <FontAwesomeIconView glyphName="SIGN_OUT" layoutX="146.0" layoutY="880.0" size="18" />
 
-                  <Group fx:id="finishExamNowButton" visible="false">
-                     <Button  onAction="#setFinishExamNowButton" layoutX="57.0" layoutY="573.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Finish Exam Now">
+                  <Group fx:id="finishExamNowButton" layoutY="-116.0" visible="false">
+                     <Button layoutX="57.0" layoutY="573.0" mnemonicParsing="false" onAction="#setFinishExamNowButton" prefHeight="39.0" prefWidth="264.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Finish Exam Now">
                      <font>
                         <Font size="21.0" />
                      </font>
@@ -88,7 +88,7 @@
                      </font>
                   </Label>
                   <Line endX="197.0" layoutX="177.0" layoutY="854.0" opacity="0.56" startX="-154.99998474121094" />
-                  <Button  onAction="#setAddQuestionButton" fx:id="addQuestionButton" layoutX="57.0" layoutY="451.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" text="Add Question" visible="false">
+                  <Button fx:id="addQuestionButton" layoutX="57.0" layoutY="451.0" mnemonicParsing="false" onAction="#setAddQuestionButton" prefHeight="39.0" prefWidth="264.0" text="Add Question" visible="false">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -98,7 +98,7 @@
                         <String fx:value="top-buttons" />
                      </styleClass>
                   </Button>
-                  <Button  onAction="#setQuestionBank" fx:id="questionBank" layoutX="57.0" layoutY="451.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" text="Question Bank" visible="false">
+                  <Button fx:id="questionBank" layoutX="57.0" layoutY="509.0" mnemonicParsing="false" onAction="#setQuestionBank" prefHeight="39.0" prefWidth="264.0" text="Question Bank" visible="false">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -108,7 +108,7 @@
                         <String fx:value="top-buttons" />
                      </styleClass>
                   </Button>
-                  <Button onAction="#setCheckResultsButton" fx:id="checkResultsButton" layoutX="56.0" layoutY="511.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" text="Check Results" visible="false">
+                  <Button fx:id="checkResultsButton" layoutX="57.0" layoutY="451.0" mnemonicParsing="false" onAction="#setCheckResultsButton" prefHeight="39.0" prefWidth="264.0" text="Check Results" visible="false">
                      <font>
                         <Font size="20.0" />
                      </font>
