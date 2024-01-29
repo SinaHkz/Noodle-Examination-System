@@ -99,7 +99,7 @@ public class CoursePageController implements Initializable {
                     eachRowBox.setSpacing(50);
                     //change spacing!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-                    cardVbox.getChildren().add(eachRowBox);
+                    cardVbox.getChildren().add(counter,eachRowBox);
                 }
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource("ExamCard.fxml"));

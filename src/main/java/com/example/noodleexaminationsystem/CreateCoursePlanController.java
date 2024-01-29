@@ -48,7 +48,7 @@ public class CreateCoursePlanController implements Initializable {
         File selectedFile = fileChooser.showOpenDialog(null);
         if (selectedFile != null) {
             picturePath = selectedFile.getAbsolutePath();
-            picturePath=resizeAndSaveImage(picturePath,"src/main/resources/images",courseName.getText(),272,247);
+            picturePath=resizeAndSaveImage(picturePath,"src/main/resources/images",courseName.getText(),340,170);
             // You can now use selectedPicturePath where you need the path of the picture
         }
     }
