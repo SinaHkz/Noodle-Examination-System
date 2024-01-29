@@ -10,9 +10,9 @@
 
 <!--pane act like a button and open course plan-->
 
-<Pane fx:id="card"  fx:controller="com.example.noodleexaminationsystem.CardController" styleClass="hand" prefHeight="180.0" prefWidth="300.0" stylesheets="@../../../style-sheets/card.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="card" prefHeight="180.0" prefWidth="300.0" styleClass="hand" stylesheets="@../../../style-sheets/card.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.noodleexaminationsystem.CardController">
    <children>
-      <ImageView fx:id="image" fitHeight="197.0" fitWidth="324.0" layoutX="-23.0" layoutY="1.0" opacity="0.32" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="image" fitHeight="197.0" fitWidth="324.0" layoutX="-23.0" layoutY="1.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/White.png" />
          </image>
@@ -25,7 +25,7 @@
          </font>
       </Button>
       <FontAwesomeIconView fill="#8d1212" glyphName="TRASH" layoutX="36.0" layoutY="153.0" size="20" styleClass="hand" visible="false" />
-      <Button onAction="#setExamButton" layoutX="1.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="182.0" prefWidth="300.0" styleClass="transparent" />
+      <Button layoutX="1.0" layoutY="-1.0" mnemonicParsing="false" onAction="#setExamButton" prefHeight="182.0" prefWidth="300.0" styleClass="transparent" />
    </children>
    <styleClass>
       <String fx:value="card" />

@@ -21,7 +21,7 @@
          <children>
             <Pane layoutX="-22.0" layoutY="-1.0" prefHeight="900.0" prefWidth="374.0">
                <children>
-                  <ImageView fx:id="courseImage" fitHeight="247.0" fitWidth="272.0" layoutX="50.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="courseImage" fitHeight="247.0" fitWidth="272.0" layoutX="51.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../images/course.png" />
                      </image>
@@ -38,15 +38,15 @@
                         <Font size="21.0" />
                      </font>
                   </Button>
-                     <FontAwesomeIconView glyphName="BOOK" layoutX="89.0" layoutY="589.0" size="18" text="" />
+                     <FontAwesomeIconView glyphName="BOOK" layoutX="78.0" layoutY="589.0" size="18" text="" />
                   </Group>
 
-                  <Label fx:id="teacherName" layoutX="80.0" layoutY="254.0" prefHeight="35.0" prefWidth="147.0" text="{Teacher Name}">
+                  <Label fx:id="teacherName" alignment="CENTER" layoutX="19.0" layoutY="319.0" prefHeight="35.0" prefWidth="337.0" text="{Teacher Name}">
                      <font>
                         <Font size="21.0" />
                      </font>
                   </Label>
-                  <Label fx:id="courseName" alignment="CENTER" layoutX="65.0" layoutY="183.0" prefHeight="56.0" prefWidth="209.0" style="-fx-label-padding: 30px 0px 0px 0px;" text="{Course Name}">
+                  <Label fx:id="courseName" alignment="CENTER" layoutX="18.0" layoutY="252.0" prefHeight="67.0" prefWidth="344.0" style="-fx-label-padding: 30px 0px 0px 0px;" text="{Course Name}">
                      <font>
                         <Font size="29.0" />
                      </font>
@@ -77,7 +77,7 @@
                         <Font size="21.0" />
                      </font>
                   </Button>
-                     <FontAwesomeIconView glyphName="TRASH" layoutX="106.0" layoutY="638.0" size="17" />
+                     <FontAwesomeIconView glyphName="TRASH" layoutX="91.0" layoutY="639.0" size="17" />
                   </Group>
                   <Button fx:id="userManagement" layoutX="54.0" layoutY="504.0" mnemonicParsing="false" onAction="#setUserManagementButton" prefHeight="39.0" prefWidth="264.0" text="Student Management" visible="false">
                      <font>
@@ -105,10 +105,17 @@
                            <children>
                               <Pane fx:id="noExamPane1" prefHeight="446.0" prefWidth="1185.0" visible="false">
                                  <children>
-                                    <Label layoutX="533.0" layoutY="194.0" text="No Exam " textFill="RED">
+                                    <Label alignment="CENTER" layoutX="509.0" layoutY="276.0" textFill="RED" >
                                        <font>
-                                          <Font size="48.0" />
+                                          <Font size="39.0" />
                                        </font>
+                                       <graphic>
+                                          <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../images/IMG_8804-removebg-preview.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
                                     </Label>
                                  </children>
                               </Pane>
@@ -116,12 +123,19 @@
                         </VBox>
                         <VBox fx:id="archivedExamsVbox" prefHeight="715.0" prefWidth="1214.0" spacing="15.0" visible="false">
                            <children>
-                              <Pane fx:id="noExamPane2" prefHeight="446.0" prefWidth="1185.0" visible="false">
+                              <Pane fx:id="noExamPane2" prefHeight="446.0" prefWidth="1185.0"  visible="false">
                                  <children>
-                                    <Label layoutX="533.0" layoutY="194.0" text="No Exam " textFill="RED">
+                                    <Label layoutX="509.0" layoutY="276.0" textFill="RED" >
                                        <font>
                                           <Font size="48.0" />
                                        </font>
+                                       <graphic>
+                                          <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../images/IMG_8804-removebg-preview.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
                                     </Label>
                                  </children>
                               </Pane>

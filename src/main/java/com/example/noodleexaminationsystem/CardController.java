@@ -27,6 +27,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class CardController implements Initializable {
@@ -62,6 +64,7 @@ public class CardController implements Initializable {
     private Button minusButton;
     @FXML
     private Button plusButton;
+    private List<String> hexcolors = List.of("rgb(255,255,255,0.5)", "rgb(47, 77, 178,0.3)" , "rgb(142,158,213,0.4)");
 
     //___________________________________________________ getter/setter________________________________________________________
 
@@ -244,6 +247,14 @@ public class CardController implements Initializable {
     }
 
     public void setExamCard(Exam exam) {
+        Random random = new Random();
+        int randomNum = random.nextInt(3);
+        String randomColor = hexcolors.get(randomNum);
+        card.setStyle(
+                "-fx-background-color: " + randomColor + "; " +
+                        "-fx-border-radius: 25px;"
+        );
+
 //        card.setStyle("""
 //                -fx-background-color: white;
 //                -fx-opacity: 50;

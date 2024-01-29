@@ -96,7 +96,7 @@ public class CoursePageController implements Initializable {
                     eachRowBox = new HBox();
 
                     //change spacing!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                    eachRowBox.setSpacing(50);
+                    eachRowBox.setSpacing(103);
                     //change spacing!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
                     cardVbox.getChildren().add(counter,eachRowBox);
