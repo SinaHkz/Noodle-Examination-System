@@ -1,6 +1,7 @@
 package com.example.noodleexaminationsystem.Course;
 
 import com.example.noodleexaminationsystem.DataBase;
+import com.example.noodleexaminationsystem.TrieTree.Trie;
 import com.example.noodleexaminationsystem.User.Result;
 import com.example.noodleexaminationsystem.User.User;
 
@@ -28,6 +29,7 @@ public class CoursePlan {
     private String name;
     private String picturePath;
     private ArrayList<Exam> exams = new ArrayList<>();
+    private Trie attendedStudentTrie = new Trie();
 
     private CoursePlan(Course course, String name, User teacher, Exam attendedStudent, LocalDate start, String picturePath) {
         this.name = name;
@@ -77,6 +79,7 @@ public class CoursePlan {
             return 1;
         //user exists
         Result.addResult(user, this.getAttendedStudent());
+        this.attendedStudentTrie.insert(username);
         return 0;
     }
 
@@ -178,5 +181,9 @@ public class CoursePlan {
 
     public void setPicturePath(String picturePath) {
         this.picturePath = picturePath;
+    }
+
+    public Trie getAttendedStudentTrie() {
+        return attendedStudentTrie;
     }
 }

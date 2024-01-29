@@ -4,6 +4,7 @@ import com.example.noodleexaminationsystem.Course.Course;
 import com.example.noodleexaminationsystem.Course.CoursePlan;
 import com.example.noodleexaminationsystem.Question.Question;
 import com.example.noodleexaminationsystem.Question.QuestionKeyDeserializer;
+import com.example.noodleexaminationsystem.TrieTree.Trie;
 import com.example.noodleexaminationsystem.User.User;
 import java.util.HashMap;
 import java.util.Map;
@@ -24,6 +25,7 @@ public class DataBase {
     static Map<String, CoursePlan> coursePlans = new HashMap<>();
     static Map<String, Course> courses = new HashMap<>();
     static Map<Course, Question> questions = new HashMap<>();
+    public static Trie usernameTrie = new Trie();
 
 
     public static void setUsers(Map<String, User> users) {

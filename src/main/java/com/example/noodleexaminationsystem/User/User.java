@@ -79,6 +79,7 @@ public class User {
             return null;
         User user1 = new User(username, password, name, lastName, email, picturePath, dob, Gender.valueOf(gender1),UserType.valueOf(userType1));
         DataBase.getUsers().put(username, user1);
+        DataBase.usernameTrie.insert(username);
         return user1;
     }
 

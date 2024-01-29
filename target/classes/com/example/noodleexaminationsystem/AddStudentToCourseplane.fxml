@@ -103,7 +103,7 @@
                               <String fx:value="button-hand" />
                            </styleClass>
                         </Button>
-                             <Button fx:id="searchButton" layoutX="942.0" layoutY="26.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="126.0" text="search" visible="false">
+                             <Button fx:id="searchButton" onAction="#setSearchButton" layoutX="942.0" layoutY="26.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="126.0" text="search" visible="false">
                                  <font>
                                      <Font size="17.0" />
                                  </font>
@@ -123,7 +123,7 @@
                            </styleClass>
                              </Button>
                         <TextField fx:id="searchedUsernameTextField" layoutX="49.0" layoutY="30.0" prefHeight="29.0" prefWidth="753.0" promptText="Serach username..." visible="false" />
-                        <Button fx:id="addUserToCourserButton" layoutX="812.0" layoutY="27.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="126.0" text="Add User" visible="false">
+                        <Button fx:id="addUserToCourserButton" onAction="#setAddUserToCourserButton" layoutX="812.0" layoutY="27.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="126.0" text="Add User" visible="false">
                            <font>
                               <Font size="17.0" />
                            </font>
