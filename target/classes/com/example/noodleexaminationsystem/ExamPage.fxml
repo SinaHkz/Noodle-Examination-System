@@ -19,7 +19,7 @@
          <children>
             <Pane layoutX="-22.0" layoutY="-1.0" prefHeight="900.0" prefWidth="376.0">
                <children>
-                  <Button onAction="#setBackButton" layoutX="22.0" layoutY="804.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="352.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Back"/>
+
                   <Group fx:id="submitAndExit" visible="false" >
                      <Button onAction="#setSubmitAndExitButton" layoutX="22.0" layoutY="854.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="352.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Submit &amp; Exit">
                      <font>
@@ -35,13 +35,13 @@
                      </font>
                   </Button>
                      <FontAwesomeIconView glyphName="TRASH" layoutX="116.0" layoutY="662.0" size="18" />
-                     <Button layoutX="57.0" layoutY="856.0" mnemonicParsing="false" onAction="#setDeleteExamButton" prefHeight="39.0" prefWidth="264.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Back">
+                  </Group>
+                     <Button layoutX="57.0" layoutY="856.0" mnemonicParsing="false" onAction="#setBackButton" prefHeight="39.0" prefWidth="264.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Back">
                         <font>
                            <Font size="20.0" />
                         </font>
                      </Button>
                      <FontAwesomeIconView glyphName="SIGN_OUT" layoutX="146.0" layoutY="880.0" size="18" />
-                  </Group>
 
                   <Group fx:id="finishExamNowButton" visible="false">
                      <Button  onAction="#setFinishExamNowButton" layoutX="57.0" layoutY="573.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Finish Exam Now">
@@ -88,7 +88,17 @@
                      </font>
                   </Label>
                   <Line endX="197.0" layoutX="177.0" layoutY="854.0" opacity="0.56" startX="-154.99998474121094" />
-                  <Button fx:id="addQuestionButton" layoutX="57.0" layoutY="451.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" text="Add Question" visible="false">
+                  <Button  onAction="#setAddQuestionButton" fx:id="addQuestionButton" layoutX="57.0" layoutY="451.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" text="Add Question" visible="false">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="button-hand" />
+                        <String fx:value="background-transparent" />
+                        <String fx:value="top-buttons" />
+                     </styleClass>
+                  </Button>
+                  <Button  onAction="#setQuestionBank" fx:id="questionBank" layoutX="57.0" layoutY="451.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="264.0" text="Question Bank" visible="false">
                      <font>
                         <Font size="20.0" />
                      </font>

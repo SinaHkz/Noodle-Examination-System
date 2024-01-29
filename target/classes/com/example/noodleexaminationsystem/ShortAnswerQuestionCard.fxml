@@ -26,17 +26,17 @@
         </VBox>
         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="36.0" spacing="20.0">
          <children>
-            <Button mnemonicParsing="false" visible="false">
+            <Button onAction="#setPlusButton" fx:id="plusButton" mnemonicParsing="false" visible="false">
                <graphic>
                   <FontAwesomeIconView fill="#096dde" glyphName="PLUS" size="20" />
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" visible="false">
+            <Button onAction="#setMinusButton" fx:id="minusButton" mnemonicParsing="false" visible="false">
                <graphic>
                   <FontAwesomeIconView fill="#bf1212" glyphName="MINUS" size="20" />
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" visible="false">
+            <Button onAction="#setDeleteQuestion" fx:id="deleteQuestion" mnemonicParsing="false" visible="false">
                <graphic>
                   <FontAwesomeIconView fill="#8d1212" glyphName="TRASH" size="20" />
                </graphic>

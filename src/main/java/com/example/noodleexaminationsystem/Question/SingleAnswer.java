@@ -1,6 +1,7 @@
 package com.example.noodleexaminationsystem.Question;
 
 import com.example.noodleexaminationsystem.Course.Course;
+import com.example.noodleexaminationsystem.Course.Exam;
 import com.example.noodleexaminationsystem.DataBase;
 import com.example.noodleexaminationsystem.User.User;
 
@@ -15,9 +16,10 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @JsonDeserialize
 
 public class SingleAnswer extends MultipleChoice {
+    //answer value will be the index of the answer in answers array list
     private int answerValue;
 
-    public SingleAnswer(Course course, String question, User questionDesigner, Choice countOfChoice, int answerValue,ArrayList<String> choices) {
+    public SingleAnswer(Course course, String question, User questionDesigner, int answerValue,ArrayList<String> choices) {
         super(course, question, questionDesigner,choices);
         this.answerValue = answerValue;
     }
@@ -27,10 +29,13 @@ public class SingleAnswer extends MultipleChoice {
 
 
 
-    public static void createQuestion(String question, User questionDesigner, Course course,Choice countOfChoice,int answerValue,ArrayList<String> choices) {
-        Question question1 = new SingleAnswer(course , question , questionDesigner , countOfChoice , answerValue,choices);
-        DataBase.getQuestions().put(course , question1);
+    public static Question createQuestion(String question, User questionDesigner, Course course,int answerValue,ArrayList<String> choices) {
+        Question question1 = new SingleAnswer(course , question , questionDesigner  , answerValue,choices);
+        DataBase.getQuestions().get(course).add(question1);
+        return question1;
     }
+
+
 //    --------------------------------------------------------      getter/setter      -----------------------------------------------------------------
 
 

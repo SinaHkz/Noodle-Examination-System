@@ -109,7 +109,7 @@ public class ResultController implements Initializable {
                         newTextField.setText("False");
                     newTextField.setEditable(false);
                     eachQuestionBox.getChildren().add(newTextField);
-                    cardController.setShortAnswerQuestionCardWithUserAnswer((SingleAnswer) question, Integer.toString((Integer) result.getAnswers().get(question)));
+                    cardController.setShortAnswerQuestionCardWithUserAnswer((SingleAnswer) question, Integer.toString((Integer) result.getAnswers().get(question)+1));
 
                     resultBox.getChildren().add(eachQuestionBox);
                 } catch (Exception e) {
@@ -123,7 +123,7 @@ public class ResultController implements Initializable {
         listView.setVisible(false);
     }
 
-    private boolean checkMultipleChoiceAnswer(Result result, SingleAnswer question) {
+    public static boolean checkMultipleChoiceAnswer(Result result, SingleAnswer question) {
         if ((Integer) result.getAnswers().get(question) == question.getAnswerValue())
             return true;
         return false;

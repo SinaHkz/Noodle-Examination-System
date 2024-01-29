@@ -14,6 +14,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -64,10 +66,12 @@ public class HelloApplication extends Application {
             User admin1 = User.signUp("admin1", "admin", "admin", "admin", "jfeij", "src/main/resources/images/test_1_profile.jpg", date, "FEMALE", "ADMIN");
             User admin2 = User.signUp("admin2", "admin", "admin", "admin", "jfeij", "src/main/resources/images/test_1_profile.jpg", date, "FEMALE", "ADMIN");
 
-            Course.addCourse("OOP");
-            DataBase.getUsers().put("admin" ,admin);
 
-            Course.addCourse("Ds");
+           Course oop =  Course.addCourse("OOP");
+            DataBase.getUsers().put("admin" ,admin );
+
+
+            Course Ds = Course.addCourse("Ds");
             User teacher = User.signUp("teacher","teacher","ijf","ifje","ejia","fie",date ,"female", "member");
             CoursePlan coursePlan = CoursePlan.addCoursePlan("OOP","shit",teacher,date,"fj");
             CoursePlan coursePlan1 = CoursePlan.addCoursePlan("OOP","shit1",teacher, date,"fj");
@@ -80,9 +84,10 @@ public class HelloApplication extends Application {
             Result result = Result.addResult(admin,sampleExam);
             Result result1 = Result.addResult(admin2,sampleExam);
 
-            LocalDate activeDay = LocalDate.parse("2024-01-28");
-            LocalDateTime activeExamStart = activeDay.atTime(10,30,30);
-            LocalDateTime activeExamEnd = activeDay.atTime(12,29,00);
+            LocalDate activeDay = LocalDate.parse("2024-01-29");
+            LocalDateTime activeExamStart = activeDay.atTime(22,10,30);
+            LocalDateTime activeExamEnd = activeDay.atTime(23,59,59);
+
             Exam activeExam = Exam.createExam(coursePlan,"activeExam",activeExamStart,activeExamEnd);
 
 
@@ -102,7 +107,7 @@ public class HelloApplication extends Application {
 //            ______________________________________
 //           adding questions to exam for test
             ArrayList<String> answers = new ArrayList<>();answers.add("shit");answers.add("shit2");answers.add("shit3");answers.add("shit4");
-            SingleAnswer question = new SingleAnswer(DataBase.getCourses().get("OOP"),"this is test",admin, Choice.FOUR,3,answers );
+            SingleAnswer question = new SingleAnswer(DataBase.getCourses().get("OOP"),"this is test",admin,3,answers );
             LongAnswer question2 = new LongAnswer(DataBase.getCourses().get("OOP"),"this is test",admin,"this is the shity answer");
             sampleExam.addQuestion(question);
             sampleExam.addQuestion(question2);
@@ -110,6 +115,10 @@ public class HelloApplication extends Application {
             activeExam.addQuestion(question2);
             result.getAnswers().put(result.getExam().getQuestions().get(0),0);
             result.getAnswers().put(result.getExam().getQuestions().get(1),new LongAnswerStudentAnswer("HORAAAAAAAAAAAAAAAAAAAAA",0));
+
+            //testing question bank page
+            DataBase.getQuestions().get(oop).add(question);
+            DataBase.getQuestions().get(oop).add(question2);
 
 
             //______________________________________

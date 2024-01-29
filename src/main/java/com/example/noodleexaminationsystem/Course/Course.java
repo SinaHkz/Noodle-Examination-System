@@ -20,6 +20,7 @@ public class Course {
         if (!DataBase.getCourses().containsKey(courseName)) {
             Course course1 = new Course(courseName);
             DataBase.getCourses().put(courseName, course1);
+            DataBase.getQuestions().put(course1,new ArrayList<>());
             return course1;
         }
         return null;

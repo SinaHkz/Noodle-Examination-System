@@ -168,7 +168,6 @@ public class HomePageController implements Initializable {
         cardVBoxArchived.setVisible(false);
         cardVBoxTeacher.setVisible(false);
         optionBox.setVisible(true);
-        System.out.println(user.getUserType());
         if (user.getUserType().compareTo(UserType.ADMIN) == 0)
             controlCenter.setVisible(true);
     }

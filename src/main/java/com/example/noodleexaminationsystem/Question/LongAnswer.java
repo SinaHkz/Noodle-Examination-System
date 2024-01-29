@@ -13,10 +13,11 @@ import java.io.IOException;
 //@JsonDeserialize
 
 public class LongAnswer extends Question {
-    private static String answer;
+    private String answer;
 
     public LongAnswer(Course course, String question, User questionDesigner, String answer) {
         super(course, question, questionDesigner );
+        this.answer = answer;
     }
     public LongAnswer(){
 
@@ -24,9 +25,10 @@ public class LongAnswer extends Question {
 
 
 
-    public static void createQuestion(String question, User questionDesigner, Course course) {
+    public static Question createQuestion(String question, User questionDesigner, Course course,String answer) {
         Question question1 = new LongAnswer(course , question , questionDesigner , answer);
-        DataBase.getQuestions().put(course , question1);
+        DataBase.getQuestions().get(course).add(question1);
+        return question1;
     }
 //    --------------------------------------------------------      getter/setter      -----------------------------------------------------------------
 
