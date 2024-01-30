@@ -10,11 +10,11 @@
 
 <!--pane act like a button and open course plan-->
 
-<HBox fx:id="questionHBox" alignment="CENTER" minHeight="180.0" minWidth="1000.0" stylesheets="@../../../style-sheets/card.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.noodleexaminationsystem.CardController">
+<HBox fx:id="questionHBox" alignment="CENTER" minHeight="200.0" minWidth="1000.0" stylesheets="@../../../style-sheets/card.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.noodleexaminationsystem.CardController">
     <children>
         <VBox fx:id="cardBox" prefHeight="200.0" prefWidth="941.0">
             <children>
-                <Label fx:id="questionLabel" prefHeight="89.0" prefWidth="1000.0" text="{Question}" wrapText="true"/>
+                <Label fx:id="questionLabel" prefHeight="89.0" prefWidth="1000.0" text="{Question}" wrapText="true" />
                 <Label fx:id="shortAnswerChoiceLabel" prefHeight="111.0" prefWidth="1000.0" text="{Choices}" wrapText="true" />
                 <ComboBox fx:id="choiceComboBox" prefHeight="34.0" prefWidth="1085.0" promptText="Answer">
                     <styleClass>
@@ -26,17 +26,17 @@
         </VBox>
         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="36.0" spacing="20.0">
          <children>
-            <Button onAction="#setPlusButton" fx:id="plusButton" mnemonicParsing="false" visible="false">
+            <Button fx:id="plusButton" mnemonicParsing="false" onAction="#setPlusButton" visible="false">
                <graphic>
                   <FontAwesomeIconView fill="#096dde" glyphName="PLUS" size="20" />
                </graphic>
             </Button>
-            <Button onAction="#setMinusButton" fx:id="minusButton" mnemonicParsing="false" visible="false">
+            <Button fx:id="minusButton" mnemonicParsing="false" onAction="#setMinusButton" visible="false">
                <graphic>
                   <FontAwesomeIconView fill="#bf1212" glyphName="MINUS" size="20" />
                </graphic>
             </Button>
-            <Button onAction="#setDeleteQuestion" fx:id="deleteQuestion" mnemonicParsing="false" visible="false">
+            <Button fx:id="deleteQuestion" mnemonicParsing="false" onAction="#setDeleteQuestion" visible="false">
                <graphic>
                   <FontAwesomeIconView fill="#8d1212" glyphName="TRASH" size="20" />
                </graphic>

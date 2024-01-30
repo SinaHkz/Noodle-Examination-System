@@ -42,7 +42,7 @@ public class QuestionBankController implements Initializable {
     private Button backButton;
 
     public void setBackButton() {
-        if(exam!=null){
+        if (exam != null) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ExamPage.fxml"));
             try {
                 Scene scene = new Scene(loader.load());
@@ -55,8 +55,7 @@ public class QuestionBankController implements Initializable {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
-        else{
+        } else {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("homePage.fxml"));
             try {
                 Scene scene = new Scene(loader.load());
@@ -77,6 +76,8 @@ public class QuestionBankController implements Initializable {
             Scene scene = new Scene(loader.load());
             AddQuestionController addQuestionController = loader.getController();
             addQuestionController.course = getComboBoxChoice();
+            if (addQuestionController.course == null)
+                return;
             addQuestionController.previousUser = this.previousUser;
             HelloApplication.mainStage.setScene(scene);
         } catch (Exception e) {
@@ -88,7 +89,7 @@ public class QuestionBankController implements Initializable {
         try {
             HBox eachQuestionBox;
             for (Question question : questions) {
-                if(question instanceof SingleAnswer){
+                if (question instanceof SingleAnswer) {
                     //short answer card controller initialize and setup
                     FXMLLoader loader = new FXMLLoader();
                     loader.setLocation(getClass().getResource("ShortAnswerQuestionCard.fxml"));
@@ -98,7 +99,7 @@ public class QuestionBankController implements Initializable {
                     cardController.user = this.previousUser;
                     cardController.course = getComboBoxChoice();
                     cardController.questionBankController = this;
-                    if(this.exam!=null){
+                    if (this.exam != null) {
                         cardController.exam = this.exam;
                     }
                     try {
@@ -107,8 +108,7 @@ public class QuestionBankController implements Initializable {
                         e.printStackTrace();
                     }
                     mainVBox.getChildren().add(eachQuestionBox);
-                }
-                else if(question instanceof LongAnswer){
+                } else if (question instanceof LongAnswer) {
                     //long answer card controller initialize and setup
                     FXMLLoader loader = new FXMLLoader();
                     loader.setLocation(getClass().getResource("LongAnswerQuestionCard.fxml"));
@@ -118,7 +118,7 @@ public class QuestionBankController implements Initializable {
                     cardController.question = question;
                     cardController.course = getComboBoxChoice();
                     cardController.questionBankController = this;
-                    if(this.exam!=null){
+                    if (this.exam != null) {
                         cardController.exam = this.exam;
                     }
                     try {
@@ -138,18 +138,27 @@ public class QuestionBankController implements Initializable {
         mainVBox.getChildren().clear();
         Course selectedCourse = getComboBoxChoice();
         ArrayList<Question> questions = DataBase.getQuestions().get(selectedCourse);
-        if(exam!=null){
+        if (exam != null) {
             addQuestion.setVisible(false);
         }
         setCards(questions);
     }
-    public Course getComboBoxChoice(){
-        String courseName = comboBox.getSelectionModel().getSelectedItem().toString();
+
+    public Course getComboBoxChoice() {
+        String courseName = null;
+        if (comboBox.getSelectionModel().getSelectedItem() != null)
+            courseName = comboBox.getSelectionModel().getSelectedItem().toString();
+        //check if comboBox selected item is null change combo box color.
+        if (courseName == null) {
+            comboBox.setStyle("-fx-background-color: rgba(187,33,33,0.5)");
+            return null;
+        }
         Course course = DataBase.getCourses().get(courseName);
         return course;
     }
-    public void setQuestionBankPage(){
-        if(exam!=null){
+
+    public void setQuestionBankPage() {
+        if (exam != null) {
             addQuestion.setVisible(false);
             backButton.setText("Submit");
         }
