@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -43,7 +44,7 @@ public class AddNewUserController implements Initializable {
     @FXML
     private ComboBox TypeComboBox;
 
-    public void setAddNewUserController() {
+    public void setAddNewUserController() throws IOException {
         boolean flag = false;
         if (signupPane.isVisible()) {
             comboBox.setStyle("-fx-border-color: #096dde");
@@ -97,13 +98,17 @@ public class AddNewUserController implements Initializable {
                 picturePath.setText("");
             }
 
-            System.out.println(dob.getValue());
-            User user = User.signUp(signUpUsername.getText(), signUpPassword.getText(), name.getText(), lastname.getText(), email.getText(), picturePath.getText(), dob.getValue(), comboBox.getSelectionModel().getSelectedItem().toString(), TypeComboBox.getSelectionModel().toString());
+            User user = User.signUp(signUpUsername.getText(), signUpPassword.getText(), name.getText(), lastname.getText(), email.getText(), picturePath.getText(), dob.getValue(), comboBox.getSelectionModel().getSelectedItem().toString(), TypeComboBox.getSelectionModel().getSelectedItem().toString());
             if (user == null) {
                 usernameTaken.setVisible(true);
                 return;
             }
-            HelloApplication.setScene("homePage.fxml");
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ControlCenter.fxml"));
+            Scene scene = new Scene(loader.load());
+            ControlCenterController controlCenterController = loader.getController();
+            controlCenterController.previousUser = previousUser;
+            HelloApplication.mainStage.setScene(scene);
             signupPane.setVisible(true);
         }
 

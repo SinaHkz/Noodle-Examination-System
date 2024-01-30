@@ -10,10 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -69,7 +66,7 @@ public class DirectController implements Initializable {
         directList.setVisible(true);
         User user = DataBase.users.get(username);
         Direct.creatNewDirect(previousUser, user);
-        openDirect(user);
+        setOpenDirect();
     }
 
 
@@ -89,10 +86,10 @@ public class DirectController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        chatBox.setAlignment(Pos.BOTTOM_CENTER);
         openDirect(student);
         listView.setVisible(false);
         chatBox.setVisible(true);
-        chatBox.setAlignment(Pos.BOTTOM_CENTER);
     }
 
     private void openDirect(User user) {
