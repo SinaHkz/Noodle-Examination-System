@@ -71,7 +71,7 @@ public class CoursePlan {
         //user exists
         Result.addResult(user, this.getAttendedStudent());
         this.attendedStudentTrie.insert(username);
-        //user.getStudentcoursePlans().add(this);
+        user.getStudentcoursePlans().add(this);
         return 0;
     }
 

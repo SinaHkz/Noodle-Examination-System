@@ -28,18 +28,18 @@ import java.util.List;
 
 
 public class HelloApplication extends Application {
-    private static HashMap<Exam, VBox > userPreviousAnswersHashMap = new HashMap<>();
+    private static HashMap<User,HashMap<Exam, VBox >> userPreviousAnswersHashMap = new HashMap<>();
     static Stage mainStage;
 
     static CoursePlan mainCoursePlan;
     //______________________________________________________ getter/setter _________________________________________________________
 
 
-    public static HashMap<Exam, VBox> getUserPreviousAnswersHashMap() {
+    public static HashMap<User, HashMap<Exam, VBox>> getUserPreviousAnswersHashMap() {
         return userPreviousAnswersHashMap;
     }
 
-    public static void setUserPreviousAnswersHashMap(HashMap<Exam, VBox> userPreviousAnswersHashMap) {
+    public static void setUserPreviousAnswersHashMap(HashMap<User, HashMap<Exam, VBox>> userPreviousAnswersHashMap) {
         HelloApplication.userPreviousAnswersHashMap = userPreviousAnswersHashMap;
     }
 
@@ -91,15 +91,10 @@ public class HelloApplication extends Application {
 
 
 
-//            admin.getStudentcoursePlans().add(coursePlan);
-//            admin.getStudentcoursePlans().add(coursePlan1);
-//            admin.getStudentcoursePlans().add(coursePlan2);
             coursePlan.addStudentToCoursePlane(admin.getUsername());
             coursePlan1.addStudentToCoursePlane(admin.getUsername());
             coursePlan2.addStudentToCoursePlane(admin.getUsername());
             coursePlan.addStudentToCoursePlane(admin1.getUsername());
-            admin.getTeacherCourses().put(coursePlan.getName(), coursePlan);
-            admin.getTeacherCourses().put(coursePlan.getName(), coursePlan);
             admin.getArchivedCoursePlans(date).add(coursePlan);
 
 

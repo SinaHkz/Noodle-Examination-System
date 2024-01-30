@@ -91,16 +91,12 @@ public class CreateCoursePlanController implements Initializable {
             Scene scene = new Scene(loader.load());
             HomePageController homePageController = loader.getController();
             homePageController.user = this.user;
-            for (CoursePlan coursePlan:user.getTeacherCourses().values())
-                System.out.println(coursePlan.getName());
             homePageController.setHomePage(user);
             HelloApplication.mainStage.setScene(scene);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-//       HelloApplication.setScene("homePage.fxml");
     }
 
     public void setCreateCoursePlanButton() {

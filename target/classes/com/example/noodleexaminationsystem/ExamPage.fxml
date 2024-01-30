@@ -20,7 +20,7 @@
             <Pane layoutX="-22.0" layoutY="-1.0" prefHeight="900.0" prefWidth="376.0">
                <children>
 
-                  <Group fx:id="submitAndExit" visible="false">
+                  <Group fx:id="submitAndExit" layoutX="-6.0" layoutY="-50.0" visible="false">
                      <Button layoutX="22.0" layoutY="854.0" mnemonicParsing="false" onAction="#setSubmitAndExitButton" prefHeight="44.0" prefWidth="352.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Submit &amp; Exit">
                      <font>
                         <Font size="24.0" />
@@ -36,7 +36,7 @@
                   </Button>
                      <FontAwesomeIconView glyphName="TRASH" layoutX="116.0" layoutY="662.0" size="18" />
                   </Group>
-                     <Button layoutX="57.0" layoutY="856.0" mnemonicParsing="false" onAction="#setBackButton" prefHeight="39.0" prefWidth="264.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Back">
+                     <Button fx:id="backButton" layoutX="57.0" layoutY="856.0" mnemonicParsing="false" onAction="#setBackButton" prefHeight="39.0" prefWidth="264.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Back">
                         <font>
                            <Font size="20.0" />
                         </font>
