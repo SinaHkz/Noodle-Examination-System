@@ -15,50 +15,49 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="480.0" prefWidth="640.0" stylesheets="/style-sheets/login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.noodleexaminationsystem.loginPageController">
-   <BorderPane fx:id="loginPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" stylesheets="/style-sheets/login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.noodleexaminationsystem.loginPageController">
+   <BorderPane fx:id="loginPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" stylesheets="">
       <left>
-         <Pane prefHeight="1080.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <Pane prefHeight="900.0" prefWidth="553.0" BorderPane.alignment="CENTER">
             <children>
-               <TextField fx:id="loginUsername" layoutX="230.0" layoutY="359.0" prefHeight="50.0" prefWidth="377.0" promptText="username" styleClass="border-colored-bottom" />
-               <PasswordField fx:id="loginPassword" layoutX="230.0" layoutY="458.0" prefHeight="50.0" prefWidth="377.0" promptText="password" styleClass="border-colored-bottom" />
-               <Button layoutX="242.0" layoutY="556.0" mnemonicParsing="false" onAction="#setLoginButton" prefHeight="34.0" prefWidth="350.0" style="-fx-cursor: hand;" styleClass="login-button" stylesheets="@../../../style-sheets/login.css" text="Log in">
+               <TextField fx:id="loginUsername" layoutX="122.0" layoutY="329.0" prefHeight="43.0" prefWidth="324.0" promptText="username" styleClass="border-colored-bottom" />
+               <PasswordField fx:id="loginPassword" layoutX="122.0" layoutY="421.0" prefHeight="43.0" prefWidth="324.0" promptText="password" styleClass="border-colored-bottom" />
+               <Button layoutX="123.0" layoutY="514.0" mnemonicParsing="false" onAction="#setLoginButton" prefHeight="44.0" prefWidth="305.0" style="-fx-cursor: hand;" styleClass="login-button" stylesheets="@../../../style-sheets/login.css" text="Log in">
                   <font>
                      <Font size="24.0" />
                   </font>
                </Button>
-               <Label layoutX="325.0" layoutY="208.0" text="Login">
+               <Label layoutX="230.0" layoutY="98.0" text="Login">
                   <font>
-                     <Font size="72.0" />
+                     <Font size="48.0" />
                   </font>
                </Label>
-               <Button layoutX="242.0" layoutY="613.0" mnemonicParsing="false" onAction="#setSignUpButton" prefHeight="34.0" prefWidth="350.0" style="-fx-cursor: hand;" styleClass="signup-button" stylesheets="@../../../style-sheets/login.css" text="Sign up">
+               <Button layoutX="123.0" layoutY="576.0" mnemonicParsing="false" onAction="#setSignUpButton" prefHeight="44.0" prefWidth="305.0" style="-fx-cursor: hand;" styleClass="signup-button" stylesheets="@../../../style-sheets/login.css" text="Sign up">
                   <font>
                      <Font size="24.0" />
                   </font>
                </Button>
-               <FontAwesomeIconView fill="#096dde" glyphName="USER" layoutX="196.0" layoutY="403.0" size="30">
+               <FontAwesomeIconView fill="#096dde" glyphName="USER" layoutX="97.0" layoutY="358.0" size="20">
                   <font>
                      <Font size="36.0" />
                   </font>
                </FontAwesomeIconView>
-               <FontAwesomeIconView fill="#096dde" glyphName="KEY" layoutX="190.0" layoutY="494.0" size="30" />
-               <FontAwesomeIconView fill="#096dde" glyphName="USERS" layoutX="390.0" layoutY="189.0" size="50" />
-               <Label fx:id="incorrectPassLabel" layoutX="294.0" layoutY="303.0" text="username or password is incorrect" textAlignment="CENTER" textFill="RED" visible="false">
+               <FontAwesomeIconView fill="#096dde" glyphName="KEY" layoutX="92.0" layoutY="452.0" size="20" />
+               <FontAwesomeIconView fill="#096dde" glyphName="USERS" layoutX="278.0" layoutY="94.0" size="30" />
+               <Label fx:id="incorrectPassLabel" layoutX="152.0" layoutY="266.0" text="username or password is incorrect" textAlignment="CENTER" textFill="RED" visible="false">
                   <font>
                      <Font size="18.0" />
                   </font></Label>
             </children>
          </Pane>
       </left>
-      <right>
-         <Pane prefHeight="1080.0" prefWidth="1119.0" style="-fx-background-color: #07E0D7;" BorderPane.alignment="CENTER">
+      <center>
+         <Pane prefHeight="900.0" prefWidth="1000.0" style="-fx-background-color: #07E0D7;" BorderPane.alignment="CENTER">
             <children>
-               <ImageView fitHeight="810.0" fitWidth="975.0" layoutX="153.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="600.0" fitWidth="800.0" layoutX="233.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@../../../images/Login_Signup.gif" />
-                  </image>
-               </ImageView>
+                  </image></ImageView>
                <Label layoutX="481.0" layoutY="53.0" prefHeight="131.0" prefWidth="158.0" text="">
                   <font>
                      <Font size="48.0" />
@@ -66,13 +65,13 @@
                </Label>
             </children>
          </Pane>
-      </right>
+      </center>
    </BorderPane>
-   <BorderPane fx:id="signupPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="" visible="false">
+   <BorderPane fx:id="signupPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" stylesheets="" visible="false">
       <right>
-         <Pane prefHeight="1080.0" prefWidth="1119.0" styleClass="blue-background" stylesheets="@../../../style-sheets/login.css" BorderPane.alignment="CENTER">
+         <Pane prefHeight="900.0" prefWidth="1048.0" styleClass="blue-background" stylesheets="@../../../style-sheets/login.css" BorderPane.alignment="CENTER">
             <children>
-               <ImageView fitHeight="810.0" fitWidth="975.0" layoutX="185.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true">
+               <ImageView fitHeight="600.0" fitWidth="800.0" layoutX="233.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@../../../images/Login_Signup.gif" />
                   </image>
@@ -86,34 +85,34 @@
          </Pane>
       </right>
       <center>
-         <Pane prefHeight="1080.0" prefWidth="800.0" style="-fx-background-color: white;" stylesheets="@../../../style-sheets/login.css" BorderPane.alignment="CENTER">
+         <Pane prefHeight="900.0" prefWidth="547.0" style="-fx-background-color: white;" stylesheets="@../../../style-sheets/login.css" BorderPane.alignment="CENTER">
             <children>
-               <TextField fx:id="signUpUsername" layoutX="216.0" layoutY="464.0" prefHeight="50.0" prefWidth="175.0" promptText="username" styleClass="border-colored-bottom" />
-               <TextField fx:id="email" layoutX="218.0" layoutY="685.0" prefHeight="50.0" prefWidth="400.0" promptText="email" styleClass="border-colored-bottom" />
-               <Button layoutX="242.0" layoutY="823.0" mnemonicParsing="false" onAction="#setSignUpButton" prefHeight="34.0" prefWidth="350.0" style="-fx-cursor: hand;" styleClass="signup-button" stylesheets="@../../../style-sheets/login.css" text="Sign up">
+               <TextField fx:id="signUpUsername" layoutX="90.0" layoutY="300.0" prefHeight="44.0" prefWidth="175.0" promptText="username" styleClass="border-colored-bottom" />
+               <TextField fx:id="email" layoutX="92.0" layoutY="521.0" prefHeight="44.0" prefWidth="400.0" promptText="email" styleClass="border-colored-bottom" />
+               <Button layoutX="134.0" layoutY="661.0" mnemonicParsing="false" onAction="#setSignUpButton" prefHeight="44.0" prefWidth="305.0" style="-fx-cursor: hand;" styleClass="signup-button" stylesheets="@../../../style-sheets/login.css" text="Sign up">
                   <font>
                      <Font size="24.0" />
                   </font>
                </Button>
-               <Button layoutX="242.0" layoutY="882.0" mnemonicParsing="false" onAction="#setLoginButton" prefHeight="34.0" prefWidth="350.0" style="-fx-cursor: hand;" styleClass="login-button" stylesheets="@../../../style-sheets/login.css" text="Log in">
+               <Button layoutX="134.0" layoutY="720.0" mnemonicParsing="false" onAction="#setLoginButton" prefHeight="44.0" prefWidth="305.0" style="-fx-cursor: hand;" styleClass="login-button" stylesheets="@../../../style-sheets/login.css" text="Log in">
                   <font>
                      <Font size="24.0" />
                   </font>
                </Button>
-               <Label layoutX="303.0" layoutY="206.0" text="Sign up">
+               <Label layoutX="215.0" layoutY="109.0" text="Sign up">
                   <font>
-                     <Font size="72.0" />
+                     <Font size="48.0" />
                   </font>
                </Label>
-               <FontAwesomeIconView fill="#096dde" glyphName="USERS" layoutX="390.0" layoutY="189.0" size="50" />
-               <TextField fx:id="name" layoutX="216.0" layoutY="376.0" prefHeight="50.0" prefWidth="175.0" promptText="name" styleClass="border-colored-bottom" />
-               <TextField fx:id="lastname" layoutX="437.0" layoutY="376.0" prefHeight="50.0" prefWidth="175.0" promptText="last name" styleClass="border-colored-bottom" />
-               <PasswordField fx:id="signUpPassword" layoutX="437.0" layoutY="464.0" prefHeight="50.0" prefWidth="175.0" promptText="password" styleClass="border-colored-bottom" />
-               <DatePicker fx:id="dob" layoutX="218.0" layoutY="620.0" prefHeight="50.0" prefWidth="400.0" promptText="Date of birth" styleClass="border-colored-bottom" />
-               <Label fx:id="usernameTaken" layoutX="237.0" layoutY="452.0" text="username already taken" textFill="RED" visible="false" />
-               <Label fx:id="passwordLessThanEight" layoutX="418.0" layoutY="452.0" text="password must have at least 8 characters" textFill="RED" visible="false" />
-               <ComboBox fx:id="comboBox" layoutX="217.0" layoutY="546.0" prefHeight="50.0" prefWidth="400.0" promptText="Gender" styleClass="border-colored-bottom" />
-               <Button fx:id="ChoosePicturePath" layoutX="218.0" layoutY="756.0" mnemonicParsing="false" onAction="#choosePicture" prefHeight="50.0" prefWidth="400.0" text="Select your picture">
+               <FontAwesomeIconView fill="#096dde" glyphName="USERS" layoutX="284.0" layoutY="103.0" size="30" />
+               <TextField fx:id="name" layoutX="90.0" layoutY="212.0" prefHeight="44.0" prefWidth="175.0" promptText="name" styleClass="border-colored-bottom" />
+               <TextField fx:id="lastname" layoutX="311.0" layoutY="212.0" prefHeight="44.0" prefWidth="175.0" promptText="last name" styleClass="border-colored-bottom" />
+               <PasswordField fx:id="signUpPassword" layoutX="311.0" layoutY="300.0" prefHeight="44.0" prefWidth="175.0" promptText="password" styleClass="border-colored-bottom" />
+               <DatePicker fx:id="dob" layoutX="92.0" layoutY="456.0" prefHeight="44.0" prefWidth="400.0" promptText="Date of birth" styleClass="border-colored-bottom" />
+               <Label fx:id="usernameTaken" layoutX="111.0" layoutY="288.0" text="username already taken" textFill="RED" visible="false" />
+               <Label fx:id="passwordLessThanEight" layoutX="292.0" layoutY="288.0" text="password must have at least 8 characters" textFill="RED" visible="false" />
+               <ComboBox fx:id="comboBox" layoutX="91.0" layoutY="382.0" prefHeight="44.0" prefWidth="400.0" promptText="Gender" styleClass="border-colored-bottom" />
+               <Button fx:id="ChoosePicturePath" layoutX="92.0" layoutY="592.0" mnemonicParsing="false" onAction="#choosePicture" prefHeight="44.0" prefWidth="400.0" text="Select your picture">
                   <styleClass>
                      <String fx:value="border-colored-bottom" />
                      <String fx:value="border-colored-button" />

@@ -9,7 +9,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class CoursePlan {
     private Course course;
@@ -59,12 +58,8 @@ public class CoursePlan {
         return coursePlan;
     }
 
-    public void deleteExam(Exam exam) {
-        this.exams.remove(exam);
-    }
-
     public int addStudentToCoursePlane(String username) {
-        if (DataBase.getUsers().get(username) != null)
+        if (this.attendedStudentTrie.findNode(username) != null)
             return 1;
         User user = DataBase.getUsers().get(username);
         //user with this username does not exist

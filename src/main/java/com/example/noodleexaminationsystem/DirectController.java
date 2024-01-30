@@ -156,6 +156,8 @@ public class DirectController implements Initializable {
         directList.setVisible(false);
         listView.setVisible(true);
         chatBox.setVisible(false);
+        profileImage.setVisible(false);
+        usernameLabel.setVisible(false);
     }
 
     public void setSendButton() {
