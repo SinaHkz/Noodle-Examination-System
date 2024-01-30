@@ -60,7 +60,7 @@
                         <Font size="21.0" />
                      </font>
                   </Button>
-                  <Button fx:id="archivedExams" layoutX="55.0" layoutY="429.0" mnemonicParsing="false" onAction="#setArchivedExamsButton" prefHeight="39.0" prefWidth="264.0" text="Archived Exams">
+                  <Button fx:id="archivedExams" layoutX="55.0" layoutY="439.0" mnemonicParsing="false" onAction="#setArchivedExamsButton" prefHeight="39.0" prefWidth="264.0" text="Archived Exams">
                      <font>
                         <Font size="21.0" />
                      </font>
@@ -87,7 +87,7 @@
                         <String fx:value="background-transparent" />
                      </styleClass>
                   </Button>
-                  <Button fx:id="activeExams" layoutX="55.0" layoutY="355.0" mnemonicParsing="false" onAction="#setActiveExamsButton" prefHeight="39.0" prefWidth="264.0" text="Active Exams">
+                  <Button fx:id="activeExams" layoutX="55.0" layoutY="382.0" mnemonicParsing="false" onAction="#setActiveExamsButton" prefHeight="39.0" prefWidth="264.0" text="Active Exams">
                      <styleClass>
                         <String fx:value="selected-buttons" />
                         <String fx:value="button-hand" />

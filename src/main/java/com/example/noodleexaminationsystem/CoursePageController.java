@@ -21,6 +21,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -154,6 +155,9 @@ public class CoursePageController implements Initializable {
     }
 
     public void setCoursePlanPage(CoursePlan coursePlan) {
+        if(!this.coursePlan.isActive()){
+            addMedia.setVisible(false);
+        }
         if (user == coursePlan.getTeacher()){
             userManagement.setVisible(true);
         }
@@ -202,6 +206,10 @@ public class CoursePageController implements Initializable {
     public void setArchiveCourseButton() {
 
         this.coursePlan.setEnd(LocalDate.now());
+        //ending all exams
+        for (Exam exam : this.coursePlan.getExams()){
+            exam.setTimeEnd(LocalDate.now().atTime(LocalTime.now()));
+        }
         //pop up to ask if user really wants to archive the course
         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         //going back to home page
@@ -241,8 +249,11 @@ public class CoursePageController implements Initializable {
         }
     }
     public void setCourseMediaButton(){
-        //setting add media button visible
-        addMedia.setVisible(true);
+        if(!this.coursePlan.isActive()){
+            addMedia.setVisible(false);
+        }
+        else
+            addMedia.setVisible(true);
         activeExamsVbox.setVisible(false);
         archivedExamsVbox.setVisible(false);
         courseMediaVbox.setVisible(true);
