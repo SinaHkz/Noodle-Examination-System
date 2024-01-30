@@ -4,10 +4,9 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 
-
-<HBox  fx:controller="com.example.noodleexaminationsystem.CardController" alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="47.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="47.0" prefWidth="1100.0" stylesheets="@../../../style-sheets/fileCard.css" styleClass="media_label" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.noodleexaminationsystem.CardController">
    <children>
-      <Label fx:id="subjectLabel" prefHeight="48.0" prefWidth="578.0" text="Label" HBox.hgrow="ALWAYS" />
-      <Button fx:id="downloadButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="95.0" text="Download" textFill="#3a389a" />
+      <Label  fx:id="subjectLabel" prefHeight="47.0" prefWidth="994.0" text="Label" HBox.hgrow="ALWAYS" />
+      <Button styleClass="download_button" fx:id="downloadButton" mnemonicParsing="false" onAction="#setDownloadButton" prefHeight="50.0" prefWidth="95.0" text="Download" textFill="#3a389a" />
    </children>
 </HBox>

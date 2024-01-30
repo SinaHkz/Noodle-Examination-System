@@ -1,0 +1,12 @@
+.media_label{
+    -fx-background-color: rgba(196, 189, 189, 0.6);
+    -fx-background-radius: 10px;
+}
+.download_button{
+    -fx-background-color: rgba(142, 142, 250, 0.5);
+    -fx-background-radius: 10px;
+}
+.download_button:hover{
+    -fx-cursor: hand;
+    -fx-background-color: rgba(142, 142, 250, 0.8);
+}

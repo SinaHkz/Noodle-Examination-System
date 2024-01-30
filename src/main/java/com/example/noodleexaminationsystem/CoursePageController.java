@@ -76,7 +76,7 @@ public class CoursePageController implements Initializable {
 
     @FXML
     private void setArchivedExamsButton() {
-
+        courseMediaVbox.setVisible(false);
         activeExamsVbox.setVisible(false);
         archivedExamsVbox.setVisible(true);
         activeExams.getStyleClass().removeAll("selected-buttons");
@@ -88,6 +88,7 @@ public class CoursePageController implements Initializable {
     private void setActiveExamsButton() {
         activeExamsVbox.setVisible(true);
         archivedExamsVbox.setVisible(false);
+        courseMediaVbox.setVisible(false);
         archivedExams.getStyleClass().removeAll("selected-buttons");
         courseMedia.getStyleClass().removeAll("selected-buttons");
         activeExams.getStyleClass().addAll("selected-buttons");
