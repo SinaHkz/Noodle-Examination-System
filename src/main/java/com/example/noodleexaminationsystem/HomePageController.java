@@ -211,6 +211,19 @@ public class HomePageController implements Initializable {
 //        HelloApplication.setScene("ControlCenter.fxml");
     }
 
+    public void setDirectButton(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Direct.fxml"));
+        try {
+            Scene scene = new Scene(loader.load());
+            DirectController directController = loader.getController();
+            directController.previousUser = user;
+            directController.setListView();
+            HelloApplication.mainStage.setScene(scene);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
     public void setQuestionBank() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("QuestionsBank.fxml"));
         try {

@@ -3,6 +3,7 @@ package com.example.noodleexaminationsystem;
 import com.example.noodleexaminationsystem.Course.Course;
 import com.example.noodleexaminationsystem.Course.CoursePlan;
 import com.example.noodleexaminationsystem.Course.Exam;
+import com.example.noodleexaminationsystem.Direct.Direct;
 import com.example.noodleexaminationsystem.Question.*;
 import com.example.noodleexaminationsystem.User.Result;
 import com.example.noodleexaminationsystem.User.User;
@@ -104,6 +105,11 @@ public class HelloApplication extends Application {
             admin.getArchivedCoursePlans(date).add(coursePlan);
 
 
+
+//            Direct testCases
+            Direct.creatNewDirect(admin1,admin);
+            admin.getDirects().get(0).sendMessage(admin1,"سلام خوبی؟");
+            admin.getDirects().get(0).sendMessage(admin,"سلام مرسی تو چطوری؟");
 //            ______________________________________
 //           adding questions to exam for test
             ArrayList<String> answers = new ArrayList<>();answers.add("shit");answers.add("shit2");answers.add("shit3");answers.add("shit4");

@@ -73,6 +73,8 @@ public class CoursePlan {
     }
 
     public int addStudentToCoursePlane(String username) {
+        if (DataBase.getUsers().get(username) != null)
+            return 1;
         User user = DataBase.getUsers().get(username);
         //user with this username does not exist
         if (user == null)

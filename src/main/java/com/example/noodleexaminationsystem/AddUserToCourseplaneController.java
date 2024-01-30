@@ -60,7 +60,17 @@ public class AddUserToCourseplaneController implements Initializable {
 
     public void setAddUserToCourserButton() throws IOException {
         String username = listView.getSelectionModel().getSelectedItem().toString();
-        this.coursePlan.addStudentToCoursePlane(username);
+        if (this.coursePlan.addStudentToCoursePlane(username) == 1){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("popUp.fxml"));
+            Scene scene = new Scene(loader.load());
+            PopUpController popUpController = loader.getController();
+            popUpController.label.setText("User already added to the course!");
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            popUpController.stage = stage;
+            stage.show();
+            return;
+        }
         FXMLLoader loader = new FXMLLoader(getClass().getResource("popUp.fxml"));
         Scene scene = new Scene(loader.load());
         PopUpController popUpController = loader.getController();
@@ -101,6 +111,7 @@ public class AddUserToCourseplaneController implements Initializable {
     public void setSeeProfile() {
         String username = listView.getSelectionModel().getSelectedItem().toString();
         User student = DataBase.getUsers().get(username);
+        System.out.println(student);
         usernameLabel.setText(username);
         usernameLabel.setVisible(true);
         try {

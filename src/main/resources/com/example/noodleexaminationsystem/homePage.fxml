@@ -107,7 +107,7 @@
                               </styleClass>
                            </Button>
                            <FontAwesomeIconView glyphName="BOOK" layoutX="205.0" layoutY="121.0" size="25" text="" />
-                           <Button onAction="#setQuestionBank" layoutX="449.0" layoutY="50.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="300.0" text="Question Bank">
+                           <Button layoutX="449.0" layoutY="50.0" mnemonicParsing="false" onAction="#setQuestionBank" prefHeight="200.0" prefWidth="300.0" text="Question Bank">
                               <font>
                                  <Font size="29.0" />
                               </font>
@@ -127,7 +127,7 @@
                               </styleClass>
                            </Button>
                            <FontAwesomeIconView glyphName="LOCK" layoutX="965.0" layoutY="121.0" size="25" />
-                           <Button fx:id="controlCenter" onAction="#setControlCenter" layoutX="65.0" layoutY="337.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="300.0" text="App Control Center" visible="false">
+                           <Button onAction="#setDirectButton" layoutX="65.0" layoutY="337.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="300.0" text="Direct">
                               <font>
                                  <Font size="29.0" />
                               </font>
@@ -137,6 +137,16 @@
                               </styleClass>
                            </Button>
                            <FontAwesomeIconView glyphName="GEAR" layoutX="205.0" layoutY="403.0" size="25" text="" visible="false" wrappingWidth="15.850577354431152" />
+                           <Button fx:id="controlCenter" layoutX="455.0" layoutY="336.0" mnemonicParsing="false" onAction="#setControlCenter" prefHeight="200.0" prefWidth="300.0" text="App Control Center" visible="false">
+                              <font>
+                                 <Font size="29.0" />
+                              </font>
+                              <styleClass>
+                                 <String fx:value="button-hand" />
+                                 <String fx:value="card" />
+                              </styleClass>
+                           </Button>
+                           <FontAwesomeIconView glyphName="TELEGRAM" layoutX="204.0" layoutY="411.0" size="25" />
                         </children>
                      </Pane>
                   </StackPane>

@@ -1,10 +1,8 @@
 package com.example.noodleexaminationsystem.User;
+import com.example.noodleexaminationsystem.Direct.Direct;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.example.noodleexaminationsystem.Course.Course;
 import com.example.noodleexaminationsystem.Course.CoursePlan;
-import com.example.noodleexaminationsystem.Course.Exam;
 import com.example.noodleexaminationsystem.DataBase;
-import javafx.scene.chart.PieChart;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -20,13 +18,14 @@ public class User {
     private Gender gender;
     private String lastName;
     private String email;
-    private String picturePath;
+    private String picturePath = "/Users/sina/Desktop/University/Term_3/OOP/Noodle-Examination-System/src/main/resources/images/default-user-image.png";
     private LocalDate dob;
     private UserType userType;
     private ArrayList<Result> results = new ArrayList<>();
     @JsonManagedReference
     private Map<String ,CoursePlan> teacherCourses = new HashMap<>();
     private ArrayList<CoursePlan> StudentcoursePlans = new ArrayList<>();
+    private ArrayList<Direct> directs = new ArrayList<>();
 
     public User(){
 
@@ -128,6 +127,13 @@ public class User {
         return archivedCoursePlans;
     }
 
+    public Direct getDirectByUser(User user){
+        for (Direct direct: this.directs)
+            if (direct.getUser1() == this && direct.getUser2() == user || direct.getUser2() == this && direct.getUser1() == user)
+                return direct;
+        return null;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -206,5 +212,9 @@ public class User {
 
     public void setUserType(UserType userType) {
         this.userType = userType;
+    }
+
+    public ArrayList<Direct> getDirects() {
+        return directs;
     }
 }

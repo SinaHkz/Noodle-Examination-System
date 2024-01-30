@@ -47,3 +47,10 @@
     -fx-border-color: black;
     -fx-padding: 10px;
 }
+
+.message{
+    -fx-background-color: #0088cc;
+    -fx-background-radius: 20px;
+}
+
+.
