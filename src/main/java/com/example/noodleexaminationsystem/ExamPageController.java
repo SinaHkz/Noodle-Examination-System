@@ -211,10 +211,10 @@ public class ExamPageController implements Initializable {
             for (CardController questionCard : this.questionCards) {
                 Object answer = -1;
                 if (questionCard.question instanceof SingleAnswer) {
-                    if ((answer = questionCard.getChoiceComboBox().getSelectionModel().getSelectedItem()) != null) {
+                    if (questionCard.getChoiceComboBox().getSelectionModel().getSelectedItem() != null) {
+                        answer = questionCard.getChoiceComboBox().getSelectionModel().getSelectedItem();
                         if (!answer.equals("Delete answer")) {
                             answer = Integer.parseInt((String) answer) - 1;
-                            System.out.println(answer);
                         }
 
                     }
