@@ -1,10 +1,5 @@
 package com.example.noodleexaminationsystem.User;
-<<<<<<< HEAD
 import com.example.noodleexaminationsystem.Direct.Direct;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-=======
-import com.example.noodleexaminationsystem.Course.Course;
->>>>>>> e1973ba0f348e63b96c77741eadc62671d3d6313
 import com.example.noodleexaminationsystem.Course.CoursePlan;
 import com.example.noodleexaminationsystem.DataBase;
 

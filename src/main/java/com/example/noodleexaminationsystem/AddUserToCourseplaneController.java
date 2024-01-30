@@ -64,7 +64,7 @@ public class AddUserToCourseplaneController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("popUp.fxml"));
             Scene scene = new Scene(loader.load());
             PopUpController popUpController = loader.getController();
-            popUpController.label.setText("User already added to the course!");
+            popUpController.text.setText("User already added to the course!");
             Stage stage = new Stage();
             stage.setScene(scene);
             popUpController.stage = stage;
