@@ -21,11 +21,17 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.stage.DirectoryChooser;
 
 import javax.swing.*;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -35,6 +41,7 @@ public class CardController implements Initializable {
     public Question question;
     public Exam exam;
     public Course course;
+    public CoursePlan.CoursePlanMedia media;
     public VBox examPageVbox;
     public QuestionBankController questionBankController;
     public ExamPageController examPageController;
@@ -280,43 +287,39 @@ public class CardController implements Initializable {
     }
 
     public void setLongAnswerQuestionCardWithAnswer(LongAnswer question) {
-        if(exam!=null){
-            if(this.questionBankController!=null){
+        if (exam != null) {
+            if (this.questionBankController != null) {
                 plusButton.setVisible(true);
-            }
-            else if(this.user==this.coursePlan.getTeacher()){
-                if(!this.exam.hasStarted()){
+            } else if (this.user == this.coursePlan.getTeacher()) {
+                if (!this.exam.hasStarted()) {
                     deleteQuestion.setVisible(true);
                 }
             }
 
-        }
-        else{
-            if(user.getUserType()== UserType.ADMIN){
+        } else {
+            if (user.getUserType() == UserType.ADMIN) {
                 deleteQuestion.setVisible(true);
             }
         }
         questionLabel.setText(question.getQuestion());
         longAnswerQuestionTextField.editableProperty().set(false);
         longAnswerQuestionTextField.setText(question.getAnswer());
-        if(exam.isActive())
+        if (exam.isActive())
             examPageController.questionCards.add(this);
     }
 
     public void setShortAnswerQuestionCardWithAnswer(SingleAnswer question) {
-        if(exam!=null){
-            if(this.questionBankController!=null){
+        if (exam != null) {
+            if (this.questionBankController != null) {
                 plusButton.setVisible(true);
-            }
-            else if(this.user==this.coursePlan.getTeacher()){
-                if(!this.exam.hasStarted()){
+            } else if (this.user == this.coursePlan.getTeacher()) {
+                if (!this.exam.hasStarted()) {
                     deleteQuestion.setVisible(true);
                 }
 
             }
-        }
-        else{
-            if(user.getUserType()== UserType.ADMIN){
+        } else {
+            if (user.getUserType() == UserType.ADMIN) {
                 deleteQuestion.setVisible(true);
             }
         }
@@ -327,10 +330,10 @@ public class CardController implements Initializable {
             answers += i + "      " + answer + "\n";
             i++;
         }
-        answers += "answer:     " + Integer.toHexString(question.getAnswerValue()+1);
+        answers += "answer:     " + Integer.toHexString(question.getAnswerValue() + 1);
         shortAnswerChoiceLabel.setText(answers);
         choiceComboBox.setVisible(false);
-        if(exam.isActive())
+        if (exam.isActive())
             examPageController.questionCards.add(this);
     }
 
@@ -354,7 +357,7 @@ public class CardController implements Initializable {
         for (String answer : question.getChoices()) {
             answers += answer + "\n";
         }
-        answers += "answer:     " + Integer.toHexString(question.getAnswerValue()+1);
+        answers += "answer:     " + Integer.toHexString(question.getAnswerValue() + 1);
         shortAnswerChoiceLabel.setText(answers);
         TextField textField = new TextField();
         textField.setText(userAnswer);
@@ -362,11 +365,13 @@ public class CardController implements Initializable {
         cardBox.getChildren().get(2).setVisible(false);
         cardBox.getChildren().add(textField);
     }
-    private void setCards(ArrayList<Question> questions, VBox cardVbox,boolean showWithAnswer) {
+
+    private void setCards(ArrayList<Question> questions, VBox cardVbox, boolean showWithAnswer) {
         try {
             HBox eachQuestionBox;
-            for (Question question : questions) {;
-                if(question instanceof SingleAnswer){
+            for (Question question : questions) {
+                ;
+                if (question instanceof SingleAnswer) {
                     //short answer card controller initialize and setup
                     FXMLLoader loader = new FXMLLoader();
                     loader.setLocation(getClass().getResource("ShortAnswerQuestionCard.fxml"));
@@ -374,46 +379,43 @@ public class CardController implements Initializable {
                     CardController cardController = loader.getController();
                     cardController.question = question;
                     cardController.user = this.user;
-                    cardController.exam =this.exam;
+                    cardController.exam = this.exam;
                     cardController.coursePlan = this.coursePlan;
                     cardController.examPageController = this.examPageController;
                     cardController.examPageVbox = cardVbox;
                     try {
-                        if(showWithAnswer){
+                        if (showWithAnswer) {
                             Result studentResult = null;
-                            for (Result result:this.exam.getResults()) {
-                                if(result.getStudent()==this.user)
+                            for (Result result : this.exam.getResults()) {
+                                if (result.getStudent() == this.user)
                                     studentResult = result;
                             }
                             //shows users answers
-                            if(studentResult!=null){
+                            if (studentResult != null) {
                                 TextField textField = new TextField();
-                                if (ResultController.checkMultipleChoiceAnswer(studentResult, (SingleAnswer) question)){
+                                if (ResultController.checkMultipleChoiceAnswer(studentResult, (SingleAnswer) question)) {
                                     textField.setText("True");
                                     eachQuestionBox.setStyle("-fx-background-color: rgba(62,224,62,0.3)");
-                                }
-                                else {
+                                } else {
                                     textField.setText("False");
                                     eachQuestionBox.setStyle("-fx-background-color: rgba(210,33,33,0.3)");
                                 }
                                 textField.setEditable(false);
                                 eachQuestionBox.getChildren().add(textField);
-                                cardController.setShortAnswerQuestionCardWithUserAnswer((SingleAnswer) question,Integer.toString((Integer) studentResult.getAnswers().get(question)+1));
+                                cardController.setShortAnswerQuestionCardWithUserAnswer((SingleAnswer) question, Integer.toString((Integer) studentResult.getAnswers().get(question) + 1));
                             }
                             //if user does not have a result shows previous result
                             else {
                                 cardController.setShortAnswerQuestionCardWithAnswer((SingleAnswer) question);
                             }
 
-                        }
-                        else
+                        } else
                             cardController.setShortAnswerQuestionCardWithoutAnswer((SingleAnswer) question);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                     cardVbox.getChildren().add(eachQuestionBox);
-                }
-                else if(question instanceof LongAnswer){
+                } else if (question instanceof LongAnswer) {
                     //long answer card controller initialize and setup
                     FXMLLoader loader = new FXMLLoader();
                     loader.setLocation(getClass().getResource("LongAnswerQuestionCard.fxml"));
@@ -428,11 +430,11 @@ public class CardController implements Initializable {
                     try {
                         if (showWithAnswer) {
                             Result studentResult = null;
-                            for (Result result:this.exam.getResults()) {
-                                if(result.getStudent()==this.user)
+                            for (Result result : this.exam.getResults()) {
+                                if (result.getStudent() == this.user)
                                     studentResult = result;
                             }
-                            if(studentResult!=null){
+                            if (studentResult != null) {
                                 TextField textField = new TextField();
                                 textField.setPromptText("Score");
                                 textField.setText(Double.toString(((LongAnswerStudentAnswer) studentResult.getAnswers().get(question)).getScore()));
@@ -456,43 +458,64 @@ public class CardController implements Initializable {
             e.printStackTrace();
         }
     }
-  public void setDeleteQuestion(){
-        if(exam!=null){
+
+    public void setDeleteQuestion() {
+        if (exam != null) {
             this.exam.getQuestions().remove(this.question);
             try {
                 System.out.println(this.examPageVbox);
                 examPageVbox.getChildren().clear();
-                setCards(this.exam.getQuestions(),examPageVbox,true);
-            }
-            catch (Exception e){
+                setCards(this.exam.getQuestions(), examPageVbox, true);
+            } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
-        else{
+        } else {
             //the question should be removed from question bank
             DataBase.getQuestions().get(this.course).remove(this.question);
             questionBankController.setComboBox();
         }
 
-  }
-  public void setMinusButton(){
+    }
+
+    public void setMinusButton() {
         this.exam.getQuestions().remove(this.question);
         minusButton.setVisible(false);
         plusButton.setVisible(true);
-  }
-  public void setPlusButton(){
+    }
+
+    public void setPlusButton() {
         this.exam.getQuestions().add(this.question);
         plusButton.setVisible(false);
         minusButton.setVisible(true);
-  }
-  //setting course media card
-    public void setCourseMediaCard(CoursePlan.CoursePlanMedia media){
-        subjectLabel.setText(media.getSubject());
-    }
-    public void setDownloadButton(){
-        //downloads media to downloads folder using its path
     }
 
+    //setting course media card
+    public void setCourseMediaCard(CoursePlan.CoursePlanMedia media) {
+        subjectLabel.setText(media.getSubject());
+    }
+
+    public void setDownloadButton() {
+        //downloads media to downloads folder using its path
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        directoryChooser.setTitle("Select Target Directory");
+
+        // Open directory chooser and get user selection
+        File selectedDirectory = directoryChooser.showDialog(HelloApplication.mainStage); // Replace 'null' with a reference to your stage
+
+        if (selectedDirectory != null) {
+            try {
+                Path sourcePath = Path.of(media.getPath());
+                Path destinationPath = selectedDirectory.toPath().resolve(sourcePath.getFileName());
+
+                // Copy the file to the selected directory
+                Files.copy(sourcePath, destinationPath, StandardCopyOption.REPLACE_EXISTING);
+                System.out.println("Media file copied to: " + destinationPath);
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Handle the exception here
+            }
+        }
+    }
 
     @Override
 

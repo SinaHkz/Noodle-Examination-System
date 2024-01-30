@@ -10,3 +10,15 @@
     -fx-cursor: hand;
     -fx-background-color: rgba(142, 142, 250, 0.8);
 }
+.popup_vbox{
+    -fx-background-color: linear-gradient(to top, rgba(47, 77, 178, 0.7), rgba(236, 236, 236, 0.7));
+    -fx-border-radius: 10px;
+}
+.popup_button{
+    -fx-background-radius: 10px;
+    -fx-background-color: rgba(198, 198, 234, 0.5);
+}
+.popup_button:hover{
+    -fx-background-color: rgba(229, 229, 245, 0.5);
+    -fx-cursor: hand;
+}

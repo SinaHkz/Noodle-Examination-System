@@ -34,10 +34,10 @@
                   <FontAwesomeIconView glyphName="SIGN_OUT" layoutX="153.0" layoutY="878.0" opacity="0.66" size="24" />
                   <Group fx:id="createExamButton">
                      <Button layoutX="58.0" layoutY="563.0" mnemonicParsing="false" onAction="#setCreateExamButton" prefHeight="39.0" prefWidth="264.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Create a new Exam">
-                     <font>
-                        <Font size="21.0" />
-                     </font>
-                  </Button>
+                        <font>
+                           <Font size="21.0" />
+                        </font>
+                     </Button>
                      <FontAwesomeIconView glyphName="BOOK" layoutX="89.0" layoutY="589.0" size="18" text="" />
                   </Group>
 
@@ -51,7 +51,7 @@
                         <Font size="29.0" />
                      </font>
                   </Label>
-                  <Button fx:id="courseMedia" layoutX="54.0" layoutY="425.0" mnemonicParsing="false" onAction="#setCourseMediaButton" prefHeight="39.0" prefWidth="264.0" text="Course Media">
+                  <Button fx:id="courseMedia" layoutX="47.0" layoutY="495.0" mnemonicParsing="false" onAction="#setCourseMediaButton" prefHeight="39.0" prefWidth="264.0" text="Course Media">
                      <styleClass>
                         <String fx:value="button-hand" />
                         <String fx:value="background-transparent" />
@@ -60,7 +60,7 @@
                         <Font size="21.0" />
                      </font>
                   </Button>
-                  <Button fx:id="archivedExams" layoutX="54.0" layoutY="496.0" mnemonicParsing="false" onAction="#setArchivedExamsButton" prefHeight="39.0" prefWidth="264.0" text="Archived Exams">
+                  <Button fx:id="archivedExams" layoutX="55.0" layoutY="429.0" mnemonicParsing="false" onAction="#setArchivedExamsButton" prefHeight="39.0" prefWidth="264.0" text="Archived Exams">
                      <font>
                         <Font size="21.0" />
                      </font>
@@ -72,10 +72,10 @@
                   <Line endX="185.0" layoutX="189.0" layoutY="844.0" opacity="0.51" startX="-189.0" />
                   <Group fx:id="archiveCourseGroup">
                      <Button layoutX="58.0" layoutY="613.0" mnemonicParsing="false" onAction="#setArchiveCourseButton" prefHeight="39.0" prefWidth="264.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Archive Course">
-                     <font>
-                        <Font size="21.0" />
-                     </font>
-                  </Button>
+                        <font>
+                           <Font size="21.0" />
+                        </font>
+                     </Button>
                      <FontAwesomeIconView glyphName="TRASH" layoutX="106.0" layoutY="638.0" size="17" />
                   </Group>
                   <Button fx:id="userManagement" layoutX="54.0" layoutY="504.0" mnemonicParsing="false" onAction="#setUserManagementButton" prefHeight="39.0" prefWidth="264.0" text="Student Management" visible="false">
@@ -106,7 +106,7 @@
    <center>
       <Pane prefHeight="800.0" prefWidth="908.0" styleClass="gradiant-color-background" BorderPane.alignment="CENTER">
          <children>
-            <ScrollPane layoutX="35.0" layoutY="39.0" prefHeight="805.0" prefWidth="1176.0" style="-fx-background-color: transparent;">
+            <ScrollPane layoutX="35.0" layoutY="69.0" prefHeight="807.0" prefWidth="1184.0" style="-fx-background-color: transparent;">
                <content>
                   <StackPane prefHeight="800.0" prefWidth="1170.0">
                      <children>
@@ -153,10 +153,9 @@
                   </StackPane>
                </content>
             </ScrollPane>
-            <Button layoutX="1102.0" layoutY="24.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="93.0" text="Add Media" visible="false">
+            <Button fx:id="addMedia" layoutX="1073.0" layoutY="24.0" mnemonicParsing="false" onAction="#setAddMedia" prefHeight="33.0" prefWidth="93.0" stylesheets="@../../../style-sheets/fileCard.css" text="Add Media" visible="false">
                <styleClass>
-                  <String fx:value="button-hand" />
-                  <String fx:value="check-btn" />
+                  <String fx:value="download_button" />
                </styleClass>
             </Button>
          </children>
