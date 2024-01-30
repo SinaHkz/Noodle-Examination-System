@@ -62,6 +62,11 @@ public class CardController implements Initializable {
     private Button minusButton;
     @FXML
     private Button plusButton;
+    //media card info
+    @FXML
+    private Button downloadButton;
+    @FXML
+    private Label subjectLabel;
 
     //___________________________________________________ getter/setter________________________________________________________
 
@@ -458,20 +463,6 @@ public class CardController implements Initializable {
                 System.out.println(this.examPageVbox);
                 examPageVbox.getChildren().clear();
                 setCards(this.exam.getQuestions(),examPageVbox,true);
-
-//                FXMLLoader loader = new FXMLLoader();
-//                loader.setLocation(getClass().getResource("ExamPage.fxml"));
-//                Scene scene = new Scene(loader.load());
-//
-//                // Now that the FXML is loaded, get the controller and set the data
-//                ExamPageController examPageController = loader.getController();
-//                //System.out.println(this.user);
-//                examPageController.user = this.user;
-//                examPageController.exam = this.exam;
-//                examPageController.coursePlan = this.coursePlan;
-//                examPageController.setExamPage();
-//
-//                HelloApplication.mainStage.setScene(scene);
             }
             catch (Exception e){
                 e.printStackTrace();
@@ -494,6 +485,14 @@ public class CardController implements Initializable {
         plusButton.setVisible(false);
         minusButton.setVisible(true);
   }
+  //setting course media card
+    public void setCourseMediaCard(CoursePlan.CoursePlanMedia media){
+        subjectLabel.setText(media.getSubject());
+    }
+    public void setDownloadButton(){
+        //downloads media to downloads folder using its path
+    }
+
 
     @Override
 

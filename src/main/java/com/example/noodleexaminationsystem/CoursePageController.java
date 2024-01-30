@@ -53,6 +53,10 @@ public class CoursePageController implements Initializable {
     @FXML
     ImageView courseImage;
     @FXML
+    VBox courseMediaVbox;
+    @FXML
+    Button courseMedia;
+    @FXML
     private void setCreateExamButton() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("CreateExam.fxml"));
@@ -76,6 +80,7 @@ public class CoursePageController implements Initializable {
         activeExamsVbox.setVisible(false);
         archivedExamsVbox.setVisible(true);
         activeExams.getStyleClass().removeAll("selected-buttons");
+        courseMedia.getStyleClass().removeAll("selected-buttons");
         archivedExams.getStyleClass().addAll("selected-buttons");
     }
 
@@ -84,6 +89,7 @@ public class CoursePageController implements Initializable {
         activeExamsVbox.setVisible(true);
         archivedExamsVbox.setVisible(false);
         archivedExams.getStyleClass().removeAll("selected-buttons");
+        courseMedia.getStyleClass().removeAll("selected-buttons");
         activeExams.getStyleClass().addAll("selected-buttons");
     }
 
@@ -120,10 +126,33 @@ public class CoursePageController implements Initializable {
             e.printStackTrace();
         }
     }
+    public void setCourseMediaCards(ArrayList<CoursePlan.CoursePlanMedia> coursePlanMediaArrayList,VBox cardVbox){
+        try {
+            int counter = 0;
+            for (CoursePlan.CoursePlanMedia media :coursePlanMediaArrayList ) {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("fileCard.fxml"));
+                HBox cardBox = loader.load();
+                CardController cardController = loader.getController();
+                cardController.user = this.user;
+                cardController.coursePlan = this.coursePlan;
+                try {
+                    cardController.setCourseMediaCard(media);
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+                cardVbox.getChildren().add(cardBox);
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public void setCoursePlanPage(CoursePlan coursePlan) {
-        if (user == coursePlan.getTeacher())
+        if (user == coursePlan.getTeacher()){
             userManagement.setVisible(true);
+        }
         //setting exam cards
         if ((coursePlan.getEnd() != null) || (coursePlan.getTeacher() != this.user)) {
             archiveCourseGroup.setVisible(false);
@@ -132,6 +161,7 @@ public class CoursePageController implements Initializable {
         }
         ArrayList<Exam> activeExams = coursePlan.getActiveExams();
         ArrayList<Exam> archivedExams = coursePlan.getArchivedExams();
+        ArrayList<CoursePlan.CoursePlanMedia> coursePlanMediaArrayList = coursePlan.getMedia();
         if (activeExams.isEmpty())
             noExamPane1.setVisible(true);
         if (archivedExams.isEmpty())
@@ -139,6 +169,7 @@ public class CoursePageController implements Initializable {
 
         setCards(activeExams, activeExamsVbox);
         setCards(archivedExams, archivedExamsVbox);
+        setCourseMediaCards(coursePlanMediaArrayList,courseMediaVbox);
 
         try {
             teacherName.setText(coursePlan.getTeacher().getName());
@@ -206,6 +237,16 @@ public class CoursePageController implements Initializable {
             System.out.println(e);
         }
     }
+    public void setCourseMediaButton(){
+        activeExamsVbox.setVisible(false);
+        archivedExamsVbox.setVisible(false);
+        courseMediaVbox.setVisible(true);
+        archivedExams.getStyleClass().removeAll("selected-buttons");
+        activeExams.getStyleClass().removeAll("selected-buttons");
+        courseMedia.getStyleClass().addAll("selected-buttons");
+
+    }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

@@ -15,10 +15,40 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import javax.print.attribute.standard.Media;
+
 @JsonSerialize
 @JsonDeserialize
 @JsonIgnoreProperties(ignoreUnknown = true)
+
 public class CoursePlan {
+
+    public class CoursePlanMedia{
+        String subject;
+        String path;
+
+        private CoursePlanMedia(String subject, String path) {
+            this.subject = subject;
+            this.path = path;
+        }
+
+        public String getSubject() {
+            return subject;
+        }
+
+        public void setSubject(String subject) {
+            this.subject = subject;
+        }
+
+        public String getPath() {
+            return path;
+        }
+
+        public void setPath(String path) {
+            this.path = path;
+        }
+    }
+
     private Course course;
     @JsonBackReference
     private User teacher;
@@ -28,7 +58,13 @@ public class CoursePlan {
     private String name;
     private String picturePath;
     private ArrayList<Exam> exams = new ArrayList<>();
+    private ArrayList<CoursePlanMedia> media = new ArrayList<>();
 
+    //adding media to course plan
+    public void addMediaToCourse(String subject, String path){
+        CoursePlanMedia media1 = new CoursePlanMedia(subject,path);
+        this.media.add(media1);
+    }
     private CoursePlan(Course course, String name, User teacher, Exam attendedStudent, LocalDate start, String picturePath) {
         this.name = name;
         this.course = course;
@@ -114,6 +150,13 @@ public class CoursePlan {
         return activeExams;
     }
 
+    public ArrayList<CoursePlanMedia> getMedia() {
+        return media;
+    }
+
+    public void setMedia(ArrayList<CoursePlanMedia> media) {
+        this.media = media;
+    }
 
     public String getName() {
         return name;

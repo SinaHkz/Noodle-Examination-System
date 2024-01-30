@@ -253,6 +253,7 @@ public class ExamPageController implements Initializable {
             // Now that the FXML is loaded, get the controller and set the data
             CoursePageController coursePageController = loader.getController();
             coursePageController.user = this.user;
+            coursePageController.coursePlan = this.coursePlan;
             coursePageController.setCoursePlanPage(this.coursePlan);
             HelloApplication.mainStage.setScene(scene);
         } catch (Exception e) {

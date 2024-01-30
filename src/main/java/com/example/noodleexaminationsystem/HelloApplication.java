@@ -121,6 +121,12 @@ public class HelloApplication extends Application {
             DataBase.getQuestions().get(oop).add(question2);
 
 
+
+            //testing media page
+            coursePlan.addMediaToCourse("first media", "jeijfij");
+            coursePlan.addMediaToCourse("second media", "flijdeufli");
+
+
             //______________________________________
 //            mainCoursePlan=coursePlan;
             //first scene
