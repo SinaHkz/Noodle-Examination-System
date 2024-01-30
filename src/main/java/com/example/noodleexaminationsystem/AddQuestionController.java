@@ -171,8 +171,10 @@ public class AddQuestionController implements Initializable {
             }
             else{
                 answerValue = answerValue-(answerValue-(choices.size()-1));
-                if(this.exam!=null)
+                if(this.exam!=null){
+                    System.out.println(this.coursePlan.getCourse());
                     this.exam.addSingleAnswerQuestionToExam(singleAnswerQuestion.getText(),this.previousUser,this.coursePlan.getCourse(),answerValue,choices);
+                }
                 else {
                     if(course!=null){
                         SingleAnswer.createQuestion(singleAnswerQuestion.getText(),this.previousUser,this.course,answerValue,choices);

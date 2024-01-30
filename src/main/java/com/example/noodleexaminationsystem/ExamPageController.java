@@ -123,6 +123,7 @@ public class ExamPageController implements Initializable {
                                     studentResult = result;
                             }
                             if (studentResult != null) {
+
                                 TextField textField = new TextField();
                                 textField.setPromptText("Score");
                                 textField.setText(Double.toString(((LongAnswerStudentAnswer) studentResult.getAnswers().get(question)).getScore()));

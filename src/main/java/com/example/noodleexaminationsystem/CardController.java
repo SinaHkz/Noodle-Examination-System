@@ -18,6 +18,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 import javax.swing.*;
 import java.io.FileInputStream;
@@ -209,8 +210,14 @@ public class CardController implements Initializable {
     public void setExamButton() {
         try {
             if ((!this.exam.hasStarted()) && (this.user != this.coursePlan.getTeacher())) {
-                //set a label to show that the exam is yet to be started
-                // <<<<<<<<<<<<<<-------------------------------
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("popUp.fxml"));
+                Scene scene = new Scene(loader.load());
+                PopUpController popUpController = loader.getController();
+                popUpController.setnotActive();
+                Stage stage = new Stage();
+                popUpController.stage = stage;
+                stage.setScene(scene);
+                stage.show();
                 return;
             }
             //check if the exam is active and user already has a result for that exam not to allow enter
@@ -218,7 +225,14 @@ public class CardController implements Initializable {
                 ArrayList<Result> results = exam.getResults();
                 for (Result result : results) {
                     if (result.getStudent() == this.user) {
-                        //show a label that the person can not enter the exam again before time is finished
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("popUp.fxml"));
+                        Scene scene = new Scene(loader.load());
+                        PopUpController popUpController = loader.getController();
+                        popUpController.sethaveattend();
+                        Stage stage = new Stage();
+                        popUpController.stage = stage;
+                        stage.setScene(scene);
+                        stage.show();
                         return;
                     }
                 }

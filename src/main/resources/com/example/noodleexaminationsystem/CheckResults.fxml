@@ -49,7 +49,7 @@
                   <String fx:value="background-transparent" />
                </styleClass>
             </Button>
-            <Button layoutX="64.0" layoutY="855.0" mnemonicParsing="false" opacity="0.62" prefHeight="39.0" prefWidth="264.0" text="Back">
+            <Button layoutX="64.0" layoutY="855.0" mnemonicParsing="false" opacity="0.62" prefHeight="39.0" prefWidth="264.0" text="Submit result">
                <font>
                   <Font size="20.0" />
                </font>

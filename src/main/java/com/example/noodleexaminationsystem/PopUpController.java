@@ -23,6 +23,12 @@ public class PopUpController implements Initializable {
         text.setText("user not found!");
     }
 
+    public void setnotActive() {
+        text.setText("Exam isn't active");
+    }
+    public void sethaveattend(){
+        text.setText("you have already attended exam");
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
