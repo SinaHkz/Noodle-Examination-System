@@ -16,6 +16,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.net.URL;
@@ -52,6 +53,7 @@ public class CoursePageController implements Initializable {
     Button userManagement;
     @FXML
     ImageView courseImage;
+
     @FXML
     private void setCreateExamButton() {
         FXMLLoader loader = new FXMLLoader();
@@ -90,11 +92,12 @@ public class CoursePageController implements Initializable {
         try {
             HBox eachRowBox = new HBox();
             int counter = 0;
+            int count = 0;
             for (Exam exam : exams) {
                 if (counter % 3 == 0) {
                     eachRowBox = new HBox();
                     eachRowBox.setSpacing(103);
-                    cardVbox.getChildren().add(counter,eachRowBox);
+                    cardVbox.getChildren().add(count++, eachRowBox);
                 }
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource("ExamCard.fxml"));
@@ -138,8 +141,7 @@ public class CoursePageController implements Initializable {
         try {
             teacherName.setText(coursePlan.getTeacher().getName());
             courseName.setText(coursePlan.getName());
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         try {
