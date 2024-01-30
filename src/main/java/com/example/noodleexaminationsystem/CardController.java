@@ -357,7 +357,12 @@ public class CardController implements Initializable {
         for (String answer : question.getChoices()) {
             answers += answer + "\n";
         }
-        answers += "answer:     " + Integer.toHexString(question.getAnswerValue()+1);
+        if(question.getAnswerValue()==-1){
+            answers += "unanswered";
+        }
+        else{
+            answers += "answer:     " + (question.getAnswerValue()+1);
+        }
         shortAnswerChoiceLabel.setText(answers);
         TextField textField = new TextField();
         textField.setText(userAnswer);
