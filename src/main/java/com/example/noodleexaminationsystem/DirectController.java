@@ -16,6 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
+
 import java.io.FileInputStream;
 import java.net.URL;
 import java.util.List;
@@ -43,6 +44,12 @@ public class DirectController implements Initializable {
     private TextField messageTextField;
     @FXML
     private Button sendButton;
+    @FXML
+    private Label email;
+    @FXML
+    private Label age;
+    @FXML
+    private VBox profileVbox;
 
 
     public void setListView() {
@@ -73,16 +80,20 @@ public class DirectController implements Initializable {
     public void setOpenDirect() {
         String username = listView.getSelectionModel().getSelectedItem().toString();
         User student = DataBase.getUsers().get(username);
-        usernameLabel.setText(username);
-        usernameLabel.setVisible(true);
+
+        usernameLabel.setText("Username: " + username);
+        email.setText("Email: " + DataBase.getUsers().get(username).getEmail());
+        age.setText("Age: " + Integer.toString(DataBase.getUsers().get(username).getAge()));
+        profileVbox.setVisible(true);
         try {
+            System.out.println(student.getPicturePath());
+            profileImage.setVisible(true);
             FileInputStream stream = new FileInputStream(student.getPicturePath());
             Image newImage = new Image(stream);
             profileImage.setImage(newImage);
             final Circle clip = new Circle(123.5, 136, 110);
             profileImage.setClip(clip);
             profileImage.setImage(newImage);
-            profileImage.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -154,7 +165,7 @@ public class DirectController implements Initializable {
         listView.setVisible(true);
         chatBox.setVisible(false);
         profileImage.setVisible(false);
-        usernameLabel.setVisible(false);
+        profileVbox.setVisible(false);
     }
 
     public void setSendButton() {
@@ -163,7 +174,7 @@ public class DirectController implements Initializable {
         if (message.length() > 70)
             ;//pop up
         Direct direct = previousUser.getDirectByUser(openedDirectUser);
-        Message message1 = direct.sendMessage(previousUser,message);
+        Message message1 = direct.sendMessage(previousUser, message);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Message.fxml"));
         try {

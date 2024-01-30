@@ -130,6 +130,10 @@ public class User {
         return null;
     }
 
+    public int getAge(){
+        return LocalDate.now().getYear() - this.dob.getYear();
+    }
+
     public String getUsername() {
         return username;
     }

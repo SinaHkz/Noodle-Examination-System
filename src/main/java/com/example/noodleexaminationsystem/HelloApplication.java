@@ -3,29 +3,21 @@ package com.example.noodleexaminationsystem;
 import com.example.noodleexaminationsystem.Course.Course;
 import com.example.noodleexaminationsystem.Course.CoursePlan;
 import com.example.noodleexaminationsystem.Course.Exam;
-import com.example.noodleexaminationsystem.Direct.Direct;
 import com.example.noodleexaminationsystem.Question.*;
 import com.example.noodleexaminationsystem.User.Result;
 import com.example.noodleexaminationsystem.User.User;
-import com.example.noodleexaminationsystem.User.UserType;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
-import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.Month;
 import java.util.ArrayList;
-
-import java.util.Date;
 import java.util.HashMap;
 
-import java.util.List;
 
 
 public class HelloApplication extends Application {

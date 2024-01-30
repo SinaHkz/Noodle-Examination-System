@@ -44,16 +44,25 @@
                         </Button>
                         <FontAwesomeIconView glyphName="SIGN_OUT" layoutX="133.0" layoutY="886.0" opacity="0.65" size="24" />
                         <Line endX="177.0" layoutX="195.0" layoutY="856.0" opacity="0.17" startX="-175.0" />
-                        <Label fx:id="usernameLabel" layoutX="151.0" layoutY="362.0" text="{Username}" visible="false">
-                            <font>
-                                <Font size="18.0" />
-                            </font>
+                  <VBox fx:id="profileVbox" alignment="CENTER" layoutX="33.0" layoutY="351.0" prefHeight="342.0" prefWidth="353.0" spacing="50.0" visible="false">
+                     <children>
+                              <Label fx:id="usernameLabel" text="{Username}">
+                                  <font>
+                                      <Font size="24.0" />
+                                  </font>
+                              </Label>
+                        <Label fx:id="email" text="{Email}">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
                         </Label>
-                        <Button layoutX="52.0" layoutY="436.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="280.0" styleClass="border-colored-bottom-delete" text="Delete user from course" visible="false">
-                            <font>
-                                <Font size="18.0" />
-                            </font>
-                        </Button>
+                        <Label fx:id="age" text="{Age}">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
                     </children>
                 </Pane>
             </children>
@@ -103,7 +112,7 @@
                               <String fx:value="button-hand" />
                            </styleClass>
                         </Button>
-                             <Button fx:id="searchButton" onAction="#setSearchButton" layoutX="942.0" layoutY="26.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="126.0" text="search" visible="false">
+                             <Button fx:id="searchButton" layoutX="942.0" layoutY="26.0" mnemonicParsing="false" onAction="#setSearchButton" prefHeight="31.0" prefWidth="126.0" text="search" visible="false">
                                  <font>
                                      <Font size="17.0" />
                                  </font>
@@ -123,7 +132,7 @@
                            </styleClass>
                              </Button>
                         <TextField fx:id="searchedUsernameTextField" layoutX="49.0" layoutY="30.0" prefHeight="29.0" prefWidth="753.0" promptText="Serach username..." visible="false" />
-                        <Button fx:id="addUserToCourserButton" onAction="#setAddUserToCourserButton" layoutX="812.0" layoutY="27.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="126.0" text="Add User" visible="false">
+                        <Button fx:id="addUserToCourserButton" layoutX="812.0" layoutY="27.0" mnemonicParsing="false" onAction="#setAddUserToCourserButton" prefHeight="31.0" prefWidth="126.0" text="Add User" visible="false">
                            <font>
                               <Font size="17.0" />
                            </font>

@@ -21,7 +21,7 @@
     <left>
         <Pane prefHeight="800.0" prefWidth="352.0" BorderPane.alignment="CENTER">
             <children>
-                <Pane layoutX="-22.0" layoutY="-1.0" prefHeight="904.0" prefWidth="377.0" styleClass="left-pane">
+                <Pane fx:id="leftPane" layoutX="-22.0" layoutY="-1.0" prefHeight="904.0" prefWidth="377.0" styleClass="left-pane">
                     <children>
                         <Pane prefHeight="362.0" prefWidth="381.0">
                             <children>
@@ -44,16 +44,25 @@
                         </Button>
                         <FontAwesomeIconView glyphName="SIGN_OUT" layoutX="133.0" layoutY="886.0" opacity="0.65" size="24" />
                         <Line endX="177.0" layoutX="195.0" layoutY="856.0" opacity="0.17" startX="-175.0" />
-                        <Label fx:id="usernameLabel" layoutX="151.0" layoutY="362.0" text="{Username}" visible="false">
-                            <font>
-                                <Font size="18.0" />
-                            </font>
+                  <VBox fx:id="profileVbox" alignment="CENTER" layoutX="23.0" layoutY="341.0" prefHeight="342.0" prefWidth="353.0" spacing="50.0" visible="false">
+                     <children>
+                              <Label fx:id="usernameLabel" text="{Username}">
+                                  <font>
+                                      <Font size="24.0" />
+                                  </font>
+                              </Label>
+                        <Label fx:id="email" text="{Email}">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
                         </Label>
-                        <Button layoutX="52.0" layoutY="436.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="280.0" styleClass="border-colored-bottom-delete" text="Delete user from course" visible="false">
-                            <font>
-                                <Font size="18.0" />
-                            </font>
-                        </Button>
+                        <Label fx:id="age" text="{Age}">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
                     </children>
                 </Pane>
             </children>

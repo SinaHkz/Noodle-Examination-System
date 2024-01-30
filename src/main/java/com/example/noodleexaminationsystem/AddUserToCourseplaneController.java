@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -46,6 +47,12 @@ public class AddUserToCourseplaneController implements Initializable {
     private Button addUserButton;
     @FXML
     private Button courseUserButton;
+    @FXML
+    private Label email;
+    @FXML
+    private Label age;
+    @FXML
+    private VBox profileVbox;
 
 
 
@@ -84,7 +91,7 @@ public class AddUserToCourseplaneController implements Initializable {
     public void setAddUserButton() {
         listView.getItems().clear();
         profileImage.setVisible(false);
-        usernameLabel.setVisible(false);
+        profileVbox.setVisible(false);
 
 
         addUserButton.setVisible(false);
@@ -112,16 +119,18 @@ public class AddUserToCourseplaneController implements Initializable {
         String username = listView.getSelectionModel().getSelectedItem().toString();
         User student = DataBase.getUsers().get(username);
         System.out.println(student);
-        usernameLabel.setText(username);
-        usernameLabel.setVisible(true);
+        usernameLabel.setText("Username: " + username);
+        email.setText("Email:" + DataBase.getUsers().get(username).getEmail());
+        age.setText("Age: " + DataBase.getUsers().get(username).getAge());
+        profileVbox.setVisible(true);
         try {
+            profileImage.setVisible(true);
             FileInputStream stream = new FileInputStream(student.getPicturePath());
             Image newImage = new Image(stream);
             profileImage.setImage(newImage);
             final Circle clip = new Circle(123.5, 136, 110);
             profileImage.setClip(clip);
             profileImage.setImage(newImage);
-            profileImage.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
         }
