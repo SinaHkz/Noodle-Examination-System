@@ -85,7 +85,7 @@
                         <HBox alignment="CENTER"> <!-- HBox to center the label -->
                            <Label fx:id="emptyQuestionLabel" style="-fx-text-fill: red" text="Question is empty!" visible="false" />
                         </HBox>
-                        <TextArea fx:id="LongAnswerQuestion" prefHeight="100.0" prefWidth="1100.0" promptText="Question" />
+                        <TextArea fx:id="LongAnswerQuestion" prefHeight="100.0" prefWidth="1100.0" promptText="Question" wrapText="true"/>
                      </children>
                   </VBox>
                   <VBox prefHeight="101.0" prefWidth="1103.0">
@@ -93,7 +93,7 @@
                         <HBox alignment="CENTER"> <!-- HBox to center the label -->
                            <Label fx:id="emptyLabelAnswer" style="-fx-text-fill: red" text="Answer is empty!" visible="false" />
                         </HBox>
-                        <TextArea fx:id="LongAnswerText" prefHeight="93.0" prefWidth="1104.0" promptText="Answer" />
+                        <TextArea fx:id="LongAnswerText" prefHeight="93.0" prefWidth="1104.0" promptText="Answer" wrapText="true"/>
                      </children>
                   </VBox>
                </children>
@@ -107,55 +107,55 @@
                <children>
                   <HBox prefHeight="178.0" prefWidth="1103.0">
                      <children>
-                        <TextArea fx:id="singleAnswerQuestion" prefHeight="100.0" prefWidth="1100.0" promptText="Question" />
+                        <TextArea fx:id="singleAnswerQuestion" prefHeight="100.0" prefWidth="1100.0" promptText="Question" wrapText="true"/>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
                         <RadioButton fx:id="option1" mnemonicParsing="false" />
-                        <TextArea fx:id="TextArea11" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 1" />
+                        <TextArea fx:id="TextArea11" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 1" wrapText="true"/>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
                         <RadioButton fx:id="option2" mnemonicParsing="false" />
-                        <TextArea fx:id="TextArea22" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 2" />
+                        <TextArea fx:id="TextArea22" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 2" wrapText="true"/>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
                         <RadioButton fx:id="option3" mnemonicParsing="false" />
-                        <TextArea fx:id="TextArea33" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 3" />
+                        <TextArea fx:id="TextArea33" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 3" wrapText="true"/>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
                         <RadioButton fx:id="option4" mnemonicParsing="false" />
-                        <TextArea fx:id="TextArea44" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 4" />
+                        <TextArea fx:id="TextArea44" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 4" wrapText="true" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
                         <RadioButton fx:id="option5" mnemonicParsing="false" />
-                        <TextArea fx:id="TextArea55" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 5" />
+                        <TextArea fx:id="TextArea55" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 5" wrapText="true"/>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
                         <RadioButton fx:id="option6" mnemonicParsing="false" />
-                        <TextArea fx:id="TextArea66" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 6" />
+                        <TextArea fx:id="TextArea66" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 6" wrapText="true"/>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
                         <RadioButton fx:id="option7" mnemonicParsing="false" />
-                        <TextArea fx:id="TextArea77" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 7" />
+                        <TextArea fx:id="TextArea77" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 7" wrapText="true"/>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
                         <RadioButton fx:id="option8" mnemonicParsing="false" />
-                        <TextArea fx:id="TextArea88" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 8" />
+                        <TextArea fx:id="TextArea88" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 8" wrapText="true"/>
                      </children>
                   </HBox>
                </children>
@@ -164,55 +164,55 @@
                <children>
                   <HBox prefHeight="178.0" prefWidth="1103.0">
                      <children>
-                        <TextArea prefHeight="100.0" prefWidth="1100.0" promptText="Question" />
+                        <TextArea prefHeight="100.0" prefWidth="1100.0" promptText="Question" wrapText="true"/>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
                         <CheckBox fx:id="CheckBox1" mnemonicParsing="false" />
-                        <TextArea fx:id="TextArea1" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 1" />
+                        <TextArea fx:id="TextArea1" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 1" wrapText="true"/>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
                         <CheckBox fx:id="CheckBox2" mnemonicParsing="false" />
-                        <TextArea fx:id="TextArea2" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 2" />
+                        <TextArea fx:id="TextArea2" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 2" wrapText="true"/>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
                         <CheckBox fx:id="CheckBox3" mnemonicParsing="false" />
-                        <TextArea fx:id="TextArea3" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 3" />
+                        <TextArea fx:id="TextArea3" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 3" wrapText="true" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
                         <CheckBox fx:id="CheckBox4" mnemonicParsing="false" />
-                        <TextArea fx:id="TextArea4" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 4" />
+                        <TextArea fx:id="TextArea4" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 4" wrapText="true"/>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
                         <CheckBox fx:id="CheckBox5" mnemonicParsing="false" />
-                        <TextArea fx:id="TextArea5" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 5" />
+                        <TextArea fx:id="TextArea5" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 5" wrapText="true"/>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
                         <CheckBox fx:id="CheckBox6" mnemonicParsing="false" />
-                        <TextArea fx:id="TextArea6" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 6" />
+                        <TextArea fx:id="TextArea6" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 6" wrapText="true"/>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
                         <CheckBox fx:id="CheckBox7" mnemonicParsing="false" />
-                        <TextArea fx:id="TextArea7" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 7" />
+                        <TextArea fx:id="TextArea7" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 7" wrapText="true"/>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
                         <CheckBox fx:id="CheckBox8" mnemonicParsing="false" />
-                        <TextArea fx:id="TextArea8" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 8" />
+                        <TextArea fx:id="TextArea8" prefHeight="100.0" prefWidth="1100.0" promptText="Choice 8" wrapText="true"/>
                      </children>
                   </HBox>
                </children>

@@ -1,16 +1,16 @@
 package com.example.noodleexaminationsystem.User;
+<<<<<<< HEAD
 import com.example.noodleexaminationsystem.Direct.Direct;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+=======
+import com.example.noodleexaminationsystem.Course.Course;
+>>>>>>> e1973ba0f348e63b96c77741eadc62671d3d6313
 import com.example.noodleexaminationsystem.Course.CoursePlan;
 import com.example.noodleexaminationsystem.DataBase;
 
 import java.time.LocalDate;
 import java.util.*;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-@JsonSerialize
-@JsonDeserialize
 public class User {
     private String username;
     private String password;
@@ -22,7 +22,6 @@ public class User {
     private LocalDate dob;
     private UserType userType;
     private ArrayList<Result> results = new ArrayList<>();
-    @JsonManagedReference
     private Map<String ,CoursePlan> teacherCourses = new HashMap<>();
     private ArrayList<CoursePlan> StudentcoursePlans = new ArrayList<>();
     private ArrayList<Direct> directs = new ArrayList<>();
@@ -84,8 +83,10 @@ public class User {
 
     public static User login(String username, String password) {
         User user = DataBase.getUsers().get(username);
-        if(user.getPassword().equals(password))
-            return user;
+        if(user!=null){
+            if(user.getPassword().equals(password))
+                return user;
+        }
         return null;
     }
 

@@ -13,10 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -27,6 +24,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class CardController implements Initializable {
@@ -49,7 +48,7 @@ public class CardController implements Initializable {
     @FXML
     private Label questionLabel;
     @FXML
-    private TextField longAnswerQuestionTextField;
+    private TextArea longAnswerQuestionTextField;
     @FXML
     private Label shortAnswerChoiceLabel;
     @FXML
@@ -62,6 +61,7 @@ public class CardController implements Initializable {
     private Button minusButton;
     @FXML
     private Button plusButton;
+    private List<String> hexcolors = List.of("rgb(255,255,255,0.5)", "rgb(47, 77, 178,0.3)" , "rgb(142,158,213,0.4)");
 
     //___________________________________________________ getter/setter________________________________________________________
 
@@ -146,11 +146,11 @@ public class CardController implements Initializable {
         this.questionLabel = questionLabel;
     }
 
-    public TextField getLongAnswerQuestionTextField() {
+    public TextArea getLongAnswerQuestionTextField() {
         return longAnswerQuestionTextField;
     }
 
-    public void setLongAnswerQuestionTextField(TextField longAnswerQuestionTextField) {
+    public void setLongAnswerQuestionTextField(TextArea longAnswerQuestionTextField) {
         this.longAnswerQuestionTextField = longAnswerQuestionTextField;
     }
 
@@ -244,6 +244,14 @@ public class CardController implements Initializable {
     }
 
     public void setExamCard(Exam exam) {
+        Random random = new Random();
+        int randomNum = random.nextInt(3);
+        String randomColor = hexcolors.get(randomNum);
+        card.setStyle(
+                "-fx-background-color: " + randomColor + "; " +
+                        "-fx-border-radius: 25px;"
+        );
+
 //        card.setStyle("""
 //                -fx-background-color: white;
 //                -fx-opacity: 50;

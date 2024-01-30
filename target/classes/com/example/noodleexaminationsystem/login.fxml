@@ -27,7 +27,7 @@
                      <Font size="24.0" />
                   </font>
                </Button>
-               <Label layoutX="325.0" layoutY="208.0" text="Log in">
+               <Label layoutX="325.0" layoutY="208.0" text="Login">
                   <font>
                      <Font size="72.0" />
                   </font>
@@ -59,7 +59,7 @@
                      <Image url="@../../../images/Login_Signup.gif" />
                   </image>
                </ImageView>
-               <Label layoutX="481.0" layoutY="53.0" prefHeight="131.0" prefWidth="158.0" text="Noodle">
+               <Label layoutX="481.0" layoutY="53.0" prefHeight="131.0" prefWidth="158.0" text="">
                   <font>
                      <Font size="48.0" />
                   </font>
@@ -77,7 +77,7 @@
                      <Image url="@../../../images/Login_Signup.gif" />
                   </image>
                </ImageView>
-               <Label layoutX="509.0" layoutY="54.0" prefHeight="131.0" prefWidth="162.0" text="Noodle">
+               <Label layoutX="509.0" layoutY="54.0" prefHeight="131.0" prefWidth="162.0" text="">
                   <font>
                      <Font size="48.0" />
                   </font>

@@ -11,17 +11,8 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
-@JsonSerialize
-@JsonDeserialize
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class CoursePlan {
     private Course course;
-    @JsonBackReference
     private User teacher;
     private Exam attendedStudent;
     private LocalDate start;
@@ -82,6 +73,7 @@ public class CoursePlan {
         //user exists
         Result.addResult(user, this.getAttendedStudent());
         this.attendedStudentTrie.insert(username);
+        user.getStudentcoursePlans().add(this);
         return 0;
     }
 

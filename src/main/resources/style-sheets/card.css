@@ -33,9 +33,9 @@
 
 .exam-card{
     -fx-border-color: black;
-    -fx-border-width: 3px;
+    -fx-border-width: 0px;
     -fx-border-radius: 20%;
-    -fx-background-radius: 20%;
+    -fx-background-radius: 15%;
 }
 
 .mult-answer-btn{
@@ -46,6 +46,13 @@
     -fx-border-width: 3px;
     -fx-border-color: black;
     -fx-padding: 10px;
+    -fx-border-radius: 16px;
+    -fx-background-color: rgb(47, 77, 178,0.4);
+    -fx-background-radius: 16px;
+}
+
+.backcolor{
+
 }
 
 .message{

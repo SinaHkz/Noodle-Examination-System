@@ -24,7 +24,7 @@
                      <Image url="@../../../images/Login_Signup.gif" />
                   </image>
                </ImageView>
-               <Label layoutX="509.0" layoutY="54.0" prefHeight="131.0" prefWidth="162.0" text="Noodle">
+               <Label layoutX="509.0" layoutY="54.0" prefHeight="131.0" prefWidth="162.0" text="">
                   <font>
                      <Font size="48.0" />
                   </font>

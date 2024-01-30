@@ -14,8 +14,8 @@
     <children>
         <VBox fx:id="cardBox" prefHeight="200.0" prefWidth="941.0">
             <children>
-                <Label fx:id="questionLabel" prefHeight="89.0" prefWidth="1000.0" text="{Question}" />
-                <Label fx:id="shortAnswerChoiceLabel" prefHeight="111.0" prefWidth="1000.0" text="{Choices}" />
+                <Label fx:id="questionLabel" prefHeight="89.0" prefWidth="1000.0" text="{Question}" wrapText="true"/>
+                <Label fx:id="shortAnswerChoiceLabel" prefHeight="111.0" prefWidth="1000.0" text="{Choices}" wrapText="true" />
                 <ComboBox fx:id="choiceComboBox" prefHeight="34.0" prefWidth="1085.0" promptText="Answer">
                     <styleClass>
                         <String fx:value="button" />

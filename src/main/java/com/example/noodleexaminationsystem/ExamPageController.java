@@ -38,6 +38,8 @@ public class ExamPageController implements Initializable {
     @FXML
     Button addQuestionButton;
     @FXML
+    Button backButton;
+    @FXML
     Button checkResultsButton;
     @FXML
     Group finishExamNowButton;
@@ -51,11 +53,13 @@ public class ExamPageController implements Initializable {
     VBox questionsVbox;
     @FXML
     Button questionBank;
-    private void setCards(ArrayList<Question> questions, VBox cardVbox,boolean showWithAnswer) {
+
+    private void setCards(ArrayList<Question> questions, VBox cardVbox, boolean showWithAnswer) {
         try {
             HBox eachQuestionBox;
-            for (Question question : questions) {;
-                if(question instanceof SingleAnswer){
+            for (Question question : questions) {
+                ;
+                if (question instanceof SingleAnswer) {
                     //short answer card controller initialize and setup
                     FXMLLoader loader = new FXMLLoader();
                     loader.setLocation(getClass().getResource("ShortAnswerQuestionCard.fxml"));
@@ -63,46 +67,43 @@ public class ExamPageController implements Initializable {
                     CardController cardController = loader.getController();
                     cardController.question = question;
                     cardController.user = this.user;
-                    cardController.exam =this.exam;
+                    cardController.exam = this.exam;
                     cardController.coursePlan = this.coursePlan;
                     cardController.examPageController = this;
                     cardController.examPageVbox = cardVbox;
                     try {
-                        if(showWithAnswer){
+                        if (showWithAnswer) {
                             Result studentResult = null;
-                            for (Result result:this.exam.getResults()) {
-                                if(result.getStudent()==this.user)
+                            for (Result result : this.exam.getResults()) {
+                                if (result.getStudent() == this.user)
                                     studentResult = result;
                             }
                             //shows users answers
-                            if(studentResult!=null){
+                            if (studentResult != null) {
                                 TextField textField = new TextField();
-                                if (ResultController.checkMultipleChoiceAnswer(studentResult, (SingleAnswer) question)){
+                                if (ResultController.checkMultipleChoiceAnswer(studentResult, (SingleAnswer) question)) {
                                     textField.setText("True");
                                     eachQuestionBox.setStyle("-fx-background-color: rgba(62,224,62,0.3)");
-                                }
-                                else {
+                                } else {
                                     textField.setText("False");
                                     eachQuestionBox.setStyle("-fx-background-color: rgba(210,33,33,0.3)");
                                 }
                                 textField.setEditable(false);
                                 eachQuestionBox.getChildren().add(textField);
-                                cardController.setShortAnswerQuestionCardWithUserAnswer((SingleAnswer) question,Integer.toString((Integer) studentResult.getAnswers().get(question)+1));
+                                cardController.setShortAnswerQuestionCardWithUserAnswer((SingleAnswer) question, Integer.toString((Integer) studentResult.getAnswers().get(question) + 1));
                             }
                             //if user does not have a result shows previous result
                             else {
                                 cardController.setShortAnswerQuestionCardWithAnswer((SingleAnswer) question);
                             }
 
-                        }
-                        else
+                        } else
                             cardController.setShortAnswerQuestionCardWithoutAnswer((SingleAnswer) question);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                     cardVbox.getChildren().add(eachQuestionBox);
-                }
-                else if(question instanceof LongAnswer){
+                } else if (question instanceof LongAnswer) {
                     //long answer card controller initialize and setup
                     FXMLLoader loader = new FXMLLoader();
                     loader.setLocation(getClass().getResource("LongAnswerQuestionCard.fxml"));
@@ -117,11 +118,11 @@ public class ExamPageController implements Initializable {
                     try {
                         if (showWithAnswer) {
                             Result studentResult = null;
-                            for (Result result:this.exam.getResults()) {
-                                if(result.getStudent()==this.user)
+                            for (Result result : this.exam.getResults()) {
+                                if (result.getStudent() == this.user)
                                     studentResult = result;
                             }
-                            if(studentResult!=null){
+                            if (studentResult != null) {
                                 TextField textField = new TextField();
                                 textField.setPromptText("Score");
                                 textField.setText(Double.toString(((LongAnswerStudentAnswer) studentResult.getAnswers().get(question)).getScore()));
@@ -148,81 +149,81 @@ public class ExamPageController implements Initializable {
 
 
     //this method will get question cards from the login page controller instance
-    public void setPreviousQuestionCards(){
-        VBox tempVBox = HelloApplication.getUserPreviousAnswersHashMap().get(this.exam);
+    public void setPreviousQuestionCards() {
+        VBox tempVBox = HelloApplication.getUserPreviousAnswersHashMap().get(this.user).get(this.exam);
         this.questionsVbox.getChildren().setAll(tempVBox.getChildren());
     }
 
 
-
-    public void setExamPage(){
+    public void setExamPage() {
         examTitleLabel.setText(this.exam.getExamTitle());
         startDateButton.setText(this.exam.getTimeStart().toString());
         endDateButton.setText(this.exam.getTimeEnd().toString());
-            //the user is the teacher
-            if(coursePlan.getTeacher()==this.user){
-                if(!exam.hasStarted()){
-                    addQuestionButton.setVisible(true);
-                    questionBank.setVisible(true);
-                }
-                else if(exam.hasEnded()){
-                    checkResultsButton.setVisible(true);
+        //the user is the teacher
+        if (coursePlan.getTeacher() == this.user) {
+            if (!exam.hasStarted()) {
+                addQuestionButton.setVisible(true);
+                questionBank.setVisible(true);
+            } else if (exam.hasEnded()) {
+                checkResultsButton.setVisible(true);
 
-                } else if (exam.isActive()) {
-                    finishExamNowButton.setVisible(true);
-                }
-                //show questions with their answers
-                setCards(exam.getQuestions(),questionsVbox,true);
+            } else if (exam.isActive()) {
+                finishExamNowButton.setVisible(true);
             }
-            //the user is a student
-            else{
-                deleteExamButton.setVisible(false);
-                if(exam.isActive()){
-                    submitAndExit.setVisible(true);
-                    if(HelloApplication.getUserPreviousAnswersHashMap().get(this.exam)!=null){
+            //show questions with their answers
+            setCards(exam.getQuestions(), questionsVbox, true);
+        }
+        //the user is a student
+        else {
+            deleteExamButton.setVisible(false);
+            if (exam.isActive()) {
+                submitAndExit.setVisible(true);
+                //checking to see if this user has result for this exam
+                if (HelloApplication.getUserPreviousAnswersHashMap().get(this.user) != null) {
+                    if (HelloApplication.getUserPreviousAnswersHashMap().get(this.user).get(this.exam) != null)
                         setPreviousQuestionCards();
-                    }
-                    else{
-                        setCards(exam.getQuestions(),questionsVbox,false);
-                    }
+                    else
+                        setCards(exam.getQuestions(), questionsVbox, false);
 
+                } else {
+                    setCards(exam.getQuestions(), questionsVbox, false);
                 }
-                else if(exam.hasEnded()){
-                    setCards(exam.getQuestions(),questionsVbox,true);
-                    //should also show the answers of that person
-                }
+
+            } else if (exam.hasEnded()) {
+                setCards(exam.getQuestions(), questionsVbox, true);
+                //should also show the answers of that person
+            }
         }
 
 
-
     }
-    public void setDeleteExamButton(){
+
+    public void setDeleteExamButton() {
         coursePlan.getExams().remove(this.exam);
         //call back button when back button is created
         setBackButton();
     }
 
-    public void setSubmitAndExitButton(){
+    public void setSubmitAndExitButton() {
         //it fucking works :)
-        if(!exam.hasEnded()){
-            Result result = Result.addResult(this.user,this.exam);
-            for (CardController questionCard:this.questionCards) {
+        if (!exam.hasEnded()) {
+            Result result = Result.addResult(this.user, this.exam);
+            for (CardController questionCard : this.questionCards) {
                 Object answer = -1;
-                if(questionCard.question instanceof SingleAnswer){
-                    if((answer = questionCard.getChoiceComboBox().getSelectionModel().getSelectedItem())!=null){
-                        if(!answer.equals("Delete answer")){
-                            answer = Integer.parseInt((String) answer)-1;
+                if (questionCard.question instanceof SingleAnswer) {
+                    if ((answer = questionCard.getChoiceComboBox().getSelectionModel().getSelectedItem()) != null) {
+                        if (!answer.equals("Delete answer")) {
+                            answer = Integer.parseInt((String) answer) - 1;
                             System.out.println(answer);
                         }
 
                     }
 
-                }
-                else if(questionCard.question instanceof LongAnswer){
+                } else if (questionCard.question instanceof LongAnswer) {
                     String answerString = questionCard.getLongAnswerQuestionTextField().getText();
-                    answer = new LongAnswerStudentAnswer(answerString,0);
+                    answer = new LongAnswerStudentAnswer(answerString, 0);
                 }
-                result.getAnswers().put(questionCard.question,answer);
+                result.getAnswers().put(questionCard.question, answer);
             }
         }
         //going back to course page
@@ -230,7 +231,7 @@ public class ExamPageController implements Initializable {
 
     }
 
-    public void setCheckResultsButton(){
+    public void setCheckResultsButton() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("GetResult.fxml"));
         try {
             Scene scene = new Scene(loader.load());
@@ -240,11 +241,12 @@ public class ExamPageController implements Initializable {
             resultController.coursePlan = this.coursePlan;
             resultController.setLists();
             HelloApplication.mainStage.setScene(scene);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    public void setFinishExamNowButton(){
+
+    public void setFinishExamNowButton() {
         exam.setTimeEnd(LocalDateTime.now());
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -253,16 +255,23 @@ public class ExamPageController implements Initializable {
             // Now that the FXML is loaded, get the controller and set the data
             CoursePageController coursePageController = loader.getController();
             coursePageController.user = this.user;
+            coursePageController.coursePlan = this.coursePlan;
             coursePageController.setCoursePlanPage(this.coursePlan);
+
             HelloApplication.mainStage.setScene(scene);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    public void setBackButton(){
-        //set the map of exam and question card answers in the login page here after checking basic functionality
-        HelloApplication.getUserPreviousAnswersHashMap().put(this.exam,this.questionsVbox);
+
+    public void setBackButton() {
         FXMLLoader loader = new FXMLLoader();
+        //set the map of exam and question card answers in the login page here after checking basic functionality
+        if(this.user!=this.coursePlan.getTeacher()){
+            if(HelloApplication.getUserPreviousAnswersHashMap().get(this.user)==null)
+                HelloApplication.getUserPreviousAnswersHashMap().put(this.user,new HashMap<>());
+            HelloApplication.getUserPreviousAnswersHashMap().get(this.user).put(this.exam, this.questionsVbox);
+        }
 
         loader.setLocation(getClass().getResource("CoursePage.fxml"));
         try {
@@ -278,7 +287,8 @@ public class ExamPageController implements Initializable {
         }
 
     }
-    public void setAddQuestionButton(){
+
+    public void setAddQuestionButton() {
         FXMLLoader loader = new FXMLLoader();
 
         loader.setLocation(getClass().getResource("AddQuestion.fxml"));
@@ -294,7 +304,8 @@ public class ExamPageController implements Initializable {
             e.printStackTrace();
         }
     }
-    public void setQuestionBank(){
+
+    public void setQuestionBank() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("QuestionsBank.fxml"));
         try {

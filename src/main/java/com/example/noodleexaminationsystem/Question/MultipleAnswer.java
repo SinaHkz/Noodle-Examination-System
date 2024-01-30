@@ -8,12 +8,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
-@JsonSerialize
-@JsonDeserialize
 
 public class MultipleAnswer extends MultipleChoice {
     private ArrayList<Integer> answerValues;
