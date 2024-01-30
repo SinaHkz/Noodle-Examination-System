@@ -8,11 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-@JsonSerialize
-@JsonDeserialize
 public class Result {
     private User student;
     private double score = 0;

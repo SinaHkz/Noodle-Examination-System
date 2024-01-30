@@ -8,12 +8,6 @@ import com.example.noodleexaminationsystem.User.User;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
-@JsonSerialize
-@JsonDeserialize
 
 public class SingleAnswer extends MultipleChoice {
     //answer value will be the index of the answer in answers array list

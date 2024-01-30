@@ -7,7 +7,6 @@ import com.example.noodleexaminationsystem.Question.*;
 import com.example.noodleexaminationsystem.User.Result;
 import com.example.noodleexaminationsystem.User.User;
 import com.example.noodleexaminationsystem.User.UserType;
-import com.fasterxml.jackson.databind.module.SimpleModule;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -136,22 +135,6 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) {
-//        LocalDate date = LocalDate.parse("2007-12-03");
-//        User admin = User.signUp("admin", "admin", "admin", "admin", "jfeij", "src/main/resources/images/test_1_profile.jpg", date, "FEMALE", "ADMIN");
-//        Course.addCourse("OOP");
-//        Course.addCourse("Ds");
-//        try{
-//            DataBase.deserializeDataBase();
-//        }catch (Exception JsonProcessingException){
-//            JsonProcessingException.printStackTrace();
-//        }
         launch();
-        //User first = User.signUp("test" , "test" ,"admin", "admin", "jfeij", "src/main/resources/images/test_1_profile.jpg", date, "FEMALE", "MEMBER" );
-        //CoursePlan.addCoursePlan("hello" , "hello" , first , date , "ds");
-//        try {
-//            DataBase.serializeDataBase();
-//        }catch (Exception JsonProcessingException){
-//            JsonProcessingException.printStackTrace();
-//        }
     }
 }

@@ -1,5 +1,4 @@
 package com.example.noodleexaminationsystem.User;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.example.noodleexaminationsystem.Course.Course;
 import com.example.noodleexaminationsystem.Course.CoursePlan;
 import com.example.noodleexaminationsystem.Course.Exam;
@@ -8,11 +7,7 @@ import javafx.scene.chart.PieChart;
 
 import java.time.LocalDate;
 import java.util.*;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-@JsonSerialize
-@JsonDeserialize
 public class User {
     private String username;
     private String password;
@@ -24,7 +19,6 @@ public class User {
     private LocalDate dob;
     private UserType userType;
     private ArrayList<Result> results = new ArrayList<>();
-    @JsonManagedReference
     private Map<String ,CoursePlan> teacherCourses = new HashMap<>();
     private ArrayList<CoursePlan> StudentcoursePlans = new ArrayList<>();
 

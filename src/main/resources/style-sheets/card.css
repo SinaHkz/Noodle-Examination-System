@@ -46,4 +46,11 @@
     -fx-border-width: 3px;
     -fx-border-color: black;
     -fx-padding: 10px;
+    -fx-border-radius: 16px;
+    -fx-background-color: rgb(47, 77, 178,0.4);
+    -fx-background-radius: 16px;
+}
+
+.backcolor{
+
 }

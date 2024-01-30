@@ -2,14 +2,7 @@ package com.example.noodleexaminationsystem.Question;
 
 import com.example.noodleexaminationsystem.Course.Course;
 import com.example.noodleexaminationsystem.User.User;
-
 import java.util.ArrayList;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
-@JsonSerialize
-@JsonDeserialize
-
 public abstract class MultipleChoice extends Question {
     private Choice countOfChoice;
     private ArrayList<String> choices;

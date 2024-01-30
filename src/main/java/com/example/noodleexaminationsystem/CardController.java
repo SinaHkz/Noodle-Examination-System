@@ -13,10 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -51,7 +48,7 @@ public class CardController implements Initializable {
     @FXML
     private Label questionLabel;
     @FXML
-    private TextField longAnswerQuestionTextField;
+    private TextArea longAnswerQuestionTextField;
     @FXML
     private Label shortAnswerChoiceLabel;
     @FXML
@@ -149,11 +146,11 @@ public class CardController implements Initializable {
         this.questionLabel = questionLabel;
     }
 
-    public TextField getLongAnswerQuestionTextField() {
+    public TextArea getLongAnswerQuestionTextField() {
         return longAnswerQuestionTextField;
     }
 
-    public void setLongAnswerQuestionTextField(TextField longAnswerQuestionTextField) {
+    public void setLongAnswerQuestionTextField(TextArea longAnswerQuestionTextField) {
         this.longAnswerQuestionTextField = longAnswerQuestionTextField;
     }
 

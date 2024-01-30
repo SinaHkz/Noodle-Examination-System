@@ -9,9 +9,6 @@ import com.example.noodleexaminationsystem.User.User;
 
 import java.io.IOException;
 
-//@JsonSerialize
-//@JsonDeserialize
-
 public class LongAnswer extends Question {
     private String answer;
 

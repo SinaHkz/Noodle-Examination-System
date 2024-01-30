@@ -1,7 +1,6 @@
 package com.example.noodleexaminationsystem.Course;
 
 import com.example.noodleexaminationsystem.Question.LongAnswer;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import com.example.noodleexaminationsystem.Question.Question;
 import com.example.noodleexaminationsystem.User.Result;
@@ -14,7 +13,6 @@ import java.util.ArrayList;
 
 import static com.example.noodleexaminationsystem.Question.SingleAnswer.createQuestion;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Exam {
     private String examTitle;
     private LocalDateTime TimeStart;
