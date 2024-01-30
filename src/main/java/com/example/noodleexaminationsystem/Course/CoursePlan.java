@@ -4,13 +4,38 @@ import com.example.noodleexaminationsystem.DataBase;
 import com.example.noodleexaminationsystem.TrieTree.Trie;
 import com.example.noodleexaminationsystem.User.Result;
 import com.example.noodleexaminationsystem.User.User;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class CoursePlan {
+
+    public class CoursePlanMedia{
+        String subject;
+        String path;
+
+        private CoursePlanMedia(String subject, String path) {
+            this.subject = subject;
+            this.path = path;
+        }
+
+        public String getSubject() {
+            return subject;
+        }
+
+        public void setSubject(String subject) {
+            this.subject = subject;
+        }
+
+        public String getPath() {
+            return path;
+        }
+
+        public void setPath(String path) {
+            this.path = path;
+        }
+    }
+
     private Course course;
     private User teacher;
     private Exam attendedStudent;
@@ -20,7 +45,14 @@ public class CoursePlan {
     private String picturePath;
     private ArrayList<Exam> exams = new ArrayList<>();
     private Trie attendedStudentTrie = new Trie();
+    private ArrayList<CoursePlanMedia> media = new ArrayList<>();
 
+
+    //adding media to course plan
+    public void addMediaToCourse(String subject, String path){
+        CoursePlanMedia media1 = new CoursePlanMedia(subject,path);
+        this.media.add(media1);
+    }
     private CoursePlan(Course course, String name, User teacher, Exam attendedStudent, LocalDate start, String picturePath) {
         this.name = name;
         this.course = course;
@@ -103,6 +135,13 @@ public class CoursePlan {
         return activeExams;
     }
 
+    public ArrayList<CoursePlanMedia> getMedia() {
+        return media;
+    }
+
+    public void setMedia(ArrayList<CoursePlanMedia> media) {
+        this.media = media;
+    }
 
     public String getName() {
         return name;

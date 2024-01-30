@@ -32,7 +32,7 @@
                      </font>
                   </Button>
                   <FontAwesomeIconView glyphName="SIGN_OUT" layoutX="153.0" layoutY="878.0" opacity="0.66" size="24" />
-                  <Group fx:id="createExamButton">
+                  <Group fx:id="createExamButton" layoutX="3.0" layoutY="52.0">
                      <Button layoutX="58.0" layoutY="563.0" mnemonicParsing="false" onAction="#setCreateExamButton" prefHeight="39.0" prefWidth="264.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Create a new Exam">
                      <font>
                         <Font size="21.0" />
@@ -51,9 +51,8 @@
                         <Font size="29.0" />
                      </font>
                   </Label>
-                  <Button fx:id="activeExams" layoutX="54.0" layoutY="375.0" mnemonicParsing="false" onAction="#setActiveExamsButton" prefHeight="39.0" prefWidth="264.0" text="Active Exams">
+                  <Button fx:id="courseMedia" layoutX="47.0" layoutY="495.0" mnemonicParsing="false" onAction="#setCourseMediaButton" prefHeight="39.0" prefWidth="264.0" text="Course Media">
                      <styleClass>
-                        <String fx:value="selected-buttons" />
                         <String fx:value="button-hand" />
                         <String fx:value="background-transparent" />
                      </styleClass>
@@ -61,7 +60,7 @@
                         <Font size="21.0" />
                      </font>
                   </Button>
-                  <Button fx:id="archivedExams" layoutX="54.0" layoutY="446.0" mnemonicParsing="false" onAction="#setArchivedExamsButton" prefHeight="39.0" prefWidth="264.0" text="Archived Exams">
+                  <Button fx:id="archivedExams" layoutX="55.0" layoutY="429.0" mnemonicParsing="false" onAction="#setArchivedExamsButton" prefHeight="39.0" prefWidth="264.0" text="Archived Exams">
                      <font>
                         <Font size="21.0" />
                      </font>
@@ -71,7 +70,7 @@
                      </styleClass>
                   </Button>
                   <Line endX="185.0" layoutX="189.0" layoutY="844.0" opacity="0.51" startX="-189.0" />
-                  <Group fx:id="archiveCourseGroup">
+                  <Group fx:id="archiveCourseGroup" layoutX="1.0" layoutY="57.0">
                      <Button layoutX="58.0" layoutY="613.0" mnemonicParsing="false" onAction="#setArchiveCourseButton" prefHeight="39.0" prefWidth="264.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Archive Course">
                      <font>
                         <Font size="21.0" />
@@ -79,7 +78,7 @@
                   </Button>
                      <FontAwesomeIconView glyphName="TRASH" layoutX="91.0" layoutY="639.0" size="17" />
                   </Group>
-                  <Button fx:id="userManagement" layoutX="54.0" layoutY="504.0" mnemonicParsing="false" onAction="#setUserManagementButton" prefHeight="39.0" prefWidth="264.0" text="Student Management" visible="false">
+                  <Button fx:id="userManagement" layoutX="53.0" layoutY="555.0" mnemonicParsing="false" onAction="#setUserManagementButton" prefHeight="39.0" prefWidth="264.0" text="Student Management" visible="false">
                      <font>
                         <Font size="21.0" />
                      </font>
@@ -87,6 +86,16 @@
                         <String fx:value="button-hand" />
                         <String fx:value="background-transparent" />
                      </styleClass>
+                  </Button>
+                  <Button fx:id="activeExams" layoutX="55.0" layoutY="355.0" mnemonicParsing="false" onAction="#setActiveExamsButton" prefHeight="39.0" prefWidth="264.0" text="Active Exams">
+                     <styleClass>
+                        <String fx:value="selected-buttons" />
+                        <String fx:value="button-hand" />
+                        <String fx:value="background-transparent" />
+                     </styleClass>
+                     <font>
+                        <Font size="21.0" />
+                     </font>
                   </Button>
 
                </children>
@@ -97,15 +106,15 @@
    <center>
       <Pane prefHeight="800.0" prefWidth="908.0" styleClass="gradiant-color-background" BorderPane.alignment="CENTER">
          <children>
-            <ScrollPane layoutX="35.0" layoutY="39.0" prefHeight="805.0" prefWidth="1176.0" style="-fx-background-color: transparent;">
+            <ScrollPane layoutX="35.0" layoutY="69.0" prefHeight="807.0" prefWidth="1184.0" style="-fx-background-color: transparent;">
                <content>
                   <StackPane prefHeight="800.0" prefWidth="1170.0">
                      <children>
-                        <VBox fx:id="activeExamsVbox" style="-fx-spacing: 40" prefHeight="715.0" prefWidth="1214.0" spacing="15.0">
+                        <VBox fx:id="activeExamsVbox" prefHeight="715.0" prefWidth="1214.0" spacing="15.0" style="-fx-spacing: 40">
                            <children>
                               <Pane fx:id="noExamPane1" prefHeight="446.0" prefWidth="1185.0" visible="false">
                                  <children>
-                                    <Label alignment="CENTER" layoutX="509.0" layoutY="276.0" textFill="RED" >
+                                    <Label alignment="CENTER" layoutX="509.0" layoutY="276.0" textFill="RED">
                                        <font>
                                           <Font size="39.0" />
                                        </font>
@@ -121,11 +130,11 @@
                               </Pane>
                            </children>
                         </VBox>
-                        <VBox fx:id="archivedExamsVbox" style="-fx-spacing: 40" prefHeight="715.0" prefWidth="1214.0" spacing="15.0" visible="false">
+                        <VBox fx:id="archivedExamsVbox" prefHeight="715.0" prefWidth="1214.0" spacing="15.0" style="-fx-spacing: 40" visible="false">
                            <children>
-                              <Pane fx:id="noExamPane2" prefHeight="446.0" prefWidth="1185.0"  visible="false">
+                              <Pane fx:id="noExamPane2" prefHeight="446.0" prefWidth="1185.0" visible="false">
                                  <children>
-                                    <Label layoutX="509.0" layoutY="276.0" textFill="RED" >
+                                    <Label layoutX="509.0" layoutY="276.0" textFill="RED">
                                        <font>
                                           <Font size="48.0" />
                                        </font>
@@ -141,10 +150,28 @@
                               </Pane>
                            </children>
                         </VBox>
+                        <VBox fx:id="courseMediaVbox" alignment="TOP_CENTER" prefHeight="715.0" prefWidth="1214.0" spacing="15.0" visible="false">
+                           <children>
+                              <Pane fx:id="noMedia" prefHeight="446.0" prefWidth="1185.0" visible="false">
+                                 <children>
+                                    <Label layoutX="533.0" layoutY="194.0" text="No Media " textFill="RED">
+                                       <font>
+                                          <Font size="48.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </VBox>
                      </children>
                   </StackPane>
                </content>
             </ScrollPane>
+            <Button fx:id="addMedia" layoutX="1073.0" layoutY="24.0" mnemonicParsing="false" onAction="#setAddMedia" prefHeight="33.0" prefWidth="93.0" stylesheets="@../../../style-sheets/fileCard.css" text="Add Media" visible="false">
+               <styleClass>
+                  <String fx:value="download_button" />
+               </styleClass>
+            </Button>
          </children>
       </Pane>
    </center>

@@ -19,7 +19,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import java.io.FileInputStream;
+import javafx.stage.DirectoryChooser;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -31,6 +37,7 @@ public class CardController implements Initializable {
     public Question question;
     public Exam exam;
     public Course course;
+    public CoursePlan.CoursePlanMedia media;
     public VBox examPageVbox;
     public QuestionBankController questionBankController;
     public ExamPageController examPageController;
@@ -59,6 +66,11 @@ public class CardController implements Initializable {
     @FXML
     private Button plusButton;
     private List<String> hexcolors = List.of("rgb(255,255,255,0.5)", "rgb(47, 77, 178,0.3)", "rgb(142,158,213,0.4)");
+    //media card info
+    @FXML
+    private Button downloadButton;
+    @FXML
+    private Label subjectLabel;
 
     //___________________________________________________ getter/setter________________________________________________________
 
@@ -497,20 +509,6 @@ public class CardController implements Initializable {
                 System.out.println(this.examPageVbox);
                 examPageVbox.getChildren().clear();
                 setCards(this.exam.getQuestions(), examPageVbox, true);
-
-//                FXMLLoader loader = new FXMLLoader();
-//                loader.setLocation(getClass().getResource("ExamPage.fxml"));
-//                Scene scene = new Scene(loader.load());
-//
-//                // Now that the FXML is loaded, get the controller and set the data
-//                ExamPageController examPageController = loader.getController();
-//                //System.out.println(this.user);
-//                examPageController.user = this.user;
-//                examPageController.exam = this.exam;
-//                examPageController.coursePlan = this.coursePlan;
-//                examPageController.setExamPage();
-//
-//                HelloApplication.mainStage.setScene(scene);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -534,8 +532,37 @@ public class CardController implements Initializable {
         minusButton.setVisible(true);
     }
 
-    @Override
 
+    //setting course media card
+    public void setCourseMediaCard(CoursePlan.CoursePlanMedia media) {
+        subjectLabel.setText(media.getSubject());
+    }
+
+    public void setDownloadButton() {
+        //downloads media to downloads folder using its path
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        directoryChooser.setTitle("Select Target Directory");
+
+        // Open directory chooser and get user selection
+        File selectedDirectory = directoryChooser.showDialog(HelloApplication.mainStage); // Replace 'null' with a reference to your stage
+
+        if (selectedDirectory != null) {
+            try {
+                Path sourcePath = Path.of(media.getPath());
+                Path destinationPath = selectedDirectory.toPath().resolve(sourcePath.getFileName());
+
+                // Copy the file to the selected directory
+                Files.copy(sourcePath, destinationPath, StandardCopyOption.REPLACE_EXISTING);
+                System.out.println("Media file copied to: " + destinationPath);
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Handle the exception here
+            }
+        }
+    }
+
+
+    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }

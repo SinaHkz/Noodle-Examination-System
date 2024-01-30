@@ -16,7 +16,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
-
+import javafx.stage.Stage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.net.URL;
@@ -55,6 +55,12 @@ public class CoursePageController implements Initializable {
     ImageView courseImage;
 
     @FXML
+    VBox courseMediaVbox;
+    @FXML
+    Button courseMedia;
+    @FXML
+    Button addMedia;
+    @FXML
     private void setCreateExamButton() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("CreateExam.fxml"));
@@ -73,18 +79,23 @@ public class CoursePageController implements Initializable {
 
     @FXML
     private void setArchivedExamsButton() {
-
+        addMedia.setVisible(false);
+        courseMediaVbox.setVisible(false);
         activeExamsVbox.setVisible(false);
         archivedExamsVbox.setVisible(true);
         activeExams.getStyleClass().removeAll("selected-buttons");
+        courseMedia.getStyleClass().removeAll("selected-buttons");
         archivedExams.getStyleClass().addAll("selected-buttons");
     }
 
     @FXML
     private void setActiveExamsButton() {
+        addMedia.setVisible(false);
         activeExamsVbox.setVisible(true);
         archivedExamsVbox.setVisible(false);
+        courseMediaVbox.setVisible(false);
         archivedExams.getStyleClass().removeAll("selected-buttons");
+        courseMedia.getStyleClass().removeAll("selected-buttons");
         activeExams.getStyleClass().addAll("selected-buttons");
     }
 
@@ -118,10 +129,34 @@ public class CoursePageController implements Initializable {
             e.printStackTrace();
         }
     }
+    public void setCourseMediaCards(ArrayList<CoursePlan.CoursePlanMedia> coursePlanMediaArrayList,VBox cardVbox){
+        try {
+            int counter = 0;
+            for (CoursePlan.CoursePlanMedia media :coursePlanMediaArrayList ) {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("fileCard.fxml"));
+                HBox cardBox = loader.load();
+                CardController cardController = loader.getController();
+                cardController.media = media;
+                cardController.user = this.user;
+                cardController.coursePlan = this.coursePlan;
+                try {
+                    cardController.setCourseMediaCard(media);
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+                cardVbox.getChildren().add(cardBox);
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public void setCoursePlanPage(CoursePlan coursePlan) {
-        if (user == coursePlan.getTeacher())
+        if (user == coursePlan.getTeacher()){
             userManagement.setVisible(true);
+        }
         //setting exam cards
         if ((coursePlan.getEnd() != null) || (coursePlan.getTeacher() != this.user)) {
             archiveCourseGroup.setVisible(false);
@@ -130,6 +165,7 @@ public class CoursePageController implements Initializable {
         }
         ArrayList<Exam> activeExams = coursePlan.getActiveExams();
         ArrayList<Exam> archivedExams = coursePlan.getArchivedExams();
+        ArrayList<CoursePlan.CoursePlanMedia> coursePlanMediaArrayList = coursePlan.getMedia();
         if (activeExams.isEmpty())
             noExamPane1.setVisible(true);
         if (archivedExams.isEmpty())
@@ -137,6 +173,7 @@ public class CoursePageController implements Initializable {
 
         setCards(activeExams, activeExamsVbox);
         setCards(archivedExams, archivedExamsVbox);
+        setCourseMediaCards(coursePlanMediaArrayList,courseMediaVbox);
 
         try {
             teacherName.setText(coursePlan.getTeacher().getName());
@@ -203,6 +240,39 @@ public class CoursePageController implements Initializable {
             System.out.println(e);
         }
     }
+    public void setCourseMediaButton(){
+        //setting add media button visible
+        addMedia.setVisible(true);
+        activeExamsVbox.setVisible(false);
+        archivedExamsVbox.setVisible(false);
+        courseMediaVbox.setVisible(true);
+        archivedExams.getStyleClass().removeAll("selected-buttons");
+        activeExams.getStyleClass().removeAll("selected-buttons");
+        courseMedia.getStyleClass().addAll("selected-buttons");
+
+    }
+    @FXML
+    private void setAddMedia(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AddMediaPopUp.fxml"));
+        try{
+            Scene scene = new Scene(loader.load());
+            PopUpController popUpController = loader.getController();
+            popUpController.coursePlan = this.coursePlan;
+            popUpController.courseMediaVbox = this.courseMediaVbox;
+            popUpController.user = this.user;
+            //setting pop up
+            Stage stage = new Stage();
+            popUpController.stage = stage;
+            stage.setScene(scene);
+            stage.show();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
