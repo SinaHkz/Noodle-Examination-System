@@ -93,11 +93,7 @@ public class CoursePageController implements Initializable {
             for (Exam exam : exams) {
                 if (counter % 3 == 0) {
                     eachRowBox = new HBox();
-
-                    //change spacing!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     eachRowBox.setSpacing(103);
-                    //change spacing!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
                     cardVbox.getChildren().add(counter,eachRowBox);
                 }
                 FXMLLoader loader = new FXMLLoader();

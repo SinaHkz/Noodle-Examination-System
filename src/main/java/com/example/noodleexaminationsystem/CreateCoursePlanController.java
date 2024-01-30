@@ -112,7 +112,7 @@ public class CreateCoursePlanController implements Initializable {
             flag = true;
         }
         if (flag) return;
-        String course = comboBox.getSelectionModel().toString();
+        String course = comboBox.getSelectionModel().getSelectedItem().toString();
         CoursePlan.addCoursePlan(course,courseName.getText(),user,LocalDate.now(),picturePath);
         setBckButton();
 
