@@ -46,7 +46,6 @@ public class loginPageController implements Initializable {
     TextField name;
     @FXML
     TextField lastname;
-
     @FXML
     BorderPane loginPane;
     @FXML
@@ -84,6 +83,18 @@ public class loginPageController implements Initializable {
                 return;
             }
             User user = User.login(loginUsername.getText(), loginPassword.getText());
+            if(DataBase.getUsers().get(loginUsername.getText())==null){
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("popUp.fxml"));
+
+                Scene scene = new Scene(loader.load());
+                PopUpController popUpController = loader.getController();
+                popUpController.setPopUpLogin();
+                Stage stage = new Stage();
+                popUpController.stage = stage;
+                stage.setScene(scene);
+                stage.show();
+                return;
+            }
             if (user == null) {
                 incorrectPassLabel.setVisible(true);
                 return;
@@ -97,9 +108,6 @@ public class loginPageController implements Initializable {
                 // Now that the FXML is loaded, get the controller and set the data
                 HomePageController homePageController = loader.getController();
                 homePageController.user = user;
-                if(user== DataBase.users.get("teacher")){
-                    System.out.println("yaaay");
-                }
                 homePageController.setHomePage(user);
                 HelloApplication.mainStage.setScene(scene);
             } catch (Exception e) {

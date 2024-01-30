@@ -5,11 +5,10 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<Pane fx:controller="com.example.noodleexaminationsystem.PopUpController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.noodleexaminationsystem.PopUpController">
    <children>
-      <Label layoutX="31.0" layoutY="29.0" text="User successfully added" />
-      <Button onAction="#setPopUpButton" layoutX="47.0" layoutY="62.0" mnemonicParsing="false" prefHeight="14.0" prefWidth="109.0" text="OK!">
+      <Label fx:id="text" alignment="CENTER" layoutX="31.0" layoutY="29.0" text="User successfully added" />
+      <Button layoutX="47.0" layoutY="62.0" mnemonicParsing="false" onAction="#setPopUpButton" prefHeight="14.0" prefWidth="109.0" text="OK!">
          <font>
             <Font size="10.0" />
          </font>

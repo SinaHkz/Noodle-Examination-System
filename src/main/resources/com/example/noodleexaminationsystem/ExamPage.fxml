@@ -20,7 +20,7 @@
             <Pane layoutX="-22.0" layoutY="-1.0" prefHeight="900.0" prefWidth="376.0">
                <children>
 
-                  <Group fx:id="submitAndExit" visible="false">
+                  <Group fx:id="submitAndExit" layoutX="-6.0" layoutY="-50.0" visible="false">
                      <Button layoutX="22.0" layoutY="854.0" mnemonicParsing="false" onAction="#setSubmitAndExitButton" prefHeight="44.0" prefWidth="352.0" style="-fx-background-color: transparent;" styleClass="button-hand" text="Submit &amp; Exit">
                      <font>
                         <Font size="24.0" />

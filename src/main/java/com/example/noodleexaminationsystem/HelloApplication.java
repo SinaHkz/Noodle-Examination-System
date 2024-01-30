@@ -83,8 +83,8 @@ public class HelloApplication extends Application {
             Result result = Result.addResult(admin,sampleExam);
             Result result1 = Result.addResult(admin2,sampleExam);
 
-            LocalDate activeDay = LocalDate.parse("2024-01-29");
-            LocalDateTime activeExamStart = activeDay.atTime(22,10,30);
+            LocalDate activeDay = LocalDate.parse("2024-01-30");
+            LocalDateTime activeExamStart = activeDay.atTime(8,10,30);
             LocalDateTime activeExamEnd = activeDay.atTime(23,59,59);
 
             Exam activeExam = Exam.createExam(coursePlan,"activeExam",activeExamStart,activeExamEnd);
