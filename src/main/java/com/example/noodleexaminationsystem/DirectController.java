@@ -16,6 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 
 import java.io.FileInputStream;
 import java.net.URL;
@@ -50,6 +51,8 @@ public class DirectController implements Initializable {
     private Label age;
     @FXML
     private VBox profileVbox;
+    @FXML
+    private Button attachment;
 
 
     public void setListView() {
@@ -133,6 +136,7 @@ public class DirectController implements Initializable {
         chatBox.setVisible(true);
         listView.setVisible(false);
         messageTextField.setVisible(true);
+        attachment.setVisible(true);
         sendButton.setVisible(true);
 
     }
@@ -140,6 +144,7 @@ public class DirectController implements Initializable {
     public void setSearchButton() {
         openedDirectUser = null;
         messageTextField.setVisible(false);
+        attachment.setVisible(false);
         sendButton.setVisible(false);
         String inp = searchedUsernameTextField.getText();
         List<String> usernames = DataBase.usernameTrie.findIncompleteWords(inp);
@@ -159,6 +164,7 @@ public class DirectController implements Initializable {
         openedDirectUser = null;
         setListView();
         messageTextField.setVisible(false);
+        attachment.setVisible(false);
         sendButton.setVisible(false);
         openDirect.setVisible(true);
         directList.setVisible(false);
@@ -191,6 +197,22 @@ public class DirectController implements Initializable {
             }
             chatBox.getChildren().add(hBox);
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void setAddMedia(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AddMediaPopUp.fxml"));
+        try{
+            Scene scene = new Scene(loader.load());
+            PopUpController popUpController = loader.getController();
+            //setting pop up
+            Stage stage = new Stage();
+            popUpController.stage = stage;
+            stage.setScene(scene);
+            stage.show();
+        }catch (Exception e){
             e.printStackTrace();
         }
     }

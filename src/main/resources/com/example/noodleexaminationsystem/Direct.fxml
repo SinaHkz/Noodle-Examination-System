@@ -113,16 +113,6 @@
                                      <String fx:value="check-btn" />
                                  </styleClass>
                              </Button>
-                             <Button fx:id="courseUserButton" layoutX="491.0" layoutY="826.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="50.0" prefWidth="352.0" text="Course users" visible="false">
-                                 <font>
-                                     <Font size="26.0" />
-                                 </font>
-                           <styleClass>
-                              <String fx:value="toggle-button" />
-                              <String fx:value="button-hand" />
-                              <String fx:value="toggle-button-darker" />
-                           </styleClass>
-                             </Button>
                         <TextField fx:id="searchedUsernameTextField" layoutX="49.0" layoutY="27.0" prefHeight="29.0" prefWidth="753.0" promptText="Serach username...">
                            <font>
                               <Font size="15.0" />
@@ -140,12 +130,12 @@
                   </Group>
                </children>
             </StackPane>
-            <TextField fx:id="messageTextField" layoutX="44.0" layoutY="819.0" prefHeight="42.0" prefWidth="1009.0" promptText="Message" visible="false">
+            <TextField fx:id="messageTextField" layoutX="44.0" layoutY="819.0" prefHeight="42.0" prefWidth="961.0" promptText="Message" visible="false">
                <font>
                   <Font size="21.0" />
                </font>
             </TextField>
-            <Button fx:id="sendButton" layoutX="1068.0" layoutY="824.0" mnemonicParsing="false" onAction="#setSendButton" prefHeight="31.0" prefWidth="126.0" text="Send" visible="false">
+            <Button fx:id="sendButton" layoutX="1068.0" layoutY="820.0" mnemonicParsing="false" onAction="#setSendButton" prefHeight="35.0" prefWidth="126.0" text="Send" visible="false">
                <font>
                   <Font size="17.0" />
                </font>
@@ -153,6 +143,15 @@
                   <String fx:value="button-hand" />
                   <String fx:value="check-btn" />
                </styleClass>
+            </Button>
+            <Button fx:id="attachment" layoutX="1015.0" layoutY="819.0" mnemonicParsing="false" onAction="#setAddMedia" prefHeight="35.0" prefWidth="43.0" visible="false">
+               <styleClass>
+                  <String fx:value="button-hand" />
+                  <String fx:value="check-btn" />
+               </styleClass>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="PAPERCLIP" size="25" />
+               </graphic>
             </Button>
             </children>
         </Pane>

@@ -1,6 +1,7 @@
 package com.example.noodleexaminationsystem;
 
 
+import com.example.noodleexaminationsystem.Direct.MediaMessage;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -71,6 +72,27 @@ public class PopUpController implements Initializable {
             e.printStackTrace();
         }
     }
+
+
+    public void setMessageMediaCards(MediaMessage message,VBox chatBox){
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("MediaMessage.fxml"));
+            HBox cardBox = loader.load();
+            MediaMessageController mediaMessageController = loader.getController();
+            try {
+                mediaMessageController.setMessage(message.getMessage());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            chatBox.getChildren().add(cardBox);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
     public void setAddMediaButton(){
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Movie File");
