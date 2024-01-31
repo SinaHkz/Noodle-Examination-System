@@ -383,6 +383,9 @@ public class HelloApplication extends Application {
             //testing media page
 //            coursePlan.addMediaToCourse("first media", "jeijfij");
 //            coursePlan.addMediaToCourse("second media", "flijdeufli");
+
+
+
             //______________________________________
 //            mainCoursePlan=coursePlan;
             //first scene

@@ -150,19 +150,7 @@
                               </Pane>
                            </children>
                         </VBox>
-                        <VBox fx:id="courseMediaVbox" alignment="TOP_CENTER" prefHeight="715.0" prefWidth="1214.0" spacing="15.0" visible="false">
-                           <children>
-                              <Pane fx:id="noMedia" prefHeight="446.0" prefWidth="1185.0" visible="false">
-                                 <children>
-                                    <Label layoutX="533.0" layoutY="194.0" text="No Media " textFill="RED">
-                                       <font>
-                                          <Font size="48.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </Pane>
-                           </children>
-                        </VBox>
+                        <VBox fx:id="courseMediaVbox" alignment="TOP_CENTER" prefHeight="715.0" prefWidth="1214.0" spacing="15.0" visible="false" />
                      </children>
                   </StackPane>
                </content>
