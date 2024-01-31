@@ -36,11 +36,14 @@ public class ResultController implements Initializable {
     public Exam exam;
     public CoursePlan coursePlan;
     public User student = null;
+    double score =0;
 
     static HashMap<Question, TextField> cardControllers = new HashMap<>();
 
     @FXML
     private ListView listView;
+    @FXML
+    private Label scoreLabel;
     @FXML
     private VBox resultBox;
     @FXML
@@ -89,6 +92,7 @@ public class ResultController implements Initializable {
 //                    create new text field to get score
                     TextField newTextField = new TextField();
                     newTextField.setPromptText("Score");
+                    score += ((LongAnswerStudentAnswer) result.getAnswers().get(question)).getScore();
                     newTextField.setText(Double.toString(((LongAnswerStudentAnswer) result.getAnswers().get(question)).getScore()));
                     cardControllers.put(question, newTextField);
                     eachQuestionBox.getChildren().add(newTextField);
@@ -103,8 +107,9 @@ public class ResultController implements Initializable {
                     HBox eachQuestionBox = loader.load();
                     CardController cardController = loader.getController();
                     TextField newTextField = new TextField();
-                    if (checkMultipleChoiceAnswer(result, (SingleAnswer) question))
-                        newTextField.setText("True");
+                    if (checkMultipleChoiceAnswer(result, (SingleAnswer) question)){
+                        score += 1;
+                        newTextField.setText("True");}
                     else
                         newTextField.setText("False");
                     newTextField.setEditable(false);
@@ -121,6 +126,8 @@ public class ResultController implements Initializable {
         checkButton.setVisible(false);
         resultBox.setVisible(true);
         listView.setVisible(false);
+        scoreLabel.setVisible(true);
+        scoreLabel.setText("score:"+ score);
     }
 
     public static boolean checkMultipleChoiceAnswer(Result result, SingleAnswer question) {

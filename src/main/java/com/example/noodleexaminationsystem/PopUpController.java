@@ -45,7 +45,7 @@ public class PopUpController implements Initializable {
         text.setText("Exam isn't active");
     }
     public void sethaveattend(){
-        text.setText("you have already attended exam");
+        text.setText("you've attended exam");
     }
 
     //setting add course media pop up

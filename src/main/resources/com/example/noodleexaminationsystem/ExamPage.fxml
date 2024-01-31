@@ -118,6 +118,11 @@
                         <String fx:value="top-buttons" />
                      </styleClass>
                   </Button>
+                  <Label fx:id="scoreLabel" alignment="CENTER" layoutX="57.0" layoutY="319.0" prefHeight="46.0" prefWidth="267.0" text="score" visible="false">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
          </children>

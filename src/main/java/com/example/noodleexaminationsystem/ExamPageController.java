@@ -26,6 +26,7 @@ public class ExamPageController implements Initializable {
     Exam exam;
     CoursePlan coursePlan;
     ArrayList<CardController> questionCards = new ArrayList<>();
+    double score =0;
 
     @FXML
     Label examTitleLabel;
@@ -33,6 +34,8 @@ public class ExamPageController implements Initializable {
     Button startDateButton;
     @FXML
     Button endDateButton;
+    @FXML
+    Label scoreLabel;
     @FXML
     Button examButton;
     @FXML
@@ -83,6 +86,7 @@ public class ExamPageController implements Initializable {
                                 TextField textField = new TextField();
                                 if (ResultController.checkMultipleChoiceAnswer(studentResult, (SingleAnswer) question)) {
                                     textField.setText("True");
+                                    score += 1;
                                     eachQuestionBox.setStyle("-fx-background-color: rgba(62,224,62,0.3)");
                                 } else {
                                     textField.setText("False");
@@ -126,6 +130,7 @@ public class ExamPageController implements Initializable {
 
                                 TextField textField = new TextField();
                                 textField.setPromptText("Score");
+                                score += (((LongAnswerStudentAnswer) studentResult.getAnswers().get(question)).getScore());
                                 textField.setText(Double.toString(((LongAnswerStudentAnswer) studentResult.getAnswers().get(question)).getScore()));
                                 cardController.setLongAnswerQuestionCardWithUserAnswer((LongAnswer) question, ((LongAnswerStudentAnswer) studentResult.getAnswers().get(question)).getStudentAnswer());
                                 eachQuestionBox.getChildren().add(textField);
@@ -193,6 +198,8 @@ public class ExamPageController implements Initializable {
             } else if (exam.hasEnded()) {
                 setCards(exam.getQuestions(), questionsVbox, true);
                 //should also show the answers of that person
+                scoreLabel.setVisible(true);
+                scoreLabel.setText("score: "+ score);
             }
         }
 
