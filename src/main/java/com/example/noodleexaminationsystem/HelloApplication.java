@@ -4,7 +4,6 @@ import com.example.noodleexaminationsystem.Course.Course;
 import com.example.noodleexaminationsystem.Course.CoursePlan;
 import com.example.noodleexaminationsystem.Course.Exam;
 import com.example.noodleexaminationsystem.Direct.Direct;
-import com.example.noodleexaminationsystem.Direct.Message;
 import com.example.noodleexaminationsystem.Question.*;
 import com.example.noodleexaminationsystem.User.Result;
 import com.example.noodleexaminationsystem.User.User;
@@ -73,7 +72,7 @@ public class HelloApplication extends Application {
             User admin6 = User.signUp("Alice", "Alice12345", "Alice", "Cooper", "AliceCooper@gmail.com", "src/main/resources/images/R (1).jpeg", date, "FEMALE", "ADMIN");
             User teacher1=User.signUp("Shiva" , "Shivi1122" ,"Shiva" , "Zare" , "ShivaZare@gmail.com" ,"src/main/resources/images/R.jpeg",date ,"FEMALE" ,"MEMBER" );
             User teacher2=User.signUp("Setayesh" , "Setayesh1234" ,"Setayesh" , "Saeedi" , "SetayeshSaeedi@gmail.com" ,"src/main/resources/images/OIP.jpeg",date ,"FEMALE" ,"MEMBER" );
-            User teacher3=User.signUp("Raha" , "Raha1234" ,"Raha" , "Rahmanian" , "RahaRahmanian@gmail.com" ,"src/main/resources/images/OIP (1).jpeg",date ,"FEMALE" ,"MEMBER" );
+            User teacher3=User.signUp("raha" , "raha123" ,"Raha" , "Rahmanian" , "RahaRahmanian@gmail.com" ,"src/main/resources/images/OIP (1).jpeg",date ,"FEMALE" ,"MEMBER" );
             User teacher4=User.signUp("Sina" , "Sina112233" ,"Sina" , "Hakimzadeh" , "SinaHakimzadeh@gmail.com" ,"src/main/resources/images/R.jpeg",date ,"MALE" ,"MEMBER" );
             User teacher5=User.signUp("ADAM" , "Sina112233" ,"Adam" , "Hadid" , "AdamHadid@gmail.com" ,"src/main/resources/images/R.jpeg",date ,"MALE" ,"MEMBER" );
             User teacher6=User.signUp("Hana" , "Sina112233" ,"Hana" , "Rohbi" , "HanaRohbi@gmail.com" ,"src/main/resources/images/R.jpeg",date ,"MALE" ,"MEMBER" );
@@ -99,53 +98,53 @@ public class HelloApplication extends Application {
             User student20 = User.signUp("Diane", "Diane24680", "Diane", "Hernandez", "diane.hernandez@email.com", "path/to/image20.jpeg", date, "FEMALE", "MEMBER");
             //----------------------------------------------------------courses-----------------------------------------------------------------------------------------
             Course.addCourse("OOP");
-            Course.addCourse("DataStructure");
-            Course.addCourse("DataBase");
-            Course.addCourse("SignalAndSystems");
-            Course.addCourse("LogicCircuit");
+            Course.addCourse("Data Structure");
+            Course.addCourse("Data Base");
+            Course.addCourse("Signal And Systems");
+            Course.addCourse("Logic Circuit");
             Course.addCourse("Physics");
             Course.addCourse("Mathematics");
             Course.addCourse("Calculus1");
             Course.addCourse("Calculus2");
-            Course.addCourse("EngineeringProbabilityAndStatics");
-            Course.addCourse("DiscreteMathematics");
-            Course.addCourse("ComputerArchitecture");
-            Course.addCourse("ElectronicCircuit");
-            Course.addCourse("ArtificialIntelligence");
-            Course.addCourse("DifferentialEquation");
+            Course.addCourse("Computer Lab");
+            Course.addCourse("Discrete Mathematics");
+            Course.addCourse("Computer Architecture");
+            Course.addCourse("Electronic Circuit");
+            Course.addCourse("AI");
+            Course.addCourse("Differential Equation");
             Course.addCourse("OS");
             Course.addCourse("Compiler");
             Course.addCourse("Assembly");
             //-----------------------------------------------------------course plan------------------------------------------------------------------------
             CoursePlan coursePlan = CoursePlan.addCoursePlan("OOP","OOP",teacher2,LocalDate.parse("2023-12-03"),"fj");
             coursePlan.setEnd(LocalDate.parse("2023-12-03"));
-            CoursePlan coursePlan1 = CoursePlan.addCoursePlan("DataStructure","DS",teacher2, LocalDate.now(),"fj");
+            CoursePlan coursePlan1 = CoursePlan.addCoursePlan("Data Structure","DS",teacher2, LocalDate.now(),"fj");
             CoursePlan coursePlan2 = CoursePlan.addCoursePlan("Compiler","COMPILER",teacher2,LocalDate.now(),"fj");
             CoursePlan coursePlan3 = CoursePlan.addCoursePlan("Calculus2","Calculus",teacher4,LocalDate.now(),"fj");
-            CoursePlan coursePlan4 = CoursePlan.addCoursePlan("DataStructure","DS",teacher4,LocalDate.now(),"fj");
-            CoursePlan coursePlan5 = CoursePlan.addCoursePlan("ArtificialIntelligence","AI",teacher5,LocalDate.now(),"fj");
-            CoursePlan coursePlan6 = CoursePlan.addCoursePlan("DataBase","DB",teacher5,LocalDate.now(),"fj");
+            CoursePlan coursePlan4 = CoursePlan.addCoursePlan("Data Structure","DS",teacher4,LocalDate.now(),"fj");
+            CoursePlan coursePlan5 = CoursePlan.addCoursePlan("AI","AI",teacher5,LocalDate.now(),"fj");
+            CoursePlan coursePlan6 = CoursePlan.addCoursePlan("Data Base","DB",teacher5,LocalDate.now(),"fj");
             CoursePlan coursePlan7 = CoursePlan.addCoursePlan("OOP","OOP",teacher5,LocalDate.now(),"fj");
-            CoursePlan coursePlan8 = CoursePlan.addCoursePlan("LogicCircuit","LC",teacher5,LocalDate.now(),"fj");
-            CoursePlan coursePlan9 = CoursePlan.addCoursePlan("Compiler","Complier",teacher6,LocalDate.now(),"fj");
+            CoursePlan coursePlan8 = CoursePlan.addCoursePlan("Logic Circuit","LC",teacher5,LocalDate.now(),"fj");
+            CoursePlan coursePlan9 = CoursePlan.addCoursePlan("Compiler","Compiler",teacher6,LocalDate.now(),"fj");
             CoursePlan coursePlan10 = CoursePlan.addCoursePlan("OOP","OOP",teacher6,LocalDate.now(),"fj");
             CoursePlan coursePlan11 = CoursePlan.addCoursePlan("OS","AI",teacher6,LocalDate.now(),"fj");
             CoursePlan coursePlan12 = CoursePlan.addCoursePlan("Assembly","ASM",teacher6,LocalDate.now(),"fj");
-            CoursePlan coursePlan13 = CoursePlan.addCoursePlan("DiscreteMathematics","AI",teacher3,LocalDate.now(),"fj");
-            CoursePlan coursePlan14 = CoursePlan.addCoursePlan("EngineeringProbabilityAndStatics","EngineeringProbabilityAndStatics",teacher3,LocalDate.now(),"fj");
+            CoursePlan coursePlan13 = CoursePlan.addCoursePlan("Discrete Mathematics","AI",teacher3,LocalDate.now(),"fj");
+            CoursePlan coursePlan14 = CoursePlan.addCoursePlan("Computer Lab","Computer Lab",teacher3,LocalDate.now(),"fj");
             //-----------------------------------------------------------exams--------------------------------------------------------------------
             LocalDate activeDay = LocalDate.now();
             LocalDateTime activeExamStart = activeDay.atTime(00,00,00);
             LocalDateTime activeExamEnd = activeDay.atTime(23,59,59);
             Exam sampleExam = Exam.createExam(coursePlan,"OOP",activeExamStart,activeExamEnd);
             Exam exam1 = Exam.createExam(coursePlan10, "OOP", activeExamStart, activeExamEnd);
-            Exam exam2 = Exam.createExam(coursePlan4, "DataStructure", activeExamStart, activeExamEnd);
-            Exam exam3 = Exam.createExam(coursePlan6, "DataBase", activeExamStart, activeExamEnd);
-            Exam exam5 = Exam.createExam(coursePlan8, "LogicCircuit", activeExamStart, activeExamEnd);
+            Exam exam2 = Exam.createExam(coursePlan4, "Data Structure", activeExamStart, activeExamEnd);
+            Exam exam3 = Exam.createExam(coursePlan6, "Data Base", activeExamStart, activeExamEnd);
+            Exam exam5 = Exam.createExam(coursePlan8, "Logic Circuit", activeExamStart, activeExamEnd);
             Exam exam9 = Exam.createExam(coursePlan3, "Calculus2", activeExamStart, activeExamEnd);
-            Exam exam10 = Exam.createExam(coursePlan14, "EngineeringProbabilityAndStatics", activeExamStart, activeExamEnd);
-            Exam exam11 = Exam.createExam(coursePlan13, "DiscreteMathematics", activeExamStart, activeExamEnd);
-            Exam exam14 = Exam.createExam(coursePlan5, "ArtificialIntelligence", activeExamStart, activeExamEnd);
+            Exam exam10 = Exam.createExam(coursePlan14, "Computer Lab", activeExamStart, activeExamEnd);
+            Exam exam11 = Exam.createExam(coursePlan13, "Discrete Mathematics", activeExamStart, activeExamEnd);
+            Exam exam14 = Exam.createExam(coursePlan5, "AI", activeExamStart, activeExamEnd);
             Exam exam15 = Exam.createExam(coursePlan11, "OS", activeExamStart, activeExamEnd);
             Exam exam17 = Exam.createExam(coursePlan9, "Compiler", activeExamStart, activeExamEnd);
             Exam exam18 = Exam.createExam(coursePlan12, "Assembly", activeExamStart, activeExamEnd);
@@ -229,11 +228,11 @@ public class HelloApplication extends Application {
             lcMCQAnswers.add("OR gate");
             lcMCQAnswers.add("NOR gate");
             lcMCQAnswers.add("XOR gate");
-            SingleAnswer lcMCQQuestion = new SingleAnswer(DataBase.getCourses().get("LogicCircuit"),
+            SingleAnswer lcMCQQuestion = new SingleAnswer(DataBase.getCourses().get("Logic Circuit"),
                     "Which logic gate outputs true only when both inputs are different?", admin, 4, lcMCQAnswers);
 
 // Long answer question
-            LongAnswer lcLAQuestion = new LongAnswer(DataBase.getCourses().get("LogicCircuit"),
+            LongAnswer lcLAQuestion = new LongAnswer(DataBase.getCourses().get("Logic Circuit"),
                     "Describe the operation of a flip-flop circuit.", admin, "A flip-flop is a bistable circuit, having two stable states which can be used to store state information.");
             // Multiple-choice question
             ArrayList<String> dbMCQAnswers = new ArrayList<>();
@@ -241,11 +240,11 @@ public class HelloApplication extends Application {
             dbMCQAnswers.add("Foreign Key");
             dbMCQAnswers.add("Unique Key");
             dbMCQAnswers.add("Secondary Key");
-            SingleAnswer dbMCQQuestion = new SingleAnswer(DataBase.getCourses().get("Database"),
+            SingleAnswer dbMCQQuestion = new SingleAnswer(DataBase.getCourses().get("Data base"),
                     "Which type of key establishes a link between two tables in a relational database?", admin, 2, dbMCQAnswers);
 
 // Long answer question
-            LongAnswer dbLAQuestion = new LongAnswer(DataBase.getCourses().get("Database"),
+            LongAnswer dbLAQuestion = new LongAnswer(DataBase.getCourses().get("Data base"),
                     "Explain the concept of 'Normalization' in relational database design.", admin, "Normalization is a process in database design used to organize data to reduce redundancy and improve data integrity.");
             // Multiple-choice question
             ArrayList<String> dsMCQAnswers = new ArrayList<>();
@@ -269,7 +268,7 @@ public class HelloApplication extends Application {
 
 // Example for Data Structures Course
             LongAnswer dsQuestion = new LongAnswer(
-                    DataBase.getCourses().get("DataStructure"),
+                    DataBase.getCourses().get("Data Structure"),
                     "Describe how a binary search tree (BST) works and its average-case time complexity for search operations.",
                     admin,
                     "A BST is a tree data structure where each node has at most two children. The left child's value is less than the parent's, and the right child's value is greater. Average-case complexity for search is O(log n)."
@@ -277,7 +276,7 @@ public class HelloApplication extends Application {
 
 // Example for Database Course
             LongAnswer dbQuestion = new LongAnswer(
-                    DataBase.getCourses().get("DataBase"),
+                    DataBase.getCourses().get("Data Base"),
                     "Explain the concept of 'Normalization' in relational databases.",
                     admin,
                     "Normalization is a process of organizing data to minimize redundancy. It involves dividing large tables into smaller, less redundant ones, linked by relationships, thereby improving database efficiency and integrity."
@@ -301,43 +300,43 @@ public class HelloApplication extends Application {
                     "Polymorphism in OOP allows objects of different classes to be treated as objects of a common superclass. It enables a single interface to represent different underlying forms (data types). This is achieved through method overriding and interface implementation. Polymorphism simplifies code maintenance and improves reusability by allowing the same interface to be used on different underlying forms, leading to more flexible and scalable software design."
             );
             LongAnswer aiQuestion4 = new LongAnswer(
-                    DataBase.getCourses().get("ArtificialIntelligence"),
+                    DataBase.getCourses().get("AI"),
                     "How might AI influence the development of future technologies? Provide examples.",
                     admin,
                     "AI is expected to be a key driver in future technological advancements. It could lead to significant breakthroughs in healthcare through personalized medicine and early diagnosis, enhance automation in industries with intelligent robotics, and revolutionize transportation with autonomous vehicles. AI is also poised to impact environmental monitoring, smart cities, and personalized education. However, its development must be managed responsibly to address potential risks and ethical concerns."
             );
             LongAnswer aiQuestion3 = new LongAnswer(
-                    DataBase.getCourses().get("ArtificialIntelligence"),
+                    DataBase.getCourses().get("AI"),
                     "Discuss the ethical considerations and challenges in AI.",
                     admin,
                     "AI ethics concerns the moral implications and decisions made during the development and use of AI technologies. Key ethical challenges include bias and fairness, where AI systems may perpetuate societal biases; privacy and surveillance, as AI can be used to process large amounts of personal data; and autonomy and job displacement, where AI automation could replace human roles. The development of AI must consider these factors to ensure fair, safe, and responsible use that benefits society while minimizing harm."
             );
             LongAnswer aiQuestion2 = new LongAnswer(
-                    DataBase.getCourses().get("ArtificialIntelligence"),
+                    DataBase.getCourses().get("AI"),
                     "Explain the concept of neural networks and their significance in deep learning.",
                     admin,
                     "Neural networks are a series of algorithms modeled loosely after the human brain, designed to recognize patterns and interpret sensory data through machine perception, labeling, and clustering. They consist of layers of interconnected nodes, each performing a simple operation on the input data. Deep learning involves neural networks with many layers, enabling the learning of complex patterns in large amounts of data. Deep neural networks are fundamental in advanced AI applications such as computer vision, natural language processing, and autonomous vehicles."
             );
             LongAnswer dbQuestion1 = new LongAnswer(
-                    DataBase.getCourses().get("DataBase"),
+                    DataBase.getCourses().get("Data Base"),
                     "Describe the relational database model and its advantages over other database models.",
                     admin,
                     "The relational database model organizes data into one or more tables of columns and rows, with a unique key identifying each row. Rows in different tables can be linked using foreign keys. The primary advantages include flexibility, simplicity, data integrity, and the ability to use powerful query languages like SQL. It's efficient for managing large volumes of data and is well-suited for complex queries and reporting."
             );
             LongAnswer dbQuestion2 = new LongAnswer(
-                    DataBase.getCourses().get("DataBase"),
+                    DataBase.getCourses().get("Data Base"),
                     "Explain the ACID properties of a transaction in a database system.",
                     admin,
                     "ACID stands for Atomicity, Consistency, Isolation, and Durability. Atomicity ensures that all parts of a transaction are completed; if one part fails, the entire transaction fails. Consistency ensures that a transaction only brings the database from one valid state to another. Isolation ensures that concurrent transactions do not affect each other. Durability ensures that once a transaction is committed, it remains so, even in the event of a system failure."
             );
             LongAnswer dsQuestion1 = new LongAnswer(
-                    DataBase.getCourses().get("DataStructure"),
+                    DataBase.getCourses().get("Data Structure"),
                     "Describe the graph data structure and its applications.",
                     admin,
                     "A graph data structure consists of a finite set of nodes (or vertices) and a set of edges connecting these nodes. Graphs can be directed or undirected. They are widely used in various applications like social networks, network broadcasting, pathfinding algorithms in maps, and web crawling. Graphs are pivotal in solving complex computational problems involving relationships and connections."
             );
             LongAnswer dsQuestion2 = new LongAnswer(
-                    DataBase.getCourses().get("DataStructure"),
+                    DataBase.getCourses().get("Data Structure"),
                     "Explain how a hash table works and discuss its performance in terms of complexity.",
                     admin,
                     "A hash table stores key-value pairs and uses a hash function to compute an index into an array of buckets or slots, from which the desired value can be found. Ideally, the hash function assigns each key to a unique bucket, but most hash table designs employ some form of collision resolution. In terms of complexity, hash tables offer constant time O(1) for search, insertion, and deletion on average, but poor hash functions can lead to O(n) time in the worst case."

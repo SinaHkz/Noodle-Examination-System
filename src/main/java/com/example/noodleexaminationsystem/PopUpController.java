@@ -75,7 +75,7 @@ public class PopUpController implements Initializable {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Movie File");
         // Set extension filters for movie files
-        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Movie Files","*.pdf", "*.mp4", "*.avi", "*.mkv");
+        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Movie Files","*.wav","*.zip","*.png","*.jpg","*.jpeg","*.pdf", "*.mp4", "*.avi", "*.mkv");
         fileChooser.getExtensionFilters().add(filter);
 
         // Show the open dialog and wait for a movie file to be selected
