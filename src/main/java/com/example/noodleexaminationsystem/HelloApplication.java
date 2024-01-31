@@ -362,6 +362,38 @@ public class HelloApplication extends Application {
             exam2.addQuestion(dsQuestion);
             exam2.addQuestion(dsLAQuestion);
             exam2.addQuestion(dsMCQQuestion);
+
+
+            ArrayList<Question> arr = new ArrayList<>();
+            arr.add(oopQuestion);
+            arr.add(oopQuestion1);
+            arr.add(oopQuestion2);
+            arr.add(oopQuestion4);
+            arr.add(oopQuestion3);
+            arr.add(aiLAQuestion);
+            arr.add(aiMCQQuestion);
+            arr.add(aiQuestion2);
+            arr.add(aiQuestion4);
+            arr.add(aiQuestion3);
+            arr.add(dbQuestion);
+            arr.add(dbLAQuestion);
+            arr.add(dbQuestion1);
+            arr.add(dbQuestion2);
+            arr.add(dsQuestion2);
+            arr.add(dsQuestion1);
+            arr.add(dsQuestion);
+            arr.add(dsLAQuestion);
+            arr.add(dsMCQQuestion);
+            for (Question question1:arr)
+                try {
+                    DataBase.getQuestions().get(question1.getCourse()).add(question1);
+                }catch (Exception e){
+                    DataBase.getQuestions().put(question1.getCourse(),new ArrayList<Question>());
+                    DataBase.getQuestions().get(question1.getCourse()).add(question1);
+                }
+
+
+
 //            result.getAnswers().put(result.getExam().getQuestions().get(0),0);
 //            result.getAnswers().put(result.getExam().getQuestions().get(1),new LongAnswerStudentAnswer("HORAAAAAAAAAAAAAAAAAAAAA",0));
 
