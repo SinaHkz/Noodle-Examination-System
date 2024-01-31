@@ -233,7 +233,23 @@ public class DirectController implements Initializable {
             System.out.println(e);
         }
     }
-
+    public void setAttachmentButton(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AddMediaPopUp.fxml"));
+        try{
+            Scene scene = new Scene(loader.load());
+            PopUpController popUpController = loader.getController();
+            popUpController.directPageVbox = this.chatBox;
+            popUpController.user = this.previousUser;
+            //popUpController.text.setText("Please enter your message");
+            //setting pop up
+            Stage stage = new Stage();
+            popUpController.stage = stage;
+            stage.setScene(scene);
+            stage.show();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
