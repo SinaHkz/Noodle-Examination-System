@@ -130,7 +130,7 @@ public class HelloApplication extends Application {
             CoursePlan coursePlan10 = CoursePlan.addCoursePlan("OOP","OOP",teacher6,LocalDate.now(),"fj");
             CoursePlan coursePlan11 = CoursePlan.addCoursePlan("OS","AI",teacher6,LocalDate.now(),"fj");
             CoursePlan coursePlan12 = CoursePlan.addCoursePlan("Assembly","ASM",teacher6,LocalDate.now(),"fj");
-            CoursePlan coursePlan13 = CoursePlan.addCoursePlan("Discrete Mathematics","AI",teacher3,LocalDate.now(),"fj");
+            CoursePlan coursePlan13 = CoursePlan.addCoursePlan("Discrete Mathematics","Discrete Mathematics",teacher3,LocalDate.now(),"fj");
             CoursePlan coursePlan14 = CoursePlan.addCoursePlan("Computer Lab","Computer Lab",teacher3,LocalDate.now(),"fj");
             //-----------------------------------------------------------exams--------------------------------------------------------------------
             LocalDate activeDay = LocalDate.now();
