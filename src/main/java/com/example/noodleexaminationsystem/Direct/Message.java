@@ -8,7 +8,7 @@ public class Message {
     boolean isSeen = false;
 
 
-    private Message(String message, User sender) {
+    public Message(String message, User sender) {
         this.message = message;
         this.sender = sender;
     }

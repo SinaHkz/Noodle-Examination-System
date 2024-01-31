@@ -3,6 +3,7 @@ package com.example.noodleexaminationsystem;
 import com.example.noodleexaminationsystem.Course.Course;
 import com.example.noodleexaminationsystem.Course.CoursePlan;
 import com.example.noodleexaminationsystem.Course.Exam;
+import com.example.noodleexaminationsystem.Direct.MediaMessage;
 import com.example.noodleexaminationsystem.Question.*;
 import com.example.noodleexaminationsystem.User.Result;
 import com.example.noodleexaminationsystem.User.User;
@@ -38,6 +39,7 @@ public class CardController implements Initializable {
     public Exam exam;
     public Course course;
     public CoursePlan.CoursePlanMedia media;
+    public MediaMessage attachmentMedia;
     public VBox examPageVbox;
     public QuestionBankController questionBankController;
     public ExamPageController examPageController;
@@ -71,6 +73,10 @@ public class CardController implements Initializable {
     private Button downloadButton;
     @FXML
     private Label subjectLabel;
+    @FXML
+    private Label message;
+    @FXML
+    private Label directAttachmentMessage;
 
     //___________________________________________________ getter/setter________________________________________________________
 
@@ -553,6 +559,35 @@ public class CardController implements Initializable {
 
                 // Copy the file to the selected directory
                 Files.copy(sourcePath, destinationPath, StandardCopyOption.REPLACE_EXISTING);
+                System.out.println("Media file copied to: " + destinationPath);
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Handle the exception here
+            }
+        }
+    }
+    //setting direct cards and methods
+    public void setAttachmentCard(){
+        message.setText(this.attachmentMedia.getMessage());
+    }
+    public void setDownloadAttachmentButton(){
+        System.out.println("oidjfoiejfidjficjeourfjeroijfiowesfjoiesjfiosjdfiojeoifjraeoifj");
+        System.out.println(this.attachmentMedia.getMediaPath());
+        //downloads media to downloads folder using its path
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        directoryChooser.setTitle("Select Target Directory");
+
+        // Open directory chooser and get user selection
+        File selectedDirectory = directoryChooser.showDialog(HelloApplication.mainStage); // Replace 'null' with a reference to your stage
+
+        if (selectedDirectory != null) {
+            try {
+                Path sourcePath = Path.of(this.attachmentMedia.getMediaPath());
+                Path destinationPath = selectedDirectory.toPath().resolve(sourcePath.getFileName());
+
+                // Copy the file to the selected directory
+                Files.copy(sourcePath, destinationPath, StandardCopyOption.REPLACE_EXISTING);
+                System.out.println("aaaajjjjjjifjiojfoiesjfoijfiefef");
                 System.out.println("Media file copied to: " + destinationPath);
             } catch (IOException e) {
                 e.printStackTrace();

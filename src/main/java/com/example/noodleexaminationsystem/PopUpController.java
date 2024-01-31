@@ -1,11 +1,16 @@
 package com.example.noodleexaminationsystem;
 
 
+import com.example.noodleexaminationsystem.Direct.Direct;
+import com.example.noodleexaminationsystem.Direct.MediaMessage;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+
 import java.net.URL;
+
 import com.example.noodleexaminationsystem.Course.CoursePlan;
 import com.example.noodleexaminationsystem.User.User;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
+
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
@@ -26,6 +32,8 @@ public class PopUpController implements Initializable {
     public CoursePlan coursePlan;
     public User user;
     public VBox courseMediaVbox;
+    public VBox directPageVbox;
+    public Direct direct;
     @FXML
     Label text;
     @FXML
@@ -44,14 +52,15 @@ public class PopUpController implements Initializable {
     public void setnotActive() {
         text.setText("Exam isn't active");
     }
-    public void sethaveattend(){
+
+    public void sethaveattend() {
         text.setText("you've attended exam");
     }
 
     //setting add course media pop up
-    public void setCourseMediaCards(ArrayList<CoursePlan.CoursePlanMedia> coursePlanMediaArrayList, VBox cardVbox){
+    public void setCourseMediaCards(ArrayList<CoursePlan.CoursePlanMedia> coursePlanMediaArrayList, VBox cardVbox) {
         try {
-            for (CoursePlan.CoursePlanMedia media :coursePlanMediaArrayList ) {
+            for (CoursePlan.CoursePlanMedia media : coursePlanMediaArrayList) {
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource("fileCard.fxml"));
                 HBox cardBox = loader.load();
@@ -71,11 +80,12 @@ public class PopUpController implements Initializable {
             e.printStackTrace();
         }
     }
-    public void setAddMediaButton(){
+
+    public void setAddMediaButton() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Movie File");
         // Set extension filters for movie files
-        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Movie Files","*.wav","*.zip","*.png","*.jpg","*.jpeg","*.pdf", "*.mp4", "*.avi", "*.mkv");
+        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Movie Files", "*.wav", "*.zip", "*.png", "*.jpg", "*.jpeg", "*.pdf", "*.mp4", "*.avi", "*.mkv");
         fileChooser.getExtensionFilters().add(filter);
 
         // Show the open dialog and wait for a movie file to be selected
@@ -85,32 +95,70 @@ public class PopUpController implements Initializable {
             // Define the target directory where you want to copy the movie
             String targetDirectoryPath = "src/main/resources/media//"; // Replace with the actual path
             File targetDirectory = new File(targetDirectoryPath);
+            File targetMovieFile = new File(targetDirectory, sourceMovieFile.getName());
 
             // Ensure the target directory exists
             if (!targetDirectory.exists()) {
                 targetDirectory.mkdirs();
             }
-
-            // Create a target File object with the same file name in the target directory
-            File targetMovieFile = new File(targetDirectory, sourceMovieFile.getName());
-
             try {
                 // Copy the selected movie file to the target directory
                 Files.copy(sourceMovieFile.toPath(), targetMovieFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-                //make a file card and add the path to it and add the card to the vbox
-                this.coursePlan.addMediaToCourse(subjectField.getText(), targetMovieFile.getAbsolutePath());
-                //setting page again
-                courseMediaVbox.getChildren().clear();
-                setCourseMediaCards(coursePlan.getMedia(), this.courseMediaVbox);
-                stage.close();
-                // Optionally, play the movie using KMPlayer
-                // playMovieWithKMPlayer(targetMovieFile.getAbsolutePath());
             } catch (Exception e) {
                 e.printStackTrace();
-                // Handle the exception (e.g., show an error dialog)
+            }
+            if (directPageVbox != null) {
+
+                MediaMessage mediaMessage = new MediaMessage(subjectField.getText(), this.user, targetMovieFile.getAbsolutePath());
+                direct.getMessages().add(mediaMessage);
+                setMessageMediaCards(mediaMessage, directPageVbox);
+                stage.close();
+            } else {
+
+                try {
+                    //make a file card and add the path to it and add the card to the vbox
+                    System.out.println(subjectField.getText());
+                    System.out.println(targetMovieFile.getAbsolutePath());
+                    this.coursePlan.addMediaToCourse(subjectField.getText(), targetMovieFile.getAbsolutePath());
+                    //setting page again
+                    courseMediaVbox.getChildren().clear();
+                    setCourseMediaCards(coursePlan.getMedia(), this.courseMediaVbox);
+                    stage.close();
+                    // Optionally, play the movie using KMPlayer
+                    // playMovieWithKMPlayer(targetMovieFile.getAbsolutePath());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    // Handle the exception (e.g., show an error dialog)
+                }
             }
         }
     }
+
+    public void setMessageMediaCards(MediaMessage message, VBox chatBox) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("MediaMessage.fxml"));
+            HBox cardBox = loader.load();
+            CardController attachmentCard = loader.getController();
+            try {
+                attachmentCard.attachmentMedia = message;
+                attachmentCard.setAttachmentCard();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            if (this.user == message.getSender()) {
+                cardBox.setAlignment(Pos.CENTER_RIGHT);
+            } else {
+                cardBox.setAlignment(Pos.CENTER_LEFT);
+            }
+
+            chatBox.getChildren().add(cardBox);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

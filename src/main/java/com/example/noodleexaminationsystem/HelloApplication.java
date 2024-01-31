@@ -71,8 +71,8 @@ public class HelloApplication extends Application {
             User admin5 = User.signUp("Alice", "Alice12345", "Alice", "Cooper", "AliceCooper@gmail.com", "src/main/resources/images/R (1).jpeg", date, "FEMALE", "ADMIN");
             User admin6 = User.signUp("Alice", "Alice12345", "Alice", "Cooper", "AliceCooper@gmail.com", "src/main/resources/images/R (1).jpeg", date, "FEMALE", "ADMIN");
             User teacher1=User.signUp("Shiva" , "Shivi1122" ,"Shiva" , "Zare" , "ShivaZare@gmail.com" ,"src/main/resources/images/R.jpeg",date ,"FEMALE" ,"MEMBER" );
-            User teacher2=User.signUp("setayesh" , "setayesh1234" ,"Setayesh" , "Saeedi" , "SetayeshSaeedi@gmail.com" ,"src/main/resources/images/OIP.jpeg",date ,"FEMALE" ,"MEMBER" );
-            User teacher3=User.signUp("raha" , "raha123" ,"Raha" , "Rahmanian" , "RahaRahmanian@gmail.com" ,"src/main/resources/images/OIP (1).jpeg",date ,"FEMALE" ,"MEMBER" );
+            User teacher2=User.signUp("Setayesh" , "Setayesh1234" ,"Setayesh" , "Saeedi" , "SetayeshSaeedi@gmail.com" ,"src/main/resources/images/OIP.jpeg",date ,"FEMALE" ,"MEMBER" );
+            User teacher3=User.signUp("raha" , "raha1234" ,"Raha" , "Rahmanian" , "RahaRahmanian@gmail.com" ,"src/main/resources/images/OIP (1).jpeg",date ,"FEMALE" ,"MEMBER" );
             User teacher4=User.signUp("Sina" , "Sina112233" ,"Sina" , "Hakimzadeh" , "SinaHakimzadeh@gmail.com" ,"src/main/resources/images/R.jpeg",date ,"MALE" ,"MEMBER" );
             User teacher5=User.signUp("ADAM" , "Sina112233" ,"Adam" , "Hadid" , "AdamHadid@gmail.com" ,"src/main/resources/images/R.jpeg",date ,"MALE" ,"MEMBER" );
             User teacher6=User.signUp("Hana" , "Sina112233" ,"Hana" , "Rohbi" , "HanaRohbi@gmail.com" ,"src/main/resources/images/R.jpeg",date ,"MALE" ,"MEMBER" );
@@ -131,7 +131,8 @@ public class HelloApplication extends Application {
             CoursePlan coursePlan11 = CoursePlan.addCoursePlan("OS","AI",teacher6,LocalDate.now(),"fj");
             CoursePlan coursePlan12 = CoursePlan.addCoursePlan("Assembly","ASM",teacher6,LocalDate.now(),"fj");
             CoursePlan coursePlan13 = CoursePlan.addCoursePlan("Discrete Mathematics","Discrete Mathematics",teacher3,LocalDate.now(),"fj");
-            CoursePlan coursePlan14 = CoursePlan.addCoursePlan("Computer Lab","Computer Lab",teacher3,LocalDate.now(),"fj");
+
+            CoursePlan coursePlan14 = CoursePlan.addCoursePlan("Computer Lab","Computer Lab",teacher3,LocalDate.now(),"/Users/raha/Desktop/Noodle-Examination-System/src/main/resources/images/chizi baraye khordan.jpeg");
             //-----------------------------------------------------------exams--------------------------------------------------------------------
             LocalDate activeDay = LocalDate.now();
             LocalDateTime activeExamStart = activeDay.atTime(00,00,00);

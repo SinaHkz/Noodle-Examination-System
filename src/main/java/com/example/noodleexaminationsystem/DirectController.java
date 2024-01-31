@@ -1,6 +1,7 @@
 package com.example.noodleexaminationsystem;
 
 import com.example.noodleexaminationsystem.Direct.Direct;
+import com.example.noodleexaminationsystem.Direct.MediaMessage;
 import com.example.noodleexaminationsystem.Direct.Message;
 import com.example.noodleexaminationsystem.User.User;
 import javafx.collections.FXCollections;
@@ -16,6 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 
 import java.io.FileInputStream;
 import java.net.URL;
@@ -50,6 +52,8 @@ public class DirectController implements Initializable {
     private Label age;
     @FXML
     private VBox profileVbox;
+    @FXML
+    private Button attachment;
 
 
     public void setListView() {
@@ -103,6 +107,31 @@ public class DirectController implements Initializable {
         chatBox.setVisible(true);
     }
 
+    public void setMessageMediaCards(MediaMessage message, VBox chatBox) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("MediaMessage.fxml"));
+            HBox cardBox = loader.load();
+            CardController attachmentCard = loader.getController();
+            try {
+                attachmentCard.attachmentMedia = message;
+                attachmentCard.setAttachmentCard();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            if (this.previousUser == message.getSender()) {
+                cardBox.setAlignment(Pos.CENTER_RIGHT);
+            } else {
+                cardBox.setAlignment(Pos.CENTER_LEFT);
+            }
+
+            chatBox.getChildren().add(cardBox);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private void openDirect(User user) {
         openDirect.setVisible(false);
         directList.setVisible(true);
@@ -110,29 +139,36 @@ public class DirectController implements Initializable {
         openedDirectUser = user;
         List<Message> directMessage = previousUser.getDirectByUser(user).getMessages();
         for (Message message : directMessage) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Message.fxml"));
-            try {
-                HBox hBox = loader.load();
-                MessageController messageController = loader.getController();
-                System.out.println(messageController);
-                messageController.inputMessage = message.getMessage();
-                if (message.getSender() == user) {
-                    hBox.setAlignment(Pos.CENTER_LEFT);
-                    messageController.setMessage(Pos.CENTER);
-                } else {
-                    hBox.setAlignment(Pos.CENTER_RIGHT);
-                    messageController.setMessage(Pos.CENTER);
-                }
-                chatBox.getChildren().add(hBox);
+            if (message instanceof MediaMessage){
+                setMessageMediaCards((MediaMessage) message,chatBox);
 
-            } catch (Exception e) {
-                e.printStackTrace();
+            }else {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("Message.fxml"));
+                try {
+                    HBox hBox = loader.load();
+                    MessageController messageController = loader.getController();
+                    System.out.println(messageController);
+                    messageController.inputMessage = message.getMessage();
+                    if (message.getSender() == user) {
+                        hBox.setAlignment(Pos.CENTER_LEFT);
+                        messageController.setMessage(Pos.CENTER);
+                    } else {
+                        hBox.setAlignment(Pos.CENTER_RIGHT);
+                        messageController.setMessage(Pos.CENTER);
+                    }
+                    chatBox.getChildren().add(hBox);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
             }
         }
 
         chatBox.setVisible(true);
         listView.setVisible(false);
         messageTextField.setVisible(true);
+        attachment.setVisible(true);
         sendButton.setVisible(true);
 
     }
@@ -140,6 +176,7 @@ public class DirectController implements Initializable {
     public void setSearchButton() {
         openedDirectUser = null;
         messageTextField.setVisible(false);
+        attachment.setVisible(false);
         sendButton.setVisible(false);
         String inp = searchedUsernameTextField.getText();
         List<String> usernames = DataBase.usernameTrie.findIncompleteWords(inp);
@@ -159,6 +196,7 @@ public class DirectController implements Initializable {
         openedDirectUser = null;
         setListView();
         messageTextField.setVisible(false);
+        attachment.setVisible(false);
         sendButton.setVisible(false);
         openDirect.setVisible(true);
         directList.setVisible(false);
@@ -195,6 +233,22 @@ public class DirectController implements Initializable {
         }
     }
 
+    @FXML
+    private void setAddMedia() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AddMediaPopUp.fxml"));
+        try {
+            Scene scene = new Scene(loader.load());
+            PopUpController popUpController = loader.getController();
+            //setting pop up
+            Stage stage = new Stage();
+            popUpController.stage = stage;
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void setBackButton() {
         openedDirectUser = null;
         FXMLLoader loader = new FXMLLoader();
@@ -209,6 +263,32 @@ public class DirectController implements Initializable {
             HelloApplication.mainStage.setScene(scene);
         } catch (Exception e) {
             System.out.println(e);
+        }
+    }
+
+    public void setAttachmentButton() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AddMediaPopUp.fxml"));
+        try {
+            Scene scene = new Scene(loader.load());
+            PopUpController popUpController = loader.getController();
+            popUpController.directPageVbox = this.chatBox;
+            popUpController.user = this.previousUser;
+            Direct direct1 = null;
+            for (Direct direct : previousUser.getDirects()) {
+                if (direct.getUser1() == previousUser && direct.getUser2() == openedDirectUser || direct.getUser1() == openedDirectUser && direct.getUser2() == previousUser) {
+                    direct1 = direct;
+                    break;
+                }
+            }
+            popUpController.direct = direct1;
+            //popUpController.text.setText("Please enter your message");
+            //setting pop up
+            Stage stage = new Stage();
+            popUpController.stage = stage;
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
